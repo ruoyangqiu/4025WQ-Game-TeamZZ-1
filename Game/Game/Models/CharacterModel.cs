@@ -11,7 +11,8 @@ namespace Game.Models
         /// Default CharacterModel
         /// Establish the Default Character Class
         /// </summary>
-        public CharacterClassEnum CharacterClass { get; set } = CharacterClassEnum.Unknown;
+        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
+
         /// <summary>
         /// Default CharacterModel
         /// Establish the Default Image Path
@@ -19,6 +20,11 @@ namespace Game.Models
         public CharacterModel() {
             ImageURI = CharacterService.DefaultImageURI;
         }
+
+        // Enum of the attack attribute of the Character
+        public AttributeEnum Attack { get; set; } = AttributeEnum.Attack;
+
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
