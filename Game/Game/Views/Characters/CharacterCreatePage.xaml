@@ -30,6 +30,10 @@
                         SelectedItem="{Binding Data.CharacterClass, Mode=TwoWay}"
                         x:Name="CharacterClassPicker"/>
                 </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Summonning a new character cost youi 100 gems!" FontSize="Medium"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
