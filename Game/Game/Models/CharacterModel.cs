@@ -48,7 +48,8 @@ namespace Game.Models
         // Item for necklace
         public ItemModel Necklace { get; set; }
 
-
+        // Item for primary hand
+        public ItemModel PrimaryHand { get; set; }
 
 
         /// <summary>
