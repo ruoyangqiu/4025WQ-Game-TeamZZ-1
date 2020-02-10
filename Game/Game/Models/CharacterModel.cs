@@ -51,6 +51,8 @@ namespace Game.Models
         // Item for primary hand
         public ItemModel PrimaryHand { get; set; }
 
+        // Item for off hand
+        public ItemModel OffHand { get; set; }
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
