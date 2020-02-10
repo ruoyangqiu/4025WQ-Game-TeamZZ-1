@@ -8,6 +8,7 @@ namespace Game.Models
     public class CharacterModel : BaseModel<CharacterModel>
     {
 
+        public CharacterClassEnum CharacterClass { get; set } = CharacterClassEnum.Unknown;
         /// <summary>
         /// Default CharacterModel
         /// Establish the Default Image Path
