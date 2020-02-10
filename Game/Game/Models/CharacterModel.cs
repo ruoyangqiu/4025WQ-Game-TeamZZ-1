@@ -24,6 +24,8 @@ namespace Game.Models
         // Value of defence attribute of the Character
         public int Defence { get; set; } = 0;
 
+        // Value of health attribute of the Character
+        public int MaxHealth { get; set; } = 0;
 
 
         /// <summary>
