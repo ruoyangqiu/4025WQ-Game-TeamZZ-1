@@ -22,7 +22,7 @@ namespace Game.Models
         }
 
         // Enum of the attack attribute of the Character
-        public AttributeEnum Attack { get; set; } = AttributeEnum.Attack;
+        public int Attack { get; set; } = 0;
 
 
 
