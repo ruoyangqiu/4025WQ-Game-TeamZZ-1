@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.ComponentModel;
 using Xamarin.Forms;
+using Game.Models;
+using Game.ViewModels;
+
+
 using Xamarin.Forms.Xaml;
 
-namespace Game.Views.Characters
+namespace Game.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    
+    [DesignTimeVisible(false)]
     public partial class CharacterCreatePage : ContentPage
     {
-        public CharacterCreatePage()
+        GenericViewModel<CharacterModel> ViewModel { get; set; }
+        public CharacterCreatePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
         }
