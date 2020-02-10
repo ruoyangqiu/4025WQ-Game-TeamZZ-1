@@ -30,7 +30,8 @@ namespace Game.Models
         //Value of current health attribute of the Character
         public int CurrentHealth { get; set; } = 0;
 
-
+        // Value of Speed of the Character
+        public int Speed { get; set; } = 0;
 
 
         /// <summary>
