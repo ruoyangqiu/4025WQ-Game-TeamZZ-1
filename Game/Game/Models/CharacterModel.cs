@@ -45,6 +45,9 @@ namespace Game.Models
         // Item for head location
         public ItemModel Head { get; set; }
 
+        // Item for necklace
+        public ItemModel Necklace { get; set; }
+
 
 
 
