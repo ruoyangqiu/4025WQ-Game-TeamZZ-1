@@ -15,8 +15,11 @@
             <StackLayout Style="{StaticResource OuterBoxStack}"
                          Spacing="10">
                 <Label Text="Create a Character" Style="{StaticResource HeaderStyle}"/>
-                
-                
+                <StackLayout>
+                    <Label Text="Please enter a name"/>
+                    <Entry Text="{Binding Data.Name}"
+                           Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

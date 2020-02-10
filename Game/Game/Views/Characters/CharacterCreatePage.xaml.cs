@@ -17,6 +17,7 @@ namespace Game.Views
         public CharacterCreatePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
+            data.Data = new CharacterModel();
         }
     }
 }
