@@ -6,7 +6,8 @@ namespace Game.Models
 {
     public enum CharacterClassEnum
     {
-        Fighter,
-        Cleric
+        Unknown = 0,
+        Fighter = 10,
+        Cleric = 12,
     }
 }
