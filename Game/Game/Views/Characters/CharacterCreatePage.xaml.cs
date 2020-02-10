@@ -18,6 +18,8 @@ namespace Game.Views
         {
             InitializeComponent();
             data.Data = new CharacterModel();
+
+            CharacterClassPicker.SelectedItem = data.Data.CharacterClass.ToString();
         }
     }
 }

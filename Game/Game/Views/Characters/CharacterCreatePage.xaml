@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
              x:Class="Game.Views.CharacterCreatePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save"/>
@@ -15,10 +16,19 @@
             <StackLayout Style="{StaticResource OuterBoxStack}"
                          Spacing="10">
                 <Label Text="Create a Character" Style="{StaticResource HeaderStyle}"/>
+                
                 <StackLayout>
                     <Label Text="Please enter a name"/>
                     <Entry Text="{Binding Data.Name}"
                            Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Please select a class"/>
+                    <Picker
+                        ItemsSource="{x:Static local_helpers:CharacterClassEnumHelper.GetListCharacter}"
+                        SelectedItem="{Binding Data.CharacterClass, Mode=TwoWay}"
+                        x:Name="CharacterClassPicker"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
