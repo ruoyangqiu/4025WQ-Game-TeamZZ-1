@@ -36,6 +36,9 @@ namespace Game.Models
         // Level of the Character
         public int Level { get; set; } = 1;
 
+        // Total Experience of Character
+        public int Experience { get; set; } = 0;
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
