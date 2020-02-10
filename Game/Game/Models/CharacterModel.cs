@@ -39,6 +39,9 @@ namespace Game.Models
         // Total Experience of Character
         public int Experience { get; set; } = 0;
 
+        // Check if the Character is alive in the game
+        public bool Alive { get; set; } = true;
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
