@@ -7,7 +7,10 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BaseModel<CharacterModel>
     {
-
+        /// <summary>
+        /// Default CharacterModel
+        /// Establish the Default Character Class
+        /// </summary>
         public CharacterClassEnum CharacterClass { get; set } = CharacterClassEnum.Unknown;
         /// <summary>
         /// Default CharacterModel
