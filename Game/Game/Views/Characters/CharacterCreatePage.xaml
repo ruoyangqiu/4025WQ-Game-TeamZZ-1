@@ -9,4 +9,15 @@
         <ToolbarItem Text="Save"/>
         <ToolbarItem Text="Cancel"/>
     </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}"
+                         Spacing="10">
+                <Label Text="Create a Character" Style="{StaticResource HeaderStyle}"/>
+                
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
