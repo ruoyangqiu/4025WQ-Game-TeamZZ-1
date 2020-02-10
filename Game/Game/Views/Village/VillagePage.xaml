@@ -16,7 +16,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="https://i.ibb.co/yRkQ9HD/Char01.png"
+                                Source="https://i.ibb.co/8DjBpf1/00925.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="CharactersButton_Clicked"/>
 
@@ -29,7 +29,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="troll.png"
+                                Source="https://i.ibb.co/JdPLTBs/01148.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="MonstersButton_Clicked"/>
 
@@ -43,7 +43,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="items.png"
+                                Source="https://i.ibb.co/YcQFx0v/01015.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="ItemsButton_Clicked"/>
 
@@ -56,7 +56,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="score.png"
+                                Source="https://i.ibb.co/xjJ1wMW/00840.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="ScoresButton_Clicked"/>
 
