@@ -42,6 +42,11 @@ namespace Game.Models
         // Check if the Character is alive in the game
         public bool Alive { get; set; } = true;
 
+        // Item for head location
+        public ItemModel Head { get; set; }
+
+
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
