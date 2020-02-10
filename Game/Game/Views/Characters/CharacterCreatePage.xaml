@@ -8,7 +8,7 @@
              x:Class="Game.Views.CharacterCreatePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save"/>
-        <ToolbarItem Text="Cancel"/>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
