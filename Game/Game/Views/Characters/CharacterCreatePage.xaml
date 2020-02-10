@@ -5,45 +5,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local_helpers="clr-namespace:Game.Helpers"
-             x:Class="Game.Views.CharacterCreatePage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save"/>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
-    </ContentPage.ToolbarItems>
+             x:Class="Game.Views.CharacterCreatePage"
+             Title="{Binding Title}"/>
+<ContentPage.ToolbarItems>
+    <ToolbarItem Text="Save"/>
+    <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+</ContentPage.ToolbarItems>
 
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
+<ContentPage.Content>
+    <ScrollView>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
                          Spacing="10"
                          HorizontalOptions="Center">
-                <Label Text="Create a Character" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="Create a Character" Style="{StaticResource HeaderStyle}"/>
 
-				<Grid
+            <Grid
 					RowSpacing="1"
 					ColumnSpacing="2"
 					VerticalOptions="Center">
 
-					<Grid.RowDefinitions>
-						<RowDefinition Height="auto" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="auto"/>
-					</Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-					<Label Grid.Row="0"
+                <Label Grid.Row="0"
 						   Grid.Column="1"
 						   Text="Please enter a name"/>
-					<Entry Grid.Row="1"
+                <Entry Grid.Row="1"
 						   Grid.Column="1"
 						   Text="{Binding Data.Name}"
 						   Style="{StaticResource EntryStyle}"/>
 
 
 
-					<Label Grid.Row="2"
+                <Label Grid.Row="2"
 					       Grid.Column="1"
 					       Text="Please select a class"/>
-					<Picker Grid.Row="3"
+                <Picker Grid.Row="3"
 						    Grid.Column="1"
 						    ItemsSource="{x:Static local_helpers:CharacterClassEnumHelper.GetListCharacter}"
 						    SelectedItem="{Binding Data.CharacterClass, Mode=TwoWay}"
@@ -51,14 +52,13 @@
 
 
 
-					<Label Grid.Row="4"
+                <Label Grid.Row="4"
 						   Grid.Column="1"
 					 Text="Summonning a new character cost youi 100 gems!" 
 						   FontSize="Medium"
 						   LineBreakMode="CharacterWrap"/>
 
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
-</ContentPage>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage.Content>
