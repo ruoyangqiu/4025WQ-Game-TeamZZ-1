@@ -69,7 +69,15 @@ namespace Game.Models
         /// <param name="data"></param>
         public CharacterModel(CharacterModel data)
         {
-            Update(data);
+            //Update(data);
+            Name = data.Name;
+            Description = data.Description;
+            CharacterClass = data.CharacterClass;
+            Attack = 5;
+            Defence = 5;
+            Speed = 5;
+            MaxHealth = 5;
+            CurrentHealth = MaxHealth;
         }
 
         /// <summary>
