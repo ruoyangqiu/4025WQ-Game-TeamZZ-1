@@ -33,6 +33,9 @@ namespace Game.Models
         // Value of Speed of the Character
         public int Speed { get; set; } = 0;
 
+        // Level of the Character
+        public int Level { get; set; } = 1;
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
