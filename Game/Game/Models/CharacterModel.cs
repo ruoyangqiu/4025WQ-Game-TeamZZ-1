@@ -7,11 +7,8 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BaseModel<CharacterModel>
     {
-        /// <summary>
-        /// Default CharacterModel
-        /// Establish the Default Character Class
-        /// </summary>
-        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
+        // The Enum of Character Class. Every Character can only have one Class 
+        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unkown;
 
         /// <summary>
         /// Default CharacterModel
