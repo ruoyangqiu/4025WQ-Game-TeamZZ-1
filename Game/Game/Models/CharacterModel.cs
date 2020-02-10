@@ -18,8 +18,11 @@ namespace Game.Models
             ImageURI = CharacterService.DefaultImageURI;
         }
 
-        // Enum of the attack attribute of the Character
+        // Value of attack attribute of the Character
         public int Attack { get; set; } = 0;
+
+        // Value of defence attribute of the Character
+        public int Defence { get; set; } = 0;
 
 
 
