@@ -60,6 +60,9 @@ namespace Game.Models
         // Item for Left Finger
         public ItemModel LeftFinger { get; set; }
 
+        // Item for feet
+        public ItemModel Feet { get; set; }
+
         /// <summary>
         /// Constructor to create a character based on what is passed in
         /// </summary>
