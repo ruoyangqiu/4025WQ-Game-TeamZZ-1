@@ -79,7 +79,7 @@ namespace Game.Services
                     "defeating the best warriors of heaven. His hair possesses " +
                     "magical properties, capable of summoning clones of the Monkey King " +
                     "himself, and/or into various weapons, animals, and other objects.",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png" },
+                    ImageURI = "https://i.ibb.co/yRkQ9HD/Char01.png" },
 
                 new CharacterModel {
                     Name = "Zhu Bajie",
@@ -87,7 +87,7 @@ namespace Game.Services
                     "who often gets himself and his companions into trouble through his laziness, " +
                     "gluttony, and propensity for lusting after pretty women. He is jealous of " +
                     "Sun Wukong and always tries to bring him down.",
-                    ImageURI = "http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png",},
+                    ImageURI = "https://i.ibb.co/HgQvJMs/Char02.png",},
 
                 new CharacterModel {
                     Name = "Tang Sanzang",
@@ -95,7 +95,7 @@ namespace Game.Services
                     "He translated abundant Buddhist canons and possessed an important position " +
                     "in Buddhist history. Xuanzang became a monk at the age of 12 and became a monk " +
                     "at the age of 21.",
-                    ImageURI = "http://www.clipartbest.com/cliparts/yik/e9k/yike9kMyT.png",},
+                    ImageURI = "https://i.ibb.co/JCSy3WC/Char03.png",},
             };
 
             return datalist;
