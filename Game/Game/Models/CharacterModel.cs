@@ -27,6 +27,11 @@ namespace Game.Models
         // Value of health attribute of the Character
         public int MaxHealth { get; set; } = 0;
 
+        //Value of current health attribute of the Character
+        public int CurrentHealth { get; set; } = 0;
+
+
+
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
