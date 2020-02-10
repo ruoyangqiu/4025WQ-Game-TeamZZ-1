@@ -57,11 +57,11 @@ namespace Game.ViewModels
 
             // commented out before implementing create update and delete pages
 
-            //// Register the Create Message
-            //MessagingCenter.Subscribe<CharacterCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
-            //{
-            //    await CreateAsync(data as CharacterModel);
-            //});
+            // Register the Create Message
+            MessagingCenter.Subscribe<CharacterCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
+            {
+                await CreateAsync(data as CharacterModel);
+            });
 
             //// Register the Update Message
             //MessagingCenter.Subscribe<CharacterUpdatePage, CharacterModel>(this, "Update", async (obj, data) =>
