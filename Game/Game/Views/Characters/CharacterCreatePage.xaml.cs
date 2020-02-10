@@ -27,6 +27,20 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Save by calling for Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        async void Save_Clicked(object sender, EventArgs e)
+        {
+            // If the image in the data box is empty, use the default one..
+            
+
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
+            await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
         /// Cancel the Create
         /// </summary>
         /// <param name="sender"></param>
