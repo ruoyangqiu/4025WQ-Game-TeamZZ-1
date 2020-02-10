@@ -54,6 +54,9 @@ namespace Game.Models
         // Item for off hand
         public ItemModel OffHand { get; set; }
 
+        // Item for Right Finger
+        public ItemModel RightFinger { get; set; }
+
         /// <summary>
         /// Constructor to create a character based on what is passed in
         /// </summary>
