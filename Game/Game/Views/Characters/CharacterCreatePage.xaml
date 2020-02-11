@@ -34,26 +34,17 @@
 					<Label Grid.Row="0"
 						   Grid.Column="1"
 						   Text="Please enter a name"/>
-                    
-					<Entry Grid.Row="1"
+
+                    <Entry Grid.Row="1"
 						   Grid.Column="1"
 						   Text="{Binding Data.Name}"
 						   Style="{StaticResource EntryStyle}"/>
 
-                    <Label Grid.Row="2"
-						   Grid.Column="1"
-						   Text="Please enter some description"/>
-                    <Entry Grid.Row="3"
-						   Grid.Column="1"
-						   Text="{Binding Data.Description}"
-						   Style="{StaticResource EntryStyle}"/>
 
-
-
-                    <Label Grid.Row="4"
+                    <Label Grid.Row="3"
 					       Grid.Column="1"
 					       Text="Please select a class"/>
-					<Picker Grid.Row="5"
+					<Picker Grid.Row="4"
 						    Grid.Column="1"
 						    ItemsSource="{x:Static local_helpers:CharacterClassEnumHelper.GetListCharacter}"
 						    SelectedItem="{Binding Data.CharacterClass, Mode=TwoWay}"
