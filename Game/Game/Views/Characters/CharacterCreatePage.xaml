@@ -12,6 +12,12 @@
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
     </ContentPage.ToolbarItems>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource OuterBoxStack}"
@@ -47,14 +53,14 @@
 					<Picker Grid.Row="4"
 						    Grid.Column="1"
 						    ItemsSource="{x:Static local_helpers:CharacterClassEnumHelper.GetListCharacter}"
-						    SelectedItem="{Binding Data.CharacterClass, Mode=TwoWay}"
+						    SelectedItem="{Binding Data.CharacterClass, Converter={StaticResource StringEnum}, Mode=TwoWay}"
 						    x:Name="CharacterClassPicker"/>
 
 
 
 					<Label Grid.Row="6"
 						   Grid.Column="1"
-					 Text="Summonning a new character cost youi 100 gems!" 
+					 Text="Summonning a new character cost you 100 gems!" 
 						   FontSize="Medium"
 						   LineBreakMode="CharacterWrap"/>
 

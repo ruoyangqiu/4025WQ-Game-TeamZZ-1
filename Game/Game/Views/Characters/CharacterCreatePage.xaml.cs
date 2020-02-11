@@ -33,11 +33,26 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
+            if (ViewModel.Data.Name == "")
+            {
+                await DisplayAlert("Alert", "You need to enter a name", "OK");
+                return;
+            }
+
             // If the image in the data box is empty, use the default one..
-            
+            if(IsEmptyName())
+            {
+                await DisplayAlert("Alert", "You need to enter a name", "OK");
+            } else if(!IsValidClass())
+            {
+                await DisplayAlert("Alert", "You need to select a Class", "OK");
+                return;
+            } 
 
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
+              
+
         }
 
         /// <summary>
@@ -49,5 +64,24 @@ namespace Game.Views
         {
             await Navigation.PopModalAsync();
         }
+
+        private bool IsEmptyName()
+        {
+            if(ViewModel.Data.Name.Length == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsValidClass()
+        {
+            if (ViewModel.Data.CharacterClass == CharacterClassEnum.Fighter || ViewModel.Data.CharacterClass == CharacterClassEnum.Cleric)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

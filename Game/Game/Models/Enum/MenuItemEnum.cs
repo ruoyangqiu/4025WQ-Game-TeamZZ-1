@@ -8,6 +8,7 @@
         Battle,
         Village,
         Score,
+        Characters,
         Items,
         Game,
         About
