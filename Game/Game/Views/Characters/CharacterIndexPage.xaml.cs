@@ -35,17 +35,17 @@ namespace Game.Views
         /// <param name="args"></param>
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            //CharacterModel data = args.SelectedItem as CharacterModel;
-            //if (data == null)
-            //{
-            //    return;
-            //}
+            CharacterModel data = args.SelectedItem as CharacterModel;
+            if (data == null)
+            {
+                return;
+            }
 
-            //// Open the Read Page
-            //await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
+            // Open the Read Page
+            await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
 
-            //// Manually deselect item.
-            //CharacterListView.SelectedItem = null;
+            // Manually deselect item.
+            CharactersListView.SelectedItem = null;
         }
 
         /// <summary>

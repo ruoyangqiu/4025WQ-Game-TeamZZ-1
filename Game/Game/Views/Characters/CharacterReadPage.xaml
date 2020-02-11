@@ -52,7 +52,7 @@
                     Text="Defence : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Defence}" 
+                    Text="{Binding Data.Defense}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -69,10 +69,10 @@
                 <Label 
                     Text="Head : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.Head.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.Head}" 
+                    Text="{Binding Data.Head.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -80,10 +80,10 @@
                 <Label 
                     Text="Necklace : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.Necklace.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.Necklace}" 
+                    Text="{Binding Data.Necklace.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -91,10 +91,10 @@
                 <Label 
                     Text="PrimaryHand : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.PrimaryHand.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.PrimaryHand}" 
+                    Text="{Binding Data.PrimaryHand.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -102,10 +102,10 @@
                 <Label 
                     Text="OffHand : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.OffHand.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.OffHand}" 
+                    Text="{Binding Data.OffHand.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -113,10 +113,10 @@
                 <Label 
                     Text="LeftFinger : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.LeftFinger.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.LeftFinger}" 
+                    Text="{Binding Data.LeftFinger.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -124,10 +124,10 @@
                 <Label 
                     Text="RightFinger : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.RightFinger.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.RightFinger}" 
+                    Text="{Binding Data.RightFinger.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -135,10 +135,10 @@
                 <Label 
                     Text="Feet : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.ImageURI}" 
+                <Image Source="{Binding Data.Feet.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.Feet}" 
+                    Text="{Binding Data.Feet.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
