@@ -17,7 +17,7 @@ namespace Game.Models
         public CharacterModel() {
             ImageURI = CharacterService.DefaultImageURI;
             Attack = 5;
-            Defence = 5;
+            Defense = 5;
             Speed = 5;
             MaxHealth = 5;
             CurrentHealth = MaxHealth;
@@ -27,7 +27,7 @@ namespace Game.Models
         public int Attack { get; set; } = 0;
 
         // Value of defence attribute of the Character
-        public int Defence { get; set; } = 0;
+        public int Defense { get; set; } = 0;
 
         // Value of health attribute of the Character
         public int MaxHealth { get; set; } = 0;
@@ -94,7 +94,7 @@ namespace Game.Models
             Description = newData.Description;
             CharacterClass = newData.CharacterClass;
             Attack = newData.Attack;
-            Defence = newData.Defence;
+            Defense = newData.Defense;
             Speed = newData.Speed;
             MaxHealth = newData.MaxHealth;
             CurrentHealth = newData.MaxHealth;
