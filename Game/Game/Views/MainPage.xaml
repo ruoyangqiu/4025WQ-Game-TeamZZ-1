@@ -8,7 +8,7 @@
             x:Class="Game.Views.MainPage">
 
     <MasterDetailPage.Master>
-        <views:MenuPage />
+        <views:MenuPage BackgroundColor="{StaticResource ViewBackgroundColor}"/>
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
