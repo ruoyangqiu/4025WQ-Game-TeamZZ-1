@@ -14,11 +14,11 @@
 
             <!--
                 Light
-                    #BF895A
-                    #D9C6B0
-                    #733612
-                    #8C3D20
-                    #400D01
+                    #56A4F5
+                    #8CBFF5
+                    #7CF556
+                    #EDF249
+                    #F2D857
                 Dark
                 -->
 
@@ -27,7 +27,7 @@
             <Color x:Key="NavigationBarColor">#D9C6B0</Color>
 
             <Color x:Key="PrimaryBackgroundColor">#D9C6B0</Color>
-            <Color x:Key="SecondaryBackgroundColor">#BF895A</Color>
+            <Color x:Key="SecondaryBackgroundColor">#56A4F5</Color>
             <Color x:Key="TriciaryBackgroundColor">#733612</Color>
             <Color x:Key="LightBackgroundColor">Bisque</Color>
 
@@ -139,7 +139,7 @@
             <!-- Button -->
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource SecondaryBackgroundColor}" />
-                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="BorderColor" Value="{StaticResource PrimaryTextColor}"/>
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center"/>
