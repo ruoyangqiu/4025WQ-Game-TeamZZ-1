@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Game.Views.Characters.CharacterReadPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="{Binding Data.Name}" FontSize="Small"/>
+        <Label Text="Level:" FontSize="Medium" />
+        <Label Text="{Binding Data.Level}" FontSize="Small"/>
+        <Label Text="Max_Health:" FontSize="Medium" />
+        <Label Text="{Binding Data.Max_Health}" FontSize="Small"/>
+        <Label Text="Attack:" FontSize="Medium" />
+        <Label Text="{Binding Data.Attack}" FontSize="Small"/>
+        <Label Text="Defense:" FontSize="Medium" />
+        <Label Text="{Binding Data.Defense}" FontSize="Small"/>
+        <Label Text="Speed:" FontSize="Medium" />
+        <Label Text="{Binding Data.Speed}" FontSize="Small"/>
+        <Label Text="Attack:" FontSize="Medium" />
+        <Label Text="{Binding Data.Attack}" FontSize="Small"/>
+        <StackLayout>
+            <Label Text="Head" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.Head}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Necklace" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.Necklace}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Primary_Hand" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.Primary_Hand}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="OffHand" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.OffHand}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="LefFinger" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.LefFinger}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="RightFinger" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.RightFinger}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Feet" FontSize="Medium" />
+            <Image Source="" WidthRequest="50" HeightRequest="50"></Image>
+            <Label Text="{Binding Data.Feet}" FontSize="Small"/>
+        </StackLayout>
+    </StackLayout>
+  
+</ContentPage>
