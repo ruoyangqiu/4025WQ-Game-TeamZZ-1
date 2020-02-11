@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Game.Views.CharacterReadPage"
+             Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="10">
+
+            <Label Text="Character Detail Page" Style="{StaticResource HeaderStyle}"/>
+
+            <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                   Text="Name : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Name}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Level : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Level}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="MaxHealth : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.MaxHealth}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Defence : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Defence}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Speed : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Label 
+                    Text="{Binding Data.Speed}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Head : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.Head}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Necklace : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.Necklace}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="PrimaryHand : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.PrimaryHand}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="OffHand : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.OffHand}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="LeftFinger : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.LeftFinger}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="RightFinger : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.RightFinger}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Feet : " 
+                    Style="{StaticResource LabelStyle}"/>
+                <Image Source="{Binding Data.ImageURI}" 
+                       Style="{StaticResource ImageSmallStyle}"/>
+                <Label 
+                    Text="{Binding Data.Feet}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
+    
+</ContentPage>
