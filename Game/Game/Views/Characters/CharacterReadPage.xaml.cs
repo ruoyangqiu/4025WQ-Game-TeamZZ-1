@@ -37,7 +37,7 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Update_Clicked(object sender, EventArgs e)
         {
-           // await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(new GenericViewModel<CharacterModel>(CharacterModel.Data))));
+            await Navigation.PushModalAsync(new NavigationPage(new CharacterUpdatePage(new GenericViewModel<CharacterModel>(ViewModel.Data))));
             await Navigation.PopAsync();
         }
 
@@ -48,7 +48,7 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Delete_Clicked(object sender, EventArgs e)
         {
-           // await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(new GenericViewModel<CharacterModel>(CharacterModel.Data))));
+            await Navigation.PushModalAsync(new NavigationPage(new CharacterDeletePage(new GenericViewModel<CharacterModel>(ViewModel.Data))));
             await Navigation.PopAsync();
         }
     }
