@@ -15,7 +15,9 @@ namespace Game.Models
         /// Establish the Default Image Path
         /// </summary>
         public CharacterModel() {
-            ImageURI = CharacterService.DefaultImageURI;
+            var randomUriDescription = CharacterService.GetRandomURIDescription();
+            ImageURI = randomUriDescription.Item1;
+            Description = randomUriDescription.Item2;
             Attack = 5;
             Defense = 5;
             Speed = 5;
