@@ -60,7 +60,7 @@
 
 					<Label Grid.Row="6"
 						   Grid.Column="1"
-					 Text="Summonning a new character cost youi 100 gems!" 
+					 Text="Summonning a new character cost you 100 gems!" 
 						   FontSize="Medium"
 						   LineBreakMode="CharacterWrap"/>
 

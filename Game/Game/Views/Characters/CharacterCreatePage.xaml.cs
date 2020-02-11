@@ -33,6 +33,12 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
+            if (ViewModel.Data.Name == "")
+            {
+                await DisplayAlert("Alert", "You need to enter a name", "OK");
+                return;
+            }
+
             // If the image in the data box is empty, use the default one..
             if(IsEmptyName())
             {
@@ -44,6 +50,7 @@ namespace Game.Views
             {
                 MessagingCenter.Send(this, "Create", ViewModel.Data);
                 await Navigation.PopModalAsync();
+                return;
             }
 
         }
