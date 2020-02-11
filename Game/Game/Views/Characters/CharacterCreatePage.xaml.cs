@@ -33,23 +33,20 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the input name is empty, ask for a nonempty name
+
+            // If the image in the data box is empty, use the default one..
             if(IsEmptyName())
             {
                 await DisplayAlert("Alert", "You need to enter a name", "OK");
-                return;
-            } 
-            
-            // If the user do not select a class, ask them to select one
-            if(!IsValidClass())
+            } else if(!IsValidClass())
             {
                 await DisplayAlert("Alert", "You need to select a Class", "OK");
+            } else
+            {
+                MessagingCenter.Send(this, "Create", ViewModel.Data);
+                await Navigation.PopModalAsync();
                 return;
-            } 
-
-            MessagingCenter.Send(this, "Create", ViewModel.Data);
-            await Navigation.PopModalAsync();
-              
+            }
 
         }
 
