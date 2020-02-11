@@ -33,11 +33,18 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
+            if (ViewModel.Data.Name == "")
+            {
+                await DisplayAlert("Alert", "You need to enter a name", "OK");
+                return;
+            }
+
             // If the image in the data box is empty, use the default one..
             if(ViewModel.Data.CharacterClass == CharacterClassEnum.Fighter || ViewModel.Data.CharacterClass == CharacterClassEnum.Cleric)
             {
                 MessagingCenter.Send(this, "Create", ViewModel.Data);
                 await Navigation.PopModalAsync();
+                return;
             }
 
             await DisplayAlert("Alert", "You need to select a Class", "OK");
