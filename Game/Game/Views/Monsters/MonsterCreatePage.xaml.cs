@@ -43,5 +43,10 @@ namespace Game.Views
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            MaxHealthValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }

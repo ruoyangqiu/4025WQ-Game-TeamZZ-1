@@ -95,9 +95,42 @@
                             ValueChanged="Defense_OnStepperValueChanged"/>
                     </StackLayout>
 
+                    
 
                 </Grid>
-                
+                <Grid
+                    RowSpacing="1"
+                    ColumnSpacing="3"
+                    VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                    
+                    <Label  Grid.Row="2"
+					        Grid.Column="0"
+                            Text="MaxHealthe" 
+                            Style="{StaticResource LabelStyle}"/>
+                    <Label  Grid.Row="20"
+					        Grid.Column="1"
+                            Text="{Binding Data.MaxHealth}" 
+                            x:Name="MaxHealthValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
+
+                    <Stepper Grid.Row="2"
+					        Grid.Column="2"
+                            Maximum="20"
+                            Value="{Binding Data.MaxHealth, Mode=TwoWay}"
+                            ValueChanged="MaxHealth_OnStepperValueChanged" HorizontalOptions="Start"/>
+                </Grid>
+
 
             </StackLayout>
         </ScrollView>
