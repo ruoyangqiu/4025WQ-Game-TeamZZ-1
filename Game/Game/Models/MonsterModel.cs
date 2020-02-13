@@ -8,6 +8,21 @@ namespace Game.Models
     public class MonsterModel : BaseModel<MonsterModel>
     {
 
+        // Value of attack attribute of the Monster
+        public int Attack { get; set; } = 0;
+
+        // Value of defence attribute of the Monster
+        public int Defense { get; set; } = 0;
+
+        // Value of health attribute of the Monster
+        public int MaxHealth { get; set; } = 0;
+
+        //Value of current health attribute of the Monster
+        public int CurrentHealth { get; set; } = 0;
+
+        // Value of Speed of the Monster
+        public int Speed { get; set; } = 0;
+
         /// <summary>
         /// Default MonsterModel
         /// Establish the Default Image Path
@@ -23,8 +38,7 @@ namespace Game.Models
         /// <param name="data"></param>
         public MonsterModel(MonsterModel data)
         {
-            Update(data);
-            
+            Update(data);           
         }
 
         /// <summary>
