@@ -30,6 +30,13 @@ namespace Game.Views
                 await DisplayAlert("Alert", "You need to enter a name!", "OK");
                 return;
             }
+            if(ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Easy &&
+                ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Medium &&
+                ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Hard)
+            {
+                await DisplayAlert("Alert", "You need to select a Difficulty!", "OK");
+                return;
+            }
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
