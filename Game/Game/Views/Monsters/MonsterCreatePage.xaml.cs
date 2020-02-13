@@ -9,18 +9,19 @@ namespace Game.Views
     [DesignTimeVisible(false)]
     public partial class MonsterCreatePage : ContentPage
     {
-        GenericViewModel<MonsterModel> ViewMode { get; set; }
+        GenericViewModel<MonsterModel> ViewModel { get; set; }
         public MonsterCreatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
 
             data.Data = new MonsterModel();
 
-            BindingContext = this.ViewMode = data;
+            BindingContext = this.ViewModel = data;
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
+            //MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
 
@@ -28,5 +29,6 @@ namespace Game.Views
         {
             await Navigation.PopModalAsync();
         }
+
     }
 }
