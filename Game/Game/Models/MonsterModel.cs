@@ -79,7 +79,22 @@ namespace Game.Models
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
-            
+            ImageURI = newData.ImageURI;
+            Description = newData.Description;
+            Attack = newData.Attack;
+            Defense = newData.Defense;
+            Speed = newData.Speed;
+            MaxHealth = newData.MaxHealth;
+            CurrentHealth = newData.MaxHealth;
+            DifficultyLevel = newData.DifficultyLevel;
+            Experience = newData.Experience;
+            Head = newData.Head;
+            Necklace = newData.Necklace;
+            PrimaryHand = newData.PrimaryHand;
+            OffHand = newData.OffHand;
+            RightFinger = newData.RightFinger;
+            LeftFinger = newData.LeftFinger;
+            Feet = newData.Feet;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
