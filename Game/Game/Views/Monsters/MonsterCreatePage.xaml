@@ -122,9 +122,28 @@
 
                     <Stepper Grid.Row="2"
 					        Grid.Column="2"
-                            Maximum="20"
                             Value="{Binding Data.MaxHealth, Mode=TwoWay}"
                             ValueChanged="MaxHealth_OnStepperValueChanged" HorizontalOptions="Start"/>
+
+                    <Label  Grid.Row="3"
+					        Grid.Column="0"
+                            Text="Speed" 
+                            Style="{StaticResource LabelStyle}"/>
+
+                    <Label  Grid.Row="3"
+					        Grid.Column="1"
+                            Text="{Binding Data.Speed}" 
+                            x:Name="SpeedValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
+
+                    <Stepper Grid.Row="3"
+					        Grid.Column="2"
+                            Maximum="20"
+                            Value="{Binding Data.Speed, Mode=TwoWay}"
+                            ValueChanged="Speed_OnStepperValueChanged" HorizontalOptions="Start"/>
                 </Grid>
 
 
