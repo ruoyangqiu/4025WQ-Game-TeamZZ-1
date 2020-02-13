@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="BrowseMonstersPage"
+             x:Class="Game.Views.MonsterIndexPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" IconImageSource="icon_add.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+
+            
+            <ListView x:Name="MonsterListView" 
+                    ItemsSource="{Binding Dataset}"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    CachingStrategy="RecycleElement"
+                    ItemSelected="OnItemSelected"
+                    HasUnevenRows="true"
+                    Margin="5,0,5,0"
+                    RowHeight="180"
+                    >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <StackLayout Style="{StaticResource CardImageTextBox}">
+
+                                    <Image
+                                    Source="{Binding ImageURI}"
+                                    Style="{StaticResource ImageLargeStyle}"/>
+
+                                    <Label 
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource CenterMessageStyle}"/>
+
+                                </StackLayout>
+
+                                <!--<StackLayout Style="{StaticResource CardImageTextBox}"
+                                             Padding="30,15,0,0">
+                                    <Label 
+                                        Text="{Binding Level, StringFormat='LVL: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Attack, StringFormat='ATK: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Defense, StringFormat='DEF: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding MaxHealth, StringFormat='  HP: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Speed, StringFormat='SPD: {0:F0}'}" />
+                                </StackLayout>-->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

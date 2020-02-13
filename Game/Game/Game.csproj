@@ -42,6 +42,9 @@
     <Compile Update="Views\Characters\CharacterDeletePage.xaml.cs">
       <DependentUpon>CharacterDeletePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Monsters\MonsterIndexPage.xaml.cs">
+      <DependentUpon>MonsterIndexPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Village\VillagePage.xaml.cs">
       <DependentUpon>VillagePage.xaml</DependentUpon>
     </Compile>
@@ -75,9 +78,5 @@
     <EmbeddedResource Update="Views\Characters\CharacterUpdatePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Monsters\" />
   </ItemGroup>
 </Project>
