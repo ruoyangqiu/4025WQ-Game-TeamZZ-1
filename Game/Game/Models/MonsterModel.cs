@@ -3,7 +3,7 @@
 namespace Game.Models
 {
     /// <summary>
-    /// Character for the Game
+    /// Monster for the Game
     /// </summary>
     public class MonsterModel : BaseModel<MonsterModel>
     {
