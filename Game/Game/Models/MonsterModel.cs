@@ -23,6 +23,10 @@ namespace Game.Models
         // Value of Speed of the Monster
         public int Speed { get; set; } = 0;
 
+        public int DifficultyLevel { get; set; }
+
+        public int Experience { get; set; } = 0;
+
         // Item for head location
         public ItemModel Head { get; set; }
 
@@ -75,6 +79,7 @@ namespace Game.Models
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
+            
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
