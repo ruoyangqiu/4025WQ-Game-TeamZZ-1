@@ -25,7 +25,7 @@ namespace Game.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            //MessagingCenter.Send(this, "Create", ViewModel.Data);
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
 
@@ -61,7 +61,7 @@ namespace Game.Views
 
         void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DropRateValue.Text = String.Format("{0}", e.NewValue);
+            //DropRateValue.Text = String.Format("{0}", e.NewValue);
         }
     }
 }

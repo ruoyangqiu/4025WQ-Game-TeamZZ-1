@@ -52,6 +52,23 @@
 						    ItemsSource="{x:Static local_helpers:DifficultyLevelEnumHelper.GetListDifficulty}"
 						    SelectedItem="{Binding Data.DifficultyLevel, Converter={StaticResource StringEnum}, Mode=TwoWay}"
 						    x:Name="DifficultyLevelPicker"/>
+                    
+                    <Label Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="Image" 
+                           Style="{StaticResource LabelStyle}"/>
+                    
+                    <StackLayout Grid.Row="2" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                            Source="{Binding Data.ImageURI}"
+                            Style="{StaticResource ImageSmallStyle}"/>
+
+                        <Entry 
+                            Text="{Binding Data.ImageURI}" 
+                            Style="{StaticResource EntryStyle}"/>
+
+                    </StackLayout>
 
                 </Grid>
                 
@@ -170,7 +187,7 @@
 
                 </Grid>
 
-                <Grid
+                <!--<Grid
 					RowSpacing="1"
 					ColumnSpacing="2"
 					VerticalOptions="Center">
@@ -214,7 +231,7 @@
                              Increment="0.1"
                             Value="{Binding Data.DropRate, Mode=TwoWay}"
                             ValueChanged="DropRate_OnStepperValueChanged" HorizontalOptions="Start"/>
-                </Grid>
+                </Grid>-->
 
 
             </StackLayout>
