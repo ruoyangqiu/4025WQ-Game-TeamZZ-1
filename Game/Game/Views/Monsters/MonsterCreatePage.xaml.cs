@@ -17,6 +17,10 @@ namespace Game.Views
             data.Data = new MonsterModel();
 
             BindingContext = this.ViewModel = data;
+
+            this.ViewModel.Title = "Create";
+
+            DifficultyLevelPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
         }
 
         async void Save_Clicked(object sender, EventArgs e)
