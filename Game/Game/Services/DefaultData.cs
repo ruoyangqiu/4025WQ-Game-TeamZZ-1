@@ -101,5 +101,28 @@ namespace Game.Services
             return datalist;
         }
 
+        /// <summary>
+        /// Load the Default monster data
+        /// </summary>
+        /// <returns></returns>
+        public static List<MonsterModel> LoadData(MonsterModel temp)
+        {
+            var datalist = new List<MonsterModel>()
+            {
+                new MonsterModel {
+                    Name = "Tauren Chieftain",
+                    ImageURI = "https://i.ibb.co/JdPLTBs/01148.png" },
+
+                new MonsterModel {
+                    Name = "Elite Horseman",
+                    ImageURI = "https://i.ibb.co/SrMKM5r/01143.png",},
+
+                new MonsterModel {
+                    Name = "Jiangshi Bride",
+                    ImageURI = "https://i.ibb.co/GMdPYqD/01118.png",},
+            };
+
+            return datalist;
+        }
     }
 }
