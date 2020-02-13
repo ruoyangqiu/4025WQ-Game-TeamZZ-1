@@ -16,5 +16,15 @@ namespace Game.Views.Monsters
         {
             InitializeComponent();
         }
+
+        async void Save_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }
