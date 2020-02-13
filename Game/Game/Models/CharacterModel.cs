@@ -1,5 +1,5 @@
 ﻿using Game.Services;
-
+using SQLite;
 namespace Game.Models
 {
     /// <summary>
@@ -50,24 +50,31 @@ namespace Game.Models
         // Check if the Character is alive in the game
         public bool Alive { get; set; } = true;
 
+        [Ignore]
         // Item for head location
         public ItemModel Head { get; set; }
 
+        [Ignore]
         // Item for necklace
         public ItemModel Necklace { get; set; }
 
+        [Ignore]
         // Item for primary hand
         public ItemModel PrimaryHand { get; set; }
 
+        [Ignore]
         // Item for off hand
         public ItemModel OffHand { get; set; }
 
+        [Ignore]
         // Item for Right Finger
         public ItemModel RightFinger { get; set; }
 
+        [Ignore]
         // Item for Left Finger
         public ItemModel LeftFinger { get; set; }
 
+        [Ignore]
         // Item for feet
         public ItemModel Feet { get; set; }
 
