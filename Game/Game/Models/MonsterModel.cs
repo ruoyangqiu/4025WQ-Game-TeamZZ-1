@@ -49,6 +49,12 @@ namespace Game.Models
         // Item for feet
         public ItemModel Feet { get; set; }
 
+        // The UniqueItem the Monster will drop
+        public ItemModel UniqueItem { get; set; }
+
+        // The Rate the item will drop
+        public double DropRate { get; set; } = 1;
+
         /// <summary>
         /// Default MonsterModel
         /// Establish the Default Image Path
@@ -96,6 +102,8 @@ namespace Game.Models
             RightFinger = newData.RightFinger;
             LeftFinger = newData.LeftFinger;
             Feet = newData.Feet;
+            UniqueItem = newData.UniqueItem;
+            DropRate = newData.DropRate;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
