@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Game.Models;
+using Game.ViewModels;
 
-namespace Game.Views.Monsters
+namespace Game.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [DesignTimeVisible(false)]
     public partial class MonsterCreatePage : ContentPage
     {
-        public MonsterCreatePage()
+        GenericViewModel<MonsterModel> ViewMode { get; set; }
+        public MonsterCreatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
+
+            data.Data = new MonsterModel();
+
+            BindingContext = this.ViewMode = data;
         }
 
         async void Save_Clicked(object sender, EventArgs e)
