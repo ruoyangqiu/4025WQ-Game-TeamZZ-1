@@ -58,5 +58,10 @@ namespace Game.Views
         {
             ExperienceValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DropRateValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }

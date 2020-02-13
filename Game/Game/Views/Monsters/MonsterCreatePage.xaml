@@ -170,6 +170,52 @@
 
                 </Grid>
 
+                <Grid
+					RowSpacing="1"
+					ColumnSpacing="2"
+					VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <Grid
+					RowSpacing="1"
+					ColumnSpacing="3"
+					VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label  Grid.Row="0"
+					        Grid.Column="0"
+                            Text="Drop Rate" 
+                            Style="{StaticResource LabelStyle}"/>
+
+                    <Label  Grid.Row="0"
+					        Grid.Column="1"
+                            Text="{Binding Data.DropRate}" 
+                            x:Name="DropRateValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
+
+                    <Stepper Grid.Row="0"
+					         Grid.Column="2"
+                             Maximum="1"
+                             Minimum="0.1"
+                             Increment="0.1"
+                            Value="{Binding Data.DropRate, Mode=TwoWay}"
+                            ValueChanged="DropRate_OnStepperValueChanged" HorizontalOptions="Start"/>
+                </Grid>
+
 
             </StackLayout>
         </ScrollView>
