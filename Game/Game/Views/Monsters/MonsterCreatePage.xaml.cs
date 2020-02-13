@@ -34,5 +34,9 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
+        void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            AttackValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
