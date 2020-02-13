@@ -9,6 +9,7 @@
         Village,
         Score,
         Characters,
+        Monsters,
         Items,
         Game,
         About
