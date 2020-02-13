@@ -53,51 +53,8 @@
 						    SelectedItem="{Binding Data.DifficultyLevel, Converter={StaticResource StringEnum}, Mode=TwoWay}"
 						    x:Name="DifficultyLevelPicker"/>
 
-                    <Label  Grid.Row="2"
-					        Grid.Column="0"
-                            Text="Attack" 
-                            Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Grid.Row="2"
-                                 Grid.Column="1"
-                                 Orientation="Horizontal">
-                        <Label  
-                            Text="{Binding Data.Attack}" 
-                            x:Name="AttackValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="Center"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Attack, Mode=TwoWay}"
-                            ValueChanged="Attack_OnStepperValueChanged"/>
-                    </StackLayout>
-
-                    <Label  Grid.Row="3"
-					        Grid.Column="0"
-                            Text="Defense" 
-                            Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Grid.Row="3"
-                                 Grid.Column="1"
-                                 Orientation="Horizontal">
-                        <Label  
-                            Text="{Binding Data.Defense}" 
-                            x:Name="DefenseValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="Center"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Defense, Mode=TwoWay}"
-                            ValueChanged="Defense_OnStepperValueChanged"/>
-                    </StackLayout>
-
-                    
-
                 </Grid>
+                
                 <Grid
                     RowSpacing="1"
                     ColumnSpacing="3"
@@ -108,14 +65,53 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
+
+                    <Label  Grid.Row="0"
+					        Grid.Column="0"
+                            Text="Attack" 
+                            Style="{StaticResource LabelStyle}"/>
                     
+                    <Label  Grid.Row="0"
+					        Grid.Column="1"
+                            Text="{Binding Data.Attack}" 
+                            x:Name="AttackValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
                     
+                    <Stepper Grid.Row="0"
+					        Grid.Column="2"
+                            Value="{Binding Data.Attack, Mode=TwoWay}"
+                            ValueChanged="Attack_OnStepperValueChanged" HorizontalOptions="Start"/>
+
+                    
+                    <Label  Grid.Row="1"
+					        Grid.Column="0"
+                            Text="Defense" 
+                            Style="{StaticResource LabelStyle}"/>
+                    
+                    <Label  Grid.Row="1"
+					        Grid.Column="1"
+                            Text="{Binding Data.Defense}" 
+                            x:Name="DefenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
+                    
+                    <Stepper Grid.Row="1"
+					        Grid.Column="2"
+                            Value="{Binding Data.Defense, Mode=TwoWay}"
+                            ValueChanged="Defense_OnStepperValueChanged" HorizontalOptions="Start"/>
+
                     
                     <Label  Grid.Row="2"
 					        Grid.Column="0"
-                            Text="MaxHealthe" 
+                            Text="MaxHealth" 
                             Style="{StaticResource LabelStyle}"/>
-                    <Label  Grid.Row="20"
+                    
+                    <Label  Grid.Row="2"
 					        Grid.Column="1"
                             Text="{Binding Data.MaxHealth}" 
                             x:Name="MaxHealthValue"
