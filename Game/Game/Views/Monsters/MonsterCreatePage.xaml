@@ -73,8 +73,27 @@
                             Value="{Binding Data.Attack, Mode=TwoWay}"
                             ValueChanged="Attack_OnStepperValueChanged"/>
                     </StackLayout>
-                    
-                    
+
+                    <Label  Grid.Row="3"
+					        Grid.Column="0"
+                            Text="Defense" 
+                            Style="{StaticResource LabelStyle}"/>
+
+                    <StackLayout Grid.Row="3"
+                                 Grid.Column="1"
+                                 Orientation="Horizontal">
+                        <Label  
+                            Text="{Binding Data.Defense}" 
+                            x:Name="DefenseValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.Defense, Mode=TwoWay}"
+                            ValueChanged="Defense_OnStepperValueChanged"/>
+                    </StackLayout>
 
 
                 </Grid>

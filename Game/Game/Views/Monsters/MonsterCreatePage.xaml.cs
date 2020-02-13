@@ -38,5 +38,10 @@ namespace Game.Views
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DefenseValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
