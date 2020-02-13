@@ -23,6 +23,27 @@ namespace Game.Models
         // Value of Speed of the Monster
         public int Speed { get; set; } = 0;
 
+        // Item for head location
+        public ItemModel Head { get; set; }
+
+        // Item for necklace
+        public ItemModel Necklace { get; set; }
+
+        // Item for primary hand
+        public ItemModel PrimaryHand { get; set; }
+
+        // Item for off hand
+        public ItemModel OffHand { get; set; }
+
+        // Item for Right Finger
+        public ItemModel RightFinger { get; set; }
+
+        // Item for Left Finger
+        public ItemModel LeftFinger { get; set; }
+
+        // Item for feet
+        public ItemModel Feet { get; set; }
+
         /// <summary>
         /// Default MonsterModel
         /// Establish the Default Image Path
