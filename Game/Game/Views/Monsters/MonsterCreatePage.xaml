@@ -124,6 +124,7 @@
 					        Grid.Column="2"
                             Value="{Binding Data.MaxHealth, Mode=TwoWay}"
                             ValueChanged="MaxHealth_OnStepperValueChanged" HorizontalOptions="Start"/>
+                    
 
                     <Label  Grid.Row="3"
 					        Grid.Column="0"
@@ -144,6 +145,29 @@
                             Maximum="20"
                             Value="{Binding Data.Speed, Mode=TwoWay}"
                             ValueChanged="Speed_OnStepperValueChanged" HorizontalOptions="Start"/>
+                    
+
+                    <Label  Grid.Row="4"
+					        Grid.Column="0"
+                            Text="Experience" 
+                            Style="{StaticResource LabelStyle}"/>
+
+                    <Label  Grid.Row="4"
+					        Grid.Column="1"
+                            Text="{Binding Data.Experience}" 
+                            x:Name="ExperienceValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"/>
+
+                    <Stepper Grid.Row="4"
+					        Grid.Column="2"
+                            Maximum="1000"
+                             Increment="100"
+                            Value="{Binding Data.Experience, Mode=TwoWay}"
+                            ValueChanged="Experience_OnStepperValueChanged" HorizontalOptions="Start"/>
+
                 </Grid>
 
 

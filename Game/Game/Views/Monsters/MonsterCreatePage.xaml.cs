@@ -53,5 +53,10 @@ namespace Game.Views
         {
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        void Experience_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            ExperienceValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
