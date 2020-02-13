@@ -1,4 +1,5 @@
-﻿using Game.Services;
+﻿using Game.Models.Enum;
+using Game.Services;
 
 namespace Game.Models
 {
@@ -23,7 +24,7 @@ namespace Game.Models
         // Value of Speed of the Monster
         public int Speed { get; set; } = 0;
 
-        public int DifficultyLevel { get; set; }
+        public DifficultyLevelEnum DifficultyLevel { get; set; }
 
         public int Experience { get; set; } = 0;
 
