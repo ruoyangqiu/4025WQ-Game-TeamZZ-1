@@ -57,11 +57,11 @@ namespace Game.ViewModels
 
             // commented out before implementing create update and delete pages
 
-            //// Register the Create Message
-            //MessagingCenter.Subscribe<MonsterCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
-            //{
-            //    await CreateAsync(data as MonsterModel);
-            //});
+            // Register the Create Message
+            MessagingCenter.Subscribe<MonsterCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
+            {
+                await CreateAsync(data as MonsterModel);
+            });
 
             //// Register the Update Message
             //MessagingCenter.Subscribe<MonsterUpdatePage, MonsterModel>(this, "Update", async (obj, data) =>
