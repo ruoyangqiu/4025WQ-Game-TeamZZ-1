@@ -59,7 +59,8 @@ namespace Game.Models
         /// Default MonsterModel
         /// Establish the Default Image Path
         /// </summary>
-        public MonsterModel() {
+        public MonsterModel()
+        {
             Name = "";
             ImageURI = CharacterService.DefaultImageURI;
         }
@@ -70,7 +71,7 @@ namespace Game.Models
         /// <param name="data"></param>
         public MonsterModel(MonsterModel data)
         {
-            Update(data);           
+            Update(data);
         }
 
         /// <summary>
@@ -132,7 +133,47 @@ namespace Game.Models
             return CurrentHealth > 0;
         }
 
+        // Get attack value
+        int GetAttack()
+        {
+            return Attack;
+        }
 
+        // Get defense value
+        int GetDefense()
+        {
+            return Defense;
+        }
+
+        // Get maxhealth value
+        int GetMaxHealth()
+        {
+            return MaxHealth;
+        }
+
+        // Get currenthealth value
+        int GetCurrrnetHealth()
+        {
+            return CurrentHealth;
+        }
+
+        // Get Speed value
+        int GetSpeed()
+        {
+            return Speed;
+        }
+
+        // get the Dice to roll for the weapon used 
+        int GetMonsterDamageDice()
+        {
+            return 0;
+        }
+
+        // get the calculated damage value this weapon rolled 
+        int GetMonsterDamageRollValue()
+        {
+            return 0;
+        }
 
     }
 }
