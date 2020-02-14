@@ -29,28 +29,28 @@ namespace Game.Models
         public int Experience { get; set; } = 0;
 
         // Item for head location
-        public ItemModel Head { get; set; }
+        public string HeadId { get; set; }
 
         // Item for necklace
-        public ItemModel Necklace { get; set; }
+        public string NecklaceId { get; set; }
 
         // Item for primary hand
-        public ItemModel PrimaryHand { get; set; }
+        public string PrimaryHandId { get; set; }
 
         // Item for off hand
-        public ItemModel OffHand { get; set; }
+        public string OffHandId { get; set; }
 
         // Item for Right Finger
-        public ItemModel RightFinger { get; set; }
+        public string RightFingerId { get; set; }
 
         // Item for Left Finger
-        public ItemModel LeftFinger { get; set; }
+        public string LeftFingerId { get; set; }
 
         // Item for feet
-        public ItemModel Feet { get; set; }
+        public string FeetId { get; set; }
 
         // The UniqueItem the Monster will drop
-        public ItemModel UniqueItem { get; set; }
+        public string UniqueItem { get; set; }
 
         // The Rate the item will drop
         public double DropRate { get; set; } = 1;
@@ -96,13 +96,13 @@ namespace Game.Models
             CurrentHealth = newData.MaxHealth;
             DifficultyLevel = newData.DifficultyLevel;
             Experience = newData.Experience;
-            Head = newData.Head;
-            Necklace = newData.Necklace;
-            PrimaryHand = newData.PrimaryHand;
-            OffHand = newData.OffHand;
-            RightFinger = newData.RightFinger;
-            LeftFinger = newData.LeftFinger;
-            Feet = newData.Feet;
+            HeadId = newData.HeadId;
+            NecklaceId = newData.NecklaceId;
+            PrimaryHandId = newData.PrimaryHandId;
+            OffHandId = newData.OffHandId;
+            RightFingerId = newData.RightFingerId;
+            LeftFingerId = newData.LeftFingerId;
+            FeetId = newData.FeetId;
             UniqueItem = newData.UniqueItem;
             DropRate = newData.DropRate;
         }
