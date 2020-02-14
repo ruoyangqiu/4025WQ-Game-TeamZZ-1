@@ -21,7 +21,7 @@ namespace Game.Services
                     Damage = 9,
                     Value = 9,
                     Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Defense},
+                    Attribute = AttributeEnum.Attack},
 
                 new ItemModel {
                     Name = "Strong Shield",
