@@ -43,10 +43,9 @@
 
                                 </StackLayout>
 
-                                <!--<StackLayout Style="{StaticResource CardImageTextBox}"
+                                <StackLayout Style="{StaticResource CardImageTextBox}"
                                              Padding="30,15,0,0">
-                                    <Label 
-                                        Text="{Binding Level, StringFormat='LVL: {0:F0}'}" />
+
                                     <Label 
                                         Text="{Binding Attack, StringFormat='ATK: {0:F0}'}" />
                                     <Label 
@@ -55,7 +54,10 @@
                                         Text="{Binding MaxHealth, StringFormat='  HP: {0:F0}'}" />
                                     <Label 
                                         Text="{Binding Speed, StringFormat='SPD: {0:F0}'}" />
-                                </StackLayout>-->
+                                    <Label 
+                                        Text="{Binding Experience, StringFormat='EXP: {0:F0}'}" />
+                                    
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
