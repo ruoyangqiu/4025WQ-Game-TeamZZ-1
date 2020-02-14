@@ -8,6 +8,7 @@ namespace Game.Models
     public class CharacterModel : BaseModel<CharacterModel>
     {
         // The Enum of Character Class. Every Character can only have one Class 
+        [Ignore]
         public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
 
         /// <summary>
