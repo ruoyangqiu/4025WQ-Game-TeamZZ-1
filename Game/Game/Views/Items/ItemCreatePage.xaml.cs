@@ -46,6 +46,29 @@ namespace Game.Views
                 ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
             }
 
+            // If user do not select a location, display alert
+            if (ViewModel.Data.Name == "")
+            {
+                await DisplayAlert("Alert", "Please enter a name", "OK");
+                return;
+            }
+
+            // If user do not select a location, display alert
+            if (ViewModel.Data.Location == ItemLocationEnum.Unknown)
+            {
+                await DisplayAlert("Alert", "Please Select a location", "OK");
+                return;
+            }
+
+            // If user do not select a location, display alert
+            if (ViewModel.Data.Attribute == AttributeEnum.Unknown) 
+            {
+                await DisplayAlert("Alert", "Please Select an attribute", "OK");
+                return;
+            }
+
+            
+
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
