@@ -110,7 +110,7 @@ namespace Game.Services
             var datalist = new List<MonsterModel>()
             {
                 new MonsterModel {
-                    Name = "Tauren Chieftain",
+                    Name = "Tauren",
                     ImageURI = "https://i.ibb.co/JdPLTBs/01148.png",
                     Attack = 5,
                     Defense = 3,
@@ -121,7 +121,7 @@ namespace Game.Services
                 },
 
                 new MonsterModel {
-                    Name = "Elite Horseman",
+                    Name = "Horseman",
                     ImageURI = "https://i.ibb.co/SrMKM5r/01143.png",
                     Attack = 2,
                     Defense = 1,
