@@ -113,5 +113,13 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
+
+        // The damage monster receive
+        public int MonsterTakeDamage(int damage)
+        {
+            return damage;
+        }
+
+
     }
 }
