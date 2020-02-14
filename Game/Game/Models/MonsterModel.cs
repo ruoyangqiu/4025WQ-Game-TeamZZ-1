@@ -126,5 +126,13 @@ namespace Game.Models
             return 0;
         }
 
+        // Check if the Monster deaad
+        bool isMonsterAlive()
+        {
+            return CurrentHealth > 0;
+        }
+
+
+
     }
 }
