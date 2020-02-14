@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="Items Index" Style="{StaticResource HeaderStyle}"/>
 
             <ListView x:Name="ItemsListView" 
                     ItemsSource="{Binding Dataset}"
@@ -25,7 +25,7 @@
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"
-                    RowHeight="80"
+                    RowHeight="150"
                     >
                 
                 <ListView.ItemTemplate>
@@ -44,11 +44,11 @@
 
                                 <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                                         Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageSmallStyle}"
+                                        Style="{StaticResource ImageLargeStyle}"
                                         VerticalOptions="CenterAndExpand"/>
 
                                 <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
+                                       Text="{Binding Name}" FontSize="Large"
                                        Style="{StaticResource ListStyle}"/>
 
                                 <StackLayout Grid.Column="1" Grid.Row="1"
