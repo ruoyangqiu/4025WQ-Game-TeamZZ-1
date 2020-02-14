@@ -51,33 +51,26 @@ namespace Game.Models
         // Check if the Character is alive in the game
         public bool Alive { get; set; } = true;
 
-        [Ignore]
         // Item for head location
-        public ItemModel Head { get; set; }
+        public string HeadId { get; set; }
 
-        [Ignore]
         // Item for necklace
-        public ItemModel Necklace { get; set; }
+        public string NecklaceId { get; set; }
 
-        [Ignore]
         // Item for primary hand
-        public ItemModel PrimaryHand { get; set; }
+        public string PrimaryHandId { get; set; }
 
-        [Ignore]
         // Item for off hand
-        public ItemModel OffHand { get; set; }
+        public string OffHandId { get; set; }
 
-        [Ignore]
         // Item for Right Finger
-        public ItemModel RightFinger { get; set; }
+        public string RightFingerId { get; set; }
 
-        [Ignore]
         // Item for Left Finger
-        public ItemModel LeftFinger { get; set; }
+        public string LeftFingerId { get; set; }
 
-        [Ignore]
         // Item for feet
-        public ItemModel Feet { get; set; }
+        public string FeetId { get; set; }
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
@@ -111,13 +104,13 @@ namespace Game.Models
             CurrentHealth = newData.MaxHealth;
             Level = newData.Level;
             Experience = newData.Experience;
-            Head = newData.Head;
-            Necklace = newData.Necklace;
-            PrimaryHand = newData.PrimaryHand;
-            OffHand = newData.OffHand;
-            RightFinger = newData.RightFinger;
-            LeftFinger = newData.LeftFinger;
-            Feet = newData.Feet;
+            HeadId = newData.HeadId;
+            NecklaceId = newData.NecklaceId;
+            PrimaryHandId = newData.PrimaryHandId;
+            OffHandId = newData.OffHandId;
+            RightFingerId = newData.RightFingerId;
+            LeftFingerId = newData.LeftFingerId;
+            FeetId = newData.FeetId;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string

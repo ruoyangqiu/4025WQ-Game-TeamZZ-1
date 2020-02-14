@@ -5,7 +5,7 @@ namespace Game
 {
     public static class Constants
     {
-        public const string DatabaseFilename = "game2.db3";
+        public const string DatabaseFilename = "game3.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
