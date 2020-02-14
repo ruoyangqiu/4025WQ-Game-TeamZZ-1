@@ -120,6 +120,11 @@ namespace Game.Models
             return damage;
         }
 
+        // The Experience gain by a character
+        public int GiveExperience()
+        {
+            return 0;
+        }
 
     }
 }
