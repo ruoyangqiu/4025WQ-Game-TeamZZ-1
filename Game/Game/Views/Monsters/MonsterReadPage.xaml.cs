@@ -29,5 +29,7 @@ namespace Game.Views
 
             BindingContext = this.ViewModel = data;
         }
+
+
     }
 }

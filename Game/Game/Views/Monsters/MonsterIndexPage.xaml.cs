@@ -41,11 +41,11 @@ namespace Game.Views
                 return;
             }
 
-            //// Open the Read Page
-            //await Navigation.PushAsync(new MonsterReadPage(new GenericViewModel<MonsterModel>(data)));
+            // Open the Read Page
+            await Navigation.PushAsync(new MonsterReadPage(new GenericViewModel<MonsterModel>(data)));
 
-            //// Manually deselect item.
-            //MonsterListView.SelectedItem = null;
+            // Manually deselect item.
+            MonsterListView.SelectedItem = null;
         }
 
         /// <summary>
