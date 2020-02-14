@@ -9,7 +9,10 @@ namespace Game.Views
     [DesignTimeVisible(false)]
     public partial class MonsterCreatePage : ContentPage
     {
+        // Monster to create
         GenericViewModel<MonsterModel> ViewModel { get; set; }
+
+        // Constructor for create to make a new model
         public MonsterCreatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
@@ -22,6 +25,12 @@ namespace Game.Views
 
             DifficultyLevelPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
         }
+
+        /// <summary>
+        /// Save by calling for Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         async void Save_Clicked(object sender, EventArgs e)
         {
@@ -41,36 +50,71 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
+        /// <summary>
+        /// Cancel the Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for Attack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for Defense
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for MaxHealth
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             MaxHealthValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for Speed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for Experience
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Experience_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             ExperienceValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        /// <summary>
+        /// Catch the change to the stepper for Drop Rate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             //DropRateValue.Text = String.Format("{0}", e.NewValue);
