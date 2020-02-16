@@ -17,7 +17,7 @@
 
             <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand">
 
-                <Image Source="dice_20.png" Style="{StaticResource ImageMediumStyle}"/>
+                <Image Source="https://i.ibb.co/JBvj2qq/01407.png" WidthRequest="200"/>
                 <Label Text="Legends of the Chinese Zodiac" Style="{StaticResource HeaderStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Credit:"></Label>
