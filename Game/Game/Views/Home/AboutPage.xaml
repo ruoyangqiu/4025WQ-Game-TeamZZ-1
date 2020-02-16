@@ -26,35 +26,33 @@
                     <Label Text="Tejas Dandane"></Label>
                 </StackLayout>
 
-                <Label x:Name="CurrentDateTime" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
-            </StackLayout>
+                <Label x:Name="CurrentDateTime" />
+                <!--Database Settings Frame-->
 
-            <!--Database Settings Frame-->
+                <StackLayout Style="{StaticResource HorizontalStack}" Padding="0,50,0,0">
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-
-                <Label
+                    <Label
                         Text="Database Settings"
                         Style="{DynamicResource DebugSwitchLabel}"/>
 
-                <Switch
+                    <Switch
                         x:Name="DatabaseSettingsSwitch"
                         HorizontalOptions="EndAndExpand"
                         Toggled="DatabaseSettingsSwitch_OnToggled"
                         IsToggled="False"/>
-            </StackLayout>
+                </StackLayout>
 
-            <StackLayout Style="{StaticResource VerticalStack}"
+                <StackLayout Style="{StaticResource VerticalStack}"
                         x:Name="DatabaseSettingsFrame"
                         IsVisible="False">
 
-                <!--Database Settings-->
-                <StackLayout Style="{StaticResource HorizontalStack}"
+                    <!--Database Settings-->
+                    <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="SQL Data Source" />
+                        <Label Text="SQL Data Source" />
 
-                    <Switch
+                        <Switch
                         HorizontalOptions="Start" 
                         VerticalOptions="Center"
                         x:Name="DataSourceValue"
@@ -62,46 +60,49 @@
                         Toggled="DataSource_Toggled" 
                         />
 
-                </StackLayout>
+                    </StackLayout>
 
-                <StackLayout Style="{StaticResource HorizontalStack}"
+                    <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="Wipe Data List" />
+                        <Label Text="Wipe Data List" />
 
-                    <Button
+                        <Button
                         Text="Wipe"
                         Clicked="WipeDataList_Clicked"
                         />
 
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
 
-            <!--Debug Settings Frame-->
-            <StackLayout Style="{StaticResource HorizontalStack}">
+                <!--Debug Settings Frame-->
+                <StackLayout Style="{StaticResource HorizontalStack}">
 
-                <Label
+                    <Label
                     Text="Debug Settings"
                     Style="{DynamicResource DebugSwitchLabel}"/>
 
-                <Switch
+                    <Switch
                     x:Name="DebugSettingsSwitch"
                     HorizontalOptions="EndAndExpand"
                     Toggled="DebugSettingsSwitch_OnToggled"
                     IsToggled="False"/>
-            </StackLayout>
+                </StackLayout>
 
-            <StackLayout Style="{StaticResource VerticalStack}"
+                <StackLayout Style="{StaticResource VerticalStack}"
                         x:Name="DebugSettingsFrame"
                         IsVisible="False">
 
-                <StackLayout Style="{StaticResource HorizontalStack}"
+                    <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="More Debug Settings to come..." />
+                        <Label Text="More Debug Settings to come..." />
 
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
+
+           
         </StackLayout>
     </ScrollView>
 </ContentPage>
