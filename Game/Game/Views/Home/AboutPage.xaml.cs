@@ -24,7 +24,7 @@ namespace Game.Views
             DebugSettingsFrame.IsVisible = false;
 
             // Set to the curent date and time
-            CurrentDateTime.Text = DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
+            CurrentDateTime.Text = "Time: " + DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
         }
 
         /// <summary>
