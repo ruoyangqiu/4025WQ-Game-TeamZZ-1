@@ -29,7 +29,7 @@
                 <Label x:Name="CurrentDateTime" />
                 <!--Database Settings Frame-->
 
-                <StackLayout Style="{StaticResource HorizontalStack}" Padding="0,50,0,0">
+                <StackLayout Style="{StaticResource HorizontalStack}" Padding="0,20,0,0">
 
                     <Label
                         Text="Database Settings"
