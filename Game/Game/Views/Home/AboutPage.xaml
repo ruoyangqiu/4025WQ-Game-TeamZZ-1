@@ -18,8 +18,14 @@
             <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand">
 
                 <Image Source="dice_20.png" Style="{StaticResource ImageMediumStyle}"/>
-                <Label Text="Class Dungeon" Style="{StaticResource HeaderStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
-                <Label Text="Mike Koenig" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
+                <Label Text="Legends of the Chinese Zodiac" Style="{StaticResource HeaderStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Credit:"></Label>
+                    <Label Text="Tianhua Zhao |"></Label>
+                    <Label Text="Ruoyang Qiu |"></Label>
+                    <Label Text="Tejas Dandane"></Label>
+                </StackLayout>
+
                 <Label x:Name="CurrentDateTime" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"  HorizontalTextAlignment="Center" />
             </StackLayout>
 
