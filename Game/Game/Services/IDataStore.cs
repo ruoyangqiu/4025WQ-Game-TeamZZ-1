@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Game.Services
@@ -16,5 +17,6 @@ namespace Game.Services
         Task<List<T>> IndexAsync();
 
         Task<bool> WipeDataListAsync();
+        Task<bool> GetNeedsInitializationAsync();
     }
 }
