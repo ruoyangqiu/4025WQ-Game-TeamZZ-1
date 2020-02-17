@@ -27,7 +27,7 @@
             <Color x:Key="NavigationBarColor">#D9C6B0</Color>
 
             <Color x:Key="PrimaryBackgroundColor">#50B4F2</Color>
-            <Color x:Key="SecondaryBackgroundColor">#57C6F2</Color>
+            <Color x:Key="SecondaryBackgroundColor">#56A4F5</Color>
             <Color x:Key="TriciaryBackgroundColor">#733612</Color>
             <Color x:Key="LightBackgroundColor">#83F250</Color>
 
