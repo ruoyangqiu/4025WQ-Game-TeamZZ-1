@@ -7,26 +7,6 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BaseModel<CharacterModel>
     {
-        // The Enum of Character Class. Every Character can only have one Class 
-        [Ignore]
-        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
-
-        /// <summary>
-        /// Default CharacterModel
-        /// Establish the Default Image Path
-        /// </summary>
-        public CharacterModel() {
-            Name = "";
-            var randomUriDescription = CharacterService.GetRandomURIDescription();
-            ImageURI = randomUriDescription.Item1;
-            Description = randomUriDescription.Item2;
-            Attack = 5;
-            Defense = 5;
-            Speed = 5;
-            MaxHealth = 5;
-            CurrentHealth = MaxHealth;
-        }
-
         // Value of attack attribute of the Character
         public int Attack { get; set; } = 0;
 
@@ -71,6 +51,28 @@ namespace Game.Models
 
         // Item for feet
         public string FeetId { get; set; }
+
+        // The Enum of Character Class. Every Character can only have one Class 
+        [Ignore]
+        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
+
+        /// <summary>
+        /// Default CharacterModel
+        /// Establish the Default Image Path
+        /// </summary>
+        public CharacterModel() {
+            Name = "";
+            var randomUriDescription = CharacterService.GetRandomURIDescription();
+            ImageURI = randomUriDescription.Item1;
+            Description = randomUriDescription.Item2;
+            Attack = 5;
+            Defense = 5;
+            Speed = 5;
+            MaxHealth = 5;
+            CurrentHealth = MaxHealth;
+        }
+
+       
 
         /// <summary>
         /// Constructor to create a character based on what is passed in
