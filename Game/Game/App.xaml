@@ -33,7 +33,7 @@
 
             <Color x:Key="PrimaryTextColor">Black</Color>
             <Color x:Key="SecondaryTextColor">Black</Color>
-            <Color x:Key="TriciaryTextColor">Black</Color>
+            <Color x:Key="TriciaryTextColor">DimGray</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
