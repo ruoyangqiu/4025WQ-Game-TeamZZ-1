@@ -12,6 +12,9 @@ using Game.Services;
 
 namespace Game.Views
 {
+    /// <summary>
+    /// Character Update Page
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterUpdatePage : ContentPage
     {
@@ -19,7 +22,7 @@ namespace Game.Views
         readonly GenericViewModel<CharacterModel> ViewModel;
 
         /// <summary>
-        /// Constructor that takes and existing data item
+        /// Constructor that takes an existing data item
         /// </summary>
         public CharacterUpdatePage(GenericViewModel<CharacterModel> data)
         {
@@ -72,6 +75,16 @@ namespace Game.Views
         async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Catch the change to the Stepper for Level
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            LevelValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>

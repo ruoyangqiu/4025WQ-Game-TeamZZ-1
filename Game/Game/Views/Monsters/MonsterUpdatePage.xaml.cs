@@ -13,18 +13,27 @@ using Game.Models;
 
 namespace Game.Views
 {
+    /// <summary>
+    /// Monster Update Page
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterUpdatePage : ContentPage
     {
+        // View Model for Monster
         readonly GenericViewModel<MonsterModel> ViewModel;
+
+        /// <summary>
+        /// Constructor that takes an existing data item
+        /// </summary>
         public MonsterUpdatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
-
-
+            
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
+
+            //Need to make the SelectedItem a string, so it can select the correct item.
             DifficultyPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
         }
 
