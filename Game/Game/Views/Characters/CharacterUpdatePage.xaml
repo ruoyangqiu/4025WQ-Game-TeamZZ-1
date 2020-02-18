@@ -146,6 +146,12 @@
                             ValueChanged="Speed_OnStepperValueChanged"/>
 
                     </StackLayout>
+                    
+                    <Picker Title="Select an Item"
+                            x:Name="MainHandPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Primaryhand}"/>
+                    
                 </StackLayout>
             </StackLayout>
         </ScrollView>
