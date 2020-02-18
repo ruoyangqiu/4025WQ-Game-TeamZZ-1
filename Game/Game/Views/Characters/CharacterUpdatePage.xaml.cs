@@ -18,6 +18,8 @@ namespace Game.Views
         // View Model for Item
         readonly GenericViewModel<CharacterModel> ViewModel;
 
+        string OriginalImageURi;
+
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
@@ -29,8 +31,13 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
+            
+            OriginalImageURi = data.Data.ImageURI;
+            
+            ImagePic.SelectedItem = data.Data.ImageURI;
+            //ImagePic.ItemsSource = CharacterService.CharacterURIs;
 
-            ImagePic.ItemsSource = CharacterService.CharacterURIs;
+            
 
             PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
 
@@ -57,8 +64,8 @@ namespace Game.Views
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
-                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-            }
+                ViewModel.Data.ImageURI = OriginalImageURi;
+           }
 
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             await Navigation.PopModalAsync();
