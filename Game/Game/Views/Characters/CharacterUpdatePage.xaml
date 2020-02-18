@@ -151,7 +151,12 @@
                             x:Name="HeadPic"
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.Head}"/>
-                    
+
+                    <Picker Title="Select a Necklace Item"
+                            x:Name="NecklacePic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Necklace}"/>
+
                     <Picker Title="Select a Primary Hand Item"
                             x:Name="PrimaryHandPic"
                             ItemDisplayBinding="{Binding Name}"
