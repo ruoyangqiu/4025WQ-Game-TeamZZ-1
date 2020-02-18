@@ -6,7 +6,7 @@ namespace Game.Models
     /// <summary>
     /// Monster for the Game
     /// </summary>
-    public class MonsterModel : BaseModel<MonsterModel>
+    public class MonsterModel : EntityModel<MonsterModel>
     {
 
         // Value of attack attribute of the Monster

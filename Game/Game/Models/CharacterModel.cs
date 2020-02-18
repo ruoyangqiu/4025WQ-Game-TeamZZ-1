@@ -5,7 +5,7 @@ namespace Game.Models
     /// <summary>
     /// Character for the Game
     /// </summary>
-    public class CharacterModel : BaseModel<CharacterModel>
+    public class CharacterModel : EntityModel<CharacterModel>
     {
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
