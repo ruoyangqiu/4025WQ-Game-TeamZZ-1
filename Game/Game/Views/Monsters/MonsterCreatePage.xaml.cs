@@ -100,15 +100,7 @@ namespace Game.Views
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
 
-        /// <summary>
-        /// Catch the change to the stepper for Experience
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Experience_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            ExperienceValue.Text = String.Format("{0}", e.NewValue);
-        }
+       
 
         /// <summary>
         /// Catch the change to the stepper for Drop Rate
