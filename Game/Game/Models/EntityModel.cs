@@ -11,24 +11,24 @@ namespace Game.Models
     {
         #region Attributes
 
-        // Value of attack attribute of the Monster
+        // Value of attack attribute of the Entity
         public int Attack { get; set; } = 0;
 
-        // Value of defence attribute of the Monster
+        // Value of defence attribute of the Entity
         public int Defense { get; set; } = 0;
 
-        // Value of health attribute of the Monster
+        // Value of health attribute of the Entity
         public int MaxHealth { get; set; } = 0;
 
-        //Value of current health attribute of the Monster
+        //Value of current health attribute of the Entity
         public int CurrentHealth { get; set; } = 0;
 
-        // Value of Speed of the Monster
+        // Value of Speed of the Entity
         public int Speed { get; set; } = 0;
 
         #endregion Attributes
 
-        // Check if the Character is alive in the game
+        // Check if the Entity is alive in the game
         public bool Alive { get; set; } = true;
 
         #region Items
