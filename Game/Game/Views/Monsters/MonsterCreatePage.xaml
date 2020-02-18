@@ -165,7 +165,42 @@
 
                     
                 </Grid>
+                <StackLayout Orientation="Vertical">
+                    <Picker Title="Select a Head Item"
+                            x:Name="HeadPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Head}"/>
 
+                    <Picker Title="Select a Necklace Item"
+                            x:Name="NecklacePic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Necklace}"/>
+
+                    <Picker Title="Select a Primary Hand Item"
+                            x:Name="PrimaryHandPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.PrimaryHand}"/>
+
+                    <Picker Title="Select a Off Hand Item"
+                            x:Name="OffHandPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.OffHand}"/>
+
+                    <Picker Title="Select a Right Finger Item"
+                            x:Name="RightFingerPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.RightFinger}"/>
+
+                    <Picker Title="Select a Left Finger Item"
+                            x:Name="LeftFingerPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.LeftFinger}"/>
+
+                    <Picker Title="Select a Feet Item"
+                            x:Name="FeetPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Feet}"/>
+                </StackLayout>
                 <!--<Grid
 					RowSpacing="1"
 					ColumnSpacing="2"

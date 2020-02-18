@@ -3,6 +3,8 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Game.Models;
 using Game.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Game.Views
 {
@@ -24,6 +26,20 @@ namespace Game.Views
             this.ViewModel.Title = "Create";
 
             DifficultyLevelPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
+
+            PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
+
+            HeadPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head));
+
+            NecklacePic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Necklass));
+
+            OffHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.OffHand));
+
+            RightFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.RightFinger));
+
+            LeftFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.LeftFinger));
+
+            FeetPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Feet));
         }
 
         /// <summary>
