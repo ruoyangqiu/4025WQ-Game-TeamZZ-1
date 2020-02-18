@@ -177,6 +177,11 @@
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.LeftFinger}"/>
 
+                    <Picker Title="Select a Feet Item"
+                            x:Name="FeetPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.Feet}"/>
+                    
                 </StackLayout>
             </StackLayout>
         </ScrollView>
