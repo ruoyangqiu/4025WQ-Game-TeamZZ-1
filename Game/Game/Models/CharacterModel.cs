@@ -31,30 +31,55 @@ namespace Game.Models
         // Check if the Character is alive in the game
         public bool Alive { get; set; } = true;
 
-        // Item for head location
+
+        // Item id for head location
         public string HeadId { get; set; }
+        // Item for head
+        [Ignore]
+        public ItemModel Head { get; set; }
+
+
+        // Item id for necklace
+        public string NecklaceId { get; set; }
 
         // Item for necklace
-        public string NecklaceId { get; set; }
+        [Ignore]
+        public ItemModel Necklace { get; set; }
 
         // Item id for primary hand
         public string PrimaryHandId { get; set; }
-
         // Item for primary hand
         [Ignore]
         public ItemModel PrimaryHand { get; set; }
 
-        // Item for off hand
+        // Item id for off hand
         public string OffHandId { get; set; }
 
-        // Item for Right Finger
+        // Item for off hand
+        [Ignore]
+        public ItemModel OffHand { get; set; }
+
+        // Item id for Right Finger
         public string RightFingerId { get; set; }
 
-        // Item for Left Finger
+
+        // Item for Right Finger
+        [Ignore]
+        public ItemModel RightFinger { get; set; }
+
+        // Item id for Left Finger
         public string LeftFingerId { get; set; }
 
-        // Item for feet
+        // Item for Left Finger
+        [Ignore]
+        public ItemModel LeftFinger { get; set; }
+
+        // Item id for feet
         public string FeetId { get; set; }
+
+        // Item for feet
+        [Ignore]
+        public ItemModel Feet { get; set; }
 
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
@@ -110,13 +135,27 @@ namespace Game.Models
             CurrentHealth = newData.MaxHealth;
             Level = newData.Level;
             Experience = newData.Experience;
-            HeadId = newData.HeadId;
-            NecklaceId = newData.NecklaceId;
-            PrimaryHandId = newData.PrimaryHandId;
-            OffHandId = newData.OffHandId;
-            RightFingerId = newData.RightFingerId;
-            LeftFingerId = newData.LeftFingerId;
-            FeetId = newData.FeetId;
+
+            Head = newData.Head;
+            HeadId = Head.Id;
+
+            Necklace = newData.Necklace;
+            NecklaceId = Necklace.Id;
+
+            PrimaryHand = newData.PrimaryHand;
+            NecklaceId = Necklace.Id;
+
+            OffHand = newData.OffHand;
+            OffHandId = OffHand.Id;
+
+            RightFinger = newData.RightFinger;
+            RightFingerId = RightFinger.Id;
+
+            LeftFinger = newData.LeftFinger;
+            LeftFingerId = LeftFinger.Id;
+
+            Feet = newData.Feet;
+            FeetId = Feet.Id;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
