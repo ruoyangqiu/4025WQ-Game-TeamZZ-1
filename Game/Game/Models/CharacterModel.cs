@@ -137,25 +137,25 @@ namespace Game.Models
             Experience = newData.Experience;
 
             Head = newData.Head;
-            HeadId = Head.Id;
+            HeadId = Head == null ? "" : Head.Id;
 
             Necklace = newData.Necklace;
-            NecklaceId = Necklace.Id;
+            NecklaceId = Necklace == null ? "" : Necklace.Id;
 
             PrimaryHand = newData.PrimaryHand;
-            NecklaceId = Necklace.Id;
+            PrimaryHandId = PrimaryHand == null ? "" : PrimaryHand.Id;
 
             OffHand = newData.OffHand;
-            OffHandId = OffHand.Id;
+            OffHandId = OffHand == null ? "" : OffHand.Id;
 
             RightFinger = newData.RightFinger;
-            RightFingerId = RightFinger.Id;
+            RightFingerId = RightFinger == null ? "" : RightFinger.Id;
 
             LeftFinger = newData.LeftFinger;
-            LeftFingerId = LeftFinger.Id;
+            LeftFingerId = LeftFinger == null ? "" : LeftFinger.Id;
 
             Feet = newData.Feet;
-            FeetId = Feet.Id;
+            FeetId = Feet == null ? "" : Feet.Id;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
