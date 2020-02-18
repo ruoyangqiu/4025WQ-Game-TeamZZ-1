@@ -42,7 +42,7 @@ namespace Game.Models
 
         // Item for primary hand
         [Ignore]
-        public ItemModel Primaryhand { get; set; }
+        public ItemModel PrimaryHand { get; set; }
 
         // Item for off hand
         public string OffHandId { get; set; }

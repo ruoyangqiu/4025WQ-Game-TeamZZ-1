@@ -148,9 +148,9 @@
                     </StackLayout>
                     
                     <Picker Title="Select an Item"
-                            x:Name="MainHandPic"
+                            x:Name="PrimaryHandPic"
                             ItemDisplayBinding="{Binding Name}"
-                            SelectedItem="{Binding Data.Primaryhand}"/>
+                            SelectedItem="{Binding Data.PrimaryHand}"/>
                     
                 </StackLayout>
             </StackLayout>
