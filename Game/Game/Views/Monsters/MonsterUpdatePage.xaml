@@ -83,28 +83,7 @@
                 </Grid>
 
                 <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
-
-                    <Label 
-                        Text="Experience" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
-
-                        <Label 
-                            Text="{Binding Data.Experience}" 
-                            x:Name="ExperienceValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Experience, Mode=TwoWay}"
-                            ValueChanged="Experience_OnStepperValueChanged"/>
-
-                    </StackLayout>
-
-                   
+            
                     <Label 
                         Text="MaxHealth" 
                         Style="{StaticResource LabelStyle}"/>
