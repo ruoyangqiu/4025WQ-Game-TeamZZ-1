@@ -12,6 +12,9 @@ using Game.Services;
 
 namespace Game.Views
 {
+    /// <summary>
+    /// Character Update Page
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterUpdatePage : ContentPage
     {
@@ -19,7 +22,7 @@ namespace Game.Views
         readonly GenericViewModel<CharacterModel> ViewModel;
 
         /// <summary>
-        /// Constructor that takes and existing data item
+        /// Constructor that takes an existing data item
         /// </summary>
         public CharacterUpdatePage(GenericViewModel<CharacterModel> data)
         {
