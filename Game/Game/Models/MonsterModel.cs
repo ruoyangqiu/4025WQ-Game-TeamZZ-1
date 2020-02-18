@@ -6,48 +6,12 @@ namespace Game.Models
     /// <summary>
     /// Monster for the Game
     /// </summary>
-    public class MonsterModel : BaseModel<MonsterModel>
+    public class MonsterModel : EntityModel<MonsterModel>
     {
-
-        // Value of attack attribute of the Monster
-        public int Attack { get; set; } = 0;
-
-        // Value of defence attribute of the Monster
-        public int Defense { get; set; } = 0;
-
-        // Value of health attribute of the Monster
-        public int MaxHealth { get; set; } = 0;
-
-        //Value of current health attribute of the Monster
-        public int CurrentHealth { get; set; } = 0;
-
-        // Value of Speed of the Monster
-        public int Speed { get; set; } = 0;
 
         public DifficultyLevelEnum DifficultyLevel { get; set; }
 
         public int Experience { get; set; } = 0;
-
-        // Item for head location
-        public string HeadId { get; set; }
-
-        // Item for necklace
-        public string NecklaceId { get; set; }
-
-        // Item for primary hand
-        public string PrimaryHandId { get; set; }
-
-        // Item for off hand
-        public string OffHandId { get; set; }
-
-        // Item for Right Finger
-        public string RightFingerId { get; set; }
-
-        // Item for Left Finger
-        public string LeftFingerId { get; set; }
-
-        // Item for feet
-        public string FeetId { get; set; }
 
         // The UniqueItem the Monster will drop
         public string UniqueItem { get; set; }
