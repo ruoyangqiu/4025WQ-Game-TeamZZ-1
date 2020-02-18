@@ -55,6 +55,9 @@ namespace Game.Models
         // The Rate the item will drop
         public double DropRate { get; set; } = 1;
 
+        // The scale to buff Monster based on Level
+        private int MonsterScale { get; set; } = 1;
+
         /// <summary>
         /// Default MonsterModel
         /// Establish the Default Image Path
@@ -89,12 +92,13 @@ namespace Game.Models
             Name = newData.Name;
             ImageURI = newData.ImageURI;
             Description = newData.Description;
+            DifficultyLevel = newData.DifficultyLevel;
+            UpdateScale();
             Attack = newData.Attack;
             Defense = newData.Defense;
             Speed = newData.Speed;
             MaxHealth = newData.MaxHealth;
-            CurrentHealth = newData.MaxHealth;
-            DifficultyLevel = newData.DifficultyLevel;
+            CurrentHealth = this.GetMaxHealth();           
             Experience = newData.Experience;
             HeadId = newData.HeadId;
             NecklaceId = newData.NecklaceId;
@@ -105,7 +109,9 @@ namespace Game.Models
             FeetId = newData.FeetId;
             UniqueItem = newData.UniqueItem;
             DropRate = newData.DropRate;
+            
         }
+
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
         public string FormatOutput()
@@ -136,19 +142,19 @@ namespace Game.Models
         // Get attack value
         int GetAttack()
         {
-            return Attack;
+            return Attack * MonsterScale;
         }
 
         // Get defense value
         int GetDefense()
         {
-            return Defense;
+            return Defense * MonsterScale;
         }
 
         // Get maxhealth value
         int GetMaxHealth()
         {
-            return MaxHealth;
+            return MaxHealth * MonsterScale;
         }
 
         // Get currenthealth value
@@ -160,7 +166,7 @@ namespace Game.Models
         // Get Speed value
         int GetSpeed()
         {
-            return Speed;
+            return Speed * MonsterScale;
         }
 
         // get the Dice to roll for the weapon used 
@@ -175,5 +181,21 @@ namespace Game.Models
             return 0;
         }
 
+        // Change scale base on Difficulty Level
+        private void UpdateScale()
+        {
+            if(DifficultyLevel == DifficultyLevelEnum.Easy)
+            {
+                MonsterScale = 1;
+            }
+            if(DifficultyLevel == DifficultyLevelEnum.Medium)
+            {
+                MonsterScale = 2;
+            }
+            if(DifficultyLevel == DifficultyLevelEnum.Hard)
+            {
+                MonsterScale = 3;
+            }
+        }
     }
 }
