@@ -172,6 +172,11 @@
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.RightFinger}"/>
 
+                    <Picker Title="Select a Left Finger Item"
+                            x:Name="LeftFingerPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.LeftFinger}"/>
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>
