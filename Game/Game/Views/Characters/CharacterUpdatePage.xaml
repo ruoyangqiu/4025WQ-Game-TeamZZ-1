@@ -162,6 +162,15 @@
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.PrimaryHand}"/>
 
+                    <Picker Title="Select a Off Hand Item"
+                            x:Name="OffHandPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.OffHand}"/>
+
+                    <Picker Title="Select a Right Finger Item"
+                            x:Name="RightFingerPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.RightFinger}"/>
 
                 </StackLayout>
             </StackLayout>
