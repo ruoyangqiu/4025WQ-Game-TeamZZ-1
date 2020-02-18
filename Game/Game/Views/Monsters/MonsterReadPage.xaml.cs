@@ -12,17 +12,18 @@ using Game.ViewModels;
 
 namespace Game.Views
 {
+    /// <summary>
+    /// Monster Read Page
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterReadPage : ContentPage
     {
+        // View Model for Monster
         readonly GenericViewModel<MonsterModel> ViewModel;
 
         /// <summary>
-        /// Constructor called with a view model
-        /// This is the primary way to open the page
-        /// The viewModel is the data that should be displayed
+        /// Constructor that takes an existing data item
         /// </summary>
-        /// <param name="viewModel"></param>
         public MonsterReadPage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();

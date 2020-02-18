@@ -5,22 +5,8 @@ namespace Game.Models
     /// <summary>
     /// Character for the Game
     /// </summary>
-    public class CharacterModel : BaseModel<CharacterModel>
+    public class CharacterModel : EntityModel<CharacterModel>
     {
-        // Value of attack attribute of the Character
-        public int Attack { get; set; } = 0;
-
-        // Value of defence attribute of the Character
-        public int Defense { get; set; } = 0;
-
-        // Value of health attribute of the Character
-        public int MaxHealth { get; set; } = 0;
-
-        //Value of current health attribute of the Character
-        public int CurrentHealth { get; set; } = 0;
-
-        // Value of Speed of the Character
-        public int Speed { get; set; } = 0;
 
         // Level of the Character
         public int Level { get; set; } = 1;
@@ -28,58 +14,7 @@ namespace Game.Models
         // Total Experience of Character
         public int Experience { get; set; } = 0;
 
-        // Check if the Character is alive in the game
-        public bool Alive { get; set; } = true;
 
-
-        // Item id for head location
-        public string HeadId { get; set; }
-        // Item for head
-        [Ignore]
-        public ItemModel Head { get; set; }
-
-
-        // Item id for necklace
-        public string NecklaceId { get; set; }
-
-        // Item for necklace
-        [Ignore]
-        public ItemModel Necklace { get; set; }
-
-        // Item id for primary hand
-        public string PrimaryHandId { get; set; }
-        // Item for primary hand
-        [Ignore]
-        public ItemModel PrimaryHand { get; set; }
-
-        // Item id for off hand
-        public string OffHandId { get; set; }
-
-        // Item for off hand
-        [Ignore]
-        public ItemModel OffHand { get; set; }
-
-        // Item id for Right Finger
-        public string RightFingerId { get; set; }
-
-
-        // Item for Right Finger
-        [Ignore]
-        public ItemModel RightFinger { get; set; }
-
-        // Item id for Left Finger
-        public string LeftFingerId { get; set; }
-
-        // Item for Left Finger
-        [Ignore]
-        public ItemModel LeftFinger { get; set; }
-
-        // Item id for feet
-        public string FeetId { get; set; }
-
-        // Item for feet
-        [Ignore]
-        public ItemModel Feet { get; set; }
 
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
