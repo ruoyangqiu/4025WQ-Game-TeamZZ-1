@@ -21,6 +21,7 @@ namespace Game.Views
         // View Model for Item
         readonly GenericViewModel<CharacterModel> ViewModel;
 
+        // The Original ImageURI for existed Character
         string OriginalImageURi;
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the image in the data box is empty, use the default one..
+            // If the image in the data box is empty, use the original one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
                 ViewModel.Data.ImageURI = OriginalImageURi;
