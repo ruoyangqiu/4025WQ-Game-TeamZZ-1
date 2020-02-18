@@ -30,6 +30,8 @@ namespace Game.Views
             this.ViewModel.Title = "Update " + data.Title;
 
             PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
+
+            HeadPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head));
         }
 
         /// <summary>
