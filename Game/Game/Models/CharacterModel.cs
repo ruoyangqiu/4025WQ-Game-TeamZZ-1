@@ -37,8 +37,12 @@ namespace Game.Models
         // Item for necklace
         public string NecklaceId { get; set; }
 
-        // Item for primary hand
+        // Item id for primary hand
         public string PrimaryHandId { get; set; }
+
+        // Item for primary hand
+        [Ignore]
+        public ItemModel Primaryhand { get; set; }
 
         // Item for off hand
         public string OffHandId { get; set; }
