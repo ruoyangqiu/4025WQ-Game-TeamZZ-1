@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Game.ViewModels;
 using Game.Models;
+using Game.Services;
 
 namespace Game.Views
 {
@@ -28,6 +29,8 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
+
+            ImagePic.ItemsSource = CharacterService.CharacterURIs;
 
             PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
 

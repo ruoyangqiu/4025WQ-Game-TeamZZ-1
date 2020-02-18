@@ -54,13 +54,9 @@
 
                     <StackLayout Grid.Row="1" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
 
-                        <Image 
-                            Source="{Binding Data.ImageURI}"
-                            Style="{StaticResource ImageSmallStyle}"/>
-
-                        <Entry 
-                            Text="{Binding Data.ImageURI}" 
-                            Style="{StaticResource EntryStyle}"/>
+                        <Picker
+                            x:Name="ImagePic"
+                            SelectedItem="{Binding Data.ImageURI}"/>
 
                     </StackLayout>
                 </Grid>
