@@ -15,7 +15,6 @@ namespace Game.Models
         public int Experience { get; set; } = 0;
 
 
-
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
         public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
@@ -29,11 +28,6 @@ namespace Game.Models
             var randomUriDescription = CharacterService.GetRandomURIDescription();
             ImageURI = randomUriDescription.Item1;
             Description = randomUriDescription.Item2;
-            Attack = 5;
-            Defense = 5;
-            Speed = 5;
-            MaxHealth = 5;
-            CurrentHealth = MaxHealth;
         }
 
        
@@ -63,13 +57,8 @@ namespace Game.Models
             Name = newData.Name;
             Description = newData.Description;
             CharacterClass = newData.CharacterClass;
-            Attack = newData.Attack;
-            Defense = newData.Defense;
-            Speed = newData.Speed;
-            MaxHealth = newData.MaxHealth;
-            CurrentHealth = newData.MaxHealth;
             Level = newData.Level;
-            Experience = newData.Experience;
+            ChangeAttributeByLevel();
 
             Head = newData.Head;
             HeadId = Head == null ? "" : Head.Id;
@@ -100,6 +89,13 @@ namespace Game.Models
                             Description;
 
             return myReturn.Trim();
+        }
+
+        private void ChangeAttributeByLevel()
+        {
+            Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+            Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+            Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
         }
     }
 }
