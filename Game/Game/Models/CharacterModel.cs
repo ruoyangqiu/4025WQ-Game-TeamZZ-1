@@ -92,6 +92,54 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
+
+        // Check if the Character deaad
+        public bool isAlive()
+        {
+            return CurrentHealth > 0;
+        }
+
+        // Get attack value
+        public int GetAttack()
+        {
+            return Attack;
+        }
+
+        // Get defense value
+        public int GetDefense()
+        {
+            return Defense;
+        }
+
+        // Get maxhealth value
+        public int GetMaxHealth()
+        {
+            return MaxHealth;
+        }
+
+        // Get currenthealth value
+        public int GetCurrrnetHealth()
+        {
+            return CurrentHealth;
+        }
+
+        // Get Speed value
+        public int GetSpeed()
+        {
+            return Speed;
+        }
+
+        // get the Dice to roll for the weapon used 
+        public int GetDamageDice()
+        {
+            return 0;
+        }
+
+        // get the calculated damage value this weapon rolled 
+        int GetDamageRollValue()
+        {
+            return 0;
+        }
         /// <summary>
         /// Scale the attribute wwhen Level up
         /// </summary>
@@ -100,6 +148,24 @@ namespace Game.Models
             Level = Level + 1;
             ChangeAttributeByLevel();
             CurrentHealth = MaxHealth;
+        }
+
+        /// <summary>
+        /// force Character level up to a target level
+        /// if input value is greater than 20, it will 
+        /// return -1 as a error notice
+        /// </summary>
+        /// <param name="newData">The target level</param>
+        public int ForceUpToValue(int value)
+        {
+            if(value > 20)
+            {
+                return -1;
+            }
+            Level = value;
+            ChangeAttributeByLevel();
+            CurrentHealth = MaxHealth;
+            return Level;
         }
 
 
