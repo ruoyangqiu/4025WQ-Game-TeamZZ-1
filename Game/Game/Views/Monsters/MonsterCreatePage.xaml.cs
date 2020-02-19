@@ -27,6 +27,8 @@ namespace Game.Views
 
             DifficultyLevelPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
 
+            ImagePic.SelectedItem = data.Data.ImageURI;
+
             PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
 
             HeadPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head));

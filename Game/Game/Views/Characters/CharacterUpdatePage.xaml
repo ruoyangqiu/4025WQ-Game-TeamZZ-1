@@ -58,43 +58,12 @@
                         <Picker
                             x:Name="ImagePic"
                             SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}"
-                            ItemsSource="{x:Static services:CharacterService.CharacterURIs}"/>
+                            ItemsSource="{x:Static services:CharacterService.CharacterURIs}"
+                            HorizontalOptions="FillAndExpand"/>
 
                     </StackLayout>
 
-                    
-
-                    <Label Grid.Row="2" Grid.Column="0"
-                        Text="Attack" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="2" Grid.Column="1"
-                           Text="{Binding Data.Attack}"
-                           Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="3" Grid.Column="0"
-                        Text="Defense" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="3" Grid.Column="1"
-                           Text="{Binding Data.Defense}"
-                           Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="4" Grid.Column="0"
-                        Text="Health" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="4" Grid.Column="1"
-                           Text="{Binding Data.MaxHealth}"
-                           Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="5" Grid.Column="0"
-                        Text="Speed" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="5" Grid.Column="1"
-                           Text="{Binding Data.Speed}"
-                           Style="{StaticResource LabelStyle}"/>
+                  
 
                 </Grid>
 

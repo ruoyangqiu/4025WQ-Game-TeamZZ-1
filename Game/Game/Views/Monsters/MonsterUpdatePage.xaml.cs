@@ -36,6 +36,8 @@ namespace Game.Views
             //Need to make the SelectedItem a string, so it can select the correct item.
             DifficultyPicker.SelectedItem = data.Data.DifficultyLevel.ToString();
 
+            ImagePic.SelectedItem = data.Data.ImageURI;
+
             PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
 
             HeadPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head));
