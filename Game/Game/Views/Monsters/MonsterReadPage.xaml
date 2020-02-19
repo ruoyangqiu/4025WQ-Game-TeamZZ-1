@@ -168,7 +168,16 @@
                     Text="{Binding Data.UniqueItem.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
-
+            
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Label 
+                    Text="Drop Rate %: " 
+                    Style="{StaticResource LabelStyle}"/>
+                
+                <Label 
+                    Text="{Binding Data.DropRate}" 
+                    Style="{StaticResource ValueStyle}"/>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 
