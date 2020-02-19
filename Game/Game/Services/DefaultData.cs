@@ -127,27 +127,40 @@ namespace Game.Services
             {
                 new CharacterModel {
                     Name = "Sun Wukong",
-                    Description = "Sun Wukong is a skilled fighter, capable of " +
-                    "defeating the best warriors of heaven. His hair possesses " +
-                    "magical properties, capable of summoning clones of the Monkey King " +
-                    "himself, and/or into various weapons, animals, and other objects.",
-                    ImageURI = "https://i.ibb.co/yRkQ9HD/Char01.png" },
+                    ImageURI = "https://i.ibb.co/txcMq2f/00949.png",
+                    CharacterClass = CharacterClassEnum.Fighter,
+                },
 
                 new CharacterModel {
                     Name = "Zhu Bajie",
-                    Description = "Zhu Bajie looks like a terrible monster, part human and part pig, " +
-                    "who often gets himself and his companions into trouble through his laziness, " +
-                    "gluttony, and propensity for lusting after pretty women. He is jealous of " +
-                    "Sun Wukong and always tries to bring him down.",
-                    ImageURI = "https://i.ibb.co/HgQvJMs/Char02.png",},
+                    ImageURI = "https://i.ibb.co/8j9FGvt/00955.png", 
+                    CharacterClass = CharacterClassEnum.Cleric,
+                },
 
                 new CharacterModel {
-                    Name = "Tang Sanzang",
-                    Description = "Tang Sanzang was the founder of the Idealistic School. " +
-                    "He translated abundant Buddhist canons and possessed an important position " +
-                    "in Buddhist history. Xuanzang became a monk at the age of 12 and became a monk " +
-                    "at the age of 21.",
-                    ImageURI = "https://i.ibb.co/JCSy3WC/Char03.png",},
+                    Name = "Yang Jian",
+                    ImageURI = "https://i.ibb.co/31J4jLn/00950.png",
+                    CharacterClass = CharacterClassEnum.Cleric},
+
+                new CharacterModel {
+                    Name = "Hong Haier",
+                    ImageURI = "https://i.ibb.co/QFmnbSQ/00951.png",
+                    CharacterClass = CharacterClassEnum.Cleric},
+
+                new CharacterModel {
+                    Name = "Jing Ke",
+                    ImageURI = "https://i.ibb.co/PtbYrrB/00956.png",
+                    CharacterClass = CharacterClassEnum.Cleric},
+
+                new CharacterModel {
+                    Name = "Yang Guifei",
+                    ImageURI = "https://i.ibb.co/Yfm0Fkx/00944.png",
+                    CharacterClass = CharacterClassEnum.Cleric},
+
+                new CharacterModel {
+                    Name = "Xiao Long Nu",
+                    ImageURI = "https://i.ibb.co/F7fngW9/00934.png",
+                    CharacterClass = CharacterClassEnum.Cleric},
             };
 
             return datalist;
