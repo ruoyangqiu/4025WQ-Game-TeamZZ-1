@@ -111,6 +111,29 @@
                             x:Name="FeetPic"
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.Feet}"/>
+
+                        <Picker Title="Select a Unique Item"
+                            x:Name="UniqueItemPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.UniqueItem}"/>
+                        <Label Text="Drop Rate"/>
+                        <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+
+                            <Label 
+                            Text="{Binding Data.Level}" 
+                            x:Name="DropRateValue"
+                            Style="{StaticResource ValueStyle}"
+                            Padding="0,0,10,0"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"/>
+
+                            <Stepper 
+                            Maximum="100"
+                            Minimum="1"
+                            Value="{Binding Data.DropRate, Mode=TwoWay}"
+                            ValueChanged="DropRate_OnStepperValueChanged"/>
+
+                        </StackLayout>
                     </StackLayout>
 
                 </StackLayout>

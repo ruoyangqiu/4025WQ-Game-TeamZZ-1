@@ -51,6 +51,8 @@ namespace Game.Views
             LeftFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.LeftFinger));
 
             FeetPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Feet));
+
+            UniqueItemPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset);
         }
 
         /// <summary>
@@ -80,15 +82,23 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
-        
 
-       
 
-       
+        /// <summary>
+        /// Catch the change to the stepper for Drop Rate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DropRateValue.Text = String.Format("{0} %", e.NewValue);
+        }
 
-        
 
-        
-        
+
+
+
+
+
     }
 }
