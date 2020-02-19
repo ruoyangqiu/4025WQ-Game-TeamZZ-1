@@ -11,6 +11,8 @@ namespace Game.Models
 
         public DifficultyLevelEnum DifficultyLevel { get; set; }
 
+        public int Level { get; set; } = 1;
+
         public int Experience { get; set; } = 0;
 
         // The UniqueItem the Monster will drop
@@ -57,13 +59,8 @@ namespace Game.Models
             ImageURI = newData.ImageURI;
             Description = newData.Description;
             DifficultyLevel = newData.DifficultyLevel;
-            UpdateScale();
-            Attack = newData.Attack;
-            Defense = newData.Defense;
-            Speed = newData.Speed;
-            MaxHealth = newData.MaxHealth;
-            CurrentHealth = this.GetMaxHealth();           
-            Experience = newData.Experience;
+            ChangeAttributeByLevel();
+
             HeadId = newData.HeadId;
             NecklaceId = newData.NecklaceId;
             PrimaryHandId = newData.PrimaryHandId;
@@ -145,21 +142,17 @@ namespace Game.Models
             return 0;
         }
 
-        // Change scale base on Difficulty Level
-        private void UpdateScale()
+        // Helper to change attrributes based on current level
+        private void ChangeAttributeByLevel()
         {
-            if(DifficultyLevel == DifficultyLevelEnum.Easy)
+            if (Level <= 21)
             {
-                MonsterScale = 1;
+                Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+                Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+                Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+                Experience = LevelTableHelper.Instance.LevelDetailsList[Level].Experience;
             }
-            if(DifficultyLevel == DifficultyLevelEnum.Medium)
-            {
-                MonsterScale = 2;
-            }
-            if(DifficultyLevel == DifficultyLevelEnum.Hard)
-            {
-                MonsterScale = 3;
-            }
+
         }
     }
 }
