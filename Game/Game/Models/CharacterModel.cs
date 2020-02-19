@@ -102,6 +102,22 @@ namespace Game.Models
             CurrentHealth = MaxHealth;
         }
 
+        /// <summary>
+        /// force Character level up to a target level
+        /// </summary>
+        /// <param name="newData">The target level</param>
+        public int ForceUpToValue(int value)
+        {
+            if(value > 20)
+            {
+                return -1;
+            }
+            Level = value;
+            ChangeAttributeByLevel();
+            CurrentHealth = MaxHealth;
+            return Level;
+        }
+
 
         // Helper to change attrributes based on current level
         private void ChangeAttributeByLevel()
