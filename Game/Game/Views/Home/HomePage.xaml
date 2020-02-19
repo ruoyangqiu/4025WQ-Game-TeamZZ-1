@@ -17,9 +17,10 @@
                 <StackLayout HorizontalOptions="Center" Padding="75,5,75,5"> 
                
                     <Label 
-                        Text="Become one of the legends of the Chinese Zodiac"
+                        Text="Command the Legends of the Chinese Zodiac"
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Medium"
+                        FontAttributes="Bold"
                         LineBreakMode="WordWrap"
                         />
 
