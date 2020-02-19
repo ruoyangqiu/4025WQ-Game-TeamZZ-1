@@ -85,7 +85,7 @@ namespace Game.Views
         /// <param name="e"></param>
         void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //MaxHealthValue.Text = String.Format("{0}", e.NewValue);
+            MaxHealthValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Game.Views
         /// <param name="e"></param>
         void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-           // AttackValue.Text = String.Format("{0}", e.NewValue);
+            AttackValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Game.Views
         /// <param name="e"></param>
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //DefenseValue.Text = String.Format("{0}", e.NewValue);
+            DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Game.Views
         /// <param name="e"></param>
         void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-           // SpeedValue.Text = String.Format("{0}", e.NewValue);
+            SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
 
         

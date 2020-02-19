@@ -12,28 +12,20 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
 
-                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
-                    <Image
-                         Source="knight.png"
-                         Style="{StaticResource ImageLargeStyle}"/>
-
-                    <Image
-                         Source="troll.png"
-                         Style="{StaticResource ImageLargeStyle}"/>
-                
-                </StackLayout>
+                <Image Source="https://i.ibb.co/JBvj2qq/01407.png" WidthRequest="300"/>
                 
                 <StackLayout HorizontalOptions="Center" Padding="75,5,75,5"> 
                
                     <Label 
-                        Text="In a far away land there was a tribe of warrior elves."
+                        Text="Command the Legends of the Chinese Zodiac"
                         Style="{StaticResource CenterMessageStyle}"
-                        FontSize="Micro"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
                         LineBreakMode="WordWrap"
                         />
 
                     <Label 
-                        Text="The elves entered the woods to eraticate the monsters that threatened their villages."
+                        Text="Set on a world that mankind is threatened by demons from the underworld, you will assemble your team of Zodiac Legends, discoverer the world, fight monsters, and help mankind out."
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"

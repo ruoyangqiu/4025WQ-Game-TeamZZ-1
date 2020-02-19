@@ -14,6 +14,8 @@ namespace Game.Models
         // Total Experience of Character
         public int Experience { get; set; } = 0;
 
+        // Total Experience Needed to reach next level
+        private int ExpToNextLevel { get; set; } = 0;
 
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
@@ -90,12 +92,31 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
+        /// <summary>
+        /// Scale the attribute wwhen Level up
+        /// </summary>
+        public void ScaleLevelUp()
+        {
+            Level = Level + 1;
+            ChangeAttributeByLevel();
+            CurrentHealth = MaxHealth;
+        }
 
+
+        // Helper to change attrributes based on current level
         private void ChangeAttributeByLevel()
         {
-            Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
-            Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
-            Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+            if(Level <= 20)
+            {
+                Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+                Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+                Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+                if(Level < 20)
+                {
+                    ExpToNextLevel = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience;
+                }
+            }
+            
         }
     }
 }
