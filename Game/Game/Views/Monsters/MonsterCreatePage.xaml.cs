@@ -74,49 +74,7 @@ namespace Game.Views
         async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
-        }
-
-        /// <summary>
-        /// Catch the change to the stepper for Attack
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            AttackValue.Text = String.Format("{0}", e.NewValue);
-        }
-
-        /// <summary>
-        /// Catch the change to the stepper for Defense
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            DefenseValue.Text = String.Format("{0}", e.NewValue);
-        }
-
-        /// <summary>
-        /// Catch the change to the stepper for MaxHealth
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            MaxHealthValue.Text = String.Format("{0}", e.NewValue);
-        }
-
-        /// <summary>
-        /// Catch the change to the stepper for Speed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            SpeedValue.Text = String.Format("{0}", e.NewValue);
-        }
-
-       
+        }       
 
         /// <summary>
         /// Catch the change to the stepper for Drop Rate
