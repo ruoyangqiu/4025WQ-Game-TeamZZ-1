@@ -42,6 +42,58 @@ namespace Game.Services
                     Value = 9,
                     Location = ItemLocationEnum.Head,
                     Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Blue Horn",
+                    Description = "Gives bonus attack",
+                    ImageURI = "https://i.ibb.co/KxFtsHr/01019.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 9,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Attack},
+
+                new ItemModel {
+                    Name = "Red Hron",
+                    Description = "Gives bonus speed",
+                    ImageURI = "https://i.ibb.co/hsqYC9S/01020.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 9,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Golden Hair pin",
+                    Description = "Gives bonus damage",
+                    ImageURI = "https://i.ibb.co/qd6Vcxs/01004.png",
+                    Range = 0,
+                    Damage = 15,
+                    Value = 9,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack},
+
+                new ItemModel {
+                    Name = "Emperor's Necklace",
+                    Description = "Pink hat with fluffy ears",
+                    ImageURI = "https://i.ibb.co/vQtJZVH/01021.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 9,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                    new ItemModel
+                    {
+                        Name = "Phase boots",
+                        Description = "Gives bonus speed",
+                        ImageURI = "https://i.ibb.co/9WNvJ56/01015.png",
+                        Range = 0,
+                        Damage = 0,
+                        Value = 9,
+                        Location = ItemLocationEnum.Feet,
+                        Attribute = AttributeEnum.Speed,
+                    },
             };
 
             return datalist;
