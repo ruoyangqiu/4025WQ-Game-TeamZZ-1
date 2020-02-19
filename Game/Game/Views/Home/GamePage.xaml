@@ -16,31 +16,31 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                        Source="village.png"
+                        Source="https://i.ibb.co/nkdcjzb/Town-Image.png"
                         Style="{StaticResource ImageLargeStyle}"
                         Clicked="VillageButton_Clicked"/>
 
                     <Label 
-                        Text="Village"
+                        Text="Town"
                         Style="{StaticResource CenterMessageStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                        Source="dungeon_door.png"
+                        Source="https://i.ibb.co/vs28fqr/Adventure.png"
                         Style="{StaticResource ImageLargeStyle}"
                         Clicked="DungeonButton_Clicked"/>
 
                     <Label 
-                        Text="Dungeon"
+                        Text="Adventure"
                         Style="{StaticResource CenterMessageStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                        Source="dungeon_door.png"
+                        Source="https://i.ibb.co/1ZnSVNn/Auto-Battle.png"
                         Style="{StaticResource ImageLargeStyle}"
                         Clicked="AutobattleButton_Clicked"/>
 
