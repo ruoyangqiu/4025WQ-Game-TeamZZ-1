@@ -162,10 +162,10 @@
                 <Label 
                     Text="UniqueDrop : " 
                     Style="{StaticResource LabelStyle}"/>
-                <Image Source="{Binding Data.UniqueDrop.ImageURI}" 
+                <Image Source="{Binding Data.UniqueItem.ImageURI}" 
                        Style="{StaticResource ImageSmallStyle}"/>
                 <Label 
-                    Text="{Binding Data.UniqueDrop.Name}" 
+                    Text="{Binding Data.UniqueItem.Name}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
