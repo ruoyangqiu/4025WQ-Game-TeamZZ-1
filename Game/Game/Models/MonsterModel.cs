@@ -60,7 +60,6 @@ namespace Game.Models
             Description = newData.Description;
             DifficultyLevel = newData.DifficultyLevel;
             ChangeAttributeByLevel();
-
             HeadId = newData.HeadId;
             NecklaceId = newData.NecklaceId;
             PrimaryHandId = newData.PrimaryHandId;
@@ -103,19 +102,19 @@ namespace Game.Models
         // Get attack value
         int GetAttack()
         {
-            return Attack * MonsterScale;
+            return Attack;
         }
 
         // Get defense value
         int GetDefense()
         {
-            return Defense * MonsterScale;
+            return Defense;
         }
 
         // Get maxhealth value
         int GetMaxHealth()
         {
-            return MaxHealth * MonsterScale;
+            return MaxHealth;
         }
 
         // Get currenthealth value
@@ -127,7 +126,7 @@ namespace Game.Models
         // Get Speed value
         int GetSpeed()
         {
-            return Speed * MonsterScale;
+            return Speed;
         }
 
         // get the Dice to roll for the weapon used 
