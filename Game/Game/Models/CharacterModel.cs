@@ -92,7 +92,15 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
-
+        /// <summary>
+        /// Scale the attribute wwhen Level up
+        /// </summary>
+        public void ScaleLevelUp()
+        {
+            Level = Level + 1;
+            ChangeAttributeByLevel();
+            CurrentHealth = MaxHealth;
+        }
 
 
         // Helper to change attrributes based on current level
