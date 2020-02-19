@@ -79,30 +79,28 @@
                         SelectedItem="{Binding Data.DifficultyLevel, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                         x:Name="DifficultyPicker"/>
 
-                    
-
                     <Label Grid.Row="4" Grid.Column="0"
-                        Text="Attack" 
+                        Text="MaxHealth" 
                         Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="4" Grid.Column="1"
-                           Text="{Binding Data.Attack}"
+                           Text="{Binding Data.MaxHealth}"
                            Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="5" Grid.Column="0"
-                        Text="Defense" 
+                        Text="Attack" 
                         Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="5" Grid.Column="1"
-                           Text="{Binding Data.Defense}"
+                           Text="{Binding Data.Attack}"
                            Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="6" Grid.Column="0"
-                        Text="Health" 
+                        Text="Defense" 
                         Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="6" Grid.Column="1"
-                           Text="{Binding Data.MaxHealth}"
+                           Text="{Binding Data.Defense}"
                            Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="7" Grid.Column="0"
@@ -113,11 +111,11 @@
                            Text="{Binding Data.Speed}"
                            Style="{StaticResource LabelStyle}"/>
 
+
                 </Grid>
 
                 <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
-            
-                    
+                                               
                     <StackLayout Orientation="Vertical">
                         <Picker Title="Select a Head Item"
                             x:Name="HeadPic"
