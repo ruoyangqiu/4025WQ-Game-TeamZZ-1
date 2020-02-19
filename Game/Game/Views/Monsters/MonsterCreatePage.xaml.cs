@@ -87,7 +87,7 @@ namespace Game.Views
         /// <param name="e"></param>
         void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //DropRateValue.Text = String.Format("{0}", e.NewValue);
+            DropRateValue.Text = String.Format("{0} %", e.NewValue);
         }
     }
 }
