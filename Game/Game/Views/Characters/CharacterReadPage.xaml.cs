@@ -18,6 +18,7 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterReadPage : ContentPage
     {
+        // View Model for Item
         readonly GenericViewModel<CharacterModel> ViewModel;
 
         /// <summary>
