@@ -112,7 +112,9 @@
                             x:Name="UniqueItemPic"
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.UniqueItem}"/>
-
+                    
+                    <Label Text="Drop Rate"/>
+                    
                     <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
 
                         <Label 
