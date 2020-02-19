@@ -50,19 +50,11 @@
                     <Label Grid.Row="3"
 					       Grid.Column="1"
 					       Text="Please select a class"/>
-					<Picker Grid.Row="4"
+                    <Picker Grid.Row="4"
 						    Grid.Column="1"
 						    ItemsSource="{x:Static local_helpers:CharacterClassEnumHelper.GetListCharacter}"
 						    SelectedItem="{Binding Data.CharacterClass, Converter={StaticResource StringEnum}, Mode=TwoWay}"
 						    x:Name="CharacterClassPicker"/>
-
-
-
-					<Label Grid.Row="6"
-						   Grid.Column="1"
-					 Text="Summonning a new character cost you 100 gems!" 
-						   FontSize="Medium"
-						   LineBreakMode="CharacterWrap"/>
 
                 </Grid>
             </StackLayout>
