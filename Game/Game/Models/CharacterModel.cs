@@ -92,6 +92,54 @@ namespace Game.Models
 
             return myReturn.Trim();
         }
+
+        // Check if the Character deaad
+        public bool isAlive()
+        {
+            return CurrentHealth > 0;
+        }
+
+        // Get attack value
+        public int GetAttack()
+        {
+            return Attack;
+        }
+
+        // Get defense value
+        public int GetDefense()
+        {
+            return Defense;
+        }
+
+        // Get maxhealth value
+        public int GetMaxHealth()
+        {
+            return MaxHealth;
+        }
+
+        // Get currenthealth value
+        public int GetCurrrnetHealth()
+        {
+            return CurrentHealth;
+        }
+
+        // Get Speed value
+        public int GetSpeed()
+        {
+            return Speed;
+        }
+
+        // get the Dice to roll for the weapon used 
+        public int GetDamageDice()
+        {
+            return 0;
+        }
+
+        // get the calculated damage value this weapon rolled 
+        int GetDamageRollValue()
+        {
+            return 0;
+        }
         /// <summary>
         /// Scale the attribute wwhen Level up
         /// </summary>
