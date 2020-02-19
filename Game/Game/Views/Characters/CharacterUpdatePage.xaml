@@ -62,6 +62,8 @@
 
                     </StackLayout>
 
+                    
+
                     <Label Grid.Row="2" Grid.Column="0"
                         Text="Attack" 
                         Style="{StaticResource LabelStyle}"/>
@@ -71,34 +73,26 @@
                            Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="3" Grid.Column="0"
-                        Text="Attack" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="3" Grid.Column="1"
-                           Text="{Binding Data.Attack}"
-                           Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="4" Grid.Column="0"
                         Text="Defense" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="4" Grid.Column="1"
+                    <Label Grid.Row="3" Grid.Column="1"
                            Text="{Binding Data.Defense}"
                            Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="5" Grid.Column="0"
+                    <Label Grid.Row="4" Grid.Column="0"
                         Text="Health" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="5" Grid.Column="1"
+                    <Label Grid.Row="4" Grid.Column="1"
                            Text="{Binding Data.MaxHealth}"
                            Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="6" Grid.Column="0"
+                    <Label Grid.Row="5" Grid.Column="0"
                         Text="Speed" 
                         Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="6" Grid.Column="1"
+                    <Label Grid.Row="5" Grid.Column="1"
                            Text="{Binding Data.Speed}"
                            Style="{StaticResource LabelStyle}"/>
 
