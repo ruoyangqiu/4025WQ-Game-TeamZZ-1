@@ -177,10 +177,6 @@ namespace Game.Services
                 new MonsterModel {
                     Name = "Tauren",
                     ImageURI = "https://i.ibb.co/JdPLTBs/01148.png",
-                    Attack = 5,
-                    Defense = 3,
-                    Speed = 4,
-                    MaxHealth = 40,
                     DifficultyLevel = Models.Enum.DifficultyLevelEnum.Hard,
                     Experience = 1000,
                 },
@@ -188,20 +184,36 @@ namespace Game.Services
                 new MonsterModel {
                     Name = "Horseman",
                     ImageURI = "https://i.ibb.co/SrMKM5r/01143.png",
-                    Attack = 2,
-                    Defense = 1,
-                    Speed = 2,
-                    MaxHealth = 20,
                     DifficultyLevel = Models.Enum.DifficultyLevelEnum.Easy,
                     Experience = 500,},
 
                 new MonsterModel {
                     Name = "Jiangshi Bride",
                     ImageURI = "https://i.ibb.co/GMdPYqD/01118.png",
-                    Attack = 3,
-                    Defense = 2,
-                    Speed = 2,
-                    MaxHealth = 30,
+                    DifficultyLevel = Models.Enum.DifficultyLevelEnum.Medium,
+                    Experience = 800,},
+
+                new MonsterModel {
+                    Name = "Berserker",
+                    ImageURI = "https://i.ibb.co/R7mnV1j/01119.png",
+                    DifficultyLevel = Models.Enum.DifficultyLevelEnum.Medium,
+                    Experience = 800,},
+
+                new MonsterModel {
+                    Name = "Great Wolf",
+                    ImageURI = "https://i.ibb.co/Kw9j2RY/01124.png",
+                    DifficultyLevel = Models.Enum.DifficultyLevelEnum.Medium,
+                    Experience = 800,},
+
+                new MonsterModel {
+                    Name = "Witch",
+                    ImageURI = "https://i.ibb.co/dMJyQB1/01125.png",
+                    DifficultyLevel = Models.Enum.DifficultyLevelEnum.Medium,
+                    Experience = 800,},
+
+                new MonsterModel {
+                    Name = "Hell Pig",
+                    ImageURI = "https://i.ibb.co/R9JbmK7/01138.png",
                     DifficultyLevel = Models.Enum.DifficultyLevelEnum.Medium,
                     Experience = 800,},
             };
