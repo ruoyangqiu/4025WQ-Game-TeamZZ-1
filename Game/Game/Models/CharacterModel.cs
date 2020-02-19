@@ -93,6 +93,9 @@ namespace Game.Models
             return myReturn.Trim();
         }
 
+
+
+        // Helper to change attrributes based on current level
         private void ChangeAttributeByLevel()
         {
             if(Level <= 20)
