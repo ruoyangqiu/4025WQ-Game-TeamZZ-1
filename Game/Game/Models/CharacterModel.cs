@@ -104,6 +104,8 @@ namespace Game.Models
 
         /// <summary>
         /// force Character level up to a target level
+        /// if input value is greater than 20, it will 
+        /// return -1 as a error notice
         /// </summary>
         /// <param name="newData">The target level</param>
         public int ForceUpToValue(int value)
