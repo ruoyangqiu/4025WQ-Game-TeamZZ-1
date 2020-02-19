@@ -42,6 +42,8 @@ namespace Game.Views
             LeftFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.LeftFinger));
 
             FeetPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Feet));
+
+            UniqueItemPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset);
         }
 
         /// <summary>

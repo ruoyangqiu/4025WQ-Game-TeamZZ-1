@@ -107,6 +107,11 @@
                             x:Name="FeetPic"
                             ItemDisplayBinding="{Binding Name}"
                             SelectedItem="{Binding Data.Feet}"/>
+
+                    <Picker Title="Select a Unique Item"
+                            x:Name="UniqueItemPic"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding Data.UniqueItem}"/>
                 </StackLayout>
                 <!--
 
