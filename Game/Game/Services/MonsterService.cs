@@ -12,13 +12,13 @@ namespace Game.Services
         // A predefined list for Monster image URIs. When a Monster gets created, a random URI from this list is assigned to the Monster.
         public static List<string> MonsterURIs = new List<string>()
         {
-            "https://i.ibb.co/nfVF1qg/01543.png",
-            "https://i.ibb.co/37J2j7m/01545.png",
-            "https://i.ibb.co/KG3KFbp/01546.png",
-            "https://i.ibb.co/5kmbn1h/01548.png",
-            "https://i.ibb.co/FHcf1wF/01550.png",
-            "https://i.ibb.co/VQDNHyY/01554.png",
-            "https://i.ibb.co/HVKhVg3/01555.png"
+            "https://i.ibb.co/SJQ8cF6/01495.png",
+            "https://i.ibb.co/WsBL7Nc/01500.png",
+            "https://i.ibb.co/X27dHvn/01509.png",
+            "https://i.ibb.co/rQn6bPS/01512.png",
+            "https://i.ibb.co/418cr7n/01524.png",
+            "https://i.ibb.co/wpHJhwK/01516.png",
+            "https://i.ibb.co/zZj6PL4/01519.png"
 
         };
 
