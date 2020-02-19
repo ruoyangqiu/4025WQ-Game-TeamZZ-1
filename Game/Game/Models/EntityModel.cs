@@ -12,19 +12,19 @@ namespace Game.Models
         #region Attributes
 
         // Value of attack attribute of the Entity
-        public int Attack { get; set; } = 0;
+        public int Attack { get; set; } = 1;
 
         // Value of defence attribute of the Entity
-        public int Defense { get; set; } = 0;
+        public int Defense { get; set; } = 1;
 
         // Value of health attribute of the Entity
-        public int MaxHealth { get; set; } = 0;
+        public int MaxHealth { get; set; } = 5;
 
         //Value of current health attribute of the Entity
-        public int CurrentHealth { get; set; } = 0;
+        public int CurrentHealth { get; set; } = 5;
 
         // Value of Speed of the Entity
-        public int Speed { get; set; } = 0;
+        public int Speed { get; set; } = 1;
 
         #endregion Attributes
 
