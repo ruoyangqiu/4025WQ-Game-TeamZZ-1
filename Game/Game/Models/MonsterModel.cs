@@ -82,7 +82,7 @@ namespace Game.Models
         }
 
         // The damage monster receive
-        public int MonsterTakeDamage(int damage)
+        public int TakeDamage(int damage)
         {
             return damage;
         }
@@ -94,49 +94,49 @@ namespace Game.Models
         }
 
         // Check if the Monster deaad
-        bool isMonsterAlive()
+        public bool isMonsterAlive()
         {
             return CurrentHealth > 0;
         }
 
         // Get attack value
-        int GetAttack()
+        public int GetAttack()
         {
             return Attack;
         }
 
         // Get defense value
-        int GetDefense()
+        public int GetDefense()
         {
             return Defense;
         }
 
         // Get maxhealth value
-        int GetMaxHealth()
+        public int GetMaxHealth()
         {
             return MaxHealth;
         }
 
         // Get currenthealth value
-        int GetCurrrnetHealth()
+        public int GetCurrrnetHealth()
         {
             return CurrentHealth;
         }
 
         // Get Speed value
-        int GetSpeed()
+        public int GetSpeed()
         {
             return Speed;
         }
 
         // get the Dice to roll for the weapon used 
-        int GetMonsterDamageDice()
+        public int GetDamageDice()
         {
             return 0;
         }
 
         // get the calculated damage value this weapon rolled 
-        int GetMonsterDamageRollValue()
+        public int GetDamageRollValue()
         {
             return 0;
         }
