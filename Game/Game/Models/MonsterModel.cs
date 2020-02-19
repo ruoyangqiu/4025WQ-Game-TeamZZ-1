@@ -1,5 +1,6 @@
 ﻿using Game.Models.Enum;
 using Game.Services;
+using SQLite;
 
 namespace Game.Models
 {
@@ -8,15 +9,21 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : EntityModel<MonsterModel>
     {
-
+        // Difficulty for this monster
         public DifficultyLevelEnum DifficultyLevel { get; set; }
 
+        // Level of the monster
         public int Level { get; set; } = 1;
 
+        // Total experience avaiable on this monster
         public int Experience { get; set; } = 0;
 
         // The UniqueItem the Monster will drop
-        public string UniqueItem { get; set; }
+        public string UniqueItemId { get; set; }
+
+        // The UniqueItem the Monster will drop
+        [Ignore]
+        public ItemModel UniqueItem { get; set; }
 
         // The Rate the item will drop
         public double DropRate { get; set; } = 1;
@@ -60,14 +67,31 @@ namespace Game.Models
             Description = newData.Description;
             DifficultyLevel = newData.DifficultyLevel;
             ChangeAttributeByLevel();
-            HeadId = newData.HeadId;
-            NecklaceId = newData.NecklaceId;
-            PrimaryHandId = newData.PrimaryHandId;
-            OffHandId = newData.OffHandId;
-            RightFingerId = newData.RightFingerId;
-            LeftFingerId = newData.LeftFingerId;
-            FeetId = newData.FeetId;
+
+            Head = newData.Head;
+            HeadId = Head == null ? "" : Head.Id;
+
+            Necklace = newData.Necklace;
+            NecklaceId = Necklace == null ? "" : Necklace.Id;
+
+            PrimaryHand = newData.PrimaryHand;
+            PrimaryHandId = PrimaryHand == null ? "" : PrimaryHand.Id;
+
+            OffHand = newData.OffHand;
+            OffHandId = OffHand == null ? "" : OffHand.Id;
+
+            RightFinger = newData.RightFinger;
+            RightFingerId = RightFinger == null ? "" : RightFinger.Id;
+
+            LeftFinger = newData.LeftFinger;
+            LeftFingerId = LeftFinger == null ? "" : LeftFinger.Id;
+
+            Feet = newData.Feet;
+            FeetId = Feet == null ? "" : Feet.Id;
+
             UniqueItem = newData.UniqueItem;
+            UniqueItemId = UniqueItem == null ? "" : UniqueItem.Id;
+
             DropRate = newData.DropRate;
             
         }
