@@ -14,6 +14,8 @@ namespace Game.Models
         // Total Experience of Character
         public int Experience { get; set; } = 0;
 
+        // Total Experience Needed to reach next level
+        private int ExpToNextLevel { get; set; } = 0;
 
         // The Enum of Character Class. Every Character can only have one Class 
         [Ignore]
@@ -93,9 +95,17 @@ namespace Game.Models
 
         private void ChangeAttributeByLevel()
         {
-            Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
-            Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
-            Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+            if(Level <= 20)
+            {
+                Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+                Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+                Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+                if(Level < 20)
+                {
+                    ExpToNextLevel = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience;
+                }
+            }
+            
         }
     }
 }
