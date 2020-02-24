@@ -10,7 +10,7 @@ namespace Game.Models
     public class MonsterModel : EntityModel<MonsterModel>
     {
         // Difficulty for this monster
-        public DifficultyLevelEnum DifficultyLevel { get; set; }
+        public DifficultyLevelEnum DifficultyLevel { get; set; } = DifficultyLevelEnum.Unknown;
 
         // Level of the monster
         public int Level { get; set; } = 1;
