@@ -216,7 +216,30 @@ namespace Game.Models
         // Get Speed value
         public int GetSpeed()
         {
-            return Speed;
+            var myReturn = Speed;
+
+            myReturn += GetItemSpeed();
+
+            myReturn += GetLevelBonusSpeed();
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemSpeed()
+        {
+            return GetItemBonus(AttributeEnum.Speed);
+        }
+
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusSpeed()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
         }
 
         #endregion Speed
