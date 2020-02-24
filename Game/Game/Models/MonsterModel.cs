@@ -32,6 +32,8 @@ namespace Game.Models
         // The scale to buff Monster based on Level
         private int MonsterScale { get; set; } = 1;
 
+        public const int MaxHealthPerLevel = 5;
+
         /// <summary>
         /// Default MonsterModel
         /// Establish the Default Image Path
@@ -124,23 +126,103 @@ namespace Game.Models
             return CurrentHealth > 0;
         }
 
+        #region Attack
         // Get attack value
         public int GetAttack()
         {
-            return Attack;
+
+            var myReturn = Attack;
+
+            myReturn += GetItemAttack();
+
+            myReturn += GetLevelBonusAttack();
+
+            return myReturn;
         }
 
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemAttack()
+        {
+            return GetItemBonus(AttributeEnum.Attack);
+        }
+
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusAttack()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+        }
+
+        #endregion Attack
+
+        #region Defense
         // Get defense value
         public int GetDefense()
         {
-            return Defense;
+            var myReturn = Defense;
+
+            myReturn += GetLevelBonusDefense();
+
+            myReturn += GetItemDefense();
+
+            return myReturn;
         }
+
+        /// <summary>
+        /// Get the bonus Defense from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemDefense()
+        {
+            return GetItemBonus(AttributeEnum.Defense);
+        }
+
+        /// <summary>
+        /// Calculate Defense bonus based on level
+        /// </summary>
+        public int GetLevelBonusDefense()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+        }
+
+
+        #endregion Defense
+
+        #region MaxHealth
 
         // Get maxhealth value
         public int GetMaxHealth()
         {
-            return MaxHealth;
+            var myReturn = MaxHealth;
+
+            myReturn += GetItemMaxHealth();
+
+            myReturn += GetLevelBonusMaxHealth();
+
+            return myReturn;
         }
+
+        /// <summary>
+        /// Get the bonus MaxHealth from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemMaxHealth()
+        {
+            return GetItemBonus(AttributeEnum.MaxHealth);
+        }
+
+        /// <summary>
+        /// Calculate MaxHealth bonus based on level
+        /// </summary>
+        public int GetLevelBonusMaxHealth()
+        {
+            return MaxHealthPerLevel * (Level - 1);
+        }
+        #endregion MaxHealth
 
         // Get currenthealth value
         public int GetCurrrnetHealth()
@@ -148,11 +230,37 @@ namespace Game.Models
             return CurrentHealth;
         }
 
+        #region Speed
         // Get Speed value
         public int GetSpeed()
         {
-            return Speed;
+            var myReturn = Speed;
+
+            myReturn += GetItemSpeed();
+
+            myReturn += GetLevelBonusSpeed();
+
+            return myReturn;
         }
+
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemSpeed()
+        {
+            return GetItemBonus(AttributeEnum.Speed);
+        }
+
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusSpeed()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+        }
+
+        #endregion Speed
 
         // get the Dice to roll for the weapon used 
         public int GetDamageDice()
