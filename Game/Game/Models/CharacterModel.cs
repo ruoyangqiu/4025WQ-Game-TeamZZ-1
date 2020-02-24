@@ -144,8 +144,32 @@ namespace Game.Models
         // Get defense value
         public int GetDefense()
         {
-            return Defense;
+            var myReturn = Defense;
+
+            myReturn += GetLevelBonusDefense();
+
+            myReturn += GetItemDefense();
+
+            return myReturn;
         }
+
+        /// <summary>
+        /// Get the bonus Defense from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemDefense()
+        {
+            return GetItemBonus(AttributeEnum.Defense);
+        }
+
+        /// <summary>
+        /// Calculate Defense bonus based on level
+        /// </summary>
+        public int GetLevelBonusDefense()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+        }
+
 
         #endregion Defense
 
