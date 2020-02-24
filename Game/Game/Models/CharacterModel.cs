@@ -107,24 +107,36 @@ namespace Game.Models
             return CurrentHealth > 0;
         }
 
+        #region Attack
         // Get attack value
         public int GetAttack()
         {
             return Attack;
         }
 
+        #endregion Attack
+
+        #region Defense
         // Get defense value
         public int GetDefense()
         {
             return Defense;
         }
 
+        #endregion Defense
+
         #region MaxHealth
 
         // Get maxhealth value
         public int GetMaxHealth()
         {
-            return MaxHealth;
+            var myReturn = MaxHealth;
+
+            myReturn += GetItemMaxHealth();
+
+            myReturn += GetLevelBonusMaxHealth();
+
+            return myReturn;
         }
 
         /// <summary>
@@ -152,11 +164,14 @@ namespace Game.Models
             return CurrentHealth;
         }
 
+        #region Speed
         // Get Speed value
         public int GetSpeed()
         {
             return Speed;
         }
+
+        #endregion Speed
 
         // get the Dice to roll for the weapon used 
         public int GetDamageDice()
