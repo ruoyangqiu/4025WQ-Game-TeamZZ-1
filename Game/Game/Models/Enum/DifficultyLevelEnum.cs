@@ -4,8 +4,13 @@ using System.Text;
 
 namespace Game.Models.Enum
 {
+    /// <summary>
+    /// The Difficulty level for monster
+    /// </summary>
     public enum DifficultyLevelEnum
     {
+        // Not specified
+        Unknown = 0,
         // The easiest level of Monster, easy to kill, low damage to character
         Easy = 10,
 

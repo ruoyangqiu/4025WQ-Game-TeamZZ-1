@@ -21,6 +21,8 @@ namespace Game.Models
         [Ignore]
         public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
 
+        public const int MaxHealthPerLevel = 5;
+
         /// <summary>
         /// Default CharacterModel
         /// Establish the Default Image Path
@@ -168,6 +170,13 @@ namespace Game.Models
             return Level;
         }
 
+        /// <summary>
+        /// Calculate MaxHealth bonus based on level
+        /// </summary>
+        public int LevelBonusMaxHealth()
+        {
+            return MaxHealthPerLevel * (Level - 1);
+        }
 
         // Helper to change attrributes based on current level
         private void ChangeAttributeByLevel()

@@ -6,8 +6,23 @@ using System.Text;
 
 namespace Game.Helpers
 {
+    /// <summary>
+    /// Helper for DifficultyLevelEnum
+    /// </summary>
     static class DifficultyLevelEnumHelper
     {
+        /// <summary>
+        /// Returns a list of strings of the enum for Difficulty level
+        /// </summary>
+        public static List<string> GetList
+        {
+            get
+            {
+                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList();
+                return myList;
+            }
+        }
+
         /// <summary>
         /// Returns a list of strings of the enum for Difficulty level
         /// Removes the unknown
@@ -16,7 +31,7 @@ namespace Game.Helpers
         {
             get
             {
-                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList();
+                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList().Where(m => m.ToString().Equals("Unknown") == false).ToList();
                 return myList;
             }
         }

@@ -62,6 +62,18 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
+            // If input name is empty or null, diaplay alert and return
+            if (string.IsNullOrEmpty(ViewModel.Data.Name))
+            {
+                await DisplayAlert("Alert", "You need to enter a name!", "OK");
+                return;
+            }
+            // If input difficulty level is unknown, diaplay alert and return
+            if (ViewModel.Data.DifficultyLevel == Models.Enum.DifficultyLevelEnum.Unknown)
+            {
+                await DisplayAlert("Alert", "You need to select a Difficulty!", "OK");
+                return;
+            }
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
