@@ -166,6 +166,85 @@ namespace Game.Models
             return 0;
         }
 
+        #region GetItemBonus
+
+        /// <summary>
+        /// Get Bonus value from Item of given attribute
+        /// </summary>
+        /// <param name="attributeenum"></param>
+        /// <returns></returns>
+        public int GetItemBonus(AttributeEnum attributeenum)
+        {
+            var myReturn = 0;
+            ItemModel myItem;
+
+            myItem = Head;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = Necklace;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = PrimaryHand;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = OffHand;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = LeftFinger;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = RightFinger;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = Feet;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+            return myReturn;
+        }
+
+        #endregion GetItemBonus
+
         // Helper to change attrributes based on cDifficultylevel
         public void ChangeAttributeByDifficultyLevel()
         {
