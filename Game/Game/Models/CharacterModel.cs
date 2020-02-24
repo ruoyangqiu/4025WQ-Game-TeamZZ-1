@@ -24,6 +24,8 @@ namespace Game.Models
 
         public const int MaxHealthPerLevel = 5;
 
+        private const int MaxCharacterLevel = 20;
+
         /// <summary>
         /// Default CharacterModel
         /// Establish the Default Image Path
@@ -183,12 +185,8 @@ namespace Game.Models
                 Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
                 Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
                 Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
-                if(Level < 20)
-                {
-                    ExpToNextLevel = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience;
-                }
-            }
-            
+                
+            }     
         }
 
         /// <summary>
@@ -215,15 +213,20 @@ namespace Game.Models
         /// <summary>
         /// Scale Level to the input level
         /// And calculate current health
+        /// Change ExpToNextLevel
         /// </summary>
         /// <param name="level"></param>
         private void ScaleByLevel(int level)
         {
-            if (level < 20)
+            if (level <= MaxCharacterLevel)
             {
                 int HealthOffset = GetMaxHealth() - CurrentHealth;
                 Level = level;
                 CurrentHealth = GetMaxHealth() - HealthOffset;
+                if (Level < MaxCharacterLevel)
+                {
+                    ExpToNextLevel = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience;
+                }
             }
     
         }
