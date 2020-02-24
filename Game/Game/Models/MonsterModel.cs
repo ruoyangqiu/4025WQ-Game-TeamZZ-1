@@ -167,7 +167,7 @@ namespace Game.Models
         }
 
         // Helper to change attrributes based on cDifficultylevel
-        private void ChangeAttributeByDifficultyLevel()
+        public void ChangeAttributeByDifficultyLevel()
         {
             BasePropertyDetailsModel LittleMonster = new BasePropertyDetailsModel(1, 1, 1, 5);
             if (DifficultyLevel == DifficultyLevelEnum.Easy)
