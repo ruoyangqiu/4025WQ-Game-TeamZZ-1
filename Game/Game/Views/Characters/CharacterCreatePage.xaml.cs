@@ -40,10 +40,7 @@ namespace Game.Views
             }
 
             // If the image in the data box is empty, use the default one..
-            if(IsEmptyName())
-            {
-                await DisplayAlert("Alert", "You need to enter a name", "OK");
-            } else if(!IsValidClass())
+            if(!IsValidClass())
             {
                 await DisplayAlert("Alert", "You need to select a Class", "OK");
                 return;
