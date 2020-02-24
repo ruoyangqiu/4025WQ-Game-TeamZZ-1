@@ -1,4 +1,5 @@
-﻿using Game.Models.Enum;
+﻿using Game.Helpers;
+using Game.Models.Enum;
 using Game.Services;
 using SQLite;
 
@@ -66,7 +67,7 @@ namespace Game.Models
             ImageURI = newData.ImageURI;
             Description = newData.Description;
             DifficultyLevel = newData.DifficultyLevel;
-            ChangeAttributeByLevel();
+            ChangeAttributeByDifficultyLevel();
 
             Head = newData.Head;
             HeadId = Head == null ? "" : Head.Id;
@@ -165,17 +166,31 @@ namespace Game.Models
             return 0;
         }
 
-        // Helper to change attrributes based on current level
-        private void ChangeAttributeByLevel()
+        // Helper to change attrributes based on cDifficultylevel
+        private void ChangeAttributeByDifficultyLevel()
         {
-            if (Level <= 21)
+            BasePropertyDetailsModel LittleMonster = new BasePropertyDetailsModel(1, 1, 1, 5);
+            if (DifficultyLevel == DifficultyLevelEnum.Easy)
             {
-                Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
-                Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
-                Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
-                Experience = LevelTableHelper.Instance.LevelDetailsList[Level].Experience;
+                LittleMonster = BasePropertyHelper.Instance.MonsterDifficultyBase[DifficultyLevelEnum.Easy];
             }
 
+            if (DifficultyLevel == DifficultyLevelEnum.Medium)
+            {
+                LittleMonster = BasePropertyHelper.Instance.MonsterDifficultyBase[DifficultyLevelEnum.Medium];
+            }
+
+            if (DifficultyLevel == DifficultyLevelEnum.Hard)
+            {
+                LittleMonster = BasePropertyHelper.Instance.MonsterDifficultyBase[DifficultyLevelEnum.Hard];
+            }
+
+            
+
+            Attack = LittleMonster.Attack;
+            Defense = LittleMonster.Defense;
+            Speed = LittleMonster.Speed;
+            MaxHealth = LittleMonster.MaxHealth;
         }
     }
 }
