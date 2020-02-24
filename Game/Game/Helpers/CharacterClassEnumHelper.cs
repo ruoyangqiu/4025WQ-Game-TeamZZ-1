@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Game.Helpers
 {
+    /// <summary>
+    /// Helper for CharacterClass Enum class
+    /// </summary>
     static class CharacterClassEnumHelper
     {
 
