@@ -9,11 +9,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Game.Views
 {
-    
+    /// <summary>
+    /// Character Create Page
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class CharacterCreatePage : ContentPage
     {
+        // the character view model
         GenericViewModel<CharacterModel> ViewModel { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="data"></param>
         public CharacterCreatePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
@@ -61,24 +69,6 @@ namespace Game.Views
         async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
-        }
-
-        private bool IsEmptyName()
-        {
-            if(ViewModel.Data.Name.Length == 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool IsValidClass()
-        {
-            if (ViewModel.Data.CharacterClass == CharacterClassEnum.Fighter || ViewModel.Data.CharacterClass == CharacterClassEnum.Cleric)
-            {
-                return true;
-            }
-            return false;
         }
 
     }
