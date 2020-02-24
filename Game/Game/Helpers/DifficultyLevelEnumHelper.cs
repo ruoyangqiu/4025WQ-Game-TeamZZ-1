@@ -10,13 +10,25 @@ namespace Game.Helpers
     {
         /// <summary>
         /// Returns a list of strings of the enum for Difficulty level
+        /// </summary>
+        public static List<string> GetList
+        {
+            get
+            {
+                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList();
+                return myList;
+            }
+        }
+
+        /// <summary>
+        /// Returns a list of strings of the enum for Difficulty level
         /// Removes the unknown
         /// </summary>
         public static List<string> GetListDifficulty
         {
             get
             {
-                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList();
+                var myList = Enum.GetNames(typeof(DifficultyLevelEnum)).ToList().Where(m => m.ToString().Equals("Unknown") == false).ToList();
                 return myList;
             }
         }
