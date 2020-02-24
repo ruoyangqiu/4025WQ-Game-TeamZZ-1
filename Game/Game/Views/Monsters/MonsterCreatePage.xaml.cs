@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Game.Views
 {
+    /// <summary>
+    /// Create Monster
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class MonsterCreatePage : ContentPage
     {
