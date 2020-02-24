@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Game.Models
 {
+    /// <summary>
+    /// The Type of Characters
+    /// </summary>
     public enum CharacterClassEnum
     {
         Unknown = 0,
