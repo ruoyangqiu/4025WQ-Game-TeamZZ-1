@@ -60,6 +60,7 @@ namespace Game.ViewModels
             // Register the Create Message
             MessagingCenter.Subscribe<MonsterCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
             {
+                data.ChangeAttributeByDifficultyLevel();
                 await CreateAsync(data as MonsterModel);
             });
 
