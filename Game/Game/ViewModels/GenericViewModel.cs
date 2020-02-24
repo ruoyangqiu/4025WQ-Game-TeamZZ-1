@@ -2,6 +2,9 @@
 
 namespace Game.ViewModels
 {
+    /// <summary>
+    /// Generic View Model
+    /// </summary>
     public class GenericViewModel<T> : BaseViewModel<DefaultModel> where T: class
     {
         /// <summary>
