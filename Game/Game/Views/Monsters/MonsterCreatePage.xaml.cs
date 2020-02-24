@@ -59,9 +59,7 @@ namespace Game.Views
                 await DisplayAlert("Alert", "You need to enter a name!", "OK");
                 return;
             }
-            if(ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Easy &&
-                ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Medium &&
-                ViewModel.Data.DifficultyLevel != Models.Enum.DifficultyLevelEnum.Hard)
+            if(ViewModel.Data.DifficultyLevel == Models.Enum.DifficultyLevelEnum.Unknown)
             {
                 await DisplayAlert("Alert", "You need to select a Difficulty!", "OK");
                 return;
