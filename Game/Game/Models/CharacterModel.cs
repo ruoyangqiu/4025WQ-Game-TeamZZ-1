@@ -111,7 +111,31 @@ namespace Game.Models
         // Get attack value
         public int GetAttack()
         {
-            return Attack;
+
+            var myReturn = Attack;
+
+            myReturn += GetItemAttack();
+
+            myReturn += GetLevelBonusAttack();
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemAttack()
+        {
+            return GetItemBonus(AttributeEnum.Attack);
+        }
+
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusAttack()
+        {
+            return LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
         }
 
         #endregion Attack
