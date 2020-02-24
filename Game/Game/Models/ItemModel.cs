@@ -75,7 +75,9 @@ namespace Game.Models
             Damage = newData.Damage;
         }
 
+        // <summary>
         // Helper to combine the attributes into a single line, to make it easier to display the item as a string
+        // <summary>
         public string FormatOutput()
         {
             var myReturn = Name + " , " +

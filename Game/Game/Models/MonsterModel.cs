@@ -262,13 +262,13 @@ namespace Game.Models
 
         #endregion Speed
 
-        // get the Dice to roll for the weapon used 
+        // Get the Dice to roll for the weapon used 
         public int GetDamageDice()
         {
             return 0;
         }
 
-        // get the calculated damage value this weapon rolled 
+        // Get the calculated damage value this weapon rolled 
         public int GetDamageRollValue()
         {
             return 0;
