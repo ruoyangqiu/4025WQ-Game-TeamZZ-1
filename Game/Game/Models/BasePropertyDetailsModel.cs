@@ -10,5 +10,31 @@ namespace Game.Models
     /// </summary>
     class BasePropertyDetailsModel
     {
+        // Base Attack 
+        public int Attack;
+
+        // Base Defense
+        public int Defense;
+
+        // Base Speed
+        public int Speed;
+
+        // Base MaxHealth
+        public int MaxHealth;
+
+        /// <summary>
+        /// Create a new BasePeoperty with data passed in
+        /// </summary>
+        /// <param name="attack"></param>
+        /// <param name="defense"></param>
+        /// <param name="speed"></param>
+        /// <param name="maxhealth"></param>
+        public BasePropertyDetailsModel(int attack, int defense, int speed, int maxhealth)
+        {
+            Attack = attack;
+            Defense = defense;
+            Speed = speed;
+            MaxHealth = maxhealth;
+        }
     }
 }
