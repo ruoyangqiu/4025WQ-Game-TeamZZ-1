@@ -33,7 +33,7 @@ namespace Game.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
-            if (ViewModel.Data.Name == "")
+            if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
                 await DisplayAlert("Alert", "You need to enter a name", "OK");
                 return;
