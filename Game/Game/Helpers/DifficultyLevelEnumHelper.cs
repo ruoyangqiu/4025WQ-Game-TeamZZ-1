@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Game.Helpers
 {
+    /// <summary>
+    /// Helper for DifficultyLevelEnum
+    /// </summary>
     static class DifficultyLevelEnumHelper
     {
         /// <summary>
