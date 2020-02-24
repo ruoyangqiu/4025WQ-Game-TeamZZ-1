@@ -1,4 +1,5 @@
-﻿using Game.Services;
+﻿using Game.Helpers;
+using Game.Services;
 using SQLite;
 namespace Game.Models
 {
@@ -61,8 +62,11 @@ namespace Game.Models
             Name = newData.Name;
             Description = newData.Description;
             CharacterClass = newData.CharacterClass;
+
+            ChangeAttributeByClass();
+
             Level = newData.Level;
-            ChangeAttributeByLevel();
+            
 
             Head = newData.Head;
             HeadId = Head == null ? "" : Head.Id;
@@ -192,6 +196,27 @@ namespace Game.Models
                 }
             }
             
+        }
+
+        /// <summary>
+        /// Change the base Property of Character base on class
+        /// </summary>
+        public void ChangeAttributeByClass()
+        {
+            BasePropertyDetailsModel LittleCharacter = new BasePropertyDetailsModel(1, 1, 1, 5);
+            if (CharacterClass == CharacterClassEnum.Fighter)
+            {
+                LittleCharacter = BasePropertyHelper.Instance.CharacterClassBase[CharacterClassEnum.Fighter];
+            }
+
+            if (CharacterClass == CharacterClassEnum.Fighter)
+            {
+                LittleCharacter = BasePropertyHelper.Instance.CharacterClassBase[CharacterClassEnum.Cleric];
+            }
+            Attack = LittleCharacter.Attack;
+            Defense = LittleCharacter.Defense;
+            Speed = LittleCharacter.Speed;
+            MaxHealth = LittleCharacter.MaxHealth;
         }
     }
 }
