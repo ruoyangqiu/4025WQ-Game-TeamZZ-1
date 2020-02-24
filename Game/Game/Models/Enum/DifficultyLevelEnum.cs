@@ -11,6 +11,7 @@ namespace Game.Models.Enum
     {
         // Not specified
         Unknown = 0,
+
         // The easiest level of Monster, easy to kill, low damage to character
         Easy = 10,
 
