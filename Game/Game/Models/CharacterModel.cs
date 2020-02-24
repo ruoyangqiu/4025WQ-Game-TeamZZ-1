@@ -119,11 +119,32 @@ namespace Game.Models
             return Defense;
         }
 
+        #region MaxHealth
+
         // Get maxhealth value
         public int GetMaxHealth()
         {
             return MaxHealth;
         }
+
+        /// <summary>
+        /// Get the bonus MaxHealth from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemMaxHealth()
+        {
+            return GetItemBonus(AttributeEnum.MaxHealth);
+        }
+
+        /// <summary>
+        /// Calculate MaxHealth bonus based on level
+        /// </summary>
+        public int GetLevelBonusMaxHealth()
+        {
+            return MaxHealthPerLevel * (Level - 1);
+        }
+        #endregion MaxHealth
+
 
         // Get currenthealth value
         public int GetCurrrnetHealth()
@@ -169,25 +190,86 @@ namespace Game.Models
             return Level;
         }
 
+        
+
+        #region GetItemBonus
+
         /// <summary>
-        /// Calculate MaxHealth bonus based on level
+        /// Get Bonus value from Item of given attribute
         /// </summary>
-        public int LevelBonusMaxHealth()
+        /// <param name="attributeenum"></param>
+        /// <returns></returns>
+        public int GetItemBonus(AttributeEnum attributeenum)
         {
-            return MaxHealthPerLevel * (Level - 1);
+            var myReturn = 0;
+            ItemModel myItem;
+
+            myItem = Head;
+            if(myItem != null)
+            {
+                if(myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = Necklace;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = PrimaryHand;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = OffHand;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = LeftFinger;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = RightFinger;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = Feet;
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeenum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+            return myReturn;
         }
 
-        // Helper to change attrributes based on current level
-        private void ChangeAttributeByLevel()
-        {
-            if(Level <= 20)
-            {
-                Attack = LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
-                Defense = LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
-                Speed = LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
-                
-            }     
-        }
+        #endregion GetItemBonus
 
         /// <summary>
         /// Change the base Property of Character base on class
