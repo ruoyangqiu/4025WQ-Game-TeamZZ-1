@@ -46,8 +46,8 @@ namespace Game.Views
                 ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
             }
 
-            // If user do not select a location, display alert
-            if (ViewModel.Data.Name == "")
+            // If user do not enter a name, display alert
+            if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
                 await DisplayAlert("Alert", "Please enter a name", "OK");
                 return;
