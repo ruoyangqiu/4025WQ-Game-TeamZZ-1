@@ -60,6 +60,7 @@ namespace Game.ViewModels
             // Register the Create Message
             MessagingCenter.Subscribe<CharacterCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
             {
+                data.ChangeAttributeByClass();
                 await CreateAsync(data as CharacterModel);
             });
 
