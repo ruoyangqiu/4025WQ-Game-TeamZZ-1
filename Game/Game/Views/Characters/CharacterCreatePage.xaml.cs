@@ -40,7 +40,7 @@ namespace Game.Views
             }
 
             // If the image in the data box is empty, use the default one..
-            if(!IsValidClass())
+            if(ViewModel.Data.CharacterClass == CharacterClassEnum.Unknown)
             {
                 await DisplayAlert("Alert", "You need to select a Class", "OK");
                 return;
