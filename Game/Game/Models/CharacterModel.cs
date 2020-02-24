@@ -151,9 +151,7 @@ namespace Game.Models
         /// </summary>
         public void ScaleLevelUp()
         {
-            Level = Level + 1;
-            ChangeAttributeByLevel();
-            CurrentHealth = MaxHealth;
+            ScaleByLevel(Level + 1);
         }
 
         /// <summary>
@@ -164,13 +162,8 @@ namespace Game.Models
         /// <param name="newData">The target level</param>
         public int ForceUpToValue(int value)
         {
-            if(value > 20)
-            {
-                return -1;
-            }
-            Level = value;
-            ChangeAttributeByLevel();
-            CurrentHealth = MaxHealth;
+            ScaleByLevel(value);
+            Experience = LevelTableHelper.Instance.LevelDetailsList[Level].Experience;
             return Level;
         }
 
@@ -217,6 +210,22 @@ namespace Game.Models
             Defense = LittleCharacter.Defense;
             Speed = LittleCharacter.Speed;
             MaxHealth = LittleCharacter.MaxHealth;
+        }
+
+        /// <summary>
+        /// Scale Level to the input level
+        /// And calculate current health
+        /// </summary>
+        /// <param name="level"></param>
+        private void ScaleByLevel(int level)
+        {
+            if (level < 20)
+            {
+                int HealthOffset = GetMaxHealth() - CurrentHealth;
+                Level = level;
+                CurrentHealth = GetMaxHealth() - HealthOffset;
+            }
+    
         }
     }
 }
