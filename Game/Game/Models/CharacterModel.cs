@@ -209,7 +209,7 @@ namespace Game.Models
                 LittleCharacter = BasePropertyHelper.Instance.CharacterClassBase[CharacterClassEnum.Fighter];
             }
 
-            if (CharacterClass == CharacterClassEnum.Fighter)
+            if (CharacterClass == CharacterClassEnum.Cleric)
             {
                 LittleCharacter = BasePropertyHelper.Instance.CharacterClassBase[CharacterClassEnum.Cleric];
             }
