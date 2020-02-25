@@ -14,6 +14,10 @@ namespace Game.Models
     {
         #region Attributes
 
+        // The type of player, character comes before monster
+        [Ignore]
+        public PlayerTypeEnum PlayerType { get; set; } = PlayerTypeEnum.Unknown;
+
         // Value of attack attribute of the Entity
         public int Attack { get; set; } = 1;
 
@@ -197,7 +201,7 @@ namespace Game.Models
 
         #region CurrentHealth
         // Get currenthealth value
-        public int GetCurrrnetHealth()
+        public int GetCurrentHealth()
         {
             return CurrentHealth;
         }
