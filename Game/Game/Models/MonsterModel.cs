@@ -111,23 +111,7 @@ namespace Game.Models
             return myReturn.Trim();
         }
 
-        // The damage monster receive
-        public bool TakeDamage(int damage)
-        {
-            if(damage < 0)
-            {
-                return false;
-            }
-
-            CurrentHealth = CurrentHealth - damage;
-            if(CurrentHealth <= 0)
-            {
-                CurrentHealth = 0;
-                CauseDeath();
-            }
-
-            return true;
-        }
+        
 
         // The Experience gain by a character
         public int GiveExperience()
@@ -135,14 +119,7 @@ namespace Game.Models
             return 0;
         }
 
-        // Death
-        // Alivce turn to false
-        public bool CauseDeath()
-        {
-            Alive = false;
-            return Alive;
-        }
-
+        
         #region Attack
         // Get attack value
         public int GetAttack()
@@ -368,6 +345,7 @@ namespace Game.Models
 
         #endregion GetItemBonus
 
+        #region BattleMethod
 
         // Get the calculated damage value this weapon rolled 
         public int GetDamageRollValue()
@@ -386,6 +364,34 @@ namespace Game.Models
 
             return myReturn;
         }
+
+        // The damage monster receive
+        public bool TakeDamage(int damage)
+        {
+            if (damage < 0)
+            {
+                return false;
+            }
+
+            CurrentHealth = CurrentHealth - damage;
+            if (CurrentHealth <= 0)
+            {
+                CurrentHealth = 0;
+                CauseDeath();
+            }
+
+            return true;
+        }
+
+        // Death
+        // Alivce turn to false
+        public bool CauseDeath()
+        {
+            Alive = false;
+            return Alive;
+        }
+
+        #endregion BattleMethod
 
 
         // Helper to change attrributes based on cDifficultylevel
