@@ -69,7 +69,7 @@ namespace Game.Views
                 return;
             }
             // If input difficulty level is unknown, diaplay alert and return
-            if (ViewModel.Data.DifficultyLevel == Models.Enum.DifficultyLevelEnum.Unknown)
+            if (ViewModel.Data.DifficultyLevel == Models.DifficultyLevelEnum.Unknown)
             {
                 await DisplayAlert("Alert", "You need to select a Difficulty!", "OK");
                 return;
