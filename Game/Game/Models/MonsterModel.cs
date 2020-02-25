@@ -264,9 +264,15 @@ namespace Game.Models
         // Return the Damage value, it is 25% of the Level rounded up
         public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
 
-        
 
-        #region GetItemBonus
+
+        #region Items
+
+        // Get the Item at a known string location (head, foot etc.)
+        public ItemModel GetItem(string itemString)
+        {
+            return ItemIndexViewModel.Instance.GetItem(itemString);
+        }
 
         /// <summary>
         /// Get Bonus value from Item of given attribute
@@ -343,7 +349,7 @@ namespace Game.Models
             return myReturn;
         }
 
-        #endregion GetItemBonus
+        #endregion Items
 
         #region BattleMethod
 
