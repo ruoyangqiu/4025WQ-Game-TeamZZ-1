@@ -9,8 +9,8 @@
 
             <Label Text="Items Found..."></Label>
 
-            <Image Source="items.png" Style="{StaticResource ImageMediumStyle}"></Image>
-            <Image Source="items.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            <Image Source="https://i.ibb.co/KxFtsHr/01019.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            <Image Source="https://i.ibb.co/9WNvJ56/01015.png" Style="{StaticResource ImageMediumStyle}"></Image>
 
             <Button Clicked="PickItems_Clicked" Text="Pick Items"></Button>
 
