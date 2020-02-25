@@ -29,13 +29,13 @@ namespace Game.Views
             menuItems = new List<HomeMenuItemModel>
             {
                 new HomeMenuItemModel {Id = MenuItemEnum.Game, Title="Game" },
-                new HomeMenuItemModel {Id = MenuItemEnum.About, Title="About" },
                 new HomeMenuItemModel {Id = MenuItemEnum.Village, Title="Town" },
                 new HomeMenuItemModel {Id = MenuItemEnum.Battle, Title="Adventure" },
-                new HomeMenuItemModel {Id = MenuItemEnum.Characters, Title="Characters" },
-                new HomeMenuItemModel {Id = MenuItemEnum.Monsters, Title="Monsters" },
-                new HomeMenuItemModel {Id = MenuItemEnum.Items, Title="Items" },
-                new HomeMenuItemModel {Id = MenuItemEnum.Score, Title="Score" },
+                new HomeMenuItemModel {Id = MenuItemEnum.About, Title="About" },
+                //new HomeMenuItemModel {Id = MenuItemEnum.Characters, Title="Characters" },
+                //new HomeMenuItemModel {Id = MenuItemEnum.Monsters, Title="Monsters" },
+                //new HomeMenuItemModel {Id = MenuItemEnum.Items, Title="Items" },
+                //new HomeMenuItemModel {Id = MenuItemEnum.Score, Title="Score" },
             };
 
             // Register the ListView for the Menu and the Item Selected call back
