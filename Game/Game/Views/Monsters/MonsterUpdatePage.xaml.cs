@@ -38,21 +38,21 @@ namespace Game.Views
 
             ImagePic.SelectedItem = data.Data.ImageURI;
 
-            PrimaryHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand));
+            PrimaryHandPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand).ToList();
 
-            HeadPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head));
+            HeadPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Head).ToList();
 
-            NecklacePic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Necklass));
+            NecklacePic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Necklass).ToList();
 
-            OffHandPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.OffHand));
+            OffHandPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.OffHand).ToList();
 
-            RightFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.RightFinger));
+            RightFingerPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.RightFinger).ToList();
 
-            LeftFingerPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.LeftFinger));
+            LeftFingerPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.LeftFinger).ToList();
 
-            FeetPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Feet));
+            FeetPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.Where(a => a.Location == ItemLocationEnum.Feet).ToList();
 
-            UniqueItemPic.ItemsSource = new List<ItemModel>(ItemIndexViewModel.Instance.Dataset);
+            UniqueItemPic.ItemsSource = ItemIndexViewModel.Instance.Dataset.ToList();
         }
 
         /// <summary>
