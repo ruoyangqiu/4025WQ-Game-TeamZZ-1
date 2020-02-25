@@ -10,19 +10,20 @@
             <Label Text="Characters..."></Label>
 
             <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/QFmnbSQ/00951.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/txcMq2f/00949.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/8j9FGvt/00955.png" Style="{StaticResource ImageMediumStyle}"></Image>
             </StackLayout>
             
             <Label Text="Monsters..."></Label>
 
             <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/JdPLTBs/01148.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/JdPLTBs/01148.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/JdPLTBs/01148.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/dMJyQB1/01125.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/dMJyQB1/01125.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/dMJyQB1/01125.png" Style="{StaticResource ImageMediumStyle}"></Image>
             </StackLayout>
 
             <Button Clicked="BeginButton_Clicked" Text="Begin"></Button>

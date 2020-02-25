@@ -6,9 +6,16 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}">
             <Label Text="Battle Page..."></Label>
-
-            <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
-            <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Image Source="https://i.ibb.co/QFmnbSQ/00951.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/8j9FGvt/00955.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/Yfm0Fkx/00944.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            </StackLayout>
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Image Source="https://i.ibb.co/Kw9j2RY/01124.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/SrMKM5r/01143.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="https://i.ibb.co/Kw9j2RY/01124.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            </StackLayout>
 
             <Button Clicked="AttackButton_Clicked" Text="Attack"></Button>
 

@@ -7,7 +7,18 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}">
             <Label Text="Pick Characters Page..."></Label>
-
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Image Source="https://i.ibb.co/QFmnbSQ/00951.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Switch IsToggled="False"/>
+            </StackLayout>
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Image Source="https://i.ibb.co/txcMq2f/00949.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Switch IsToggled="False"/>
+            </StackLayout>
+            <StackLayout Style="{StaticResource HorizontalStack}">
+                <Image Source="https://i.ibb.co/8j9FGvt/00955.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Switch IsToggled="False"/>
+            </StackLayout>
             <Button Clicked="BattleButton_Clicked" Text="Begin Battle"></Button>
         </StackLayout>
         
