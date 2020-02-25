@@ -44,6 +44,9 @@ namespace Game.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            CharacterClass = data.CharacterClass;
+            DifficultyLevel = data.DifficultyLevel;
+
         }
 
         /// <summary>
@@ -60,6 +63,7 @@ namespace Game.Models
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
+            CharacterClass = data.CharacterClass;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetCurrentHealth();
@@ -72,7 +76,6 @@ namespace Game.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
-
         }
 
         /// <summary>
@@ -102,7 +105,7 @@ namespace Game.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
-            //DifficultyLevel = data.DifficultyLevel;
+            DifficultyLevel = data.DifficultyLevel;
         }
 
         //public override string FormatOutput()
