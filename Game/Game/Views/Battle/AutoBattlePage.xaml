@@ -6,10 +6,11 @@
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand">
-            <Label Style="{StaticResource CenterMessageStyle}" Text="7 Characters Available"></Label>
-            <Label  Style="{StaticResource CenterMessageStyle}" Text="7 Monsters Available"></Label>
+            <Label Text="Auto Battle Page" Style="{StaticResource HeaderStyle}"/>
+            
             <StackLayout Style="{StaticResource CardImageTextBox}">
-
+                <Label Style="{StaticResource LabelStyle}" Text="7 Characters Available"></Label>
+                <Label  Style="{StaticResource LabelStyle}" Text="7 Monsters Available"></Label>
                 <ImageButton
                         Source="https://i.ibb.co/F0m0Nt4/00034.png"
                         Style="{StaticResource ImageLargeStyle}"
