@@ -9,9 +9,6 @@ namespace Game.Models
     public class CharacterModel : EntityModel<CharacterModel>
     {
 
-        [Ignore]
-        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
-
         /// <summary>
         /// Default CharacterModel
         /// Establish the Default Image Path
