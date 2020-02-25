@@ -352,7 +352,7 @@ namespace Game.Models
         {
             var myReturn = 0;
 
-            var myItem = PrimaryHand;
+            var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHandId);
             if (myItem != null)
             {
                 // Dice of the weapon.  So sword of Damage 10 is d10
