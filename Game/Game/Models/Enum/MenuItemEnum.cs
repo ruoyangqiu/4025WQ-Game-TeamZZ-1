@@ -6,27 +6,27 @@
     public enum MenuItemEnum
     {
         //Battle Page
-        Battle,
+        Battle = 1,
 
         //Village
-        Village,
+        Village = 2,
 
         //Score
-        Score,
+        Score = 3,
 
         //Characters
-        Characters,
+        Characters = 4,
 
         //Monsters
-        Monsters,
+        Monsters = 5,
 
         //Items
-        Items,
+        Items = 6,
 
         //Game
-        Game,
+        Game = 7,
 
         //About
-        About
+        About = 8
     }
 }

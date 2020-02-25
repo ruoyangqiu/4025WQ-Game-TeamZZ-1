@@ -53,11 +53,11 @@ namespace Game.Models
         /// Update the Record
         /// </summary>
         /// <param name="newData">The new data</param>
-        public override void Update(CharacterModel newData)
+        public override bool Update(CharacterModel newData)
         {
             if (newData == null)
             {
-                return;
+                return false;
             }
 
             // Update all the fields in the Data, except for the Id and guid
@@ -90,6 +90,8 @@ namespace Game.Models
 
             Feet = newData.Feet;
             FeetId = Feet == null ? "" : Feet.Id;
+
+            return true;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string

@@ -57,11 +57,11 @@ namespace Game.Models
         /// Update the Record
         /// </summary>
         /// <param name="newData">The new data</param>
-        public override void Update(MonsterModel newData)
+        public override bool Update(MonsterModel newData)
         {
             if (newData == null)
             {
-                return;
+                return false;
             }
 
             // Update all the fields in the Data, except for the Id and guid
@@ -96,7 +96,8 @@ namespace Game.Models
             UniqueItemId = UniqueItem == null ? "" : UniqueItem.Id;
 
             DropRate = newData.DropRate;
-            
+
+            return true;
         }
 
 
