@@ -1,7 +1,9 @@
 ﻿using Game.Helpers;
 using Game.Models.Enum;
 using Game.Services;
+using Game.ViewModels;
 using SQLite;
+using System;
 
 namespace Game.Models
 {
@@ -225,11 +227,14 @@ namespace Game.Models
         }
         #endregion MaxHealth
 
+        #region CurrentHealth
         // Get currenthealth value
         public int GetCurrrnetHealth()
         {
             return CurrentHealth;
         }
+
+        #endregion CurrentHealth
 
         #region Speed
         // Get Speed value
@@ -263,17 +268,12 @@ namespace Game.Models
 
         #endregion Speed
 
-        // Get the Dice to roll for the weapon used 
-        public int GetDamageDice()
-        {
-            return 0;
-        }
 
-        // Get the calculated damage value this weapon rolled 
-        public int GetDamageRollValue()
-        {
-            return 0;
-        }
+        [Ignore]
+        // Return the Damage value, it is 25% of the Level rounded up
+        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
+
+        
 
         #region GetItemBonus
 
@@ -353,6 +353,26 @@ namespace Game.Models
         }
 
         #endregion GetItemBonus
+
+
+        // Get the calculated damage value this weapon rolled 
+        public int GetDamageRollValue()
+        {
+            var myReturn = 0;
+
+            var myItem = PrimaryHand;
+            if (myItem != null)
+            {
+                // Dice of the weapon.  So sword of Damage 10 is d10
+                myReturn += DiceHelper.RollDice(1, myItem.Damage);
+            }
+
+            // Add in the Level as extra damage per game rules
+            myReturn += GetDamageLevelBonus;
+
+            return myReturn;
+        }
+
 
         // Helper to change attrributes based on cDifficultylevel
         public void ChangeAttributeByDifficultyLevel()
