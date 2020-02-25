@@ -9,6 +9,7 @@ namespace Game.Models
     /// </summary>
     public enum CharacterClassEnum
     {
+        // Not Specified
         Unknown = 0,
 
         // Fighte has highier Attack when created
