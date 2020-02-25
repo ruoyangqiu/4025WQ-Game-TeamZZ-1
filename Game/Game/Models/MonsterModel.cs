@@ -112,9 +112,21 @@ namespace Game.Models
         }
 
         // The damage monster receive
-        public int TakeDamage(int damage)
+        public bool TakeDamage(int damage)
         {
-            return damage;
+            if(damage < 0)
+            {
+                return false;
+            }
+
+            CurrentHealth = CurrentHealth - damage;
+            if(CurrentHealth <= 0)
+            {
+                CurrentHealth = 0;
+                Alive = false;
+            }
+
+            return true;
         }
 
         // The Experience gain by a character
