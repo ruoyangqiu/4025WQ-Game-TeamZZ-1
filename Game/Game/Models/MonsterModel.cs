@@ -12,8 +12,6 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : EntityModel<MonsterModel>
     {
-        // Difficulty for this monster
-        public DifficultyLevelEnum DifficultyLevel { get; set; } = DifficultyLevelEnum.Unknown;
 
         // The UniqueItem the Monster will drop
         [Ignore]
@@ -21,11 +19,6 @@ namespace Game.Models
 
         // The Rate the item will drop
         public double DropRate { get; set; } = 1;
-
-        // The scale to buff Monster based on Level
-        private int MonsterScale { get; set; } = 1;
-
-        public const int MaxHealthPerLevel = 5;
 
         /// <summary>
         /// Default MonsterModel
