@@ -4,6 +4,7 @@ using Game.Services;
 using Game.ViewModels;
 using SQLite;
 using System;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -274,6 +275,150 @@ namespace Game.Models
             return ItemIndexViewModel.Instance.GetItem(itemString);
         }
 
+        // Drop All Items
+        // Return a list of items for the pool of items
+        public List<ItemModel> DropAllItems()
+        {
+            var myReturn = new List<ItemModel>();
+
+            // Drop all Items
+            ItemModel myItem;
+
+            myItem = RemoveItem(ItemLocationEnum.Head);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Necklass);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.PrimaryHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.OffHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.RightFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.LeftFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Feet);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            return myReturn;
+        }
+
+        // Remove ItemModel from a set location
+        // Does this by adding a new ItemModel of Null to the location
+        // This will return the previous ItemModel, and put null in its place
+        // Returns the ItemModel that was at the location
+        // Nulls out the location
+        public ItemModel RemoveItem(ItemLocationEnum itemlocation)
+        {
+            var myReturn = AddItem(itemlocation, null);
+
+            // Save Changes
+            return myReturn;
+        }
+
+        // Get the ItemModel at a known string location (head, foot etc.)
+        public ItemModel GetItemByLocation(ItemLocationEnum itemLocation)
+        {
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    return GetItem(HeadId);
+
+                case ItemLocationEnum.Necklass:
+                    return GetItem(NecklaceId);
+
+                case ItemLocationEnum.PrimaryHand:
+                    return GetItem(PrimaryHandId);
+
+                case ItemLocationEnum.OffHand:
+                    return GetItem(OffHandId);
+
+                case ItemLocationEnum.RightFinger:
+                    return GetItem(RightFingerId);
+
+                case ItemLocationEnum.LeftFinger:
+                    return GetItem(LeftFingerId);
+
+                case ItemLocationEnum.Feet:
+                    return GetItem(FeetId);
+            }
+
+            return null;
+        }
+
+        // Add ItemModel
+        // Looks up the ItemModel
+        // Puts the ItemModel ID as a string in the location slot
+        // If ItemModel is null, then puts null in the slot
+        // Returns the ItemModel that was in the location
+        public ItemModel AddItem(ItemLocationEnum itemLocation, string itemID)
+        {
+            var myReturn = GetItemByLocation(itemLocation);
+
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Feet:
+                    FeetId = itemID;
+                    break;
+
+                case ItemLocationEnum.Head:
+                    HeadId = itemID;
+                    break;
+
+                case ItemLocationEnum.Necklass:
+                    NecklaceId = itemID;
+                    break;
+
+                case ItemLocationEnum.PrimaryHand:
+                    PrimaryHandId = itemID;
+                    break;
+
+                case ItemLocationEnum.OffHand:
+                    OffHandId = itemID;
+                    break;
+
+                case ItemLocationEnum.RightFinger:
+                    RightFingerId = itemID;
+                    break;
+
+                case ItemLocationEnum.LeftFinger:
+                    LeftFingerId = itemID;
+                    break;
+
+                default:
+                    myReturn = null;
+                    break;
+            }
+
+            return myReturn;
+        }
+
         /// <summary>
         /// Get Bonus value from Item of given attribute
         /// </summary>
@@ -348,6 +493,66 @@ namespace Game.Models
             }
             return myReturn;
         }
+
+        /// <summary>
+        /// Get the Items the Character has
+        /// </summary>
+        /// <returns></returns>
+        public string ItemSlotsFormatOutput()
+        {
+            var myReturn = "";
+
+            var data = ItemIndexViewModel.Instance.GetItem(UniqueItemId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(HeadId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(NecklaceId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(PrimaryHandId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(OffHandId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(RightFingerId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(LeftFingerId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(FeetId);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            return myReturn.Trim();
+        }
+
 
         #endregion Items
 
