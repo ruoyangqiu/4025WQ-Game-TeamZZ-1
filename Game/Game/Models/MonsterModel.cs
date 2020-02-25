@@ -123,7 +123,7 @@ namespace Game.Models
             if(CurrentHealth <= 0)
             {
                 CurrentHealth = 0;
-                Alive = false;
+                CauseDeath();
             }
 
             return true;
@@ -135,10 +135,12 @@ namespace Game.Models
             return 0;
         }
 
-        // Check if the Monster deaad
-        public bool isMonsterAlive()
+        // Death
+        // Alivce turn to false
+        public bool CauseDeath()
         {
-            return CurrentHealth > 0;
+            Alive = false;
+            return Alive;
         }
 
         #region Attack
