@@ -39,6 +39,14 @@ namespace Game.Models
         // Total experience avaiable on this monster
         public int Experience { get; set; } = 0;
 
+        [Ignore]
+        // Character Class
+        public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
+
+        [Ignore]
+        // Difficulty for this monster
+        public DifficultyLevelEnum DifficultyLevel { get; set; } = DifficultyLevelEnum.Unknown;
+
         #endregion Attributes
 
         // Check if the Entity is alive in the game
