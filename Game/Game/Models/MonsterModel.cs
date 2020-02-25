@@ -279,69 +279,69 @@ namespace Game.Models
         /// </summary>
         /// <param name="attributeenum"></param>
         /// <returns></returns>
-        public int GetItemBonus(AttributeEnum attributeenum)
+        public int GetItemBonus(AttributeEnum attributeEnum)
         {
             var myReturn = 0;
             ItemModel myItem;
 
-            myItem = Head;
+            myItem = GetItem(HeadId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = Necklace;
+            myItem = GetItem(NecklaceId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = PrimaryHand;
+            myItem = GetItem(PrimaryHandId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = OffHand;
+            myItem = GetItem(OffHandId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = LeftFinger;
+            myItem = GetItem(RightFingerId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = RightFinger;
+            myItem = GetItem(LeftFingerId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
             }
 
-            myItem = Feet;
+            myItem = GetItem(FeetId);
             if (myItem != null)
             {
-                if (myItem.Attribute == attributeenum)
+                if (myItem.Attribute == attributeEnum)
                 {
                     myReturn += myItem.Value;
                 }
