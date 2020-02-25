@@ -28,7 +28,7 @@
                 <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
 
                 <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
-
+               
                 <Grid
                     RowSpacing="1"
                     ColumnSpacing="2"
@@ -88,7 +88,7 @@
                             Minimum="1"
                             Value="{Binding Data.Level, Mode=TwoWay}"
                             ValueChanged="Level_OnStepperValueChanged"/>
-
+                        
                     </StackLayout>
 
                     

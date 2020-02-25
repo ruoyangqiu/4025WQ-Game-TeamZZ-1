@@ -101,9 +101,51 @@ namespace Game.Views
         void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             LevelValue.Text = String.Format("{0}", e.NewValue);
+            ManageHealth();
         }
 
-        
+        /// <summary>
+        /// Change the Level Picker
+        /// </summary>
+        public void ManageHealth()
+        {
+            // Roll for new HP
+            ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
 
+        }
+
+        /// <summary>
+        /// Redo the Binding to cause a refresh
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdatePageBindingContext()
+        {
+            // Temp store off the Level
+            var level = this.ViewModel.Data.Level;
+
+            // Clear the Binding and reset it
+            BindingContext = null;
+            BindingContext = this.ViewModel;
+
+            ManageHealth();
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Randomize the Character, keep the level the same
+        /// </summary>
+        /// <returns></returns>
+        public bool RandomizeCharacter()
+        {
+
+            ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
+
+            UpdatePageBindingContext();
+
+            return true;
+        }
+      
     }
 }

@@ -65,11 +65,11 @@ namespace Game.Models
             Description = newData.Description;
             CharacterClass = newData.CharacterClass;
 
-            ChangeAttributeByClass();
+            //ChangeAttributeByClass();
 
             Level = newData.Level;
-            
 
+            MaxHealth = newData.MaxHealth;
             Head = newData.Head;
             HeadId = Head == null ? "" : Head.Id;
 
