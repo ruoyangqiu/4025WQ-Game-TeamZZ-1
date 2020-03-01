@@ -1,6 +1,7 @@
 ﻿using Game.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Game.Engine
@@ -78,7 +79,14 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel AttackChoice(EntityInfoModel data)
         {
-            return data;
+            switch(data.PlayerType)
+            {
+                case PlayerTypeEnum.Monster:
+                    return SelectCharacterToAttack();
+                case PlayerTypeEnum.Character:
+                default:
+                    return SelectMonsterToAttack();
+            }
         }
 
         /// <summary>
@@ -87,7 +95,23 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel SelectCharacterToAttack()
         {
-            return null;
+            if (CharacterList == null)
+            {
+                return null;
+            }
+
+            if (CharacterList.Count < 1)
+            {
+                return null;
+            }
+
+            // Select the one with lowest currenthealth
+            var Defender = CharacterList
+                .Where(m => m.Alive)
+                .OrderBy(m => m.CurrentHealth)
+                .FirstOrDefault();
+            
+            return Defender;
         }
 
         /// <summary>
@@ -96,7 +120,23 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel SelectMonsterToAttack()
         {
-            return null;
+            if (MonsterList == null)
+            {
+                return null;
+            }
+
+            if (MonsterList.Count < 1)
+            {
+                return null;
+            }
+
+            // Select the one with highest attack
+            var Defender = MonsterList
+                .Where(m => m.Alive)
+                .OrderBy(m => m.Attack)
+                .LastOrDefault();
+
+            return Defender;
         }
 
         /// <summary>
