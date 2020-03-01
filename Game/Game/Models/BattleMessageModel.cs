@@ -50,5 +50,30 @@ namespace Game.Models
         public string htmlTail = @"</p></body></html>";
 
         #endregion Message Properties
+
+        /// <summary>
+        /// Reset BattleMessage Model
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearMessages()
+        {
+
+            PlayerType = PlayerTypeEnum.Unknown;
+            HitStatus = HitStatusEnum.Unknown;
+            AttackerName = string.Empty;
+            TargetName = string.Empty;
+            AttackStatus = string.Empty;
+            TurnMessage = string.Empty;
+            TurnMessageSpecial = string.Empty;
+            ExperienceEarned = string.Empty;
+            LevelUpMessage = string.Empty;
+
+            DamageAmount = 0;
+            CurrentHealth = 0;
+
+            return true;
+        }
+
+
     }
 }
