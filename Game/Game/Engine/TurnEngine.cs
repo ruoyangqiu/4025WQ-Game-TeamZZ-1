@@ -1,6 +1,7 @@
 ﻿using Game.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -140,13 +141,53 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// // MonsterModel Attacks CharacterModel
+        /// Attack Action Deatil
         /// </summary>
         /// <param name="Attacker"></param>
         /// <param name="Target"></param>
         /// <returns></returns>
         public bool TurnAsAttack(EntityInfoModel Attacker, EntityInfoModel Target)
         {
+            if(Attacker == null)
+            {
+                return false;
+            }
+
+            if(Target == null)
+            {
+                return false;
+            }
+
+            BattleMessageModel.ClearMessages();
+
+            CalculateAttackStatus(Attacker, Target);
+
+            switch(BattleMessageModel.HitStatus)
+            {
+                case HitStatusEnum.Miss:
+                    // It's a Miss
+                    
+                    break;
+
+                case HitStatusEnum.Hit:
+                    // It's a Hit
+
+                    BattleMessageModel.DamageAmount = Attacker.GetDamageRollValue();
+
+                    ApplyDamage(Target);
+
+                    BattleMessageModel.TurnMessageSpecial = BattleMessageModel.GetCurrentHealthMessage();
+
+                    // Check if the target dead. If dead, remove it
+
+                    RemoveIfDead(Target);
+
+                    // If Attacker is a Character, it should gain experience from Monster
+
+                    CalculateExperience(Attacker, Target);
+
+                    break;
+            }
             return true;
         }
 
@@ -156,7 +197,8 @@ namespace Game.Engine
         /// <param name="Target"></param>
         private void ApplyDamage(EntityInfoModel Target)
         {
-
+            Target.TakeDamage(BattleMessageModel.DamageAmount);
+            BattleMessageModel.CurrentHealth = Target.GetCurrentHealth();
         }
 
         /// <summary>
@@ -167,6 +209,18 @@ namespace Game.Engine
         /// <returns></returns>
         public HitStatusEnum CalculateAttackStatus(EntityInfoModel Attacker, EntityInfoModel Target)
         {
+            // Remember Current Player
+            BattleMessageModel.PlayerType = PlayerTypeEnum.Monster;
+
+            BattleMessageModel.TargetName = Target.Name;
+            BattleMessageModel.AttackerName = Attacker.Name;
+
+            //Set Attack and Defense
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.Level + Target.GetDefense();
+
+            BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+
             return BattleMessageModel.HitStatus;
         }
 
@@ -178,6 +232,21 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool CalculateExperience(EntityInfoModel Attacker, EntityInfoModel Target)
         {
+            if(Attacker.PlayerType == PlayerTypeEnum.Character)
+            {
+                var experienceEarned = Target.CalculateExperienceEarned(BattleMessageModel.DamageAmount);
+                BattleMessageModel.ExperienceEarned = " Earned " + experienceEarned + " points";
+
+                var levelup = Attacker.AddExperience(experienceEarned);
+                if(levelup)
+                {
+                    BattleMessageModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetMaxHealth();
+                    Debug.WriteLine(BattleMessageModel.LevelUpMessage);
+                }
+
+                // Add Experinece to the Score
+                BattleScore.ExperienceGainedTotal += experienceEarned;
+            }
             return true;
         }
 
@@ -187,7 +256,13 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool RemoveIfDead(EntityInfoModel Target)
         {
-            return true;
+            //Check if dead
+            if(Target.Alive == false)
+            {
+                TargetDied(Target);
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
