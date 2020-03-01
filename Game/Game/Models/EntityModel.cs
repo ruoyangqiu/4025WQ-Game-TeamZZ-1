@@ -108,6 +108,9 @@ namespace Game.Models
 
         #endregion ItemIds
 
+        public virtual string FormatOutput() { return ""; }
+
+        #region Basic Methods
         #region Attack
         // Get attack value
         public int GetAttack()
@@ -252,7 +255,7 @@ namespace Game.Models
         // Return the Damage value, it is 25% of the Level rounded up
         public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
 
-
+        #endregion Basic Methods
 
         #region Items
 
