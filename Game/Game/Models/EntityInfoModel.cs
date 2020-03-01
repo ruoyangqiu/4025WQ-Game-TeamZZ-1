@@ -11,18 +11,18 @@ namespace Game.Models
     /// 
     /// Constructor Player to Player used a T in Round
     /// </summary>
-    public class PlayerInfoModel : EntityModel<PlayerInfoModel>
+    public class EntityInfoModel : EntityModel<EntityInfoModel>
     {
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public PlayerInfoModel() { }
+        public EntityInfoModel() { }
 
         /// <summary>
         /// Copy from one PlayerInfoModel into Another
         /// </summary>
         /// <param name="data"></param>
-        public PlayerInfoModel(PlayerInfoModel data)
+        public EntityInfoModel(EntityInfoModel data)
         {
             PlayerType = data.PlayerType;
             Guid = data.Guid;
@@ -53,7 +53,7 @@ namespace Game.Models
         /// Create PlayerInfoModel from character
         /// </summary>
         /// <param name="data"></param>
-        public PlayerInfoModel(CharacterModel data)
+        public EntityInfoModel(CharacterModel data)
         {
             PlayerType = data.PlayerType;
             Guid = data.Guid;
@@ -82,7 +82,7 @@ namespace Game.Models
         /// Crate PlayerInfoModel from Monster
         /// </summary>
         /// <param name="data"></param>
-        public PlayerInfoModel(MonsterModel data)
+        public EntityInfoModel(MonsterModel data)
         {
             PlayerType = data.PlayerType;
             Guid = data.Guid;
