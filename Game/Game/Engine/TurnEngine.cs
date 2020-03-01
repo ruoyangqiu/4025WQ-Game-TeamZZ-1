@@ -55,6 +55,18 @@ namespace Game.Engine
         /// <returns></returns>
         public bool Attack(EntityInfoModel Attacker)
         {
+            if(BattleScore.AutoBattle)
+            {
+                // For attack, choose who
+                CurrentDefender = AttackChoice(Attacker);
+
+                if(CurrentDefender == null)
+                {
+                    return false;
+                }
+            }
+
+            TurnAsAttack(Attacker, CurrentDefender);
 
             return true;
         }
