@@ -8,7 +8,7 @@ namespace Game.Engine
     /// <summary>
     /// Hold data structure for battle engine
     /// </summary>
-    class BaseEngine
+    public class BaseEngine
     {
         #region Properties
         // Holds the official ScoreModel
