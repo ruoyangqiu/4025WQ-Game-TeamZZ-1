@@ -43,8 +43,11 @@ namespace Game.Engine
             // Choose Action.  Such as Move, Attack etc.
 
             // INFO: Teams, if you have other actions they would go here.
+            var result = Attack(Attacker);
 
-            return true;
+            BattleScore.TurnCount ++;
+
+            return result;
         }
 
         /// </summary>
