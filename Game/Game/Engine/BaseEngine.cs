@@ -15,7 +15,7 @@ namespace Game.Engine
         public ScoreModel BattleScore = new ScoreModel();
 
         // Holds the Battle Messages as they happen
-        public BattleMessageModel BattleMessagesModel = new BattleMessageModel();
+        public BattleMessageModel BattleMessageModel = new BattleMessageModel();
 
         // The Pool of items collected during the round as turns happen
         public List<ItemModel> ItemPool = new List<ItemModel>();

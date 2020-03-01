@@ -167,7 +167,7 @@ namespace Game.Engine
         /// <returns></returns>
         public HitStatusEnum CalculateAttackStatus(EntityInfoModel Attacker, EntityInfoModel Target)
         {
-            return BattleMessagesModel.HitStatus;
+            return BattleMessageModel.HitStatus;
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Game.Engine
         /// <returns></returns>
         public HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
         {
-            return BattleMessagesModel.HitStatus;
+            return BattleMessageModel.HitStatus;
         }
 
         /// <summary>
