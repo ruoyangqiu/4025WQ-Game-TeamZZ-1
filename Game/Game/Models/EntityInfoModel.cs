@@ -108,25 +108,25 @@ namespace Game.Models
             DifficultyLevel = data.DifficultyLevel;
         }
 
-        //public override string FormatOutput()
-        //{
-        //    var myReturn = string.Empty;
-        //    myReturn += Name;
-        //    myReturn += " , " + Description;
-        //    myReturn += " , Level : " + Level.ToString();
+        public override string FormatOutput()
+        {
+            var myReturn = string.Empty;
+            myReturn += Name;
+            myReturn += " , " + Description;
+            myReturn += " , Level : " + Level.ToString();
 
-        //    if (PlayerType == PlayerTypeEnum.Character)
-        //    {
-        //        myReturn += " , Total Experience : " + Experience;
-        //        myReturn += " , Damage : " + GetDamageTotalString;
-        //        myReturn += " , Attack :" + GetAttackTotal;
-        //        myReturn += " , Defense :" + GetDefenseTotal;
-        //        myReturn += " , Speed :" + GetSpeedTotal;
-        //    }
+            if (PlayerType == PlayerTypeEnum.Character)
+            {
+                myReturn += " , Total Experience : " + Experience;
+                myReturn += " , Damage : " + GetDamageTotalString;
+                myReturn += " , Attack :" + GetAttackTotal;
+                myReturn += " , Defense :" + GetDefenseTotal;
+                myReturn += " , Speed :" + GetSpeedTotal;
+            }
 
-        //    myReturn += " , Items : " + ItemSlotsFormatOutput();
+            myReturn += " , Items : " + ItemSlotsFormatOutput();
 
-        //    return myReturn;
-        //}
+            return myReturn;
+        }
     }
 }
