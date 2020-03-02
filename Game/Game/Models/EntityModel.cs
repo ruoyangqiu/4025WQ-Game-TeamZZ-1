@@ -67,8 +67,6 @@ namespace Game.Models
 
         #endregion Attributes
 
-
-
         #region ItemIds
 
         // Item id for head location
@@ -124,6 +122,7 @@ namespace Game.Models
         public string UniqueItemId { get; set; }
 
         #endregion ItemIds
+
         #region Attributes Display
 
         #region Attack
@@ -276,9 +275,11 @@ namespace Game.Models
         #endregion Damage
 
         #endregion Attributes Display
-        public virtual string FormatOutput() { return ""; }
 
         #region Basic Methods
+        public virtual string FormatOutput() { return ""; }
+
+
 
         // Get attack value
         public int GetAttack()
