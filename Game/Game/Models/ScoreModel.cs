@@ -124,27 +124,16 @@ namespace Game.Models
 
         #region ScoreItems
 
-        //public bool AddToList(CharacterModel data)
-        //{
-        //    if (data == null)
-        //    {
-        //        return false;
-        //    }
+        /// <summary>
+        /// Calculate the Final Score
+        /// </summary>
+        /// <returns></returns>
+        public int CalculateScore()
+        {
+            int result = ExperienceGainedTotal;
 
-        //    CharacterAtDeathList += data.FormatOutput() + "\n";
-        //    return true;
-        //}
-
-        //public bool AddToList(MonsterModel data)
-        //{
-        //    if (data == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    MonstersKilledList += data.FormatOutput() + "\n";
-        //    return true;
-        //}
+            return result;
+        }
 
         /// <summary>
         /// All an item to the list of items for score and their stats
