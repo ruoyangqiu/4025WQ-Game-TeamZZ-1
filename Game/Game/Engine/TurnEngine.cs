@@ -1,4 +1,5 @@
-﻿using Game.Models;
+﻿using Game.Helpers;
+using Game.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -335,6 +336,41 @@ namespace Game.Engine
         /// <returns></returns>
         public HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
         {
+            var d20 = DiceHelper.RollDice(1, 20);
+
+            if (d20 == 1)
+            {
+                BattleMessageModel.AttackStatus = " rolls 1 to completly miss ";
+
+                // Force Miss
+                BattleMessageModel.HitStatus = HitStatusEnum.Miss;
+                return BattleMessageModel.HitStatus;
+            }
+
+            if (d20 == 20)
+            {
+                BattleMessageModel.AttackStatus = " rolls 20 for lucky hit ";
+
+                // Force Hit
+                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+                return BattleMessageModel.HitStatus;
+            }
+
+            var ToHitScore = d20 + AttackScore;
+            if (ToHitScore < DefenseScore)
+            {
+                BattleMessageModel.AttackStatus = " rolls " + d20 + " and misses ";
+
+                // Miss
+                BattleMessageModel.HitStatus = HitStatusEnum.Miss;
+                BattleMessageModel.DamageAmount = 0;
+                return BattleMessageModel.HitStatus;
+            }
+
+            BattleMessageModel.AttackStatus = " rolls " + d20 + " and hits ";
+
+            // Hit
+            BattleMessageModel.HitStatus = HitStatusEnum.Hit;
             return BattleMessageModel.HitStatus;
         }
 
