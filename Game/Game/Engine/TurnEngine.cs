@@ -228,9 +228,9 @@ namespace Game.Engine
             var AttackScore = Attacker.Level + Attacker.GetAttackTotal;
             var DefenseScore = Target.Level + Target.GetDefenseTotal;
 
-            //BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
-            BattleMessageModel.HitStatus = HitStatusEnum.Miss;
-            BattleMessageModel.AttackStatus = "Miss";
+            BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+            //BattleMessageModel.HitStatus = HitStatusEnum.Miss;
+            //BattleMessageModel.AttackStatus = "Miss";
             return BattleMessageModel.HitStatus;
         }
 
