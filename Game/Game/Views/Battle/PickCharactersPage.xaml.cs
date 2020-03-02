@@ -1,4 +1,5 @@
-﻿using Game.ViewModels;
+﻿using Game.Models;
+using Game.ViewModels;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -34,19 +35,6 @@ namespace Game.Views
 		}
 
 		/// <summary>
-		/// Jump to the Battle
-		/// 
-		/// Its Modal because don't want user to come back...
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		async void BattleButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new NavigationPage(new BattlePage()));
-			await Navigation.PopAsync();
-		}
-
-		/// <summary>
 		/// Next Button is based on the count
 		/// 
 		/// If no selected characters, disable
@@ -66,6 +54,36 @@ namespace Game.Views
 			}
 
 			PartyCountLabel.Text = currentCount.ToString();
+		}
+
+		/// <summary>
+		/// Jump to the Battle
+		/// 
+		/// Its Modal because don't want user to come back...
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public async void BattleButton_Clicked(object sender, EventArgs e)
+		{
+			CreateEngineCharacterList();
+
+			await Navigation.PushModalAsync(new NavigationPage(new BattlePage()));
+			await Navigation.PopAsync();
+		}
+
+		/// <summary>
+		/// Clear out the old list and make the new list
+		/// </summary>
+		public void CreateEngineCharacterList()
+		{
+			// Clear the currett list
+			EngineViewModel.Engine.CharacterList.Clear();
+
+			// Load the Characters into the Engine
+			foreach (var data in EngineViewModel.PartyCharacterList)
+			{
+				EngineViewModel.Engine.CharacterList.Add(new EntityInfoModel(data));
+			}
 		}
 	}
 }
