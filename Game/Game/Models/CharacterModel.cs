@@ -14,6 +14,7 @@ namespace Game.Models
         /// Establish the Default Image Path
         /// </summary>
         public CharacterModel() {
+            PlayerType = PlayerTypeEnum.Character;
             Name = "";
             var randomUriDescription = CharacterService.GetRandomURIDescription();
             ImageURI = randomUriDescription.Item1;

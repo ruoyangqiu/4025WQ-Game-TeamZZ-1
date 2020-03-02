@@ -28,6 +28,7 @@ namespace Game.Models
         {
             Name = "";
             ImageURI = CharacterService.DefaultImageURI;
+            PlayerType = PlayerTypeEnum.Monster;
         }
 
         /// <summary>
