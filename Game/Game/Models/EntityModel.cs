@@ -107,153 +107,216 @@ namespace Game.Models
         public string UniqueItemId { get; set; }
 
         #endregion ItemIds
+        #region Attributes Display
 
+        #region Attack
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemAttack { get { return GetItemBonus(AttributeEnum.Attack); } }
+
+        [Ignore]
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusAttack { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Attack; } }
+
+        [Ignore]
+        // Return the Total of All Attack
+        public int GetAttackTotal { get { return GetAttack(); } }
+
+        #endregion Attack
+
+        #region Defense
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus Defense from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemDefense { get { return GetItemBonus(AttributeEnum.Defense); } }
+
+        [Ignore]
+        /// <summary>
+        /// Calculate Defense bonus based on level
+        /// </summary>
+        public int GetLevelBonusDefense { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Defense; } }
+
+        [Ignore]
+        // Return the Total of All Defense
+        public int GetDefenseTotal { get { return GetDefense(); } }
+        #endregion Defense
+
+        #region MaxHealth
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus MaxHealth from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemMaxHealth { get { return GetItemBonus(AttributeEnum.MaxHealth); } }
+
+        [Ignore]
+        /// <summary>
+        /// Calculate MaxHealth bonus based on level
+        /// </summary>
+        public int GetLevelBonusMaxHealth
+        {
+            get
+            {
+                var NewHealthAddition = DiceHelper.RollDice(Level - 1, 10);
+                return NewHealthAddition;
+            }
+        }
+
+        [Ignore]
+        // Return the Total of All MaxHealth
+        public int GetMaxHealthTotal { get { return GetMaxHealth(); } }
+        #endregion MaxHealth
+
+        #region CurrentHealth
+        [Ignore]
+        // Return the Total of All CurrentHealth
+        public int GetCurrentHealthTotal { get { return GetCurrentHealth(); } }
+
+        #endregion CurrentHealth
+
+        #region Speed
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus Attack from Item
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemSpeed { get { return GetItemBonus(AttributeEnum.Speed); } }
+
+        [Ignore]
+        /// <summary>
+        /// Calculate Attack bonus based on level
+        /// </summary>
+        public int GetLevelBonusSpeed { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Speed; } }
+
+        [Ignore]
+        // Return the Total of All Speed
+        public int GetSpeedTotal { get { return GetSpeed(); } }
+        #endregion Speed
+
+        #region Damage
+        [Ignore]
+        // Return the Damage value, it is 25% of the Level rounded up
+        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
+
+        [Ignore]
+        // Return the Damage with Item Bonus
+        public int GetDamageItemBonus
+        {
+            get
+            {
+                var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHandId);
+                if (myItem == null)
+                {
+                    return 0;
+                }
+                return myItem.Damage;
+            }
+        }
+
+        [Ignore]
+        // Return the Damage Dice if there is one
+        public string GetDamageItemBonusString
+        {
+            get
+            {
+                var data = GetDamageItemBonus;
+                if (data == 0)
+                {
+                    return "-";
+                }
+
+                return string.Format("1D {0}", data);
+            }
+        }
+
+        [Ignore]
+        // Return the Total of All Damage
+        public string GetDamageTotalString
+        {
+            get
+            {
+
+                if (GetDamageItemBonusString.Equals("-"))
+                {
+                    return GetDamageLevelBonus.ToString();
+                }
+
+                return GetDamageLevelBonus.ToString() + " + " + GetDamageItemBonusString;
+
+            }
+        }
+        #endregion Damage
+
+        #endregion Attributes Display
         public virtual string FormatOutput() { return ""; }
 
         #region Basic Methods
-        #region Attack
+
         // Get attack value
         public int GetAttack()
         {
 
             var myReturn = Attack;
 
-            myReturn += GetItemAttack();
+            myReturn += GetItemAttack;
 
-            myReturn += GetLevelBonusAttack();
+            myReturn += GetLevelBonusAttack;
 
             return myReturn;
         }
 
-        /// <summary>
-        /// Get the bonus Attack from Item
-        /// </summary>
-        /// <returns></returns>
-        public int GetItemAttack()
-        {
-            return GetItemBonus(AttributeEnum.Attack);
-        }
-
-        /// <summary>
-        /// Calculate Attack bonus based on level
-        /// </summary>
-        public int GetLevelBonusAttack()
-        {
-            return LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
-        }
-
-        #endregion Attack
-
-        #region Defense
         // Get defense value
         public int GetDefense()
         {
             var myReturn = Defense;
 
-            myReturn += GetLevelBonusDefense();
+            myReturn += GetLevelBonusDefense;
 
-            myReturn += GetItemDefense();
+            myReturn += GetItemDefense;
 
             return myReturn;
         }
-
-        /// <summary>
-        /// Get the bonus Defense from Item
-        /// </summary>
-        /// <returns></returns>
-        public int GetItemDefense()
-        {
-            return GetItemBonus(AttributeEnum.Defense);
-        }
-
-        /// <summary>
-        /// Calculate Defense bonus based on level
-        /// </summary>
-        public int GetLevelBonusDefense()
-        {
-            return LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
-        }
-
-
-        #endregion Defense
-
-        #region MaxHealth
 
         // Get maxhealth value
         public int GetMaxHealth()
         {
             var myReturn = MaxHealth;
 
-            myReturn += GetItemMaxHealth();
+            myReturn += GetItemMaxHealth;
 
-            myReturn += GetLevelBonusMaxHealth();
+            myReturn += GetLevelBonusMaxHealth;
 
             return myReturn;
         }
 
-        /// <summary>
-        /// Get the bonus MaxHealth from Item
-        /// </summary>
-        /// <returns></returns>
-        public int GetItemMaxHealth()
-        {
-            return GetItemBonus(AttributeEnum.MaxHealth);
-        }
-
-        /// <summary>
-        /// Calculate MaxHealth bonus based on level
-        /// </summary>
-        public int GetLevelBonusMaxHealth()
-        {
-            var NewHealthAddition = DiceHelper.RollDice(Level - 1, 10);
-            return NewHealthAddition;
-        }
-        #endregion MaxHealth
-
-        #region CurrentHealth
         // Get currenthealth value
         public int GetCurrentHealth()
         {
             return CurrentHealth;
         }
 
-        #endregion CurrentHealth
-
-        #region Speed
         // Get Speed value
         public int GetSpeed()
         {
             var myReturn = Speed;
 
-            myReturn += GetItemSpeed();
+            myReturn += GetItemSpeed;
 
-            myReturn += GetLevelBonusSpeed();
+            myReturn += GetLevelBonusSpeed;
 
             return myReturn;
         }
-
-        /// <summary>
-        /// Get the bonus Attack from Item
-        /// </summary>
-        /// <returns></returns>
-        public int GetItemSpeed()
-        {
-            return GetItemBonus(AttributeEnum.Speed);
-        }
-
-        /// <summary>
-        /// Calculate Attack bonus based on level
-        /// </summary>
-        public int GetLevelBonusSpeed()
-        {
-            return LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
-        }
-
-        #endregion Speed
-
-        [Ignore]
-        // Return the Damage value, it is 25% of the Level rounded up
-        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
 
         #endregion Basic Methods
 
