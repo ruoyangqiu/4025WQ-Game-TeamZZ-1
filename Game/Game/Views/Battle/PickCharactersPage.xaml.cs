@@ -1,15 +1,22 @@
-﻿using System;
+﻿using Game.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Game.Views
 {
 	/// <summary>
-	/// The Main Game Page
+	/// Selecting Characters for the Game
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PickCharactersPage : ContentPage
 	{
+		// This uses the Instance so it can be shared with other Battle Pages as needed
+		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+
+		// Empty Constructor for UTs
+		//public PickCharactersPage(bool UnitTest) { }
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
