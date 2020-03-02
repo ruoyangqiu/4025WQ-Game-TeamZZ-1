@@ -127,7 +127,7 @@ namespace Game.Engine
             // Will first pull from existing characters
             foreach (var data in CharacterIndexViewModel.Instance.Dataset)
             {
-                if (CharacterList.Count() >= MaxNumberPartyCharacters)
+                if (CharacterList.Count() >= 1)
                 {
                     break;
                 }
