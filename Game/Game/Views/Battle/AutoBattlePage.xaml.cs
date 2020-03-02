@@ -35,6 +35,8 @@ namespace Game.Views
 			var Score = Engine.GetScoreObject();
 
 			//string BattleMessage = string.Format("Number of Rounds： 7 \n Monsters Killed： 19\n EXP Gained：9500\n Items Dropped:\n Blue Horn X 1, Golden Hair Pin X 3");
+			
+			BattleMessage = string.Format("Done {0} Rounds", Score.RoundCount);
 
 			BattleMessageValue.Text = BattleMessage;
 		}
