@@ -1,5 +1,6 @@
 ﻿using Game.ViewModels;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,6 +24,13 @@ namespace Game.Views
 		public PickCharactersPage()
 		{
 			InitializeComponent ();
+
+			BindingContext = EngineViewModel;
+
+			// Clear the Database List and the Party List to start
+			EngineViewModel.PartyCharacterList.Clear();
+
+			UpdateNextButtonState();
 		}
 
 		/// <summary>
@@ -36,6 +44,28 @@ namespace Game.Views
 		{
 			await Navigation.PushModalAsync(new NavigationPage(new BattlePage()));
 			await Navigation.PopAsync();
+		}
+
+		/// <summary>
+		/// Next Button is based on the count
+		/// 
+		/// If no selected characters, disable
+		/// 
+		/// Show the Count of the party
+		/// 
+		/// </summary>
+		public void UpdateNextButtonState()
+		{
+			// If no characters disable Next button
+			BeginBattleButton.IsEnabled = true;
+
+			var currentCount = EngineViewModel.PartyCharacterList.Count();
+			if (currentCount == 0)
+			{
+				BeginBattleButton.IsEnabled = false;
+			}
+
+			PartyCountLabel.Text = currentCount.ToString();
 		}
 	}
 }
