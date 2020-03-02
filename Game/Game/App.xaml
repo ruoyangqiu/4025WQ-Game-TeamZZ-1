@@ -225,6 +225,12 @@
                 <Setter Property="FontAttributes" Value="None" />
                 <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColor}" />
             </Style>
+            
+            <!--List-->
+            <Style TargetType="ListView" x:Key="GenericList">
+                <Setter Property="Margin" Value="5,0,5,0" />
+                <Setter Property="RowHeight" Value="180" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

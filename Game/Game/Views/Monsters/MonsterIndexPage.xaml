@@ -23,8 +23,7 @@
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="180"
+                    Style="{StaticResource GenericList}"
                     >
 
                 <ListView.ItemTemplate>
