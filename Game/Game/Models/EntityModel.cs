@@ -14,10 +14,26 @@ namespace Game.Models
     {
         #region Attributes
 
+        #region Game Engine Attributes
         // The type of player, character comes before monster
         [Ignore]
         public PlayerTypeEnum PlayerType { get; set; } = PlayerTypeEnum.Unknown;
 
+        [Ignore]
+        // Check if the Entity is alive in the game
+        public bool Alive { get; set; } = true;
+
+        // TurnOrder
+        [Ignore]
+        public int Order { get; set; } = 0;
+
+        // Remember who was first into the list...
+        [Ignore]
+        public int ListOrder { get; set; } = 0;
+
+        #endregion Game Engine Attributes
+
+        #region Player Attributes
         // Value of attack attribute of the Entity
         public int Attack { get; set; } = 1;
 
@@ -47,10 +63,11 @@ namespace Game.Models
         // Difficulty for this monster
         public DifficultyLevelEnum DifficultyLevel { get; set; } = DifficultyLevelEnum.Unknown;
 
+        #endregion Player Attributes
+
         #endregion Attributes
 
-        // Check if the Entity is alive in the game
-        public bool Alive { get; set; } = true;
+
 
         #region ItemIds
 
