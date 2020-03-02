@@ -170,12 +170,12 @@ namespace Game.Engine
             // Then by Alphabetic on Name (Assending)
             // Then by First in list order (Assending
 
-            PlayerList = PlayerList.OrderByDescending(a => a.GetSpeed())
+            PlayerList = PlayerList.OrderByDescending(a => a.GetSpeedTotal)
                 .ThenByDescending(a => a.Level)
                 .ThenByDescending(a => a.Experience)
                 .ThenByDescending(a => a.PlayerType)
                 .ThenBy(a => a.Name)
-                //.ThenBy(a => a.ListOrder)
+                .ThenBy(a => a.ListOrder)
                 .ToList();
 
             return PlayerList;
@@ -186,7 +186,43 @@ namespace Game.Engine
         /// </summary>
         public List<EntityInfoModel> MakePlayerList()
         {
-            return null;
+            // Start from a clean list of players
+            PlayerList.Clear();
+
+            // Remember the Insert order, used for Sorting
+            var ListOrder = 0;
+
+            foreach (var data in CharacterList)
+            {
+                if (data.Alive)
+                {
+                    PlayerList.Add(
+                        new EntityInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
+
+                    ListOrder++;
+                }
+            }
+
+            foreach (var data in MonsterList)
+            {
+                if (data.Alive)
+                {
+                    PlayerList.Add(
+                        new EntityInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
+
+                    ListOrder++;
+                }
+            }
+
+            return PlayerList;
         }
 
         /// <summary>
@@ -195,7 +231,33 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel GetNextPlayerInList()
         {
-            return null;
+            // Walk the list from top to bottom
+            // If Player is found, then see if next player exist, if so return that.
+            // If not, return first player (looped)
+
+            // If List is empty, return null
+            if (PlayerList.Count == 0)
+            {
+                return null;
+            }
+
+            // No current player, so set the first one
+            if (CurrentAttacker == null)
+            {
+                return PlayerList.FirstOrDefault();
+            }
+
+            // Find current player in the list
+            var index = PlayerList.FindIndex(m => m.Guid.Equals(CurrentAttacker.Guid));
+
+            // If at the end of the list, return the first element
+            if (index == PlayerList.Count() - 1)
+            {
+                return PlayerList.FirstOrDefault();
+            }
+
+            // Return the next element
+            return PlayerList[index + 1];
         }
 
         /// <summary>
