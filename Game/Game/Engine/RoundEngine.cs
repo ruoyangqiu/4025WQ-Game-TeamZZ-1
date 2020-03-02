@@ -1,6 +1,8 @@
 ﻿using Game.Models;
+using Game.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Game.Engine
@@ -24,6 +26,21 @@ namespace Game.Engine
         // Call to make a new set of monsters...
         public bool NewRound()
         {
+            // End the existing round
+            EndRound();
+
+            // Populate New Monsters...
+            AddMonstersToRound();
+
+            // Make the PlayerList
+            MakePlayerList();
+
+            // Set Order for the Round
+            OrderPlayerListByTurnOrder();
+
+            // Update Score for the RoundCount
+            BattleScore.RoundCount++;
+
             return true;
         }
 
@@ -33,7 +50,15 @@ namespace Game.Engine
         /// <returns></returns>
         public int AddMonstersToRound()
         {
-            return 0;
+            List<MonsterModel> MonsterPool = new List<MonsterModel>(MonsterIndexViewModel.Instance.Dataset);
+            for(int i = 0; i < MaxNumberPartyMonsters; i++)
+            {
+                var data = MonsterPool[i];
+
+                MonsterList.Add(new EntityInfoModel(data));
+            }
+
+            return MonsterList.Count();
         }
 
         /// <summary>
@@ -44,6 +69,15 @@ namespace Game.Engine
         /// <returns></returns>
         public bool EndRound()
         {
+            // In Auto Battle this happens and the characters get their items, In manual mode need to do it manualy
+            if (BattleScore.AutoBattle)
+            {
+                PickupItemsForAllCharacters();
+            }
+
+            // Reset Monster and Item Lists
+            ClearLists();
+
             return true;
         }
 
