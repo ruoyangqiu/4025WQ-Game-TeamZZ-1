@@ -217,12 +217,12 @@ namespace Game.Engine
 
             BattleMessageModel.TargetName = Target.Name;
             BattleMessageModel.AttackerName = Attacker.Name;
-            if(Attacker.PlayerType == PlayerTypeEnum.Monster)
-            {
-                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
-                BattleMessageModel.AttackStatus = " Hit hit ";
-                return BattleMessageModel.HitStatus;
-            }
+            //if(Attacker.PlayerType == PlayerTypeEnum.Monster)
+            //{
+            //    BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+            //    BattleMessageModel.AttackStatus = " Hit hit ";
+            //    return BattleMessageModel.HitStatus;
+            //}
 
             //Set Attack and Defense
             var AttackScore = Attacker.Level + Attacker.GetAttackTotal;

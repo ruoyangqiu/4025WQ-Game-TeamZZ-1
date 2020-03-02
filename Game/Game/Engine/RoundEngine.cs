@@ -56,8 +56,8 @@ namespace Game.Engine
                 {
                     break;
                 }
-                data.Attack += 50;
-                data.Level = 10;
+                //data.Attack += 50;
+                //data.Level = 10;
                 MonsterList.Add(new EntityInfoModel(data));
             }
 
