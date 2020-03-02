@@ -101,6 +101,34 @@ namespace Game.Engine
         /// <returns></returns>
         public RoundEnum RoundNextTurn()
         {
+            // No characters, game is over...
+            if (CharacterList.Count < 1)
+            {
+                // Game Over
+                RoundStateEnum = RoundEnum.GameOver;
+                return RoundStateEnum;
+            }
+
+            // Check if round is over
+            if (MonsterList.Count < 1)
+            {
+                // If over, New Round
+                RoundStateEnum = RoundEnum.NewRound;
+                return RoundEnum.NewRound;
+            }
+
+            if (BattleScore.AutoBattle)
+            {
+                // Decide Who gets next turn
+                // Remember who just went...
+                CurrentAttacker = GetNextPlayerTurn();
+            }
+
+            // Do the turn....
+            TakeTurn(CurrentAttacker);
+
+            RoundStateEnum = RoundEnum.NextTurn;
+
             return RoundStateEnum;
         }
 
@@ -110,7 +138,13 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel GetNextPlayerTurn()
         {
-            return null;
+            // Remove the Dead
+            RemoveDeadPlayersFromList();
+
+            // Get Next Player
+            var PlayerCurrent = GetNextPlayerInList();
+
+            return PlayerCurrent;
         }
 
         /// <summary>
@@ -119,7 +153,8 @@ namespace Game.Engine
         /// <returns></returns>
         public List<EntityInfoModel> RemoveDeadPlayersFromList()
         {
-            return null;
+            PlayerList = PlayerList.Where(m => m.Alive == true).ToList();
+            return PlayerList;
         }
 
         /// <summary>
