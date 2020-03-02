@@ -198,7 +198,7 @@ namespace Game.Engine
         private void ApplyDamage(EntityInfoModel Target)
         {
             Target.TakeDamage(BattleMessageModel.DamageAmount);
-            BattleMessageModel.CurrentHealth = Target.GetCurrentHealth();
+            BattleMessageModel.CurrentHealth = Target.GetCurrentHealthTotal;
         }
 
         /// <summary>
@@ -216,8 +216,8 @@ namespace Game.Engine
             BattleMessageModel.AttackerName = Attacker.Name;
 
             //Set Attack and Defense
-            var AttackScore = Attacker.Level + Attacker.GetAttack();
-            var DefenseScore = Target.Level + Target.GetDefense();
+            var AttackScore = Attacker.Level + Attacker.GetAttackTotal;
+            var DefenseScore = Target.Level + Target.GetDefenseTotal;
 
             BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
 
@@ -240,7 +240,7 @@ namespace Game.Engine
                 var levelup = Attacker.AddExperience(experienceEarned);
                 if(levelup)
                 {
-                    BattleMessageModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetMaxHealth();
+                    BattleMessageModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetMaxHealthTotal;
                     Debug.WriteLine(BattleMessageModel.LevelUpMessage);
                 }
 
