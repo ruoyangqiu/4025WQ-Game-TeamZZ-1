@@ -249,9 +249,9 @@ namespace Game.Engine
             {
                 return PlayerList.FirstOrDefault();
             }
-
+            var curr = CurrentAttacker.Id;
             // Find current player in the list
-            var index = PlayerList.FindIndex(m => m.Guid.Equals(CurrentAttacker.Guid));
+            var index = PlayerList.FindIndex(m => m.Id.Equals(CurrentAttacker.Id));
 
             // If at the end of the list, return the first element
             if (index == PlayerList.Count() - 1)
