@@ -88,11 +88,17 @@ namespace Game.Models
 
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
-        public string FormatOutput()
+        public override string FormatOutput()
         {
             var myReturn = Name;
+            myReturn += " , " + Description;
+            myReturn += " , Level : " + Level.ToString();
+            myReturn += " , Difficulty : " + DifficultyLevel.ToString();
+            myReturn += " , Total Experience : " + Experience;
+            myReturn += " , Items : " + ItemSlotsFormatOutput();
+            myReturn += " , Damage : " + GetDamageTotalString;
 
-            return myReturn.Trim();
+            return myReturn;
         }
 
    
