@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Engine;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +11,9 @@ namespace Game.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AutoBattlePage : ContentPage
 	{
+
+		public AutoBattleEngine Engine = new AutoBattleEngine();
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -24,13 +28,13 @@ namespace Game.Views
 
 			//var Engine = new Game.Engine.AutoBattleEngine();
 
-			//string BattleMessage = "";
+			String BattleMessage = "";
 
-			//var result = await Engine.RunAutoBattle();
+			var result = await Engine.RunAutoBattle();
 
-			//var Score = Engine.GetScoreObject();
+			var Score = Engine.GetScoreObject();
 
-			string BattleMessage = string.Format("Number of Rounds： 7 \n Monsters Killed： 19\n EXP Gained：9500\n Items Dropped:\n Blue Horn X 1, Golden Hair Pin X 3");
+			//string BattleMessage = string.Format("Number of Rounds： 7 \n Monsters Killed： 19\n EXP Gained：9500\n Items Dropped:\n Blue Horn X 1, Golden Hair Pin X 3");
 
 			BattleMessageValue.Text = BattleMessage;
 		}
