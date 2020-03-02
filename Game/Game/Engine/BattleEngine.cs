@@ -50,7 +50,7 @@ namespace Game.Engine
         {
             BattleRunning = false;
 
-            //BattleScore.CalculateScore();
+            BattleScore.CalculateScore();
 
             return true;
         }
