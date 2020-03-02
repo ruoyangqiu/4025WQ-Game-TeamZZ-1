@@ -48,12 +48,12 @@ namespace Game.Views
 			BeginBattleButton.IsEnabled = true;
 
 			var currentCount = EngineViewModel.PartyCharacterList.Count();
-			if (currentCount == 0)
+			if (currentCount == 0 || currentCount > EngineViewModel.Engine.MaxNumberPartyCharacters)
 			{
 				BeginBattleButton.IsEnabled = false;
 			}
 
-			PartyCountLabel.Text = currentCount.ToString();
+			//PartyCountLabel.Text = currentCount.ToString();
 		}
 
 		/// <summary>
@@ -84,6 +84,38 @@ namespace Game.Views
 			{
 				EngineViewModel.Engine.CharacterList.Add(new EntityInfoModel(data));
 			}
+		}
+
+		/// <summary>
+		/// Cancel and close this page
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		async void Cancel_Clicked(object sender, EventArgs e)
+		{
+			await Navigation.PopAsync();
+		}
+
+		/// <summary>
+		/// The row selected from the list
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="args"></param>
+		public void OnCharacterToggled(object sender, ToggledEventArgs e)
+		{
+			var sw = sender as Xamarin.Forms.Switch;
+
+			CharacterModel data = sw.BindingContext as CharacterModel;
+
+			if(e.Value == true)
+			{
+				EngineViewModel.PartyCharacterList.Add(data);
+			} else
+			{
+				EngineViewModel.PartyCharacterList.Remove(data);
+			}
+
+			UpdateNextButtonState();
 		}
 	}
 }

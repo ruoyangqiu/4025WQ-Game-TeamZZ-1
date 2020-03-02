@@ -3,23 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Game.Views.PickCharactersPage"
              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
+        <ToolbarItem x:Name="BeginBattleButton" Text="Battle" Clicked="BattleButton_Clicked" IconImageSource="icon_save.png"/>
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}">
-            <Label Text="Pick Characters Page..."></Label>
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="https://i.ibb.co/QFmnbSQ/00951.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Switch IsToggled="False"/>
-            </StackLayout>
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="https://i.ibb.co/txcMq2f/00949.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Switch IsToggled="False"/>
-            </StackLayout>
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="https://i.ibb.co/8j9FGvt/00955.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Switch IsToggled="False"/>
-            </StackLayout>
-            <Button Clicked="BattleButton_Clicked" Text="Begin Battle"></Button>
+            <Label  Style="{StaticResource HeaderStyle}" Text="Pick Characters Page"></Label>
+
+            <ListView 
+                                x:Name="CharactersListView" 
+                                ItemsSource="{Binding DatabaseCharacterList}"
+                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                RefreshCommand="{Binding LoadItemsCommand}"
+                                CachingStrategy="RecycleElement"
+                                HasUnevenRows="true"
+                                Style="{StaticResource GenericList}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <StackLayout Style="{StaticResource CardImageTextBox}">
+
+                                    <Image
+                                    Source="{Binding ImageURI}"
+                                    Style="{StaticResource ImageLargeStyle}"/>
+
+                                    <Label 
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource CenterMessageStyle}"/>
+
+                                </StackLayout>
+
+                                <StackLayout Style="{StaticResource CardImageTextBox}"
+                                             Padding="30,15,0,0">
+                                    <Label 
+                                        Text="{Binding Level, StringFormat='LVL: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Attack, StringFormat='ATK: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Defense, StringFormat='DEF: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding MaxHealth, StringFormat='  HP: {0:F0}'}" />
+                                    <Label 
+                                        Text="{Binding Speed, StringFormat='SPD: {0:F0}'}" />
+                                </StackLayout>
+
+                                <StackLayout Style="{StaticResource CardImageTextBox}"
+                                             >
+                                    <Switch
+                                        Toggled="OnCharacterToggled"
+                                        IsToggled="False"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
         
     </ContentPage.Content>
