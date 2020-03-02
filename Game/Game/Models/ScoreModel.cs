@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -52,6 +54,18 @@ namespace Game.Models
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
         public string ItemsDroppedList { get; set; } = string.Empty;
+
+        // Add Characters to the List for easier testing
+        [Ignore]
+        public List<EntityInfoModel> CharacterModelDeathList { get; set; } = new List<EntityInfoModel>();
+
+        // Add Monsters to the List for easier testing
+        [Ignore]
+        public List<EntityInfoModel> MonsterModelDeathList { get; set; } = new List<EntityInfoModel>();
+
+        // Add Item to the List for easier testing
+        [Ignore]
+        public List<ItemModel> ItemModelDropList { get; set; } = new List<ItemModel>();
 
         /// <summary>
         /// Instantiate new Score 
