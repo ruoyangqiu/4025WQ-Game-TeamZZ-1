@@ -78,12 +78,20 @@ namespace Game.Models
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the character as a string
-        public string FormatOutput()
+        public override string FormatOutput()
         {
-            var myReturn = Name + " , " +
-                            Description;
+            var myReturn = string.Empty;
+            myReturn += Name;
+            myReturn += " , " + Description;
+            myReturn += " , Level : " + Level.ToString();
+            myReturn += " , Total Experience : " + Experience;
+            myReturn += " , Attack :" + GetAttackTotal;
+            myReturn += " , Defense :" + GetDefenseTotal;
+            myReturn += " , Speed :" + GetSpeedTotal;
+            myReturn += " , Items : " + ItemSlotsFormatOutput();
+            myReturn += " , Damage : " + GetDamageTotalString;
 
-            return myReturn.Trim();
+            return myReturn;
         }
 
         /// <summary>
