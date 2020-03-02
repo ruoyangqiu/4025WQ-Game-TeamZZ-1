@@ -217,20 +217,20 @@ namespace Game.Engine
 
             BattleMessageModel.TargetName = Target.Name;
             BattleMessageModel.AttackerName = Attacker.Name;
-            if(Attacker.PlayerType == PlayerTypeEnum.Monster)
-            {
-                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
-                BattleMessageModel.AttackStatus = " Hit hit ";
-                return BattleMessageModel.HitStatus;
-            }
+            //if(Attacker.PlayerType == PlayerTypeEnum.Monster)
+            //{
+            //    BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+            //    BattleMessageModel.AttackStatus = " Hit hit ";
+            //    return BattleMessageModel.HitStatus;
+            //}
 
             //Set Attack and Defense
             var AttackScore = Attacker.Level + Attacker.GetAttackTotal;
             var DefenseScore = Target.Level + Target.GetDefenseTotal;
 
-            //BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
-            BattleMessageModel.HitStatus = HitStatusEnum.Miss;
-            BattleMessageModel.AttackStatus = "Miss";
+            BattleMessageModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
+            //BattleMessageModel.HitStatus = HitStatusEnum.Miss;
+            //BattleMessageModel.AttackStatus = "Miss";
             return BattleMessageModel.HitStatus;
         }
 
