@@ -50,11 +50,12 @@ namespace Game.Engine
         /// <returns></returns>
         public int AddMonstersToRound()
         {
-            List<MonsterModel> MonsterPool = new List<MonsterModel>(MonsterIndexViewModel.Instance.Dataset);
-            for(int i = 0; i < MaxNumberPartyMonsters; i++)
+            foreach (var data in MonsterIndexViewModel.Instance.Dataset)
             {
-                var data = MonsterPool[i];
-
+                if (MonsterList.Count() >= MaxNumberPartyMonsters)
+                {
+                    break;
+                }
                 MonsterList.Add(new EntityInfoModel(data));
             }
 
