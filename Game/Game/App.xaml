@@ -10,6 +10,8 @@
         <ResourceDictionary>
             <!--Global Styles-->
 
+            
+
             <!--Colors -->
 
             <!--
@@ -210,6 +212,13 @@
                 <Setter Property="HeightRequest" Value="150" />
                 <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="Spacing" Value="1" />
+            </Style>
+
+            <Style TargetType="StackLayout"
+                x:Key="BattlePlayerInfoInfoBox"
+                BasedOn="{StaticResource PlayerInfoBox}">
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="WidthRequest" Value="60" />
             </Style>
 
 
