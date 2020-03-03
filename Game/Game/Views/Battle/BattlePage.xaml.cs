@@ -1,6 +1,9 @@
 ﻿using Game.Models;
 using Game.ViewModels;
 using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -58,15 +61,48 @@ namespace Game.Views
 		/// </summary>
 		public void HideUIElements()
 		{
-
+			NextRoundButton.IsVisible = false;
+			StartBattleButton.IsVisible = false;
+			AttackButton.IsVisible = false;
+			MessageDisplayBox.IsVisible = false;
+			BattlePlayerInfomationBox.IsVisible = false;
 		}
 
 		/// <summary>
 		/// Dray the Player Boxes
 		/// </summary>
 		public void DrawPlayerBoxes()
-		{ 
-		
+		{
+			var CharacterBoxList = CharacterBox.Children.ToList();
+			foreach (var data in CharacterBoxList)
+			{
+				CharacterBox.Children.Remove(data);
+			}
+
+			// Draw the Characters
+			foreach (var data in EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).ToList())
+			{
+				CharacterBox.Children.Add(PlayerInfoDisplayBox(data));
+			}
+
+			var MonsterBoxList = MonsterBox.Children.ToList();
+			foreach (var data in MonsterBoxList)
+			{
+				MonsterBox.Children.Remove(data);
+			}
+
+			// Draw the Monsters
+			foreach (var data in EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
+			{
+				MonsterBox.Children.Add(PlayerInfoDisplayBox(data));
+			}
+
+			// Add one black PlayerInfoDisplayBox to hold space incase the list is empty
+			CharacterBox.Children.Add(PlayerInfoDisplayBox(null));
+
+			// Add one black PlayerInfoDisplayBox to hold space incase the list is empty
+			MonsterBox.Children.Add(PlayerInfoDisplayBox(null));
+
 		}
 
 		// <summary>
@@ -76,7 +112,32 @@ namespace Game.Views
 		/// <returns></returns>
 		public StackLayout PlayerInfoDisplayBox(EntityInfoModel data)
 		{
-			return null;
+			if (data == null)
+			{
+				data = new EntityInfoModel();
+				data.ImageURI = "";
+			}
+
+			// Hookup the image
+			var PlayerImage = new Image
+			{
+				Style = (Style)Application.Current.Resources["ImageBattleSmallStyle"],
+				Source = data.ImageURI
+			};
+
+			// Put the Image Button and Text inside a layout
+			var PlayerStack = new StackLayout
+			{
+				Style = (Style)Application.Current.Resources["BattlePlayerInfoInfoBox"],
+				HorizontalOptions = LayoutOptions.Center,
+				Padding = 0,
+				Spacing = 0,
+				Children = {
+					PlayerImage,
+				},
+			};
+
+			return PlayerStack;
 		}
 
 		/// <summary>
@@ -87,7 +148,14 @@ namespace Game.Views
 		/// </summary>
 		public void DrawGameAttackerDefenderBoard()
 		{
+			// Clear the current UI
+			DrawGameBoardClear();
 
+			// Show Characters across the Top
+			DrawPlayerBoxes();
+
+			// Show the Attacker and Defender
+			DrawGameBoardAttackerDefenderSection();
 		}
 
 		/// <summary>
@@ -95,7 +163,32 @@ namespace Game.Views
 		/// </summary>
 		public void DrawGameBoardAttackerDefenderSection()
 		{
+			BattlePlayerBoxVersus.Text = "Click to Begin";
 
+			if (EngineViewModel.Engine.CurrentAttacker == null)
+			{
+				return;
+			}
+
+			if (EngineViewModel.Engine.CurrentDefender == null)
+			{
+				return;
+			}
+
+			AttackerImage.Source = EngineViewModel.Engine.CurrentAttacker.ImageURI;
+			AttackerName.Text = EngineViewModel.Engine.CurrentAttacker.Name;
+			AttackerHealth.Text = EngineViewModel.Engine.CurrentAttacker.GetCurrentHealthTotal.ToString() + " / " + EngineViewModel.Engine.CurrentAttacker.GetMaxHealthTotal.ToString();
+
+			DefenderImage.Source = EngineViewModel.Engine.CurrentDefender.ImageURI;
+			DefenderName.Text = EngineViewModel.Engine.CurrentDefender.Name;
+			DefenderHealth.Text = EngineViewModel.Engine.CurrentDefender.GetCurrentHealthTotal.ToString() + " / " + EngineViewModel.Engine.CurrentDefender.GetMaxHealthTotal.ToString();
+
+			if (EngineViewModel.Engine.CurrentDefender.Alive == false)
+			{
+				DefenderImage.BackgroundColor = Color.Red;
+			}
+
+			BattlePlayerBoxVersus.Text = "vs";
 		}
 
 		/// <summary>
@@ -103,7 +196,16 @@ namespace Game.Views
 		/// </summary>
 		public void DrawGameBoardClear()
 		{
+			AttackerImage.Source = string.Empty;
+			AttackerName.Text = string.Empty;
+			AttackerHealth.Text = string.Empty;
 
+			DefenderImage.Source = string.Empty;
+			DefenderName.Text = string.Empty;
+			DefenderHealth.Text = string.Empty;
+			DefenderImage.BackgroundColor = Color.Transparent;
+
+			BattlePlayerBoxVersus.Text = string.Empty;
 		}
 
 		/// <summary>
@@ -113,16 +215,85 @@ namespace Game.Views
 		/// <param name="e"></param>
 		void AttackButton_Clicked(object sender, EventArgs e)
 		{
-			DisplayAlert("SU", "Attack !!!", "OK");
+			NextAttackExample();
+		}
+
+		/// <summary>
+		/// Next Attack Example
+		/// 
+		/// This code example follows the rule of
+		/// 
+		/// Auto Select Attacker
+		/// Auto Select Defender
+		/// 
+		/// Do the Attack and show the result
+		/// 
+		/// So the pattern is Click Next, Next, Next until game is over
+		/// 
+		/// </summary>
+		private void NextAttackExample()
+		{
+			// Get the turn, set the current player and attacker to match
+			SetAttackerAndDefender();
+
+			// Hold the current state
+			var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
+
+			// Output the Message of what happened.
+			GameMessage();
+
+			// Show the outcome on the Board
+			DrawGameAttackerDefenderBoard();
+
+			if (RoundCondition == RoundEnum.NewRound)
+			{
+				// Pause
+				Task.Delay(WaitTime);
+
+				Debug.WriteLine("New Round");
+
+				// Show the Round Over, after that is cleared, it will show the New Round Dialog
+				ShowModalRoundOverPage();
+			}
+
+			// Check for Game Over
+			if (RoundCondition == RoundEnum.GameOver)
+			{
+				// Pause
+				Task.Delay(WaitTime);
+
+				Debug.WriteLine("Game Over");
+
+				GameOver();
+				return;
+			}
 		}
 
 		/// <summary>
 		/// Decide The Turn and who to Attack
 		/// </summary>
 		public void SetAttackerAndDefender()
-		{ 
-			
+		{
+			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
+
+			switch (EngineViewModel.Engine.CurrentAttacker.PlayerType)
+			{
+				case PlayerTypeEnum.Character:
+					// User would select who to attack
+
+					// for now just auto selecting
+					EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+					break;
+
+				case PlayerTypeEnum.Monster:
+				default:
+
+					// Monsters turn, so auto pick a Character to Attack
+					EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+					break;
+			}
 		}
+
 		/// <summary>
 		/// Game is over
 		/// 
@@ -137,7 +308,18 @@ namespace Game.Views
 		/// </summary>
 		public void GameOver()
 		{
+			// Wrap up
+			EngineViewModel.Engine.EndBattle();
 
+			// Save the Score to the Score View Model, by sending a message to it.
+			var Score = EngineViewModel.Engine.BattleScore;
+			MessagingCenter.Send(this, "AddData", Score);
+
+			// Hide the Game Board
+			GameUIDisplay.IsVisible = false;
+
+			// Show the Game Over Display
+			GameOverDisplay.IsVisible = true;
 		}
 		#region MessageHandelers
 
