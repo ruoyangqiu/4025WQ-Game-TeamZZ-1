@@ -329,7 +329,18 @@ namespace Game.Views
 		/// <param name="message"></param>
 		public void GameMessage()
 		{
+			// Output The Message that happened.
+			BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessageModel.TurnMessage, BattleMessages.Text);
 
+			Debug.WriteLine(BattleMessages.Text);
+
+			if (!string.IsNullOrEmpty(EngineViewModel.Engine.BattleMessageModel.LevelUpMessage))
+			{
+				BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessageModel.LevelUpMessage, BattleMessages.Text);
+			}
+
+			htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLFormattedTurnMessage();
+			HtmlBox.Source = HtmlBox.Source = htmlSource;
 		}
 
 		/// <summary>
@@ -337,7 +348,9 @@ namespace Game.Views
 		/// </summary>
 		public void ClearMessages()
 		{
-
+			BattleMessages.Text = "";
+			htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLBlankMessage();
+			HtmlBox.Source = htmlSource;
 		}
 
 		#endregion MessageHandlers
@@ -353,7 +366,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void ExitButton_Clicked(object sender, EventArgs e)
 		{
-
+			await Navigation.PopModalAsync();
 		}
 		/// <summary>
 		/// Battle Over
@@ -373,7 +386,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public void NextRoundButton_Clicked(object sender, EventArgs e)
 		{
-
+			ShowModalNewRoundPage();
 		}
 
 		/// <summary>
@@ -383,7 +396,12 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public void StartButton_Clicked(object sender, EventArgs e)
 		{
+			HideUIElements();
 
+			// Set for a trun to begin
+			AttackButton.IsVisible = true;
+			MessageDisplayBox.IsVisible = true;
+			BattlePlayerInfomationBox.IsVisible = true;
 		}
 
 		/// <summary>
@@ -393,7 +411,9 @@ namespace Game.Views
 		/// <param name="args"></param>
 		public async void ShowScoreButton_Clicked(object sender, EventArgs args)
 		{
+			Debug.WriteLine("Showing Score Page : " + EngineViewModel.Engine.BattleScore.ScoreTotal.ToString());
 
+			await Navigation.PushModalAsync(new ScorePage());
 		}
 
 		/// <summary>
@@ -404,7 +424,13 @@ namespace Game.Views
 		/// </summary>
 		public async void ShowModalRoundOverPage()
 		{
+			HideUIElements();
 
+			// Show the Round Over page
+			// Then show the Next Round Button
+			NextRoundButton.IsVisible = true;
+
+			await Navigation.PushModalAsync(new RoundOverPage());
 		}
 
 		/// <summary>
@@ -415,7 +441,16 @@ namespace Game.Views
 		/// </summary>
 		public async void ShowModalNewRoundPage()
 		{
+			await Navigation.PushModalAsync(new NewRoundPage());
 
+			HideUIElements();
+
+			ClearMessages();
+
+			// Show the Attack Button Set
+			BattlePlayerInfomationBox.IsVisible = true;
+			MessageDisplayBox.IsVisible = true;
+			AttackButton.IsVisible = true;
 		}
 		#endregion PageHandelers
 
