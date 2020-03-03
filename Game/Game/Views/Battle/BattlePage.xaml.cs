@@ -368,16 +368,7 @@ namespace Game.Views
 		{
 			await Navigation.PopModalAsync();
 		}
-		/// <summary>
-		/// Battle Over
-		/// Battle Over button shows when all characters are dead
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		async void RoundOverButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new RoundOverPage());
-		}
+		
 
 		/// <summary>
 		/// The Next Round Button
@@ -477,7 +468,16 @@ namespace Game.Views
 			await Navigation.PushModalAsync(new ScorePage());
 		}
 
-
+		/// <summary>
+		/// Battle Over
+		/// Battle Over button shows when all characters are dead
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		async void RoundOverButton_Clicked(object sender, EventArgs e)
+		{
+			await Navigation.PushModalAsync(new RoundOverPage());
+		}
 
 		/// <summary>
 		/// Quit the Battle
