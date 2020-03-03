@@ -19,11 +19,13 @@
                          VerticalOptions="CenterAndExpand" 
                          HorizontalOptions="FillAndExpand">
 
-                    <Label Text="Characters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
-                    <StackLayout x:Name="CharacterBox" Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout Style="{StaticResource HorizontalStack}">
+                        <Label Text="Characters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout x:Name="CharacterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Text="Monsters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
-                    <StackLayout x:Name="MonsterBox" Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="Monsters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout x:Name="MonsterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
 
                     <Frame x:Name="BattlePlayerInfomationBox"
                             BorderColor="{StaticResource SecondaryBackgroundColor}"
@@ -107,26 +109,27 @@
                     <Button x:Name="ExitButton" Clicked="ExitButton_Clicked" Text="Exit"></Button>
 
                 </StackLayout>
+                <!--<StackLayout Style="{StaticResource VerticalStack}">
+
+
+
+                    <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
+
+                    <Button Clicked="RoundOverButton_Clicked" Text="Round Over"></Button>
+
+                    <Button Clicked="BattleOverButton_Clicked" Text="Battle Over"></Button>
+
+                    <Button Clicked="ExitButton_Clicked" Text="Exit"></Button>
+
+                    <Button Clicked="QuitButton_Clicked" Text="Quit"></Button>
+
+                </StackLayout>-->
             </StackLayout>
 
 
 
 
-            <StackLayout Style="{StaticResource VerticalStack}">
-
-
-                
-                <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
-
-                <Button Clicked="RoundOverButton_Clicked" Text="Round Over"></Button>
-
-                <Button Clicked="BattleOverButton_Clicked" Text="Battle Over"></Button>
-
-                <Button Clicked="ExitButton_Clicked" Text="Exit"></Button>
-
-                <Button Clicked="QuitButton_Clicked" Text="Quit"></Button>
-
-            </StackLayout>
+            
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
