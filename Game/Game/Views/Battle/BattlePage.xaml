@@ -18,14 +18,21 @@
                          IsVisible="true" 
                          VerticalOptions="CenterAndExpand" 
                          HorizontalOptions="FillAndExpand">
+                    <Grid
+                        RowSpacing="1"
+					    ColumnSpacing="4"
+                        Padding="10">
+                        <Label Text="Characters" Style="{StaticResource LabelStyle}" HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="0"/>
+                        <Label Text="Monsters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand" Grid.Column="3" Grid.Row="0"/>
+                    </Grid>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}">
-                        <Label Text="Characters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
-                        <StackLayout x:Name="CharacterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand"/>
-
-                        <Label Text="Monsters" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand"/>
-                        <StackLayout x:Name="MonsterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
+                    <Grid
+                        RowSpacing="1"
+					    ColumnSpacing="4"
+                        Padding="10">
+                        <StackLayout x:Name="CharacterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="StartAndExpand" Grid.Column="0"/>
+                        <StackLayout x:Name="MonsterBox" Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
+                    </Grid>
 
                     <Frame x:Name="BattlePlayerInfomationBox"
                             BorderColor="{StaticResource SecondaryBackgroundColor}"
