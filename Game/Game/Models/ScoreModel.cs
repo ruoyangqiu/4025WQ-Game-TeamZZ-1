@@ -67,6 +67,10 @@ namespace Game.Models
         [Ignore]
         public List<ItemModel> ItemModelDropList { get; set; } = new List<ItemModel>();
 
+        // Add the Selected Items to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<ItemModel> ItemModelSelectList { get; set; } = new List<ItemModel>();
+
         /// <summary>
         /// Instantiate new Score 
         /// </summary>
