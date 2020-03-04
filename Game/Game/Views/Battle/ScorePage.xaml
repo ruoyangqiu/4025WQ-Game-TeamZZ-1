@@ -9,9 +9,7 @@
 
                 <Label Text="Score Page..." Style="{StaticResource CenterMessageStyle}"></Label>
 
-                <Button Clicked="CloseButton_Clicked" Text="Close"></Button>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
+                    <StackLayout Style="{StaticResource HorizontalStack}">
                     <Label Text="Score : " Style="{StaticResource MessageStyle}"/>
                     <Label Text="0" x:Name="TotalScore" Style="{StaticResource MessageStyle}"/>
                 </StackLayout>
