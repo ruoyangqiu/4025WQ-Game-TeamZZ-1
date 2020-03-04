@@ -36,6 +36,18 @@ namespace Game.Views
 			// Start the Battle Engine
 			EngineViewModel.Engine.StartBattle(false);
 
+			// Draw the Characters
+			foreach (var data in EngineViewModel.Engine.CharacterList)
+			{
+				PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
+			}
+
+			// Draw the Monsters
+			foreach (var data in EngineViewModel.Engine.MonsterList)
+			{
+				MonsterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+			}
+
 			// Show the New Round Screen
 			ShowModalNewRoundPage();
 
@@ -50,6 +62,55 @@ namespace Game.Views
 			HideUIElements();
 
 			StartBattleButton.IsVisible = true;
+		}
+
+		/// <summary>
+		/// Return a stack layout with the Player information inside
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		public StackLayout CreatePlayerDisplayBox(EntityInfoModel data)
+		{
+			if (data == null)
+			{
+				data = new EntityInfoModel();
+			}
+
+			// Hookup the image
+			var PlayerImage = new ImageButton
+			{
+				Style = (Style)Application.Current.Resources["ImageBattleSmallStyle"],
+				Source = data.ImageURI
+			};
+
+			// Add the HP
+			var PlayerHPLabel = new Label
+			{
+				Text = "HP : " + data.GetCurrentHealthTotal,
+				Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+				HorizontalOptions = LayoutOptions.Center,
+				HorizontalTextAlignment = TextAlignment.Center,
+				Padding = 0,
+				LineBreakMode = LineBreakMode.TailTruncation,
+				CharacterSpacing = 1,
+				LineHeight = 1,
+				MaxLines = 1,
+			};
+
+			// Put the Image Button and Text inside a layout
+			var PlayerStack = new StackLayout
+			{
+				Style = (Style)Application.Current.Resources["PlayerInfoBox"],
+				HorizontalOptions = LayoutOptions.Center,
+				Padding = 0,
+				Spacing = 0,
+				Children = {
+					PlayerImage,
+					PlayerHPLabel,
+				},
+			};
+
+			return PlayerStack;
 		}
 
 		/// <summary>
@@ -68,42 +129,6 @@ namespace Game.Views
 			BattlePlayerInfomationBox.IsVisible = false;
 		}
 
-		/// <summary>
-		/// Dray the Player Boxes
-		/// </summary>
-		public void DrawPlayerBoxes()
-		{
-			var CharacterBoxList = CharacterBox.Children.ToList();
-			foreach (var data in CharacterBoxList)
-			{
-				CharacterBox.Children.Remove(data);
-			}
-
-			// Draw the Characters
-			foreach (var data in EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).ToList())
-			{
-				CharacterBox.Children.Add(PlayerInfoDisplayBox(data));
-			}
-
-			var MonsterBoxList = MonsterBox.Children.ToList();
-			foreach (var data in MonsterBoxList)
-			{
-				MonsterBox.Children.Remove(data);
-			}
-
-			// Draw the Monsters
-			foreach (var data in EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
-			{
-				MonsterBox.Children.Add(PlayerInfoDisplayBox(data));
-			}
-
-			// Add one black PlayerInfoDisplayBox to hold space incase the list is empty
-			CharacterBox.Children.Add(PlayerInfoDisplayBox(null));
-
-			// Add one black PlayerInfoDisplayBox to hold space incase the list is empty
-			MonsterBox.Children.Add(PlayerInfoDisplayBox(null));
-
-		}
 
 		// <summary>
 		/// Put the Player into a Display Box
@@ -150,9 +175,6 @@ namespace Game.Views
 		{
 			// Clear the current UI
 			DrawGameBoardClear();
-
-			// Show Characters across the Top
-			DrawPlayerBoxes();
 
 			// Show the Attacker and Defender
 			DrawGameBoardAttackerDefenderSection();
@@ -368,7 +390,7 @@ namespace Game.Views
 		{
 			await Navigation.PopModalAsync();
 		}
-		
+
 
 		/// <summary>
 		/// The Next Round Button
@@ -455,7 +477,7 @@ namespace Game.Views
 		{
 			await Navigation.PushModalAsync(new NewRoundPage());
 		}
-		
+
 
 		/// <summary>
 		/// Battle Over
