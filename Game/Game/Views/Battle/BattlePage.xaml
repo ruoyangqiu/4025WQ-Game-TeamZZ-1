@@ -124,9 +124,9 @@
 
                     </StackLayout>
 
-                    <StackLayout Style="{StaticResource VerticalStack}">
+                    <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="Center">
 
-
+                        <Label Style= "{StaticResource MessageStyle}" Text="Temporary buttons to open up each battle screens "/>
 
                         <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
 
