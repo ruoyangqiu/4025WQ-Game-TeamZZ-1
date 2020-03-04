@@ -10,7 +10,7 @@
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}">
-            <Label  Style="{StaticResource HeaderStyle}" Text="Pick Characters Page"></Label>
+            <Label  Style="{StaticResource HeaderStyle}" Text="Pick Characters"></Label>
 
             <ListView 
                                 x:Name="CharactersListView" 
