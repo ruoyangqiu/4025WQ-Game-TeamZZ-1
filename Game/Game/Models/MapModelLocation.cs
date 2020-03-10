@@ -20,7 +20,7 @@ namespace Game.Models
         public int Column;
 
         // The Player, Character or Unknown for blank
-        public PlayerInfoModel Player = new PlayerInfoModel();
+        public EntityInfoModel Player = new EntityInfoModel();
 
         // If IsSelected, used for targeting
         public bool IsSelectedTarget = false;
