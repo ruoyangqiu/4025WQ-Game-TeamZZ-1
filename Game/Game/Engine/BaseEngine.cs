@@ -32,6 +32,9 @@ namespace Game.Engine
         // Current Player who is the Defender
         public EntityInfoModel CurrentDefender;
 
+        //Current Action
+        public ActionEnum CurrentAction;
+
         // Hold the list of players (MonsterModel, and character by guid), and order by speed
         public List<EntityInfoModel> PlayerList = new List<EntityInfoModel>();
 
@@ -49,6 +52,9 @@ namespace Game.Engine
 
         // Max Number of Turns for AutoBattle
         public int MaxTurnCount = 10000;
+
+        // MapModel
+        public MapModel MapModel;
 
         #endregion Properties
     }

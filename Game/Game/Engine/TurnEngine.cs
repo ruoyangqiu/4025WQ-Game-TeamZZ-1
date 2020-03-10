@@ -46,6 +46,60 @@ namespace Game.Engine
             // Choose Action.  Such as Move, Attack etc.
 
             // INFO: Teams, if you have other actions they would go here.
+
+            if (Attacker.PlayerType == PlayerTypeEnum.Monster)
+            {
+                /*
+                 * Order of Priority
+                 * If can attack Then Attack
+                 * Next use Ability or Move
+                 */
+
+                // Assume Move if nothing else happens
+                CurrentAction = ActionEnum.Move;
+
+                // See if Desired Target is within Range, and if so attack away
+                if (MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
+                {
+                    CurrentAction = ActionEnum.Attack;
+                }
+
+                // Simple Logic is Roll to Try Ability. 50% says try
+                else if (DiceHelper.RollDice(1, 10) > 5)
+                {
+                    CurrentAction = ActionEnum.Ability;
+                }
+            }
+            else
+            {
+                CurrentAction = ActionEnum.Attack;
+                if (false)
+                {
+                    if (BattleScore.AutoBattle)
+                    {
+                        /*
+                         * Order of Priority
+                         * If can attack Then Attack
+                         * Next use Ability or Move
+                         */
+
+                        // Assume Move if nothing else happens
+                        CurrentAction = ActionEnum.Move;
+
+                        // See if Desired Target is within Range, and if so attack away
+                        if (MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
+                        {
+                            CurrentAction = ActionEnum.Attack;
+                        }
+
+                        // Simple Logic is Roll to Try Ability. 50% says try
+                        else if (DiceHelper.RollDice(1, 10) > 5)
+                        {
+                            CurrentAction = ActionEnum.Ability;
+                        }
+                    }
+                }
+            }
             var result = Attack(Attacker);
 
             BattleScore.TurnCount ++;
