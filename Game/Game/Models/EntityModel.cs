@@ -678,7 +678,7 @@ namespace Game.Models
         public int GetDamageRollValue()
         {
             var myReturn = 0;
-
+            
             var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHandId);
             if (myItem != null)
             {
