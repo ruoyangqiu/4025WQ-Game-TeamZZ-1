@@ -55,6 +55,9 @@ namespace Game.Models
         // Total experience avaiable on this monster
         public int Experience { get; set; } = 0;
 
+        // The Range of an Entity, Natral Range is 1
+        public int Range { get; set; } = 1;
+
         [Ignore]
         // Character Class
         public CharacterClassEnum CharacterClass { get; set; } = CharacterClassEnum.Unknown;
@@ -272,6 +275,9 @@ namespace Game.Models
 
             }
         }
+
+        [Ignore]
+        public int GetDamageTotal { get { return GetDamage(); } }
         #endregion Damage
 
         #endregion Attributes Display
@@ -279,7 +285,14 @@ namespace Game.Models
         #region Basic Methods
         public virtual string FormatOutput() { return ""; }
 
+        public int GetRange()
+        {
+            var myReturn = Range;
 
+            myReturn += GetItemRange();
+
+            return myReturn;
+        }
 
         // Get attack value
         public int GetAttack()
@@ -336,9 +349,41 @@ namespace Game.Models
             return myReturn;
         }
 
+        public int GetDamage()
+        {
+            var myReturn = GetDamageItemBonus;
+
+            myReturn += GetDamageLevelBonus;
+            return myReturn;
+        }
+
         #endregion Basic Methods
 
         #region Items
+
+        /// <summary>
+        /// Get the Range value for the equipped primary weapon
+        /// 
+        /// If it has a positive value, return that
+        /// 
+        /// Else return 0
+        /// </summary>
+        /// <returns></returns>
+        public int GetItemRange()
+        {
+            var weapon = GetItemByLocation(ItemLocationEnum.PrimaryHand);
+            if (weapon == null)
+            {
+                return 0;
+            }
+
+            if (weapon.Range < 0)
+            {
+                return 0;
+            }
+
+            return weapon.Range;
+        }
 
         // Get the Item at a known string location (head, foot etc.)
         public ItemModel GetItem(string itemString)
@@ -633,7 +678,7 @@ namespace Game.Models
         public int GetDamageRollValue()
         {
             var myReturn = 0;
-
+            
             var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHandId);
             if (myItem != null)
             {
