@@ -30,6 +30,7 @@ namespace Scenario
         {
         }
 
+        #region TestConstructor
         [Test]
         public void HakathonScenario_Constructor_0_Default_Should_Pass()
         {
@@ -71,6 +72,10 @@ namespace Scenario
             // Assert
             Assert.IsNotNull(result);
         }
+
+        #endregion TestConstructor
+
+        #region TestScenario1
 
         [Test]
         public async Task HackathonScenario_Scenario_1_Default_Should_Pass()
@@ -137,7 +142,9 @@ namespace Scenario
             Assert.AreEqual(null, AutoBattleEngine.PlayerList.Find(m => m.Name.Equals("Mike")));
             Assert.AreEqual(1, AutoBattleEngine.BattleScore.RoundCount);
         }
+        #endregion TestScenario1
 
+        #region TestScenario2
         [Test]
         public void HackathonScenario_Scenario_2_Character_Bob_Should_Miss()
         {
@@ -296,6 +303,9 @@ namespace Scenario
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
         }
 
+        #endregion TestScenario2
+
+        #region TestScenario47
         [Test]
         public void HackathonScenario_Scenario_47_Prime_Number_Bob_Should_Hit()
         {
@@ -485,5 +495,6 @@ namespace Scenario
             // Console.WriteLine(CharacterPlayer.TestDamage);
             Assert.Greater(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
         }
+        #endregion TestScenario47
     }
 }
