@@ -16,7 +16,10 @@
         Move = 10,
 
         // Ability
-        Ability = 20
+        Ability = 20,
+
+        // Sleep
+        Sleep = 22,
     }
 
     /// <summary>
@@ -46,6 +49,10 @@
 
                 case ActionEnum.Ability:
                     Message = " Uses Ability ";
+                    break;
+
+                case ActionEnum.Sleep:
+                    Message = "SLEEPING";
                     break;
 
                 case ActionEnum.Unknown:

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Game.Helpers;
 using System.Linq;
 using Game.ViewModels;
+using Game.Views;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Scenario
 {
@@ -17,6 +19,7 @@ namespace Scenario
         ItemIndexViewModel ItemViewModel= ItemIndexViewModel.Instance;
         AutoBattleEngine AutoBattleEngine;
         BattleEngine BattleEngine;
+        PickCharactersPage PickCharactersPage = new PickCharactersPage(true);
 
         [SetUp]
         public void Setup()
@@ -496,5 +499,83 @@ namespace Scenario
             Assert.Greater(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
         }
         #endregion TestScenario47
+
+        [Test]
+        public void HackathonScenario_Scenario_30_First_Battle_Character_Is_Buffed()
+        {
+            /* 
+             * Scenario Number:  
+             *  30
+             *  
+             * Description: 
+             *      The first character in the player list gets their base Attack, Speed, Defense values 
+             *      buffed by 2x for the time they are the first in the list.
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *     PickCharactersPage
+             *     CreateEngineCharacterList()
+             *                 
+             * Test Algrorithm:
+             *  Create list of Picked Characters with some Attack, Defense, Speed Attribute values
+             *  Call method CreateEngineCharacterList() to copy Picked characters to Engine.CharacterList
+             * 
+             * 
+             * Test Conditions:
+             *  Test Attack attribute of first character from Engine.CharacterList
+             *  Test Defense attribute of first character from Engine.CharacterList
+             *  Test Speed attribute of first character from Engine.CharacterList
+             *  
+             * 
+             * Validation:
+             *      Verify the Attack attribute of the first charater to be doubled from Engine.CharacterList
+             *      Verify the Defense attribute of the first charater to be doubled from Engine.CharacterList
+             *      Verify the Speed attribute of the first charater to be doubled from Engine.CharacterList
+             *      
+             *      
+             *  
+             */
+
+            //Arrange
+            // Set Character Conditions
+
+            var CharacterModel1 =
+                            new CharacterModel
+                            {
+                                Level = 10,
+                                CurrentHealth = 200,
+                                MaxHealth = 200,
+                                Experience = 100,
+                                Name = "Rabbit",
+                                Attack = 100,
+                                Speed = 100,
+                                Defense = 100
+                            };
+
+            var CharacterModel2 =
+                new CharacterModel
+                {
+                    Level = 8,
+                    CurrentHealth = 300,
+                    MaxHealth = 300,
+                    Experience = 100,
+                    Name = "Pig",
+                    Attack = 50,
+                    Speed = 50,
+                    Defense = 50
+                };
+            PickCharactersPage.EngineViewModel = BattleEngineViewModel.Instance;
+            PickCharactersPage.EngineViewModel.PartyCharacterList = new ObservableCollection<CharacterModel>();
+            PickCharactersPage.EngineViewModel.PartyCharacterList.Add(CharacterModel1);
+            PickCharactersPage.EngineViewModel.PartyCharacterList.Add(CharacterModel2);
+
+            // Create CharacterList
+            PickCharactersPage.CreateEngineCharacterList();
+
+            //Assert
+            Assert.AreEqual(200, PickCharactersPage.EngineViewModel.Engine.CharacterList.First().Attack);
+            Assert.AreEqual(200, PickCharactersPage.EngineViewModel.Engine.CharacterList.First().Defense);
+            Assert.GreaterOrEqual(PickCharactersPage.EngineViewModel.Engine.CharacterList.First().Speed, 200);
+        }
+        
     }
 }
