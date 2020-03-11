@@ -275,6 +275,9 @@ namespace Game.Models
 
             }
         }
+
+        [Ignore]
+        public int GetDamageTotal { get { return GetDamage(); } }
         #endregion Damage
 
         #endregion Attributes Display
@@ -343,6 +346,14 @@ namespace Game.Models
 
             myReturn += GetLevelBonusSpeed;
 
+            return myReturn;
+        }
+
+        public int GetDamage()
+        {
+            var myReturn = GetDamageItemBonus;
+
+            myReturn += GetDamageLevelBonus;
             return myReturn;
         }
 
