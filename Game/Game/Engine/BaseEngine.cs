@@ -54,7 +54,7 @@ namespace Game.Engine
         public int MaxTurnCount = 10000;
 
         // MapModel
-        public MapModel MapModel;
+        public MapModel MapModel = new MapModel();
 
         #endregion Properties
     }
