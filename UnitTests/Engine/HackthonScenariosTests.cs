@@ -576,6 +576,96 @@ namespace Scenario
             Assert.AreEqual(200, PickCharactersPage.EngineViewModel.Engine.CharacterList.First().Defense);
             Assert.GreaterOrEqual(PickCharactersPage.EngineViewModel.Engine.CharacterList.First().Speed, 200);
         }
-        
+        #region TestScenario14
+        [Test]
+        public void HackathonScenario_Scenario_14_If_Confusion_Turn_Character_Should_Skip()
+        {
+            /* 
+             * Scenario Number:  
+             *  14
+             *  
+             * Description: 
+             *      Confusion, have % chance to occuring each round. 
+             *      If happens, then confusion occurs for each monster and character for that round
+             *      Each party member rolls a chance of being confused.
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Turn Engine, Take Turn method, added switch check and dice roll
+             *      Changed BaseEngine, added boolean switch for enabling confusion, and is confusion turn or not.
+             *      Check for Experience gained is 0
+             *                 
+             * Test Algrorithm:
+             *  Create Character named Bob
+             *  Create Monster
+             *  Call TakeTurn
+             * 
+             * Test Conditions:
+             *  Test with Character of Named ConfusionCharacter
+             * 
+             * Validation:
+             *      Verify Experience gained is 0
+             *  
+             */
+
+            //Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(0);
+            // Set Character Conditions
+
+            BattleEngine.MaxNumberPartyCharacters = 1;
+            var TestSword = ItemViewModel.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault();
+            var CharacterPlayer = new EntityInfoModel(
+                            new CharacterModel
+                            {
+                                Level = 10,
+                                CurrentHealth = 200,
+                                MaxHealth = 200,
+                                //TestDamage = 123,
+                                Experience = 100,
+                                Name = "Confused Character",
+                            });
+            CharacterPlayer.Attack = 25;
+            CharacterPlayer.Speed = 20;
+            CharacterPlayer.Defense = 25;
+            CharacterPlayer.AddItem(ItemLocationEnum.PrimaryHand, TestSword.Id);
+            BattleEngine.CharacterList.Add(CharacterPlayer);
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+            BattleEngine.MaxNumberPartyCharacters = 1;
+
+            var MonsterPlayer = new EntityInfoModel(
+                new MonsterModel
+                {
+                    Speed = 10,
+                    Level = 10,
+                    CurrentHealth = 100,
+                    Experience = 100,
+                    Name = "Monster",
+                });
+
+            BattleEngine.CharacterList.Add(MonsterPlayer);
+
+            // Have dice roll to 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // EnableConfusionRounds
+            BattleEngine.EnableConfusionRound = true;
+            BattleEngine.NewRound();
+
+            //Act
+            var result = BattleEngine.TakeTurn(CharacterPlayer);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+
+            //Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(AutoBattleEngine.BattleScore.ExperienceGainedTotal, 0);
+        }
+
+        #endregion TestScenario14   
     }
 }
