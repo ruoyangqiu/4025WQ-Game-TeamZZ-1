@@ -23,6 +23,10 @@ namespace Game.Models
         // Check if the Entity is alive in the game
         public bool Alive { get; set; } = true;
 
+        [Ignore]
+        // Check if the Entity is asleep in the game
+        public bool Asleep { get; set; } = false;
+
         // TurnOrder
         [Ignore]
         public int Order { get; set; } = 0;
@@ -818,5 +822,21 @@ namespace Game.Models
         }
 
         #endregion Level Method
+
+        public void FallAsleep()
+        {
+            Asleep = true;
+        }
+
+        public void WakeUp()
+        {
+            Asleep = false;
+     
+        }
+
+        public bool isAsleep()
+        {
+            return Asleep;
+        }
     }
 }

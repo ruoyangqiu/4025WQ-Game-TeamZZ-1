@@ -59,9 +59,13 @@ namespace Game.Engine
 
                 // Assume Move if nothing else happens
                 CurrentAction = ActionEnum.Move;
-
+                Debug.WriteLine(BattleScore.TurnCount);
+                if(Attacker.isAsleep() && (BattleScore.TurnCount / 6)% 2 == 0)
+                {
+                    CurrentAction = ActionEnum.Sleep;
+                }
                 // See if Desired Target is within Range, and if so attack away
-                if (MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
+                else if (MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
                 {
                     CurrentAction = ActionEnum.Attack;
                 }
@@ -74,6 +78,19 @@ namespace Game.Engine
             }
             else
             {
+                int listNo = Attacker.ListOrder;
+
+                if ((listNo * 2 + 1) == BattleScore.RoundCount)
+                {
+                    foreach(var player in PlayerList)
+                    {
+                        if(player.PlayerType == PlayerTypeEnum.Monster)
+                        {
+                            player.FallAsleep();
+                        }
+                    }
+                    Awake = false;
+                }
                 CurrentAction = ActionEnum.Attack;
                 if (false)
                 {
@@ -112,6 +129,9 @@ namespace Game.Engine
                 case ActionEnum.Ability:
                     result = UseAbility(Attacker);
                     break;
+                case ActionEnum.Sleep:
+                    result = FallAsleep(Attacker);
+                    break;
 
                 case ActionEnum.Move:
                     result = MoveAsTurn(Attacker);
@@ -119,12 +139,21 @@ namespace Game.Engine
             }
 
             BattleScore.TurnCount++;
-
+            
             return result;
 
-            return result;
+            //return result;
         }
 
+
+        public bool FallAsleep(EntityInfoModel Attacker)
+        {
+            Debug.WriteLine(string.Format(Attacker.Name, " is sleeping"));
+            BattleMessageModel.ClearMessages();
+            BattleMessageModel.TurnMessage = Attacker.Name + " is sleeping";
+            
+            return true;
+        }
         public bool MoveAsTurn(EntityInfoModel Attacker)
         {
             /*
