@@ -1,4 +1,5 @@
-﻿using Game.Models;
+﻿using Game.Helpers;
+using Game.Models;
 using Game.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,12 @@ namespace Game.Engine
 
             // Update Score for the RoundCount
             BattleScore.RoundCount++;
+
+            if (EnableConfusionRound && DiceHelper.RollDice(1, 20) >10)
+            {
+                // Roll Confusion Round or not
+                IsConfusionRound = true;
+            }
 
             return true;
         }
