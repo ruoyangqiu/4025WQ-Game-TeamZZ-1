@@ -105,7 +105,7 @@ namespace Game.Engine
         public RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
-            if (CharacterList.Count() < 1)
+            if (CharacterList.Count < 1)
             {
                 // Game Over
                 RoundStateEnum = RoundEnum.GameOver;
@@ -113,7 +113,7 @@ namespace Game.Engine
             }
 
             // Check if round is over
-            if (MonsterList.Count() < 1)
+            if (MonsterList.Count < 1)
             {
                 // If over, New Round
                 RoundStateEnum = RoundEnum.NewRound;
@@ -125,6 +125,9 @@ namespace Game.Engine
                 // Decide Who gets next turn
                 // Remember who just went...
                 CurrentAttacker = GetNextPlayerTurn();
+
+                // Only Attack for now
+                CurrentAction = ActionEnum.Attack;
             }
 
             // Do the turn....
