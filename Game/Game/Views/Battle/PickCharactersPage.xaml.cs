@@ -17,7 +17,7 @@ namespace Game.Views
 		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		// Empty Constructor for UTs
-		//public PickCharactersPage(bool UnitTest) { }
+		public PickCharactersPage(bool UnitTest) { }
 
 		/// <summary>
 		/// Constructor
@@ -86,7 +86,6 @@ namespace Game.Views
 				// first character in the battle are buffed up 2x. 
 				if (EngineViewModel.Engine.CharacterList.Count == 0)
 				{
-					Console.WriteLine("Making change");
 					data.Attack = data.Attack * 2;
 					data.Speed = data.Speed * 2;
 					data.Defense = data.Defense * 2;
