@@ -48,6 +48,15 @@ namespace Game.Engine
             // INFO: Teams, if you have other actions they would go here.
             bool result = false;
 
+            // Check for confusion round or not, if it is confusion round and rolled confusion, skip turn
+            if(EnableConfusionRound && IsConfusionRound && DiceHelper.RollDice(1, 20) - Attacker.Level > 0)
+            {
+                BattleMessageModel.TurnMessage = Attacker.Name + " is confused.";
+
+                Debug.WriteLine(BattleMessageModel.TurnMessage);
+
+                return true;
+            }
 
             if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
