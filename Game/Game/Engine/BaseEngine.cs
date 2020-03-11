@@ -56,6 +56,12 @@ namespace Game.Engine
         // MapModel
         public MapModel MapModel = new MapModel();
 
+        // Switch to enable ConfusionRound
+        public bool EnableConfusionRound = false;
+
+        // Is the round confusion round. For Hackathon Scenario 14
+        public bool IsConfusionRound = false;
+
         #endregion Properties
     }
 }
