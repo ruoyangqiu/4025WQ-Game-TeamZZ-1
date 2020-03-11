@@ -82,7 +82,17 @@ namespace Game.Views
 			// Load the Characters into the Engine
 			foreach (var data in EngineViewModel.PartyCharacterList)
 			{
+				// Hackathon: The Attachk, Defense and Speed attributes of the 
+				// first character in the battle are buffed up 2x. 
+				if (EngineViewModel.Engine.CharacterList.Count == 0)
+				{
+					Console.WriteLine("Making change");
+					data.Attack = data.Attack * 2;
+					data.Speed = data.Speed * 2;
+					data.Defense = data.Defense * 2;
+				}
 				EngineViewModel.Engine.CharacterList.Add(new EntityInfoModel(data));
+				
 			}
 		}
 

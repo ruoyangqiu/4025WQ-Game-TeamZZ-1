@@ -47,6 +47,9 @@ namespace Game.Models
             CharacterClass = data.CharacterClass;
             DifficultyLevel = data.DifficultyLevel;
 
+            Attack = data.Attack;
+            Defense = data.Defense;
+
         }
 
         /// <summary>
@@ -59,6 +62,8 @@ namespace Game.Models
             Guid = data.Guid;
             Alive = data.Alive;
             Experience = data.Experience;
+            Attack = data.Attack;
+            Defense = data.Defense;
             //ExperienceRemaining = data.ExperienceRemaining;
             Level = data.Level;
             Name = data.Name;

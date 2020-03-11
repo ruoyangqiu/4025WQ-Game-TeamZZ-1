@@ -96,6 +96,44 @@ namespace Game.Views
                 MaxLines = 1,
             };
 
+            var PlayerAttackLabel = new Label
+            {
+                Text = "Attack : " + data.Attack,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+            var PlayerDefenseLabel = new Label
+            {
+                Text = "Defense : " + data.Defense,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            var PlayerSpeedLabel = new Label
+            {
+                Text = "Speed : " + data.Speed,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
             var PlayerNameLabel = new Label()
             {
                 Text = data.Name,
@@ -121,6 +159,9 @@ namespace Game.Views
                     PlayerNameLabel,
                     PlayerLevelLabel,
                     PlayerHPLabel,
+                    PlayerAttackLabel,
+                    PlayerDefenseLabel,
+                    PlayerSpeedLabel,
                 },
             };
 
