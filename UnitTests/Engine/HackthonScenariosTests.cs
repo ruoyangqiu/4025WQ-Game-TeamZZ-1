@@ -313,12 +313,16 @@ namespace Scenario
              * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
              *      Change to Turn Engine
              *      Changed TurnAsAttack method
-             *      Check for Name is not Mike as Mike's attributes are Prime
+             *      
              *      Check if the attack's attributes' total value is prime
              *      Set BattleMessage.DamageAmount = TotalDamage and return hit
              *                 
              * Test Algrorithm:
              *  Create Character named Prime
+             *  Set the relative attributes: Attack, MaxHealth, Defence and Speed
+             *  So that the sum of them is a prime number.
+             *  Give a primaryHand item to Characterr to test if
+             *  Prime can do the max damage
              *  Create Monster
              *  Call TurnAsAttack
              * 
@@ -407,7 +411,8 @@ namespace Scenario
              *                 
              * Test Algrorithm:
              *  Create Character named NotPrime
-             *  Set the Attributes of the Prime
+             *  Set the Attributes of NotPrime to be a non Prime number
+             *  Give Not Prime a weapon
              *  Create Monster
              *  Call TurnAsAttack
              * 

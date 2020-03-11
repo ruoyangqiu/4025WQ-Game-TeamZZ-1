@@ -322,7 +322,7 @@ namespace Game.Engine
                 return true;
             }
 
-            if (!Attacker.Name.Equals("Mike") && Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+            if ( Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
             {
                 BattleMessageModel.HitStatus = HitStatusEnum.Hit;
                 BattleMessageModel.TurnMessage = "Prime always Hit";
