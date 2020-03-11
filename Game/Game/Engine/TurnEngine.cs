@@ -46,6 +46,8 @@ namespace Game.Engine
             // Choose Action.  Such as Move, Attack etc.
 
             // INFO: Teams, if you have other actions they would go here.
+            bool result = false;
+
 
             if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
@@ -100,11 +102,104 @@ namespace Game.Engine
                     }
                 }
             }
-            var result = Attack(Attacker);
+            switch (CurrentAction)
+            {
+                case ActionEnum.Unknown:
+                case ActionEnum.Attack:
+                    result = Attack(Attacker);
+                    break;
 
-            BattleScore.TurnCount ++;
+                case ActionEnum.Ability:
+                    result = UseAbility(Attacker);
+                    break;
+
+                case ActionEnum.Move:
+                    result = MoveAsTurn(Attacker);
+                    break;
+            }
+
+            BattleScore.TurnCount++;
 
             return result;
+
+            return result;
+        }
+
+        public bool MoveAsTurn(EntityInfoModel Attacker)
+        {
+            /*
+             * TODO: TEAMS Work out your own move logic if you are implementing move
+             * 
+             * Mike's Logic
+             * The monster or charcter will move to a different square if one is open
+             * Get X,Y for destired Target
+             * Take 1 square closer to Monster X if needed and open 
+             * Take 1 square closer to Monster Y if needed and open
+             * If desired square is occupied, give up
+             */
+
+            if (BattleScore.AutoBattle)
+            {
+                // For Attack, Choose Who
+                CurrentDefender = AttackChoice(Attacker);
+
+                if (CurrentDefender == null)
+                {
+                    return false;
+                }
+
+                // Get X, Y for Defender
+                var locationDefender = MapModel.GetLocationForPlayer(CurrentDefender);
+                if (locationDefender == null)
+                {
+                    return false;
+                }
+
+                var locationAttacker = MapModel.GetLocationForPlayer(Attacker);
+                if (locationAttacker == null)
+                {
+                    return false;
+                }
+
+                // Move toward them
+
+                /*
+                 * First Try moving X closer to them by one square
+                 * 
+                 * If that can't be done, then try moving Y closer to them by one square
+                 * 
+                 */
+
+                var MoveX = locationAttacker.Column + (locationDefender.Column - locationAttacker.Column);
+
+                // see if location MoveX, Attacker.Y is empty, if so go there
+                if (MapModel.IsEmptySquare(MoveX, locationAttacker.Row))
+                {
+                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, MoveX, locationAttacker.Row));
+                    return MapModel.MovePlayerOnMap(locationAttacker, MoveX, locationAttacker.Row);
+                }
+
+                var MoveY = locationAttacker.Row + (locationDefender.Row - locationAttacker.Row);
+
+                // see if location MoveX, Attacker.Y is empty, if so go there
+                if (MapModel.IsEmptySquare(locationAttacker.Column, MoveY))
+                {
+                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, locationAttacker.Column, MoveY));
+                    return MapModel.MovePlayerOnMap(locationAttacker, locationAttacker.Column, MoveY);
+                }
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Use the Ability
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        public bool UseAbility(EntityInfoModel Attacker)
+        {
+            return true;
         }
 
         /// </summary>
@@ -217,7 +312,27 @@ namespace Game.Engine
 
             CalculateAttackStatus(Attacker, Target);
 
-            switch(BattleMessageModel.HitStatus)
+            // Hackathon
+            // Hackathon Scenario 2, Bob alwasys misses
+            if (Attacker.Name.Equals("Bob"))
+            {
+                BattleMessageModel.HitStatus = HitStatusEnum.Miss;
+                BattleMessageModel.TurnMessage = "Bob always Misses";
+                Debug.WriteLine(BattleMessageModel.TurnMessage);
+                return true;
+            }
+
+            if (!Attacker.Name.Equals("Mike") && Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+            {
+                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+                BattleMessageModel.TurnMessage = "Prime always Hit";
+                //Debug.WriteLine(Attacker.TestDamage);
+                BattleMessageModel.DamageAmount = Attacker.GetDamageTotal;
+                Debug.WriteLine(BattleMessageModel.TurnMessage);
+                return true;
+            }
+
+            switch (BattleMessageModel.HitStatus)
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
@@ -445,6 +560,23 @@ namespace Game.Engine
         public List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
             return new List<ItemModel>();
+        }
+
+
+        private bool IsPrime(EntityInfoModel Attacker)
+        {
+            int number = Attacker.GetAttackTotal + Attacker.GetDefenseTotal + Attacker.GetMaxHealthTotal + Attacker.GetSpeedTotal;
+            if (number <= 1) return false;
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+
+            var boundary = (int)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 3; i <= boundary; i += 2)
+                if (number % i == 0)
+                    return false;
+
+            return true;
         }
     }
 }
