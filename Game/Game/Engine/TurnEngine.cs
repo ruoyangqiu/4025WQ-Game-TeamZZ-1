@@ -60,6 +60,10 @@ namespace Game.Engine
 
             if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
+                if(BattleScore.TurnCount >= PlayerList.Count)
+                {
+                    Awake = true;
+                }
                 /*
                  * Order of Priority
                  * If can attack Then Attack
@@ -69,7 +73,7 @@ namespace Game.Engine
                 // Assume Move if nothing else happens
                 CurrentAction = ActionEnum.Move;
                 Debug.WriteLine(BattleScore.TurnCount);
-                if(Attacker.isAsleep() && (BattleScore.TurnCount / 6)% 2 == 0)
+                if(!Awake)
                 {
                     CurrentAction = ActionEnum.Sleep;
                 }
@@ -87,18 +91,21 @@ namespace Game.Engine
             }
             else
             {
-                int listNo = Attacker.ListOrder;
-
-                if ((listNo * 2 + 1) == BattleScore.RoundCount)
+                if(SLEEPINGTEST)
                 {
-                    foreach(var player in PlayerList)
+                    int listNo = Attacker.ListOrder;
+
+                    if ((listNo * 2 + 1) == BattleScore.RoundCount)
                     {
-                        if(player.PlayerType == PlayerTypeEnum.Monster)
+                        foreach (var player in PlayerList)
                         {
-                            player.FallAsleep();
+                            if (player.PlayerType == PlayerTypeEnum.Monster)
+                            {
+                                player.FallAsleep();
+                            }
                         }
+                        Awake = false;
                     }
-                    Awake = false;
                 }
                 CurrentAction = ActionEnum.Attack;
                 if (false)

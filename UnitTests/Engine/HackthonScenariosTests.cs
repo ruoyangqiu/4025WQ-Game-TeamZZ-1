@@ -666,6 +666,95 @@ namespace Scenario
             Assert.AreEqual(AutoBattleEngine.BattleScore.ExperienceGainedTotal, 0);
         }
 
-        #endregion TestScenario14   
+        #endregion TestScenario14 
+
+        #region TestScenario7   
+        [Test]
+        public void HackathonScenario_Scenario_7_If_Confusion_Turn_Character_Should_Skip()
+        {
+            /* 
+             * Scenario Number:  
+             *  7
+             *  
+             * Description: 
+             *      The n Character can sleep monsters at (n-1)*2 + 1 Round
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Change to Turn Engine, Take Turn method, added switch check 
+             *      Changed BaseEngine, added boolean switch for enabling Sleep, Added Awake to check if Monster is asleep
+             *                 
+             * Test Algrorithm:
+             *  Create Character
+             *  Call TakeTurn
+             * 
+             * Test Conditions:
+             *  Test with Character Sleep Character
+             * 
+             * Validation:
+             *      Verify Awake is false
+             *  
+             */
+
+            //Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(0);
+            // Set Character Conditions
+
+            BattleEngine.MaxNumberPartyCharacters = 1;
+            var TestSword = ItemViewModel.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault();
+            var CharacterPlayer = new EntityInfoModel(
+                            new CharacterModel
+                            {
+                                Level = 10,
+                                CurrentHealth = 200,
+                                MaxHealth = 200,
+                                //TestDamage = 123,
+                                Experience = 100,
+                                Name = "Sleep Character",
+                            });
+            
+            BattleEngine.CharacterList.Add(CharacterPlayer);
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+            BattleEngine.MaxNumberPartyCharacters = 1;
+
+            var MonsterPlayer = new EntityInfoModel(
+                new MonsterModel
+                {
+                    Speed = 10,
+                    Level = 10,
+                    CurrentHealth = 100,
+                    Experience = 100,
+                    Name = "Monster",
+                });
+
+            BattleEngine.MonsterList.Add(MonsterPlayer);
+            BattleEngine.SLEEPINGTEST = true;
+
+            // Have dice roll to 20
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // EnableConfusionRounds
+            //BattleEngine.EnableConfusionRound = true;
+            BattleEngine.NewRound();
+
+            //Act
+            var sleep = BattleEngine.TakeTurn(CharacterPlayer);
+            //var result = BattleEngine.TakeTurn(MonsterPlayer);
+
+            //Reset
+            DiceHelper.DisableForcedRolls();
+
+            //Assert
+            Assert.AreEqual(true, sleep);
+            Assert.IsFalse(BattleEngine.Awake);
+        }
+
+        #endregion TestScenario7   
     }
 }
+
+
