@@ -738,8 +738,8 @@ namespace Scenario
             DiceHelper.SetForcedRollValue(20);
 
             // EnableConfusionRounds
-            //BattleEngine.EnableConfusionRound = true;
-            BattleEngine.NewRound();
+            BattleEngine.EnableConfusionRound = false;
+            //BattleEngine.NewRound();
 
             //Act
             var sleep = BattleEngine.TakeTurn(CharacterPlayer);
@@ -750,6 +750,7 @@ namespace Scenario
 
             //Assert
             Assert.AreEqual(true, sleep);
+            //Assert.IsTrue(BattleEngine.EnableConfusionRound);
             Assert.IsFalse(BattleEngine.Awake);
         }
 
