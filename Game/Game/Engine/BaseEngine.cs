@@ -12,6 +12,8 @@ namespace Game.Engine
     {
         #region Properties
         public bool Awake = true;
+
+        public bool SLEEPINGTEST= false;
         // Holds the official ScoreModel
         public ScoreModel BattleScore = new ScoreModel();
 
