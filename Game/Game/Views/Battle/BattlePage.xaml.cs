@@ -36,18 +36,6 @@ namespace Game.Views
 			// Start the Battle Engine
 			EngineViewModel.Engine.StartBattle(false);
 
-			// Draw the Characters
-			foreach (var data in EngineViewModel.Engine.CharacterList)
-			{
-				PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
-			}
-
-			// Draw the Monsters
-			foreach (var data in EngineViewModel.Engine.MonsterList)
-			{
-				MonsterListFrame.Children.Add(CreatePlayerDisplayBox(data));
-			}
-
 			// Show the New Round Screen
 			ShowModalNewRoundPage();
 
@@ -64,54 +52,6 @@ namespace Game.Views
 			StartBattleButton.IsVisible = true;
 		}
 
-		/// <summary>
-		/// Return a stack layout with the Player information inside
-		/// </summary>
-		/// <param name="data"></param>
-		/// <returns></returns>
-		public StackLayout CreatePlayerDisplayBox(EntityInfoModel data)
-		{
-			if (data == null)
-			{
-				data = new EntityInfoModel();
-			}
-
-			// Hookup the image
-			var PlayerImage = new ImageButton
-			{
-				Style = (Style)Application.Current.Resources["ImageBattleSmallStyle"],
-				Source = data.ImageURI
-			};
-
-			// Add the HP
-			var PlayerHPLabel = new Label
-			{
-				Text = "HP : " + data.GetCurrentHealthTotal,
-				Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-				HorizontalOptions = LayoutOptions.Center,
-				HorizontalTextAlignment = TextAlignment.Center,
-				Padding = 0,
-				LineBreakMode = LineBreakMode.TailTruncation,
-				CharacterSpacing = 1,
-				LineHeight = 1,
-				MaxLines = 1,
-			};
-
-			// Put the Image Button and Text inside a layout
-			var PlayerStack = new StackLayout
-			{
-				Style = (Style)Application.Current.Resources["PlayerInfoBox"],
-				HorizontalOptions = LayoutOptions.Center,
-				Padding = 0,
-				Spacing = 0,
-				Children = {
-					PlayerImage,
-					PlayerHPLabel,
-				},
-			};
-
-			return PlayerStack;
-		}
 
 		/// <summary>
 		/// 
@@ -127,42 +67,6 @@ namespace Game.Views
 			AttackButton.IsVisible = false;
 			MessageDisplayBox.IsVisible = false;
 			BattlePlayerInfomationBox.IsVisible = false;
-		}
-
-
-		// <summary>
-		/// Put the Player into a Display Box
-		/// </summary>
-		/// <param name="data"></param>
-		/// <returns></returns>
-		public StackLayout PlayerInfoDisplayBox(EntityInfoModel data)
-		{
-			if (data == null)
-			{
-				data = new EntityInfoModel();
-				data.ImageURI = "";
-			}
-
-			// Hookup the image
-			var PlayerImage = new Image
-			{
-				Style = (Style)Application.Current.Resources["ImageBattleSmallStyle"],
-				Source = data.ImageURI
-			};
-
-			// Put the Image Button and Text inside a layout
-			var PlayerStack = new StackLayout
-			{
-				Style = (Style)Application.Current.Resources["BattlePlayerInfoInfoBox"],
-				HorizontalOptions = LayoutOptions.Center,
-				Padding = 0,
-				Spacing = 0,
-				Children = {
-					PlayerImage,
-				},
-			};
-
-			return PlayerStack;
 		}
 
 		/// <summary>
@@ -456,6 +360,8 @@ namespace Game.Views
 		{
 			await Navigation.PushModalAsync(new NewRoundPage());
 
+			DrawBattleBoard();
+
 			HideUIElements();
 
 			ClearMessages();
@@ -516,6 +422,81 @@ namespace Game.Views
 			{
 				await Navigation.PopModalAsync();
 			}
+		}
+
+		/// <summary>
+		/// Draw the battle board
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void DrawBattleBoard()
+		{
+			BattleBoard.Children.Clear();
+
+			var map = EngineViewModel.Engine.MapModel;
+
+			int num_row = map.MapXAxiesCount;
+
+			int num_col = map.MapXAxiesCount;
+
+			// Create rows and columns
+			for (int i = 0; i < num_row; i++)
+			{
+				BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
+			}
+
+			for (int i = 0; i < num_col; i++)
+			{
+				BattleBoard.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100) });
+			}
+
+			// Fill the grid with players
+			for (int i = 0; i < num_row; i++)
+			{
+				for (int j = 0; j < num_col; j++)
+				{
+					var player = map.MapGridLocation[i, j].Player;
+
+					// Image button for characters
+					if (player.PlayerType == PlayerTypeEnum.Character)
+					{
+						var displayed = new ImageButton { Source = player.ImageURI };
+
+						displayed.BindingContext = player;
+
+						displayed.Clicked += OnPlayerClicked;
+
+						BattleBoard.Children.Add(displayed, i, j);
+					}
+					// Image for monsters
+					else if (player.PlayerType == PlayerTypeEnum.Monster)
+					{
+						var displayed = new Image { Source = player.ImageURI };
+
+						BattleBoard.Children.Add(displayed, i, j);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void OnPlayerClicked(object sender, EventArgs e)
+		{
+			var imgButton = (ImageButton)sender;
+
+			var player_clicked = (EntityInfoModel)imgButton.BindingContext;
+			
+			// todo: define what happens
+
+		}
+
+		protected override void OnAppearing()
+		{
+			DrawBattleBoard();
 		}
 	}
 }
