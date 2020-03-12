@@ -8,7 +8,7 @@
 
             <StackLayout Style="{StaticResource VerticalStack}">
 
-                <Label Text="Round Preview" Style="{StaticResource CenterMessageStyle}"/>
+                <Label Text="Round Preparation Phase" Style="{StaticResource CenterMessageStyle}"/>
 
                 <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
 
