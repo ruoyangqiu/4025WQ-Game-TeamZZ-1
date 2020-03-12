@@ -190,7 +190,7 @@ namespace Game.Models
 
             foreach (var data in MapGridLocation)
             {
-                if (data.Player.Guid.Equals(player.Guid))
+                if (data.Player.Id.Equals(player.Id))
                 {
                     return data;
                 }
