@@ -101,7 +101,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// 
+        /// Event when player is clicked. To swap position.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -126,13 +126,16 @@ namespace Game.Views
             }
             else
             {
-                var to = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
+                if (player_clicked != From.Player)
+                {
+                    var to = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
 
-                var temp = From.Player;
+                    var temp = From.Player;
 
-                From.Player = to.Player;
+                    From.Player = to.Player;
 
-                to.Player = temp;
+                    to.Player = temp;
+                }
 
                 From = null;
 
