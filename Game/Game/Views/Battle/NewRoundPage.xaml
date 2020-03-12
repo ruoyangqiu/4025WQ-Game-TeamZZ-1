@@ -8,27 +8,27 @@
 
             <StackLayout Style="{StaticResource VerticalStack}">
 
-                <Label Text="Round Preparation Phase" Style="{StaticResource CenterMessageStyle}"/>
-
-                <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-
-                <FlexLayout x:Name="PartyListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-
-                <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
-
-                <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-
-                <StackLayout Padding="1"></StackLayout>
+                <Label Text="Round Preview" Style="{StaticResource CenterMessageStyle}"/>
+                <Label Text="You can click on characters to swap positions" Style="{StaticResource LabelStyle}"/>
+                <StackLayout >
+                    <AbsoluteLayout 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            HeightRequest="630" WidthRequest="630"
+                            >
+                        <Image Source="https://i.ibb.co/VQzwP7r/00810.jpg" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></Image>
+                        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                            <!--BattleBoard Grid-->
+                            
+                            <Grid x:Name="BattleBoard">
+                            </Grid>
+                        </StackLayout>
+                    </AbsoluteLayout>
+                </StackLayout>
 
                 <Button Clicked="BeginButton_Clicked" Text="Begin"/>
-
             </StackLayout>
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

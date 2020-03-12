@@ -18,6 +18,10 @@ namespace Game.Views
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
+        MapModelLocation From;
+
+        ImageButton Selected;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -25,19 +29,10 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            // Draw the Characters
-            foreach (var data in EngineViewModel.Engine.CharacterList)
-            {
-                PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
-            }
-
-            // Draw the Monsters
-            foreach (var data in EngineViewModel.Engine.MonsterList)
-            {
-                MonsterListFrame.Children.Add(CreatePlayerDisplayBox(data));
-            }
-
+            DrawBattleBoard();
         }
+
+
 
         /// <summary>
         /// Start next Round, returning to the battle screen
@@ -50,122 +45,85 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Return a stack layout with the Player information inside
+        /// Start next Round, returning to the battle screen
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public StackLayout CreatePlayerDisplayBox(EntityInfoModel data)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DrawBattleBoard()
         {
-            if (data == null)
+            var map = EngineViewModel.Engine.MapModel;
+
+            int num_row = map.MapXAxiesCount;
+
+            int num_col = map.MapXAxiesCount;
+
+            for (int i = 0; i < num_row; i++)
             {
-                data = new EntityInfoModel();
+                BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
             }
 
-            // Hookup the image
-            var PlayerImage = new Image
+            for (int i = 0; i < num_col; i++)
             {
-                Style = (Style)Application.Current.Resources["ImageBattleLargeStyle"],
-                Source = data.ImageURI
-            };
+                BattleBoard.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100) });
+            }
 
-            // Add the Level
-            var PlayerLevelLabel = new Label
+            for (int i = 0; i < num_row; i++)
             {
-                Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
+                for (int j = 0; j < num_col; j++)
+                {
+                    var player = map.MapGridLocation[i, j].Player;
 
-            // Add the HP
-            var PlayerHPLabel = new Label
-            {
-                Text = "HP : " + data.GetCurrentHealthTotal,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
+                    if (player.PlayerType == PlayerTypeEnum.Character)
+                    {
+                        var displayed = new ImageButton { Source = player.ImageURI };
+                        displayed.BindingContext = player;
+                        displayed.Clicked += OnPlayerClicked;
 
-            var PlayerAttackLabel = new Label
-            {
-                Text = "Attack : " + data.Attack,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
-            var PlayerDefenseLabel = new Label
-            {
-                Text = "Defense : " + data.Defense,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
+                        BattleBoard.Children.Add(displayed, i, j);
+                    }
+                    else if (player.PlayerType == PlayerTypeEnum.Monster)
+                    {
+                        var displayed = new Image { Source = player.ImageURI };
 
-            var PlayerSpeedLabel = new Label
-            {
-                Text = "Speed : " + data.Speed,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
+                        BattleBoard.Children.Add(displayed, i, j);
+                    }
+                }
+            }
+        }
 
-            var PlayerNameLabel = new Label()
-            {
-                Text = data.Name,
-                Style = (Style)Application.Current.Resources["ValueStyle"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnPlayerClicked(object sender, EventArgs e)
+        {
+            var imgButton = (ImageButton)sender;
+            var player_clicked = (EntityInfoModel)imgButton.BindingContext;
 
-            // Put the Image Button and Text inside a layout
-            var PlayerStack = new StackLayout
+            if (player_clicked.PlayerType != PlayerTypeEnum.Character)
             {
-                Style = (Style)Application.Current.Resources["PlayerInfoBox"],
-                HorizontalOptions = LayoutOptions.Center,
-                Padding = 0,
-                Spacing = 0,
-                Children = {
-                    PlayerImage,
-                    PlayerNameLabel,
-                    PlayerLevelLabel,
-                    PlayerHPLabel,
-                    PlayerAttackLabel,
-                    PlayerDefenseLabel,
-                    PlayerSpeedLabel,
-                },
-            };
+                return;
+            }
 
-            return PlayerStack;
+            if (From == null)
+            {
+                From = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
+                Selected = imgButton;
+                Selected.IsEnabled = false;
+            }
+            else
+            {
+                var to = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
+                var temp = From.Player;
+                From.Player = to.Player;
+                to.Player = temp;
+                From = null;
+                Selected.IsEnabled = true;
+
+                BattleBoard.Children.Clear();
+            }
+            DrawBattleBoard();
         }
     }
 }
