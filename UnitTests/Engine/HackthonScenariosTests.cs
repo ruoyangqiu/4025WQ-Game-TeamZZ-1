@@ -670,7 +670,7 @@ namespace Scenario
 
         #region TestScenario7   
         [Test]
-        public void HackathonScenario_Scenario_7_If_Confusion_Turn_Character_Should_Skip()
+        public void HackathonScenario_Scenario_7_If_Sleep_Monster_Should_Sleep()
         {
             /* 
              * Scenario Number:  
@@ -723,7 +723,7 @@ namespace Scenario
             var MonsterPlayer = new EntityInfoModel(
                 new MonsterModel
                 {
-                    Speed = 10,
+                    Speed = 1,
                     Level = 10,
                     CurrentHealth = 100,
                     Experience = 100,
