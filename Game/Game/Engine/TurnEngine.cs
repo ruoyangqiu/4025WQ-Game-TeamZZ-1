@@ -367,15 +367,19 @@ namespace Game.Engine
                 return true;
             }
 
-            if ( Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+            if(PrimeNumber)
             {
-                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
-                BattleMessageModel.TurnMessage = "Prime always Hit";
-                //Debug.WriteLine(Attacker.TestDamage);
-                BattleMessageModel.DamageAmount = Attacker.GetDamageTotal;
-                Debug.WriteLine(BattleMessageModel.TurnMessage);
-                return true;
+                if (Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+                {
+                    BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+                    BattleMessageModel.TurnMessage = "Prime always Hit";
+                    //Debug.WriteLine(Attacker.TestDamage);
+                    BattleMessageModel.DamageAmount = Attacker.GetDamageTotal;
+                    Debug.WriteLine(BattleMessageModel.TurnMessage);
+                    return true;
+                }
             }
+
 
             switch (BattleMessageModel.HitStatus)
             {
