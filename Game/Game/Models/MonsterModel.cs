@@ -27,6 +27,7 @@ namespace Game.Models
         public MonsterModel()
         {
             Name = "";
+            Guid = Id;
             ImageURI = CharacterService.DefaultImageURI;
             PlayerType = PlayerTypeEnum.Monster;
         }

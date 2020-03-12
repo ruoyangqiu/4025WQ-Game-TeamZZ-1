@@ -16,6 +16,7 @@ namespace Game.Models
         public CharacterModel() {
             PlayerType = PlayerTypeEnum.Character;
             Name = "";
+            Guid = Id;
             var randomUriDescription = CharacterService.GetRandomURIDescription();
             ImageURI = randomUriDescription.Item1;
             Description = randomUriDescription.Item2;
