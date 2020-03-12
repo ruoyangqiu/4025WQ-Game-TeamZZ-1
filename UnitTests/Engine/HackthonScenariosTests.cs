@@ -660,6 +660,7 @@ namespace Scenario
 
             //Reset
             DiceHelper.DisableForcedRolls();
+            BattleEngine.EnableConfusionRound = false;
 
             //Assert
             Assert.AreEqual(true, result);
