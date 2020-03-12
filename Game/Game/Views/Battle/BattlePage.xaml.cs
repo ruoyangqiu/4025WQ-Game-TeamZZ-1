@@ -457,21 +457,21 @@ namespace Game.Views
 				{
 					var player = map.MapGridLocation[i, j].Player;
 
-					// Image button for characters
+					// Image for character
 					if (player.PlayerType == PlayerTypeEnum.Character)
+					{
+						var displayed = new Image { Source = player.ImageURI };
+
+						BattleBoard.Children.Add(displayed, i, j);
+					}
+					// Image button for monster
+					else if (player.PlayerType == PlayerTypeEnum.Monster)
 					{
 						var displayed = new ImageButton { Source = player.ImageURI };
 
 						displayed.BindingContext = player;
 
 						displayed.Clicked += OnPlayerClicked;
-
-						BattleBoard.Children.Add(displayed, i, j);
-					}
-					// Image for monsters
-					else if (player.PlayerType == PlayerTypeEnum.Monster)
-					{
-						var displayed = new Image { Source = player.ImageURI };
 
 						BattleBoard.Children.Add(displayed, i, j);
 					}
