@@ -45,7 +45,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Start next Round, returning to the battle screen
+        /// Draw the battle board
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -57,6 +57,7 @@ namespace Game.Views
 
             int num_col = map.MapXAxiesCount;
 
+            // Create rows and columns
             for (int i = 0; i < num_row; i++)
             {
                 BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
@@ -67,20 +68,25 @@ namespace Game.Views
                 BattleBoard.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100) });
             }
 
+            // Fill the grid with players
             for (int i = 0; i < num_row; i++)
             {
                 for (int j = 0; j < num_col; j++)
                 {
                     var player = map.MapGridLocation[i, j].Player;
 
+                    // Image button for characters
                     if (player.PlayerType == PlayerTypeEnum.Character)
                     {
                         var displayed = new ImageButton { Source = player.ImageURI };
+
                         displayed.BindingContext = player;
+
                         displayed.Clicked += OnPlayerClicked;
 
                         BattleBoard.Children.Add(displayed, i, j);
                     }
+                    // Image for monsters
                     else if (player.PlayerType == PlayerTypeEnum.Monster)
                     {
                         var displayed = new Image { Source = player.ImageURI };
@@ -99,30 +105,40 @@ namespace Game.Views
         public void OnPlayerClicked(object sender, EventArgs e)
         {
             var imgButton = (ImageButton)sender;
+
             var player_clicked = (EntityInfoModel)imgButton.BindingContext;
 
             if (player_clicked.PlayerType != PlayerTypeEnum.Character)
             {
-                return;
+                return; // validate the player is a character
             }
 
             if (From == null)
             {
                 From = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
+
                 Selected = imgButton;
+
                 Selected.IsEnabled = false;
             }
             else
             {
                 var to = EngineViewModel.Engine.MapModel.GetLocationForPlayer(player_clicked);
+
                 var temp = From.Player;
+
                 From.Player = to.Player;
+
                 to.Player = temp;
+
                 From = null;
+
                 Selected.IsEnabled = true;
 
                 BattleBoard.Children.Clear();
             }
+
+            // redraw game board
             DrawBattleBoard();
         }
     }
