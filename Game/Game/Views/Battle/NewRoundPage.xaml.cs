@@ -51,6 +51,9 @@ namespace Game.Views
         /// <param name="e"></param>
         void DrawBattleBoard()
         {
+
+            BattleBoard.Children.Clear();
+
             var map = EngineViewModel.Engine.MapModel;
 
             int num_row = map.MapXAxiesCount;
@@ -135,11 +138,9 @@ namespace Game.Views
 
                 Selected.IsEnabled = true;
 
-                BattleBoard.Children.Clear();
+                // redraw game board
+                DrawBattleBoard();
             }
-
-            // redraw game board
-            DrawBattleBoard();
         }
     }
 }
