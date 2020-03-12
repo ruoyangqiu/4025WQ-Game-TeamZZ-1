@@ -11,33 +11,23 @@
                 <StackLayout Style="{StaticResource VerticalStack}" x:Name="GameUIDisplay" 
                          IsVisible="true">
                     <Label  Style="{StaticResource HeaderStyle}" Text="Battlefield"></Label>
+                    
+                    <!--BattleBoard Grid-->
                     <StackLayout >
                         <AbsoluteLayout 
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand"
-                            HeightRequest="500" WidthRequest="500"
+                            HeightRequest="630" WidthRequest="630"
                             >
                             <Image Source="https://i.ibb.co/VQzwP7r/00810.jpg" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></Image>
-
-
-                            <AbsoluteLayout                                     AbsoluteLayout.LayoutBounds="0.2,0.2,250,500"
-                                        AbsoluteLayout.LayoutFlags="PositionProportional">
-                                <FlexLayout x:Name="PartyListFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap"/>
-                            </AbsoluteLayout>
-                            <AbsoluteLayout                                     AbsoluteLayout.LayoutBounds="1,0.2, 250, 500"
-                                        AbsoluteLayout.LayoutFlags="PositionProportional">
-                                <FlexLayout x:Name="MonsterListFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap" HeightRequest="500"/>
-                            </AbsoluteLayout>
-
-                            <StackLayout Padding="1"></StackLayout>
+                            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                                <!--BattleBoard Grid-->
+                                <Grid x:Name="BattleBoard">
+                                </Grid>
+                            </StackLayout>
                         </AbsoluteLayout>
                     </StackLayout>
+                    
                     <StackLayout>
                         <Frame x:Name="BattlePlayerInfomationBox"
                                 BorderColor="{StaticResource SecondaryBackgroundColor}"
