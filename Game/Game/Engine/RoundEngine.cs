@@ -315,32 +315,50 @@ namespace Game.Engine
         /// <param name="setLocation"></param>
         public bool GetItemFromPoolIfBetter(EntityInfoModel character, ItemLocationEnum setLocation)
         {
-            var Attribute = AttributeEnum.Unknown;
-            switch(character.CharacterClass)
-            {
-                case (CharacterClassEnum.Fighter):
-                    Attribute = AttributeEnum.Attack;
-                    break;
-                case (CharacterClassEnum.Cleric):
-                    Attribute = AttributeEnum.Defense;
-                    break;
-                case (CharacterClassEnum.Unknown):
-                default:
-                    break;
-            }
-            if(Attribute == AttributeEnum.Unknown)
-            {
-                return false;
-            }
-            var myList = ItemPool.Where(a => a.Location == setLocation && a.Attribute == Attribute)
+
+            // We planning to assign item depending on CharacterClass
+            // We have four Class, Each Class has their outstanding attributes
+            // So item attribute will be considered
+
+
+            var myList = ItemPool.Where(a => a.Location == setLocation)
                 .OrderByDescending(a => a.Value)
                 .ToList();
 
-            if(myList.Count == 0)
+
+
+            // This will be complete later, after we complete Character Class
+
+            //if(setLocation != ItemLocationEnum.OffHand || setLocation != ItemLocationEnum.PrimaryHand)
+            //{
+            //    var Attribute = AttributeEnum.Unknown;
+            //    switch (character.CharacterClass)
+            //    {
+            //        case (CharacterClassEnum.Fighter):
+            //            Attribute = AttributeEnum.Attack;
+            //            break;
+            //        case (CharacterClassEnum.Cleric):
+            //            Attribute = AttributeEnum.Defense;
+            //            break;
+            //        case (CharacterClassEnum.Unknown):
+            //        default:
+            //            break;
+            //    }
+            //    if (Attribute == AttributeEnum.Unknown)
+            //    {
+            //        return false;
+            //    }
+            //    myList = ItemPool.Where(a => a.Location == setLocation && a.Attribute == Attribute)
+            //        .OrderByDescending(a => a.Value)
+            //        .ToList();
+            //}
+
+
+            // If no items in the list, return...
+            if (!myList.Any())
             {
                 return false;
             }
-
 
             var CharacterItem = character.GetItemByLocation(setLocation);
             if (CharacterItem == null)
