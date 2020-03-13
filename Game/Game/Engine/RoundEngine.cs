@@ -99,7 +99,10 @@ namespace Game.Engine
         /// </summary>
         public void PickupItemsForAllCharacters()
         {
-
+            foreach (var character in CharacterList)
+            {
+                PickupItemsFromPool(character);
+            }
         }
 
         /// <summary>
@@ -289,6 +292,17 @@ namespace Game.Engine
         /// <param name="character"></param>
         public bool PickupItemsFromPool(EntityInfoModel character)
         {
+            {
+                // Have the character, walk the items in the pool, and decide if any are better than current one.
+
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
+                GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
+            }
             return true;
         }
 
@@ -301,6 +315,48 @@ namespace Game.Engine
         /// <param name="setLocation"></param>
         public bool GetItemFromPoolIfBetter(EntityInfoModel character, ItemLocationEnum setLocation)
         {
+            var Attribute = AttributeEnum.Unknown;
+            switch(character.CharacterClass)
+            {
+                case (CharacterClassEnum.Fighter):
+                    Attribute = AttributeEnum.Attack;
+                    break;
+                case (CharacterClassEnum.Cleric):
+                    Attribute = AttributeEnum.Defense;
+                    break;
+                case (CharacterClassEnum.Unknown):
+                default:
+                    break;
+            }
+            if(Attribute == AttributeEnum.Unknown)
+            {
+                return false;
+            }
+            var myList = ItemPool.Where(a => a.Location == setLocation && a.Attribute == Attribute)
+                .OrderByDescending(a => a.Value)
+                .ToList();
+
+            if(myList.Count == 0)
+            {
+                return false;
+            }
+
+
+            var CharacterItem = character.GetItemByLocation(setLocation);
+            if (CharacterItem == null)
+            {
+                SwapCharacterItem(character, setLocation, myList.FirstOrDefault());
+                return true;
+            }
+
+            foreach (var PoolItem in myList)
+            {
+                if (PoolItem.Value > CharacterItem.Value)
+                {
+                    SwapCharacterItem(character, setLocation, PoolItem);
+                    return true;
+                }
+            }
             return true;
         }
 
@@ -316,7 +372,22 @@ namespace Game.Engine
         /// <returns></returns>
         private ItemModel SwapCharacterItem(EntityInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
         {
-            return null;
+            // Put on the new ItemModel, which drops the one back to the pool
+            var droppedItem = character.AddItem(setLocation, PoolItem.Id);
+
+            // Add the PoolItem to the list of selected items
+            BattleScore.ItemModelSelectList.Add(PoolItem);
+
+            // Remove the ItemModel just put on from the pool
+            ItemPool.Remove(PoolItem);
+
+            if (droppedItem != null)
+            {
+                // Add the dropped ItemModel to the pool
+                ItemPool.Add(droppedItem);
+            }
+
+            return droppedItem;
         }
      }
 }
