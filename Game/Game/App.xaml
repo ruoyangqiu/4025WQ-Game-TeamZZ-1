@@ -222,6 +222,14 @@
             </Style>
 
             <Style TargetType="StackLayout"
+                x:Key="ItemImageBox"
+                BasedOn="{StaticResource CardImageTextBox}">
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="Spacing" Value="1" />
+            </Style>
+
+            <Style TargetType="StackLayout"
                 x:Key="ScoreCharacterInfoBox"
                 BasedOn="{StaticResource PlayerInfoBox}">
             </Style>
