@@ -645,6 +645,14 @@ namespace Game.Engine
             // Monster will only drop unique Item
             // The unique item will drop based on droprate
             var DroppedMessage = "\nItems Dropped : \n";
+            
+            
+            if (string.IsNullOrEmpty(Target.UniqueItemId))
+            {
+                DroppedMessage = " Nothing dropped. ";
+                BattleMessageModel.DroppedMessage = DroppedMessage;
+                return 0;
+            }
 
             if (!IsUniqueDrop(Target))
             {
