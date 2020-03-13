@@ -13,20 +13,12 @@
                     <Label  Style="{StaticResource HeaderStyle}" Text="Battlefield"></Label>
                     
                     <!--BattleBoard Grid-->
-                    <StackLayout >
-                        <AbsoluteLayout 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            HeightRequest="480" WidthRequest="500"
-                            >
-                            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                                <!--BattleBoard Grid-->
-                                <Grid x:Name="BattleBoard">
-                                </Grid>
-                            </StackLayout>
-                        </AbsoluteLayout>
+                    <StackLayout WidthRequest="650" HeightRequest="650">
+                        <!--BattleBoard Grid-->
+                        <Grid x:Name="BattleBoard">
+                        </Grid>
                     </StackLayout>
-                    
+
                     <StackLayout>
                         <Frame x:Name="BattlePlayerInfomationBox"
                                 BorderColor="{StaticResource SecondaryBackgroundColor}"

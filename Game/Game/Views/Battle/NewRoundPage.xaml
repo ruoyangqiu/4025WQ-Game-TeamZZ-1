@@ -10,19 +10,11 @@
 
                 <Label Text="Round Preview" Style="{StaticResource CenterMessageStyle}"/>
                 <Label Text="You can click on characters to swap positions" Style="{StaticResource LabelStyle}"/>
-                <StackLayout >
-                    <AbsoluteLayout 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            HeightRequest="630" WidthRequest="630"
-                            >
-                        
-                        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                            <!--BattleBoard Grid-->                            
-                            <Grid x:Name="BattleBoard">
-                            </Grid>
-                        </StackLayout>
-                    </AbsoluteLayout>
+                <!--BattleBoard Grid-->
+                <StackLayout WidthRequest="650" HeightRequest="650">
+                    <!--BattleBoard Grid-->
+                    <Grid x:Name="BattleBoard">
+                    </Grid>
                 </StackLayout>
 
                 <Button Clicked="BeginButton_Clicked" Text="Begin"/>
