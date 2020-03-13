@@ -100,13 +100,14 @@ namespace Game.Services
                     Name = "Sun Wukong",
                     ImageURI = "character1.png",
                     CharacterClass = CharacterClassEnum.Fighter,
-                    Level = 5
+                    Level = 2
                 },
 
                 new CharacterModel {
                     Name = "Zhu Bajie",
                     ImageURI = "character7.png", 
                     CharacterClass = CharacterClassEnum.Cleric,
+                    Level = 1
                 },
 
                 new CharacterModel {
@@ -120,7 +121,7 @@ namespace Game.Services
                     Name = "Hong Haier",
                     ImageURI = "character3.png",
                     CharacterClass = CharacterClassEnum.Cleric,
-                    Level = 20
+                    Level = 3
                 },
 
                 new CharacterModel {
@@ -136,7 +137,9 @@ namespace Game.Services
                 new CharacterModel {
                     Name = "Xiao Long Nu",
                     ImageURI = "character6.png",
-                    CharacterClass = CharacterClassEnum.Cleric},
+                    CharacterClass = CharacterClassEnum.Fighter,
+                    Level = 15
+                },
             };
 
             return datalist;
