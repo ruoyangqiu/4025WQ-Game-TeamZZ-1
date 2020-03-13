@@ -763,7 +763,12 @@ namespace Game.Models
             return false;
         }
 
-        // Calculate the Experience Earned
+        /// <summary>
+        /// Calculate The amount of Experience to give
+        /// Reduce the remaining by what was given
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns></returns>
         public int CalculateExperienceEarned(int damage) 
         {
             if (damage < 1)
@@ -771,7 +776,7 @@ namespace Game.Models
                 return 0;
             }
 
-            int remainingHealth = Math.Max(CurrentHealth - damage, 0); // Go to 0 is OK...
+            int remainingHealth = Math.Max(CurrentHealth - damage, 0); 
             double rawPercent = (double)remainingHealth / (double)CurrentHealth;
             double deltaPercent = 1 - rawPercent;
             var pointsAllocate = (int)Math.Floor(ExperienceRemaining * deltaPercent);
