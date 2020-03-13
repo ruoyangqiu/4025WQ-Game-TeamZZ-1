@@ -213,4 +213,64 @@
   <ItemGroup>
     <BundleResource Include="Resources\home_background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster3.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phase_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\red_horn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blue_horn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\emperor_necklace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\golden_hair_pin.png" />
+  </ItemGroup>
 </Project>
