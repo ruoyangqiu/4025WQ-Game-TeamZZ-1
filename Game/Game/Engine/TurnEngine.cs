@@ -1,5 +1,6 @@
 ﻿using Game.Helpers;
 using Game.Models;
+using Game.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -552,34 +553,19 @@ namespace Game.Engine
         /// <returns></returns>
         public int DropItems(EntityInfoModel Target)
         {
-            var DroppedMessage = "\nItems Dropped : \n";
-
-            // Drop Items to ItemModel Pool
-            var myItemList = Target.DropAllItems();
-
-            // I feel generous, even when characters die, random drops happen :-)
-            // If Random drops are enabled, then add some....
-            myItemList.AddRange(GetRandomMonsterItemDrops(BattleScore.RoundCount));
-
-            // Add to ScoreModel
-            foreach (var ItemModel in myItemList)
+            // Depends on Target Player Type,
+            // It will generate different Drop Methods
+            var result = 0;
+            if(Target.PlayerType == PlayerTypeEnum.Character)
             {
-                BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
-                DroppedMessage += ItemModel.Name + "\n";
+                result = CharacterDropItem(Target);
             }
 
-            ItemPool.AddRange(myItemList);
-
-            if (myItemList.Count == 0)
+            if(Target.PlayerType == PlayerTypeEnum.Monster)
             {
-                DroppedMessage = " Nothing dropped. ";
+                result = MonsterDropItem(Target);
             }
-
-            BattleMessageModel.DroppedMessage = DroppedMessage;
-
-            BattleScore.ItemModelDropList.AddRange(myItemList);
-
-            return myItemList.Count();
+            return result;
             
         }
 
@@ -630,7 +616,7 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Will drop between 1 and 4 items from the ItemModel set...
+        /// Roll dice to determine if the unique Item Drop
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
@@ -640,12 +626,76 @@ namespace Game.Engine
             {
                 return false;
             }
-            //var rate = Target.DropRate;
-            //rate1 = rate
-
+            int rate = (int)(10 * Target.DropRate);
+            int dice = DiceHelper.RollDice(1, 10);
+            if(dice > rate)
+            {
+                return false;
+            }
             return true;
         }
 
+        /// <summary>
+        /// Monster Drop Item
+        /// </summary>
+        /// <param name="Target"></param>
+        /// <returns></returns>
+        public int MonsterDropItem(EntityInfoModel Target)
+        {
+            // Monster will only drop unique Item
+            // The unique item will drop based on droprate
+            var DroppedMessage = "\nItems Dropped : \n";
+
+            if (!IsUniqueDrop(Target))
+            {
+                DroppedMessage = " Nothing dropped. ";
+                BattleMessageModel.DroppedMessage = DroppedMessage;
+                return 0;
+            }
+
+            var ItemModel = ItemIndexViewModel.Instance.GetItem(Target.UniqueItemId);
+
+            BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+            DroppedMessage += ItemModel.Name + "\n";
+
+            ItemPool.Add(ItemModel);
+
+
+            BattleMessageModel.DroppedMessage = DroppedMessage;
+
+            BattleScore.ItemModelDropList.Add(ItemModel);
+
+            return 1;
+        }
+
+        public int CharacterDropItem(EntityInfoModel Target)
+        {
+            var DroppedMessage = "\nItems Dropped : \n";
+
+            // Drop Items to ItemModel Pool
+            var myItemList = Target.DropAllItems();
+
+
+            // Add to ScoreModel
+            foreach (var ItemModel in myItemList)
+            {
+                BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+                DroppedMessage += ItemModel.Name + "\n";
+            }
+
+            ItemPool.AddRange(myItemList);
+
+            if (myItemList.Count == 0)
+            {
+                DroppedMessage = " Nothing dropped. ";
+            }
+
+            BattleMessageModel.DroppedMessage = DroppedMessage;
+
+            BattleScore.ItemModelDropList.AddRange(myItemList);
+
+            return myItemList.Count();
+        }
 
         private bool IsPrime(EntityInfoModel Attacker)
         {
