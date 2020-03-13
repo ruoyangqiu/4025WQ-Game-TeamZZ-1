@@ -17,7 +17,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Blue Horn",
                     Description = "Gives bonus attack",
-                    ImageURI = "https://i.ibb.co/KxFtsHr/01019.png",
+                    ImageURI = "blue_horn.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -25,9 +25,9 @@ namespace Game.Services
                     Attribute = AttributeEnum.Attack},
 
                 new ItemModel {
-                    Name = "Red Hron",
+                    Name = "Red Horn",
                     Description = "Gives bonus speed",
-                    ImageURI = "https://i.ibb.co/hsqYC9S/01020.png",
+                    ImageURI = "red_horn.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -37,7 +37,7 @@ namespace Game.Services
                 new ItemModel {
                     Name = "Golden Hair pin",
                     Description = "Gives bonus damage",
-                    ImageURI = "https://i.ibb.co/qd6Vcxs/01004.png",
+                    ImageURI = "golden_hair_pin.png",
                     Range = 0,
                     Damage = 15,
                     Value = 9,
@@ -46,8 +46,8 @@ namespace Game.Services
 
                 new ItemModel {
                     Name = "Emperor's Necklace",
-                    Description = "Pink hat with fluffy ears",
-                    ImageURI = "https://i.ibb.co/vQtJZVH/01021.png",
+                    Description = "Emperor's special item",
+                    ImageURI = "emperor_necklace.png",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -58,7 +58,7 @@ namespace Game.Services
                     {
                         Name = "Phase boots",
                         Description = "Gives bonus speed",
-                        ImageURI = "https://i.ibb.co/9WNvJ56/01015.png",
+                        ImageURI = "phase_boots.png",
                         Range = 0,
                         Damage = 0,
                         Value = 9,
@@ -98,39 +98,39 @@ namespace Game.Services
             {
                 new CharacterModel {
                     Name = "Sun Wukong",
-                    ImageURI = "https://i.ibb.co/txcMq2f/00949.png",
+                    ImageURI = "character1.png",
                     CharacterClass = CharacterClassEnum.Fighter,
                 },
 
                 new CharacterModel {
                     Name = "Zhu Bajie",
-                    ImageURI = "https://i.ibb.co/8j9FGvt/00955.png", 
+                    ImageURI = "character7.png", 
                     CharacterClass = CharacterClassEnum.Cleric,
                 },
 
                 new CharacterModel {
                     Name = "Yang Jian",
-                    ImageURI = "https://i.ibb.co/31J4jLn/00950.png",
+                    ImageURI = "character2.png",
                     CharacterClass = CharacterClassEnum.Cleric},
 
                 new CharacterModel {
                     Name = "Hong Haier",
-                    ImageURI = "https://i.ibb.co/QFmnbSQ/00951.png",
+                    ImageURI = "character3.png",
                     CharacterClass = CharacterClassEnum.Cleric},
 
                 new CharacterModel {
-                    Name = "Jing Ke",
-                    ImageURI = "https://i.ibb.co/PtbYrrB/00956.png",
+                    Name = "Princess Tieshan",
+                    ImageURI = "character4.png",
                     CharacterClass = CharacterClassEnum.Cleric},
 
                 new CharacterModel {
                     Name = "Yang Guifei",
-                    ImageURI = "https://i.ibb.co/Yfm0Fkx/00944.png",
+                    ImageURI = "character5.png",
                     CharacterClass = CharacterClassEnum.Cleric},
 
                 new CharacterModel {
                     Name = "Xiao Long Nu",
-                    ImageURI = "https://i.ibb.co/F7fngW9/00934.png",
+                    ImageURI = "character6.png",
                     CharacterClass = CharacterClassEnum.Cleric},
             };
 
@@ -147,44 +147,44 @@ namespace Game.Services
             {
                 new MonsterModel {
                     Name = "Tauren",
-                    ImageURI = "https://i.ibb.co/JdPLTBs/01148.png",
+                    ImageURI = "monster1.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Hard,
                     Experience = 1000,
                 },
 
                 new MonsterModel {
                     Name = "Horseman",
-                    ImageURI = "https://i.ibb.co/SrMKM5r/01143.png",
+                    ImageURI = "monster2.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Easy,
                     Experience = 500,},
 
                 new MonsterModel {
                     Name = "Jiangshi Bride",
-                    ImageURI = "https://i.ibb.co/GMdPYqD/01118.png",
+                    ImageURI = "monster3.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Medium,
                     Experience = 800,},
 
                 new MonsterModel {
                     Name = "Berserker",
-                    ImageURI = "https://i.ibb.co/R7mnV1j/01119.png",
+                    ImageURI = "monster4.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Medium,
                     Experience = 800,},
 
                 new MonsterModel {
                     Name = "Great Wolf",
-                    ImageURI = "https://i.ibb.co/Kw9j2RY/01124.png",
+                    ImageURI = "monster5.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Medium,
                     Experience = 800,},
 
                 new MonsterModel {
                     Name = "Witch",
-                    ImageURI = "https://i.ibb.co/dMJyQB1/01125.png",
+                    ImageURI = "monster6.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Medium,
                     Experience = 800,},
 
                 new MonsterModel {
                     Name = "Hell Pig",
-                    ImageURI = "https://i.ibb.co/R9JbmK7/01138.png",
+                    ImageURI = "monster7.png",
                     DifficultyLevel = Models.DifficultyLevelEnum.Medium,
                     Experience = 800,},
             };

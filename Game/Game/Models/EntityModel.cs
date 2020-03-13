@@ -757,8 +757,16 @@ namespace Game.Models
             return false;
         }
 
-        // Calculate the Experience Earned
-        public int CalculateExperienceEarned(int damage) { return 0; }
+        /// <summary>
+        /// Calculate The amount of Experience to give
+        /// Reduce the remaining by what was given
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns></returns>
+        public int CalculateExperienceEarned(int damage)
+        {
+            return damage;
+        }
 
         /// <summary>
         /// Level Up

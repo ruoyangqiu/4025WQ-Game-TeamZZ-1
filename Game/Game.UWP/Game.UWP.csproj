@@ -105,12 +105,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="battleboard.jpg" />
+    <Content Include="blue_horn.png" />
     <Content Include="cauldren.png" />
+    <Content Include="character1.png" />
+    <Content Include="character2.png" />
+    <Content Include="character3.png" />
+    <Content Include="character4.png" />
+    <Content Include="character5.png" />
+    <Content Include="character6.png" />
+    <Content Include="character7.png" />
+    <Content Include="character8.png" />
     <Content Include="d12.png" />
     <Content Include="dice_20.png" />
     <Content Include="door.png" />
     <Content Include="dungeon_door.png" />
+    <Content Include="emperor_necklace.png" />
     <Content Include="gameover.png" />
+    <Content Include="golden_hair_pin.png" />
     <Content Include="grey_door.png" />
     <Content Include="home_background.png" />
     <Content Include="icon_add.png" />
@@ -122,6 +133,14 @@
     <Content Include="items.png" />
     <Content Include="knight.png" />
     <Content Include="icon_new.png" />
+    <Content Include="monster1.png" />
+    <Content Include="monster2.png" />
+    <Content Include="monster3.png" />
+    <Content Include="monster4.png" />
+    <Content Include="monster5.png" />
+    <Content Include="monster6.png" />
+    <Content Include="monster7.png" />
+    <Content Include="phase_boots.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -150,6 +169,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="red_horn.png" />
     <Content Include="score.png" />
     <Content Include="splashscreen.jpg" />
     <Content Include="troll.png" />
