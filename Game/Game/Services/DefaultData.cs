@@ -100,6 +100,7 @@ namespace Game.Services
                     Name = "Sun Wukong",
                     ImageURI = "character1.png",
                     CharacterClass = CharacterClassEnum.Fighter,
+                    Level = 5
                 },
 
                 new CharacterModel {
@@ -111,12 +112,16 @@ namespace Game.Services
                 new CharacterModel {
                     Name = "Yang Jian",
                     ImageURI = "character2.png",
-                    CharacterClass = CharacterClassEnum.Cleric},
+                    CharacterClass = CharacterClassEnum.Cleric,
+                    Level = 3
+                },
 
                 new CharacterModel {
                     Name = "Hong Haier",
                     ImageURI = "character3.png",
-                    CharacterClass = CharacterClassEnum.Cleric},
+                    CharacterClass = CharacterClassEnum.Cleric,
+                    Level = 20
+                },
 
                 new CharacterModel {
                     Name = "Princess Tieshan",
