@@ -40,15 +40,15 @@
                                 <StackLayout Style="{StaticResource CardImageTextBox}"
                                              Padding="30,15,0,0">
                                     <Label 
-                                        Text="{Binding Level, StringFormat='LVL: {0:F0}'}" />
+                                        Text="{Binding Level, StringFormat='LEVEL: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Attack, StringFormat='ATK: {0:F0}'}" />
+                                        Text="{Binding Attack, StringFormat='ATTACK: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Defense, StringFormat='DEF: {0:F0}'}" />
+                                        Text="{Binding Defense, StringFormat='DEFENSE: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding MaxHealth, StringFormat='  HP: {0:F0}'}" />
+                                        Text="{Binding MaxHealth, StringFormat='MAX HEALTH: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Speed, StringFormat='SPD: {0:F0}'}" />
+                                        Text="{Binding Speed, StringFormat='SPEED: {0:F0}'}" />
                                 </StackLayout>
 
                                 <StackLayout Style="{StaticResource CardImageTextBox}"
