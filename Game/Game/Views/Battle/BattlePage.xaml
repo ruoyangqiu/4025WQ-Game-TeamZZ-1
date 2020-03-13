@@ -17,7 +17,7 @@
                         <AbsoluteLayout 
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand"
-                            HeightRequest="630" WidthRequest="630"
+                            HeightRequest="480" WidthRequest="500"
                             >
                             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                                 <!--BattleBoard Grid-->
