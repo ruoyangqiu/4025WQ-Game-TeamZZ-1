@@ -33,9 +33,9 @@ namespace Game.Models
             Name = data.Name;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
-            CurrentHealth = data.GetCurrentHealth();
-            MaxHealth = data.GetMaxHealth();
 
+            MaxHealth = data.GetMaxHealthTotal;
+            CurrentHealth = MaxHealth;
             // Set the strings for the items
             Head = data.Head;
             Feet = data.Feet;
@@ -71,9 +71,9 @@ namespace Game.Models
             CharacterClass = data.CharacterClass;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
-            CurrentHealth = data.GetCurrentHealth();
-            MaxHealth = data.GetMaxHealth();
-
+            
+            MaxHealth = data.GetMaxHealthTotal;
+            CurrentHealth = MaxHealth;
             // Set the strings for the items
             Head = data.Head;
             Feet = data.Feet;
