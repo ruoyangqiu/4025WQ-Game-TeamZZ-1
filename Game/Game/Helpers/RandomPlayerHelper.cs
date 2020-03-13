@@ -19,5 +19,15 @@ namespace Game.Helpers
             // Roll the Dice and reset the Health
             return DiceHelper.RollDice(level, 10);
         }
+        /// <summary>
+        /// Genrate am Item for Monster If they Don't have Unique Item
+        /// </summary>
+        /// <returns></returns>
+        public static string GetMonsterItem()
+        {
+            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+
+            return result;
+        }
     }
 }

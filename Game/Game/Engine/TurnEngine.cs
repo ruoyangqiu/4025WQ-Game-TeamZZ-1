@@ -649,9 +649,18 @@ namespace Game.Engine
             
             if (string.IsNullOrEmpty(Target.UniqueItemId))
             {
-                DroppedMessage = " Nothing dropped. ";
+                var data = GetRandomMonsterItemDrops();
+                BattleScore.ItemsDroppedList += data.FormatOutput() + "\n";
+                DroppedMessage += data.Name + "\n";
+
+                ItemPool.Add(data);
+
+
                 BattleMessageModel.DroppedMessage = DroppedMessage;
-                return 0;
+
+                BattleScore.ItemModelDropList.Add(data);
+
+                return 1;
             }
 
             if (!IsUniqueDrop(Target))
@@ -703,6 +712,19 @@ namespace Game.Engine
             BattleScore.ItemModelDropList.AddRange(myItemList);
 
             return myItemList.Count();
+        }
+
+        /// <summary>
+        /// Will drop between 1 and 4 items from the ItemModel set...
+        /// </summary>
+        /// <param name="round"></param>
+        /// <returns></returns>
+        public ItemModel GetRandomMonsterItemDrops()
+        {
+            
+            
+            var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterItem());
+            return data;
         }
 
         private bool IsPrime(EntityInfoModel Attacker)
