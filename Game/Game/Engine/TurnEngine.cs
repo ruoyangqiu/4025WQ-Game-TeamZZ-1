@@ -161,13 +161,13 @@ namespace Game.Engine
             //return result;
         }
 
-
+        //Sleeping Turn for Hackthon Scenario 7
         public bool FallAsleep(EntityInfoModel Attacker)
         {
             Debug.WriteLine(string.Format(Attacker.Name, " is sleeping"));
             BattleMessageModel.ClearMessages();
             BattleMessageModel.TurnMessage = Attacker.Name + " is sleeping";
-            
+          
             return true;
         }
         public bool MoveAsTurn(EntityInfoModel Attacker)
@@ -367,15 +367,19 @@ namespace Game.Engine
                 return true;
             }
 
-            if ( Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+            if(PrimeNumber)
             {
-                BattleMessageModel.HitStatus = HitStatusEnum.Hit;
-                BattleMessageModel.TurnMessage = "Prime always Hit";
-                //Debug.WriteLine(Attacker.TestDamage);
-                BattleMessageModel.DamageAmount = Attacker.GetDamageTotal;
-                Debug.WriteLine(BattleMessageModel.TurnMessage);
-                return true;
+                if (Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
+                {
+                    BattleMessageModel.HitStatus = HitStatusEnum.Hit;
+                    BattleMessageModel.TurnMessage = "Prime always Hit";
+                    //Debug.WriteLine(Attacker.TestDamage);
+                    BattleMessageModel.DamageAmount = Attacker.GetDamageTotal;
+                    Debug.WriteLine(BattleMessageModel.TurnMessage);
+                    return true;
+                }
             }
+
 
             switch (BattleMessageModel.HitStatus)
             {
@@ -548,7 +552,35 @@ namespace Game.Engine
         /// <returns></returns>
         public int DropItems(EntityInfoModel Target)
         {
-            return 0;
+            var DroppedMessage = "\nItems Dropped : \n";
+
+            // Drop Items to ItemModel Pool
+            var myItemList = Target.DropAllItems();
+
+            // I feel generous, even when characters die, random drops happen :-)
+            // If Random drops are enabled, then add some....
+            myItemList.AddRange(GetRandomMonsterItemDrops(BattleScore.RoundCount));
+
+            // Add to ScoreModel
+            foreach (var ItemModel in myItemList)
+            {
+                BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+                DroppedMessage += ItemModel.Name + "\n";
+            }
+
+            ItemPool.AddRange(myItemList);
+
+            if (myItemList.Count == 0)
+            {
+                DroppedMessage = " Nothing dropped. ";
+            }
+
+            BattleMessageModel.DroppedMessage = DroppedMessage;
+
+            BattleScore.ItemModelDropList.AddRange(myItemList);
+
+            return myItemList.Count();
+            
         }
 
         /// <summary>
@@ -602,9 +634,16 @@ namespace Game.Engine
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
-        public List<ItemModel> GetRandomMonsterItemDrops(int round)
+        public bool IsUniqueDrop(EntityInfoModel Target)
         {
-            return new List<ItemModel>();
+            if(Target.PlayerType == PlayerTypeEnum.Character)
+            {
+                return false;
+            }
+            //var rate = Target.DropRate;
+            //rate1 = rate
+
+            return true;
         }
 
 

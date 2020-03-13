@@ -11,8 +11,11 @@ namespace Game.Engine
     public class BaseEngine
     {
         #region Properties
+        // Hackthon 7
         public bool SLEEPINGTEST = false;
         public bool Awake = true;
+        //Hackthon 47
+        public bool PrimeNumber = false;
         // Holds the official ScoreModel
         public ScoreModel BattleScore = new ScoreModel();
 
