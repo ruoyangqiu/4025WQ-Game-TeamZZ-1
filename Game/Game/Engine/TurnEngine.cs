@@ -552,7 +552,35 @@ namespace Game.Engine
         /// <returns></returns>
         public int DropItems(EntityInfoModel Target)
         {
-            return 0;
+            var DroppedMessage = "\nItems Dropped : \n";
+
+            // Drop Items to ItemModel Pool
+            var myItemList = Target.DropAllItems();
+
+            // I feel generous, even when characters die, random drops happen :-)
+            // If Random drops are enabled, then add some....
+            myItemList.AddRange(GetRandomMonsterItemDrops(BattleScore.RoundCount));
+
+            // Add to ScoreModel
+            foreach (var ItemModel in myItemList)
+            {
+                BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+                DroppedMessage += ItemModel.Name + "\n";
+            }
+
+            ItemPool.AddRange(myItemList);
+
+            if (myItemList.Count == 0)
+            {
+                DroppedMessage = " Nothing dropped. ";
+            }
+
+            BattleMessageModel.DroppedMessage = DroppedMessage;
+
+            BattleScore.ItemModelDropList.AddRange(myItemList);
+
+            return myItemList.Count();
+            
         }
 
         /// <summary>
@@ -606,9 +634,16 @@ namespace Game.Engine
         /// </summary>
         /// <param name="round"></param>
         /// <returns></returns>
-        public List<ItemModel> GetRandomMonsterItemDrops(int round)
+        public bool IsUniqueDrop(EntityInfoModel Target)
         {
-            return new List<ItemModel>();
+            if(Target.PlayerType == PlayerTypeEnum.Character)
+            {
+                return false;
+            }
+            //var rate = Target.DropRate;
+            //rate1 = rate
+
+            return true;
         }
 
 
