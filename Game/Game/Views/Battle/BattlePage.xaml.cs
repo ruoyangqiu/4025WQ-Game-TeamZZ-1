@@ -443,7 +443,7 @@ namespace Game.Views
 			// Create rows and columns
 			for (int i = 0; i < num_row; i++)
 			{
-				BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(75) });
+				BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
 			}
 
 			for (int i = 0; i < num_col; i++)

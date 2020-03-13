@@ -220,7 +220,7 @@
     <BundleResource Include="Resources\monster2.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster3.png.png" />
+    <BundleResource Include="Resources\monster3.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\monster4.png" />
@@ -272,5 +272,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\golden_hair_pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\battle_tile.png" />
   </ItemGroup>
 </Project>
