@@ -63,7 +63,7 @@ namespace Game.Views
             // Create rows and columns
             for (int i = 0; i < num_row; i++)
             {
-                BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
+                BattleBoard.RowDefinitions.Add(new RowDefinition { Height = new GridLength(75) });
             }
 
             for (int i = 0; i < num_col; i++)
@@ -78,24 +78,32 @@ namespace Game.Views
                 {
                     var player = map.MapGridLocation[i, j].Player;
 
+                    var cellContent = new AbsoluteLayout();
+
+                    var backgroundImage = new Image { Source = "battle_tile.png" };
+
+                    cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+
                     // Image button for characters
                     if (player.PlayerType == PlayerTypeEnum.Character)
                     {
-                        var displayed = new ImageButton { Source = player.ImageURI };
+                        var characterButtonImage = new ImageButton { Source = player.ImageURI };
 
-                        displayed.BindingContext = player;
+                        characterButtonImage.BindingContext = player;
 
-                        displayed.Clicked += OnPlayerClicked;
+                        characterButtonImage.Clicked += OnPlayerClicked;
 
-                        BattleBoard.Children.Add(displayed, i, j);
+                        cellContent.Children.Add(characterButtonImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
                     }
                     // Image for monsters
                     else if (player.PlayerType == PlayerTypeEnum.Monster)
                     {
-                        var displayed = new Image { Source = player.ImageURI };
+                        var monsterImage = new Image { Source = player.ImageURI };
 
-                        BattleBoard.Children.Add(displayed, i, j);
-                    }
+                        cellContent.Children.Add(monsterImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+                    } 
+
+                    BattleBoard.Children.Add(cellContent, i, j);
                 }
             }
         }

@@ -16,10 +16,9 @@
                             VerticalOptions="FillAndExpand"
                             HeightRequest="630" WidthRequest="630"
                             >
-                        <Image Source="https://i.ibb.co/VQzwP7r/00810.jpg" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></Image>
+                        
                         <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                            <!--BattleBoard Grid-->
-                            
+                            <!--BattleBoard Grid-->                            
                             <Grid x:Name="BattleBoard">
                             </Grid>
                         </StackLayout>
