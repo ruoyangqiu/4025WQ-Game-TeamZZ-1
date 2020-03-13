@@ -37,6 +37,9 @@ namespace Game.Models
         // Level Up Message
         public string LevelUpMessage = string.Empty;
 
+        // Message when something Drops
+        public string DroppedMessage = string.Empty;
+
         // Amount of Damage
         public int DamageAmount = 0;
 
