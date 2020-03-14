@@ -145,13 +145,7 @@ namespace Game.Engine
 
             // Do the turn....
             TakeTurn(CurrentAttacker);
-            foreach (var player in PlayerList)
-            {
-                if (player.Id.Equals(CurrentAttacker.Id))
-                {
-                    player.WakeUp();
-                }
-            }
+           
 
             RoundStateEnum = RoundEnum.NextTurn;
 
