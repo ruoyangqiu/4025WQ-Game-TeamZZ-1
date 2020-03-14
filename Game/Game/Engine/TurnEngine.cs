@@ -235,6 +235,11 @@ namespace Game.Engine
                 }
                 return false;
             }
+            BattleMessageModel.ClearMessages();
+            BattleMessageModel.TurnMessageSpecial = " Moved";
+            BattleMessageModel.TurnMessage = Attacker.Name + BattleMessageModel.TurnMessageSpecial;
+            Debug.WriteLine(BattleMessageModel.TurnMessage);
+            
             return true;
         }
 
@@ -245,6 +250,10 @@ namespace Game.Engine
         /// <returns></returns>
         public bool UseAbility(EntityInfoModel Attacker)
         {
+            BattleMessageModel.ClearMessages();
+            BattleMessageModel.TurnMessageSpecial = " Used Ability";
+            BattleMessageModel.TurnMessage = Attacker.Name + BattleMessageModel.TurnMessageSpecial;
+            Debug.WriteLine(BattleMessageModel.TurnMessage);
             return true;
         }
 
