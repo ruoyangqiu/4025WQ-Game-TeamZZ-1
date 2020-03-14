@@ -13,12 +13,6 @@ namespace Game.Models
     public class MonsterModel : EntityModel<MonsterModel>
     {
 
-        // The UniqueItem the Monster will drop
-        [Ignore]
-        public ItemModel UniqueItem { get; set; }
-
-        // The Rate the item will drop
-        public double DropRate { get; set; } = 1;
 
         /// <summary>
         /// Default MonsterModel
@@ -80,8 +74,7 @@ namespace Game.Models
             Feet = newData.Feet;
             FeetId = Feet == null ? "" : Feet.Id;
 
-            UniqueItem = newData.UniqueItem;
-            UniqueItemId = UniqueItem == null ? "" : UniqueItem.Id;
+            UniqueItemId =  newData.UniqueItemId;
 
             DropRate = newData.DropRate;
 
