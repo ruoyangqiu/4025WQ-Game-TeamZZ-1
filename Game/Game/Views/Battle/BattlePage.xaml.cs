@@ -265,8 +265,8 @@ namespace Game.Views
 				BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessageModel.LevelUpMessage, BattleMessages.Text);
 			}
 
-			htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLFormattedTurnMessage();
-			HtmlBox.Source = HtmlBox.Source = htmlSource;
+			//htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLFormattedTurnMessage();
+			//HtmlBox.Source = HtmlBox.Source = htmlSource;
 		}
 
 		/// <summary>
