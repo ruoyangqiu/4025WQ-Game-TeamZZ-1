@@ -171,6 +171,14 @@ namespace Game.Engine
           
             return true;
         }
+
+        /// <summary>
+        /// Find a Desired Target
+        /// Move close to them
+        /// Get to move the number of Speed
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
         public bool MoveAsTurn(EntityInfoModel Attacker)
         {
             /*
