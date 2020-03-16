@@ -179,6 +179,20 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Clear all Locations of the IsSelectable Bool
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearSelectable()
+        {
+            foreach (var data in MapGridLocation)
+            {
+                data.IsSelectable = false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Find the Player on the map
         /// Return their information
         /// 
