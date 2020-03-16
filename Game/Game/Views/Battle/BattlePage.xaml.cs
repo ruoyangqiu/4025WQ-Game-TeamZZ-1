@@ -23,6 +23,7 @@ namespace Game.Views
 
 		// Wait time before proceeding
 		public int WaitTime = 1500;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -150,5 +151,39 @@ namespace Game.Views
 		{
 			DrawBattleBoard();
 		}
+
+		#region MessageHandelers
+
+		/// <summary>
+		/// Builds up the output message
+		/// </summary>
+		/// <param name="message"></param>
+		public void GameMessage()
+		{
+			// Output The Message that happened.
+			BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessageModel.TurnMessage, BattleMessages.Text);
+
+			Debug.WriteLine(BattleMessages.Text);
+
+			if (!string.IsNullOrEmpty(EngineViewModel.Engine.BattleMessageModel.LevelUpMessage))
+			{
+				BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessageModel.LevelUpMessage, BattleMessages.Text);
+			}
+
+			htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLFormattedTurnMessage();
+			HtmlBox.Source = HtmlBox.Source = htmlSource;
+		}
+
+		/// <summary>
+		///  Clears the messages on the UX
+		/// </summary>
+		public void ClearMessages()
+		{
+			BattleMessages.Text = "";
+			htmlSource.Html = EngineViewModel.Engine.BattleMessageModel.GetHTMLBlankMessage();
+			HtmlBox.Source = htmlSource;
+		}
+
+		#endregion MessageHandlers
 	}
 }

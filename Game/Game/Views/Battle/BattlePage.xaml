@@ -22,7 +22,90 @@
                         <Grid x:Name="BattleBoard">
                         </Grid>
                     </StackLayout>
-                    
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <!--Who vs Who-->
+                        <StackLayout WidthRequest="300" HeightRequest="100">
+                            <Grid>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image x:Name="AttackerImage" 
+                                       Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                       Source="question_mark.png" />
+
+                                    <Image 
+                                       Grid.Row="1" Grid.Column="6" 
+                                       Source="vsImage.png" />
+
+                                    <Image x:Name="DefenderImage" 
+                                       Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                       Source="question_mark.png" />
+
+                                    <Label x:Name="AttackerLabel"
+                                           Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"
+                                           Text="" HorizontalOptions="Center"/>
+
+                                    <Label x:Name="DefenderLabel"
+                                           Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="3"
+                                           Text="" HorizontalOptions="Center"/>
+
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                        
+                        <!--Actions-->
+                        <StackLayout WidthRequest="350">
+                            <StackLayout x:Name="PlayerTurnBox" IsVisible="False">
+                                
+                            </StackLayout>
+
+                            <StackLayout x:Name="MonsterTurnBox" IsVisible="False">
+
+                            </StackLayout>
+                        </StackLayout>
+                        
+                    </StackLayout>
+
+                    <!--Battle Message Board-->
+                    <StackLayout>
+                        <Label Text="Game Messages" Style="{StaticResource CenterMessageStyle}" />
+
+                        <Label x:Name="BattleMessages" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   LineBreakMode="WordWrap" 
+                                   MaxLines="10"
+                                   LineHeight="1"
+                                   Style="{StaticResource LabelStyle}"/>
+
+                        <WebView
+                            x:Name="HtmlBox"
+                            WidthRequest="100"
+                            MinimumWidthRequest="100"
+                            HeightRequest="100"
+                            MinimumHeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            BackgroundColor="Transparent"
+                            IsVisible="false"
+                            />
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
