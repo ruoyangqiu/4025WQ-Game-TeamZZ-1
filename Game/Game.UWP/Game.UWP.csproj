@@ -171,6 +171,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="question_mark.png" />
     <Content Include="red_horn.png" />
     <Content Include="score.png" />
     <Content Include="splashscreen.jpg" />
