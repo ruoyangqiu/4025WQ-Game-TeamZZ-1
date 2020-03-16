@@ -73,7 +73,20 @@
                         <!--Actions-->
                         <StackLayout WidthRequest="350">
                             <StackLayout x:Name="PlayerTurnBox" IsVisible="False">
+                                <StackLayout x:Name="ActionSelectionBox" IsVisible="True">
+                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack"/>
+                                    <Button  Clicked="OnMoveButtonClicked" Text="Move"/>
+                                </StackLayout>
                                 
+                                <StackLayout x:Name="AttackActionBox" IsVisible="False">
+                                    <Button  Clicked="OnAttackConfirmClicked" Text="Confirm"/>
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
+                                </StackLayout>
+
+                                <StackLayout x:Name="MoveActionBox" IsVisible="False">
+                                    <Button  Clicked="OnMoveConfirmClicked" Text="Confirm"/>
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
+                                </StackLayout>
                             </StackLayout>
 
                             <StackLayout x:Name="MonsterTurnBox" IsVisible="False">
