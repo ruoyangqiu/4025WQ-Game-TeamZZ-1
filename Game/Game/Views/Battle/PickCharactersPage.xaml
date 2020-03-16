@@ -6,6 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
         <ToolbarItem x:Name="BeginBattleButton" Text="Battle" Clicked="BattleButton_Clicked" IconImageSource="icon_save.png"/>
+        <ToolbarItem x:Name="BeginBattle2Button" Text="Battle2" Clicked="BattleButton2_Clicked" IconImageSource="icon_save.png"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

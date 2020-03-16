@@ -13,7 +13,7 @@ namespace Game.Views
 	/// The Main Game Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BattlePage: ContentPage
+	public partial class BattlePage2: ContentPage
 	{
 		// This uses the Instance so it can be shared with other Battle Pages as needed
 		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
@@ -26,7 +26,7 @@ namespace Game.Views
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public BattlePage ()
+		public BattlePage2 ()
 		{
 			InitializeComponent ();
 
