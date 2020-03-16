@@ -113,43 +113,37 @@ namespace Game.Views
 
 					cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
-					// Image button for characters
+					// Image for characters
 					if (player.PlayerType == PlayerTypeEnum.Character)
 					{
-						var characterButtonImage = new ImageButton { Source = player.ImageURI };
+						var characterImage = new Image { Source = player.ImageURI };
 
-						characterButtonImage.BindingContext = player;
-
-						characterButtonImage.Clicked += OnPlayerClicked;
-
-						cellContent.Children.Add(characterButtonImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+						cellContent.Children.Add(characterImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 					}
-					// Image for monsters
+					// Image button for monsters
 					else if (player.PlayerType == PlayerTypeEnum.Monster)
 					{
-						var monsterImage = new Image { Source = player.ImageURI };
+						var monsterButtonImage = new ImageButton { Source = player.ImageURI };
 
-						cellContent.Children.Add(monsterImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+						if (map.MapGridLocation[i, j].IsSelectable)
+						{
+							monsterButtonImage.IsEnabled = true;
+						}
+						else
+						{
+							monsterButtonImage.IsEnabled = false;
+						}
+
+						monsterButtonImage.BindingContext = player;
+
+						//monsterButtonImage.Clicked += OnMonsterClicked;
+
+						cellContent.Children.Add(monsterButtonImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 					}
 
 					BattleBoard.Children.Add(cellContent, i, j);
 				}
 			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public void OnPlayerClicked(object sender, EventArgs e)
-		{
-			var imgButton = (ImageButton)sender;
-
-			var player_clicked = (EntityInfoModel)imgButton.BindingContext;
-			
-			// todo: define what happens
-
 		}
 
 		protected override void OnAppearing()
