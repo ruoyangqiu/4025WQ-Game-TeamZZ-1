@@ -112,28 +112,35 @@ namespace Game.Views
 
                     var backgroundImage = new Image();
 
-                    var imageButton = new ImageButton { Source = player.ImageURI };
+
 
                     if (map.MapGridLocation[i, j].IsSelectable)
                     {
                         backgroundImage.Source = "battle_tile_green.png";
+
+                        var imageButton = new ImageButton { Source = player.ImageURI };
 
                         imageButton.IsEnabled = true;
 
                         imageButton.Clicked += OnImageButtonClicked;
 
                         imageButton.BindingContext = player;
+
+                        cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+
+                        cellContent.Children.Add(imageButton, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
                     }
                     else 
                     {
+
                         backgroundImage.Source = "battle_tile.png";
 
-                        imageButton.IsEnabled = false;
+                        var image = new Image { Source = player.ImageURI };
+
+                        cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+
+                        cellContent.Children.Add(image, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
                     }
-
-                    cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
-
-                    cellContent.Children.Add(imageButton, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
                     BattleBoard.Children.Add(cellContent, i, j);
                 }
