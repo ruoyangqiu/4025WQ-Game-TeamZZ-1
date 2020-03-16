@@ -505,7 +505,8 @@ namespace Game.Engine
             // Mark Status in output
             BattleMessageModel.TurnMessageSpecial = " and causes death. ";
 
-            // Remove target from list...
+            // Remove target from map
+            MapModel.RemovePlayerFromMap(Target);
 
             // INFO: Teams, Hookup your Boss if you have one...
 
