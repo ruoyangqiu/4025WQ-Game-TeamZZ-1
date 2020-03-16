@@ -84,7 +84,6 @@
                                 </StackLayout>
 
                                 <StackLayout x:Name="MoveActionBox" IsVisible="False">
-                                    <Button  Clicked="OnMoveConfirmClicked" Text="Confirm"/>
                                     <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
                                 </StackLayout>
                             </StackLayout>

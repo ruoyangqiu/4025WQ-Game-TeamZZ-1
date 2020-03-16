@@ -112,8 +112,6 @@ namespace Game.Views
 
                     var backgroundImage = new Image();
 
-
-
                     if (map.MapGridLocation[i, j].IsSelectable)
                     {
                         backgroundImage.Source = "battle_tile_green.png";
@@ -152,8 +150,8 @@ namespace Game.Views
         /// </summary>
         protected override void OnAppearing()
         {
-            DrawBattleBoard();
             NextTurn();
+            DrawBattleBoard();
         }
 
         #region MessageHandelers
@@ -258,16 +256,12 @@ namespace Game.Views
             AttackActionBox.IsVisible = false;
 
             DisableSelections();
-        }
 
-        /// <summary>
-        /// When move confirm button is clicked
-        /// </summary>
-        public void OnMoveConfirmClicked(object sender, EventArgs e)
-        {
-            MoveActionBox.IsVisible = false;
+            TakeTurn();
 
-            DisableSelections();
+            NextTurn();
+
+            DrawBattleBoard();
         }
 
         /// <summary>
@@ -361,9 +355,10 @@ namespace Game.Views
                 DefenderImage.Source = player_clicked.ImageURI;
             }
 
-            // if a empty location is clicked, assign it as the movement destination
+            // if a empty location is clicked
             if (player_clicked.PlayerType == PlayerTypeEnum.Unknown)
             {
+                // move player
 
             }
         }
