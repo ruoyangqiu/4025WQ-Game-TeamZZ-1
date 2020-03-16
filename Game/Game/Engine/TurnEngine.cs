@@ -181,18 +181,20 @@ namespace Game.Engine
         /// <returns></returns>
         public bool MoveAsTurn(EntityInfoModel Attacker)
         {
+
             /*
              * TODO: TEAMS Work out your own move logic if you are implementing move
              * 
              * Mike's Logic
              * The monster or charcter will move to a different square if one is open
-             * Get X,Y for destired Target
-             * Take 1 square closer to Monster X if needed and open 
-             * Take 1 square closer to Monster Y if needed and open
-             * If desired square is occupied, give up
+             * Find the Desired Target
+             * Jump to the closest space near the target that is open
+             * 
+             * If no open spaces, return false
+             * 
              */
 
-            if (BattleScore.AutoBattle)
+            if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
                 // For Attack, Choose Who
                 CurrentDefender = AttackChoice(Attacker);
@@ -215,39 +217,18 @@ namespace Game.Engine
                     return false;
                 }
 
-                // Move toward them
+                // Find Location Nearest to Defender that is Open.
 
-                /*
-                 * First Try moving X closer to them by one square
-                 * 
-                 * If that can't be done, then try moving Y closer to them by one square
-                 * 
-                 */
+                // Get the Open Locations
+                var openSquare = MapModel.ReturnClosestEmptyLocation(locationDefender);
 
-                var MoveX = locationAttacker.Column + (locationDefender.Column - locationAttacker.Column);
+                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, openSquare.Column, openSquare.Row));
 
-                // see if location MoveX, Attacker.Y is empty, if so go there
-                if (MapModel.IsEmptySquare(MoveX, locationAttacker.Row))
-                {
-                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, MoveX, locationAttacker.Row));
-                    return MapModel.MovePlayerOnMap(locationAttacker, MoveX, locationAttacker.Row);
-                }
+                BattleMessageModel.TurnMessage = Attacker.Name + " moves closer to " + CurrentDefender.Name;
 
-                var MoveY = locationAttacker.Row + (locationDefender.Row - locationAttacker.Row);
-
-                // see if location MoveX, Attacker.Y is empty, if so go there
-                if (MapModel.IsEmptySquare(locationAttacker.Column, MoveY))
-                {
-                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, locationAttacker.Column, MoveY));
-                    return MapModel.MovePlayerOnMap(locationAttacker, locationAttacker.Column, MoveY);
-                }
-                return false;
+                return MapModel.MovePlayerOnMap(locationAttacker, openSquare);
             }
-            BattleMessageModel.ClearMessages();
-            BattleMessageModel.TurnMessageSpecial = " Moved";
-            BattleMessageModel.TurnMessage = Attacker.Name + BattleMessageModel.TurnMessageSpecial;
-            Debug.WriteLine(BattleMessageModel.TurnMessage);
-            
+
             return true;
         }
 
