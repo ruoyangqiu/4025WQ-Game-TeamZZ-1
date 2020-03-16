@@ -24,7 +24,7 @@ namespace Game.Models
         // The Map Locations
         public MapModelLocation[,] MapGridLocation;
 
-        public EntityInfoModel EmptySquare = new EntityInfoModel { PlayerType = PlayerTypeEnum.Unknown };
+        public EntityInfoModel EmptySquare = new EntityInfoModel { PlayerType = PlayerTypeEnum.Unknown, ImageURI = "mapcell.png" };
 
         public MapModel()
         {
@@ -100,29 +100,29 @@ namespace Game.Models
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool MovePlayerOnMap(MapModelLocation data, int ToX, int ToY)
+        public bool MovePlayerOnMap(MapModelLocation data, MapModelLocation target)
         {
-            if (ToX < 0)
+            if (target.Column < 0)
             {
                 return false;
             }
 
-            if (ToY < 0)
+            if (target.Row < 0)
             {
                 return false;
             }
 
-            if (ToX >= MapXAxiesCount)
+            if (target.Column >= MapXAxiesCount)
             {
                 return false;
             }
 
-            if (ToY >= MapYAxiesCount)
+            if (target.Row >= MapYAxiesCount)
             {
                 return false;
             }
 
-            MapGridLocation[ToX, ToY].Player = data.Player;
+            MapGridLocation[target.Column, target.Row].Player = data.Player;
 
             // Clear out the old location
             MapGridLocation[data.Column, data.Row].Player = EmptySquare;
@@ -138,6 +138,11 @@ namespace Game.Models
         /// <returns></returns>
         public bool RemovePlayerFromMap(EntityInfoModel data)
         {
+            if (data == null)
+            {
+                return false;
+            }
+
             for (var x = 0; x < MapXAxiesCount; x++)
             {
                 for (var y = 0; y < MapYAxiesCount; y++)
@@ -230,6 +235,49 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Return all Empty Locations on the map
+        /// </summary>
+        /// <returns></returns>
+        public List<MapModelLocation> GetEmptyLocations()
+        {
+            var Result = new List<MapModelLocation>();
+
+            foreach (var data in MapGridLocation)
+            {
+                if (data.Player.PlayerType == PlayerTypeEnum.Unknown)
+                {
+                    Result.Add(data);
+                }
+            }
+
+            return Result;
+        }
+
+        /// <summary>
+        /// Walk the Map and Find the Location that is close to the target
+        /// </summary>
+        /// <param name="Target"></param>
+        /// <returns></returns>
+        public MapModelLocation ReturnClosestEmptyLocation(MapModelLocation Target)
+        {
+            MapModelLocation Result = null;
+
+            int LowestDistance = int.MaxValue;
+
+            foreach (var data in GetEmptyLocations())
+            {
+                var distance = CalculateDistance(data, Target);
+                if (distance < LowestDistance)
+                {
+                    Result = data;
+                    LowestDistance = distance;
+                }
+            }
+
+            return Result;
+        }
+
+        /// <summary>
         /// See if the Attacker is next to the Defender by the distance of Range
         /// 
         /// If either the X or Y distance is less than or equal the range, then they can hit
@@ -242,25 +290,62 @@ namespace Game.Models
             var locationAttacker = GetLocationForPlayer(Attacker);
             var locationDefender = GetLocationForPlayer(Defender);
 
+            if (locationAttacker == null)
+            {
+                return false;
+            }
+
+            if (locationDefender == null)
+            {
+                return false;
+            }
+
             // Get X distance in absolute value
-            var distanceX = Math.Abs(locationAttacker.Column - locationDefender.Column);
-            var distanceY = Math.Abs(locationAttacker.Row - locationDefender.Row);
+            var distance = Math.Abs(CalculateDistance(locationAttacker, locationDefender));
 
             var AttackerRange = Attacker.GetRange();
 
             // Can Reach on X?
-            if (distanceX <= AttackerRange)
-            {
-                return true;
-            }
-
-            // Can reach on Y?
-            if (distanceY <= AttackerRange)
+            if (distance <= AttackerRange)
             {
                 return true;
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Calculate distance between two map locations
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public int CalculateDistance(MapModelLocation start, MapModelLocation end)
+        {
+            if (start == null)
+            {
+                return int.MaxValue;
+            }
+
+            if (end == null)
+            {
+                return int.MaxValue;
+            }
+
+            return Distance(start.Column, start.Row, end.Column, end.Row);
+        }
+
+        /// <summary>
+        /// Calculate Distance between locations
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <returns></returns>
+        public int Distance(int x1, int y1, int x2, int y2)
+        {
+            return ((int)Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)));
         }
     }
 }
