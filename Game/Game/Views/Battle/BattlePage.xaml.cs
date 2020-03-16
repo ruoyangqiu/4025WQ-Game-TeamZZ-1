@@ -43,6 +43,8 @@ namespace Game.Views
             // Ask the Game engine to select who goes first
             EngineViewModel.Engine.CurrentAttacker = null;
 
+            // Initialize battle board
+            IntializeBattleBoard();
         }
 
 
@@ -74,16 +76,8 @@ namespace Game.Views
             }
         }
 
-        /// <summary>
-        /// Draw the battle board
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void DrawBattleBoard()
+        void IntializeBattleBoard()
         {
-
-            BattleBoard.Children.Clear();
-
             var map = EngineViewModel.Engine.MapModel;
 
             int num_row = map.MapXAxiesCount;
@@ -100,6 +94,25 @@ namespace Game.Views
             {
                 BattleBoard.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100) });
             }
+
+            DrawBattleBoard();
+        }
+
+        /// <summary>
+        /// Draw the battle board
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DrawBattleBoard()
+        {
+
+            BattleBoard.Children.Clear();
+
+            var map = EngineViewModel.Engine.MapModel;
+
+            int num_row = map.MapXAxiesCount;
+
+            int num_col = map.MapXAxiesCount;
 
             // create iamge buttons for each cell.
             for (int i = 0; i < num_row; i++)
