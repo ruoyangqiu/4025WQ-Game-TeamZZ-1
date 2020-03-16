@@ -107,6 +107,7 @@
     <Content Include="attackerDefenderBoxImage.png" />
     <Content Include="battleboard.jpg" />
     <Content Include="battle_tile.png" />
+    <Content Include="battle_tile_green.png" />
     <Content Include="blue_horn.png" />
     <Content Include="cauldren.png" />
     <Content Include="character1.png" />
