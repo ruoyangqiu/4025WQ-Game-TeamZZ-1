@@ -147,9 +147,13 @@ namespace Game.Views
 			}
 		}
 
+		/// <summary>
+		/// When first appear, redraw game board and go to next turn
+		/// </summary>
 		protected override void OnAppearing()
 		{
 			DrawBattleBoard();
+			NextTurn();
 		}
 
 		#region MessageHandelers
@@ -185,5 +189,40 @@ namespace Game.Views
 		}
 
 		#endregion MessageHandlers
+
+		#region NextTurn
+		/// <summary>
+		/// Start the next turn
+		/// </summary>
+		public void NextTurn()
+		{
+			// set attacker
+			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
+
+			// update attacker and defender images on the page
+			AttackerImage.Source = EngineViewModel.Engine.CurrentAttacker.ImageURI;
+
+			DefenderImage.Source = "question_mark.png";
+
+			// monster turn or character turn?
+			if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Character) // player turn
+			{
+				PlayerTurnBox.IsVisible = true;
+				MonsterTurnBox.IsVisible = false;
+
+				// Player turn, so wait for player to select a target
+			}
+			else if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Monster) // mosnter turn
+			{
+				PlayerTurnBox.IsVisible = false;
+				MonsterTurnBox.IsVisible = true;
+
+				// Monsters turn, so auto pick a Character to Attack
+				EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+			}
+		}
+
+
+		#endregion NextTurn
 	}
 }
