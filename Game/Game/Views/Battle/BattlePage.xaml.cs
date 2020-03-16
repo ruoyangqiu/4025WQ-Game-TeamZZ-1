@@ -349,6 +349,18 @@ namespace Game.Views
             DrawBattleBoard();
         }
 
+        /// <summary>
+        /// When monster turn defense button is clicked
+        /// </summary>
+        public void OnConfirmDefenseClicked(object sender, EventArgs e)
+        {
+            TakeTurn();
+
+            NextTurn();
+
+            DrawBattleBoard();
+        }
+
         #endregion ActionBox
 
         #region Selection
@@ -424,7 +436,7 @@ namespace Game.Views
             if (player_clicked.PlayerType == PlayerTypeEnum.Monster)
             {
                 EngineViewModel.Engine.CurrentDefender = player_clicked;
-                DefenderImage.Source = player_clicked.ImageURI;
+                UpdateDefender(player_clicked);
             }
 
             // if a empty location is clicked
