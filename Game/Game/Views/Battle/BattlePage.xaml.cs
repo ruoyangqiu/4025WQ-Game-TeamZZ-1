@@ -110,22 +110,28 @@ namespace Game.Views
 
                     var cellContent = new AbsoluteLayout();
 
-                    var backgroundImage = new Image { Source = "battle_tile.png" };
-
-                    cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+                    var backgroundImage = new Image();
 
                     var imageButton = new ImageButton { Source = player.ImageURI };
 
                     if (map.MapGridLocation[i, j].IsSelectable)
                     {
+                        backgroundImage.Source = "battle_tile_green.png";
+
                         imageButton.IsEnabled = true;
+
+                        imageButton.Clicked += OnImageButtonClicked;
+
+                        imageButton.BindingContext = player;
                     }
-                    else
+                    else 
                     {
+                        backgroundImage.Source = "battle_tile.png";
+
                         imageButton.IsEnabled = false;
                     }
 
-                    imageButton.BindingContext = player;
+                    cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
                     cellContent.Children.Add(imageButton, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
@@ -265,6 +271,9 @@ namespace Game.Views
             AttackActionBox.IsVisible = false;
             MoveActionBox.IsVisible = false;
             ActionSelectionBox.IsVisible = true;
+            DefenderImage.Source = "question_mark.png";
+            DisableSelections();
+            DrawBattleBoard();
         }
 
         #endregion ActionBox
@@ -325,6 +334,31 @@ namespace Game.Views
         public void DisableSelections()
         {
             EngineViewModel.Engine.MapModel.ClearSelectable();
+        }
+
+        /// <summary>
+        /// Event when image button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnImageButtonClicked(object sender, EventArgs e)
+        {
+            var imgButton = (ImageButton)sender;
+
+            var player_clicked = (EntityInfoModel)imgButton.BindingContext;
+
+            // if a monster is clicked, assign it as defender
+            if (player_clicked.PlayerType == PlayerTypeEnum.Monster)
+            {
+                EngineViewModel.Engine.CurrentDefender = player_clicked;
+                DefenderImage.Source = player_clicked.ImageURI;
+            }
+
+            // if a empty location is clicked, assign it as the movement destination
+            if (player_clicked.PlayerType == PlayerTypeEnum.Unknown)
+            {
+
+            }
         }
 
         #endregion Selection
