@@ -74,12 +74,12 @@
                         <StackLayout WidthRequest="350">
                             <StackLayout x:Name="PlayerTurnBox" IsVisible="False">
                                 <StackLayout x:Name="ActionSelectionBox" IsVisible="True">
-                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack"/>
+                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack Target"/>
                                     <Button  Clicked="OnMoveButtonClicked" Text="Move"/>
                                 </StackLayout>
                                 
                                 <StackLayout x:Name="AttackActionBox" IsVisible="False">
-                                    <Button  Clicked="OnAttackConfirmClicked" Text="Confirm"/>
+                                    <Button  Clicked="OnAttackConfirmClicked" Text="Attack"/>
                                     <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
                                 </StackLayout>
 
