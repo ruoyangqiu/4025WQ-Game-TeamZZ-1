@@ -89,7 +89,7 @@
                             </StackLayout>
 
                             <StackLayout x:Name="MonsterTurnBox" IsVisible="False">
-
+                                <Button  Clicked="OnConfirmDefenseClicked" Text="Defend"/>
                             </StackLayout>
                         </StackLayout>
                         
