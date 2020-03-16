@@ -188,7 +188,7 @@ namespace Game.Views
 
         #endregion MessageHandlers
 
-        #region NextTurn
+        #region BattleFlow
         /// <summary>
         /// Start the next turn
         /// </summary>
@@ -198,25 +198,97 @@ namespace Game.Views
             EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
             EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
 
-            // update attacker and defender images on the page
-            AttackerImage.Source = EngineViewModel.Engine.CurrentAttacker.ImageURI;
-            DefenderImage.Source = "question_mark.png";           
+            // update attacker and defender on the page
+            UpdateAttacker(EngineViewModel.Engine.CurrentAttacker);
+
 
             // monster turn or character turn?
             if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Character) // player turn
             {
                 PlayerTurnBox.IsVisible = true;
                 MonsterTurnBox.IsVisible = false;
+                ActionSelectionBox.IsVisible = true;
+                UpdateDefender(null);
             }
             else if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Monster) // mosnter turn
             {
                 PlayerTurnBox.IsVisible = false;
                 MonsterTurnBox.IsVisible = true;
+                UpdateDefender(EngineViewModel.Engine.CurrentDefender);
             }
         }
 
+        /// <summary>
+        /// Take the turn
+        /// </summary>
+        public void TakeTurn()
+        {
+            // Hold the current state
+            var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
 
-        #endregion NextTurn
+            // Output the Message of what happened.
+            GameMessage();
+
+            if (RoundCondition == RoundEnum.NewRound)
+            {
+                // Pause
+                Task.Delay(WaitTime);
+
+                Debug.WriteLine("New Round");
+
+                // Show the Round Over, after that is cleared, it will show the New Round Dialog
+                ShowModalRoundOverPage();
+            }
+
+            // Check for Game Over
+            if (RoundCondition == RoundEnum.GameOver)
+            {
+                // Pause
+                Task.Delay(WaitTime);
+
+                Debug.WriteLine("Game Over");
+
+                GameOver();
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Show the Round Over page
+        /// 
+        /// Round Over is where characters get items
+        /// 
+        /// </summary>
+        public async void ShowModalRoundOverPage()
+        {
+
+            await Navigation.PushModalAsync(new RoundOverPage());
+        }
+
+        /// <summary>
+        /// Game is over
+        /// 
+        /// Show Buttons
+        /// 
+        /// Clean up the Engine
+        /// 
+        /// Show the Score
+        /// 
+        /// Clear the Board
+        /// 
+        /// </summary>
+        public void GameOver()
+        {
+            // Wrap up
+            EngineViewModel.Engine.EndBattle();
+
+            // Save the Score to the Score View Model, by sending a message to it.
+            var Score = EngineViewModel.Engine.BattleScore;
+            MessagingCenter.Send(this, "AddData", Score);
+        }
+
+
+        #endregion BattleFlow
 
         #region ActionBox
 
@@ -232,7 +304,7 @@ namespace Game.Views
             // enable image buttons for monsters
             EnableMonsterSelection();
 
-            DefenderImage.Source = EngineViewModel.Engine.CurrentDefender.ImageURI;
+            UpdateDefender(EngineViewModel.Engine.CurrentDefender);
         }
 
         /// <summary>
@@ -364,5 +436,41 @@ namespace Game.Views
         }
 
         #endregion Selection
+
+        /// <summary>
+        /// Update attacker info on the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void UpdateAttacker(EntityInfoModel player)
+        {
+            if (player == null)
+            {
+                AttackerImage.Source = "question_mark.png";
+                AttackerLabel.Text = "";
+                return;
+            }
+            var attacker = EngineViewModel.Engine.CurrentAttacker;
+            AttackerImage.Source = attacker.ImageURI;
+            AttackerLabel.Text = attacker.CurrentHealth + "/" + attacker.MaxHealth;
+        }
+
+        /// <summary>
+        /// Update defender info on the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void UpdateDefender(EntityInfoModel player)
+        {
+            if (player == null)
+            {
+                DefenderImage.Source = "question_mark.png";
+                DefenderLabel.Text = "";
+                return;
+            }
+            var defender = EngineViewModel.Engine.CurrentDefender;
+            DefenderImage.Source = defender.ImageURI;
+            DefenderLabel.Text = defender.CurrentHealth + "/" + defender.MaxHealth;
+        }
     }
 }
