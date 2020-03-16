@@ -122,7 +122,7 @@ namespace Game.Views
 
                         imageButton.Clicked += OnImageButtonClicked;
 
-                        imageButton.BindingContext = player;
+                        imageButton.BindingContext = map.MapGridLocation[i, j];
 
                         cellContent.Children.Add(backgroundImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
 
@@ -329,6 +329,8 @@ namespace Game.Views
 
             DisableSelections();
 
+            EngineViewModel.Engine.CurrentAction = ActionEnum.Attack;
+
             TakeTurn();
 
             NextTurn();
@@ -430,12 +432,15 @@ namespace Game.Views
         {
             var imgButton = (ImageButton)sender;
 
-            var player_clicked = (EntityInfoModel)imgButton.BindingContext;
+            var location = (MapModelLocation)imgButton.BindingContext;
+
+            var player_clicked = location.Player;
 
             // if a monster is clicked, assign it as defender
             if (player_clicked.PlayerType == PlayerTypeEnum.Monster)
             {
                 EngineViewModel.Engine.CurrentDefender = player_clicked;
+
                 UpdateDefender(player_clicked);
             }
 
@@ -443,7 +448,19 @@ namespace Game.Views
             if (player_clicked.PlayerType == PlayerTypeEnum.Unknown)
             {
                 // move player
+                MoveActionBox.IsVisible = false;
 
+                DisableSelections();
+
+                EngineViewModel.Engine.CurrentAction = ActionEnum.Move;
+
+                EngineViewModel.Engine.TargetLocation = location;
+
+                TakeTurn();
+
+                NextTurn();
+
+                DrawBattleBoard();
             }
         }
 
