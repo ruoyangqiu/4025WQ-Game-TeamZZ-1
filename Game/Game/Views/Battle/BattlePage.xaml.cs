@@ -183,29 +183,24 @@ namespace Game.Views
         /// </summary>
         public void NextTurn()
         {
-            // set attacker
+            // set attacker and defender
             EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
+            EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
 
             // update attacker and defender images on the page
             AttackerImage.Source = EngineViewModel.Engine.CurrentAttacker.ImageURI;
-
-            DefenderImage.Source = "question_mark.png";
+            DefenderImage.Source = "question_mark.png";           
 
             // monster turn or character turn?
             if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Character) // player turn
             {
                 PlayerTurnBox.IsVisible = true;
                 MonsterTurnBox.IsVisible = false;
-
-                // Player turn, so wait for player to select a target
             }
             else if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Monster) // mosnter turn
             {
                 PlayerTurnBox.IsVisible = false;
                 MonsterTurnBox.IsVisible = true;
-
-                // Monsters turn, so auto pick a Character to Attack
-                EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
             }
         }
 
@@ -225,6 +220,8 @@ namespace Game.Views
 
             // enable image buttons for monsters
             EnableMonsterSelection();
+
+            DefenderImage.Source = EngineViewModel.Engine.CurrentDefender.ImageURI;
         }
 
         /// <summary>
