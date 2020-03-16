@@ -518,10 +518,12 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool TargetDied(EntityInfoModel Target)
         {
+            bool found;
+
             // Mark Status in output
             BattleMessageModel.TurnMessageSpecial = " and causes death. ";
 
-            // Remove target from map
+            // Removing the 
             MapModel.RemovePlayerFromMap(Target);
 
             // INFO: Teams, Hookup your Boss if you have one...
@@ -530,15 +532,15 @@ namespace Game.Engine
             switch (Target.PlayerType)
             {
                 case PlayerTypeEnum.Character:
-                    // Add the MonsterModel to the killed list
+                    // Add the Character to the killed list
                     BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
                     BattleScore.CharacterModelDeathList.Add(Target);
 
                     DropItems(Target);
 
-                    CharacterList.Remove(Target);
-                    PlayerList.Remove(Target);
+                    found = CharacterList.Remove(CharacterList.Find(m => m.Guid.Equals(Target.Guid)));
+                    found = PlayerList.Remove(PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
 
                     return true;
 
@@ -554,8 +556,8 @@ namespace Game.Engine
 
                     DropItems(Target);
 
-                    MonsterList.Remove(Target);
-                    PlayerList.Remove(Target);
+                    found = MonsterList.Remove(MonsterList.Find(m => m.Guid.Equals(Target.Guid)));
+                    found = PlayerList.Remove(PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
 
                     return true;
             }
