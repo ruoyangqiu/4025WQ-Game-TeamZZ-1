@@ -73,8 +73,8 @@ namespace Game.Engine
 
                 // Assume Move if nothing else happens
                 CurrentAction = ActionEnum.Move;
-                Debug.WriteLine(BattleScore.TurnCount);
-                if(!Awake)
+
+                if(!SLEEPINGTEST && !Awake)
                 {
                     CurrentAction = ActionEnum.Sleep;
                 }
@@ -82,12 +82,6 @@ namespace Game.Engine
                 else if (MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
                 {
                     CurrentAction = ActionEnum.Attack;
-                }
-
-                // Simple Logic is Roll to Try Ability. 50% says try
-                else if (DiceHelper.RollDice(1, 10) > 5)
-                {
-                    CurrentAction = ActionEnum.Ability;
                 }
             }
             else
@@ -141,10 +135,6 @@ namespace Game.Engine
                 case ActionEnum.Unknown:
                 case ActionEnum.Attack:
                     result = Attack(Attacker);
-                    break;
-
-                case ActionEnum.Ability:
-                    result = UseAbility(Attacker);
                     break;
                 case ActionEnum.Sleep:
                     result = FallAsleep(Attacker);
