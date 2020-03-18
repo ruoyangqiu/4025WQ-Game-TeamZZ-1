@@ -24,5 +24,8 @@ namespace Game.Models
 
         // If IsSelected, used for targeting
         public bool IsSelectedTarget = false;
+
+        // If IsSelectable, used for target selection
+        public bool IsSelectable = false;
     }
 }

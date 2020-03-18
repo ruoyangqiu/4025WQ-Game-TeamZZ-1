@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Game.Views.BattlePage">
-
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Quit" Clicked="QuitButton_Clicked" IconImageSource="icon_cancel.png"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
             
@@ -11,7 +15,7 @@
                 <StackLayout Style="{StaticResource VerticalStack}" x:Name="GameUIDisplay" 
                          IsVisible="true">
                     <Label  Style="{StaticResource HeaderStyle}" Text="Battlefield"></Label>
-                    
+
                     <!--BattleBoard Grid-->
                     <StackLayout WidthRequest="650" HeightRequest="650">
                         <!--BattleBoard Grid-->
@@ -19,56 +23,90 @@
                         </Grid>
                     </StackLayout>
 
-                    <StackLayout>
-                        <Frame x:Name="BattlePlayerInfomationBox"
-                                BorderColor="{StaticResource SecondaryBackgroundColor}"
-                                IsVisible="False"
-                                HorizontalOptions="Center">
 
-                            <StackLayout x:Name="BattlePlayerBox" HorizontalOptions="Center" Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <!--Who vs Who-->
+                        <StackLayout WidthRequest="300" HeightRequest="100">
+                            <Grid>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="25" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="25" />
+                                    </Grid.ColumnDefinitions>
 
-                                <StackLayout x:Name="AttackerBox" Style="{StaticResource PlayerInfoBox}" HorizontalOptions="Start">
-                                    <Image x:Name="AttackerImage" Source="knight.png" Style="{StaticResource ImageBattleLargeStyle}"/>
-                                    <Label x:Name="AttackerName" Text="" HorizontalOptions="Center"/>
-                                    <Label x:Name="AttackerHealth" Text="" HorizontalOptions="Center"/>
+                                    <Image x:Name="AttackerImage" 
+                                       Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                       Source="question_mark.png" />
+
+                                    <Image 
+                                       Grid.Row="1" Grid.Column="6" 
+                                       Source="vsImage.png" />
+
+                                    <Image x:Name="DefenderImage" 
+                                       Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                       Source="question_mark.png" />
+
+                                    <Label x:Name="AttackerLabel"
+                                           Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"
+                                           Text="" HorizontalOptions="Center"/>
+
+                                    <Label x:Name="DefenderLabel"
+                                           Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="3"
+                                           Text="" HorizontalOptions="Center"/>
+
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                        
+                        <!--Actions-->
+                        <StackLayout WidthRequest="350">
+                            <StackLayout x:Name="PlayerTurnBox" IsVisible="False">
+                                <StackLayout x:Name="ActionSelectionBox" IsVisible="True">
+                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack"/>
+                                    <Button  Clicked="OnMoveButtonClicked" Text="Move"/>
+                                </StackLayout>
+                                
+                                <StackLayout x:Name="AttackActionBox" IsVisible="False">
+                                    <Button  Clicked="OnAttackConfirmClicked" Text="Attack Target"/>
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
                                 </StackLayout>
 
-                                <StackLayout Style="{StaticResource PlayerInfoBox}" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label x:Name="BattlePlayerBoxVersus" Text="vs" Style="{StaticResource CenterMessageStyle}" 
-                                       Padding="0,5,0,0"
-                                       VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                                </StackLayout>
-
-                                <StackLayout x:Name="DefenderBox" Style="{StaticResource PlayerInfoBox}" HorizontalOptions="End">
-                                    <Image x:Name="DefenderImage" Source="troll.png" Style="{StaticResource ImageBattleLargeStyle}"/>
-                                    <Label x:Name="DefenderName" Text="" HorizontalOptions="Center"/>
-                                    <Label x:Name="DefenderHealth" Text="" HorizontalOptions="Center"/>
+                                <StackLayout x:Name="MoveActionBox" IsVisible="False">
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
                                 </StackLayout>
                             </StackLayout>
-                        </Frame>
-                        <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
-                            <Button x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" IsVisible="False"/>
-                            <Button x:Name="NextRoundButton" Clicked="NextRoundButton_Clicked" Text="Next Round" IsVisible="False"/>
-                            <Button x:Name="StartBattleButton" Clicked="StartButton_Clicked" Text="Start Battle" IsVisible="False"/>
-
+                            <StackLayout x:Name="MonsterTurnBox" IsVisible="False">
+                                <Button  Clicked="OnConfirmDefenseClicked" Text="Defend"/>
+                            </StackLayout>
                         </StackLayout>
+                        
+                    </StackLayout>
 
-                        <StackLayout x:Name="MessageDisplayBox" 
-                                     IsVisible="false"
-                                     Style="{StaticResource VerticalStack}" 
-                                     HorizontalOptions="FillAndExpand">
+                    <!--Battle Message Board-->
+                    <StackLayout>
+                        <Label Text="Game Messages" Style="{StaticResource CenterMessageStyle}" />
 
-                            <Label Text="Game Messages" Style="{StaticResource CenterMessageStyle}" />
-
-                            <Label x:Name="BattleMessages" 
+                        <Label x:Name="BattleMessages" 
                                    HorizontalOptions="FillAndExpand" 
                                    LineBreakMode="WordWrap" 
                                    MaxLines="10"
                                    LineHeight="1"
                                    Style="{StaticResource LabelStyle}"/>
 
-                            <WebView
+                        <WebView
                             x:Name="HtmlBox"
                             WidthRequest="100"
                             MinimumWidthRequest="100"
@@ -79,46 +117,6 @@
                             BackgroundColor="Transparent"
                             IsVisible="false"
                             />
-                        </StackLayout>
-                    </StackLayout>
-
-
-                </StackLayout>
-
-                <!--Game Over-->
-                <StackLayout 
-                    Style="{StaticResource VerticalStack}"
-                    AbsoluteLayout.LayoutBounds="1,1,1,1" 
-                    AbsoluteLayout.LayoutFlags="All"
-                    HorizontalOptions="FillAndExpand"
-                    x:Name="GameOverDisplay" 
-                    IsVisible="false">
-
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <Label Text="Thank you for Playing" Style="{StaticResource CenterMessageStyle}"/>
-
-                        <Label Text="Check your score, or click Exit and return soon" Style="{StaticResource MessageStyle}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" MaxLines="5" Padding="20"/>
-
-                        <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Score"/>
-
-                        <Button x:Name="ExitButton" Clicked="ExitButton_Clicked" Text="Exit"></Button>
-
-                    </StackLayout>
-
-                    <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="Center">
-
-                        <Label Style= "{StaticResource MessageStyle}" Text="Temporary buttons to open up each battle screens "/>
-
-                        <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
-
-                        <Button Clicked="RoundOverButton_Clicked" Text="Round Over"></Button>
-
-                        <Button Clicked="BattleOverButton_Clicked" Text="Battle Over"></Button>
-
-                        <Button Clicked="ExitButton_Clicked" Text="Exit"></Button>
-
-                        <Button Clicked="QuitButton_Clicked" Text="Quit"></Button>
-
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

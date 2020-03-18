@@ -72,6 +72,21 @@ namespace Game.Views
 		}
 
 		/// <summary>
+		/// Jump to the Battle
+		/// 
+		/// Its Modal because don't want user to come back...
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public async void BattleButton2_Clicked(object sender, EventArgs e)
+		{
+			CreateEngineCharacterList();
+
+			await Navigation.PushModalAsync(new NavigationPage(new BattlePage2()));
+			await Navigation.PopAsync();
+		}
+
+		/// <summary>
 		/// Clear out the old list and make the new list
 		/// </summary>
 		public void CreateEngineCharacterList()

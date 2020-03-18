@@ -67,6 +67,9 @@ namespace Game.Engine
         // Is the round confusion round. For Hackathon Scenario 14
         public bool IsConfusionRound = false;
 
+        // Target location for movement
+        public MapModelLocation TargetLocation;
+
         #endregion Properties
     }
 }

@@ -50,7 +50,7 @@ namespace Game.Engine
             bool result = false;
 
             // Check for confusion round or not, if it is confusion round and rolled confusion, skip turn
-            if(EnableConfusionRound && IsConfusionRound && DiceHelper.RollDice(1, 20) - Attacker.Level > 0)
+            if (EnableConfusionRound && IsConfusionRound && DiceHelper.RollDice(1, 20) - Attacker.Level > 0)
             {
                 BattleMessageModel.TurnMessage = Attacker.Name + " is confused.";
 
@@ -61,7 +61,7 @@ namespace Game.Engine
 
             if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
-                if(BattleScore.TurnCount >= PlayerList.Count)
+                if (BattleScore.TurnCount >= PlayerList.Count)
                 {
                     Awake = true;
                 }
@@ -73,8 +73,8 @@ namespace Game.Engine
 
                 // Assume Move if nothing else happens
                 CurrentAction = ActionEnum.Move;
-
-                if(!SLEEPINGTEST && !Awake)
+                Debug.WriteLine(BattleScore.TurnCount);
+                if (!Awake)
                 {
                     CurrentAction = ActionEnum.Sleep;
                 }
@@ -83,10 +83,16 @@ namespace Game.Engine
                 {
                     CurrentAction = ActionEnum.Attack;
                 }
+
+                // Simple Logic is Roll to Try Ability. 50% says try
+                else if (DiceHelper.RollDice(1, 10) > 5)
+                {
+                    CurrentAction = ActionEnum.Ability;
+                }
             }
             else
             {
-                if(SLEEPINGTEST)
+                if (SLEEPINGTEST)
                 {
                     int listNo = Attacker.ListOrder;
 
@@ -102,7 +108,7 @@ namespace Game.Engine
                         Awake = false;
                     }
                 }
-                CurrentAction = ActionEnum.Attack;
+
                 if (false)
                 {
                     if (BattleScore.AutoBattle)
@@ -136,17 +142,21 @@ namespace Game.Engine
                 case ActionEnum.Attack:
                     result = Attack(Attacker);
                     break;
+
+                case ActionEnum.Ability:
+                    result = UseAbility(Attacker);
+                    break;
                 case ActionEnum.Sleep:
                     result = FallAsleep(Attacker);
                     break;
 
                 case ActionEnum.Move:
-                    result = MoveAsTurn(Attacker);
+                    result = MoveAsTurn(Attacker, TargetLocation);
                     break;
             }
 
             BattleScore.TurnCount++;
-            
+
             return result;
 
             //return result;
@@ -158,23 +168,33 @@ namespace Game.Engine
             Debug.WriteLine(string.Format(Attacker.Name, " is sleeping"));
             BattleMessageModel.ClearMessages();
             BattleMessageModel.TurnMessage = Attacker.Name + " is sleeping";
-          
+
             return true;
         }
-        public bool MoveAsTurn(EntityInfoModel Attacker)
+
+        /// <summary>
+        /// Find a Desired Target
+        /// Move close to them
+        /// Get to move the number of Speed
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        public bool MoveAsTurn(EntityInfoModel Attacker, MapModelLocation targetLocation = null)
         {
+
             /*
              * TODO: TEAMS Work out your own move logic if you are implementing move
              * 
              * Mike's Logic
              * The monster or charcter will move to a different square if one is open
-             * Get X,Y for destired Target
-             * Take 1 square closer to Monster X if needed and open 
-             * Take 1 square closer to Monster Y if needed and open
-             * If desired square is occupied, give up
+             * Find the Desired Target
+             * Jump to the closest space near the target that is open
+             * 
+             * If no open spaces, return false
+             * 
              */
 
-            if (BattleScore.AutoBattle)
+            if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
                 // For Attack, Choose Who
                 CurrentDefender = AttackChoice(Attacker);
@@ -197,39 +217,34 @@ namespace Game.Engine
                     return false;
                 }
 
-                // Move toward them
+                // Find Location Nearest to Defender that is Open.
 
-                /*
-                 * First Try moving X closer to them by one square
-                 * 
-                 * If that can't be done, then try moving Y closer to them by one square
-                 * 
-                 */
+                // Get the Open Locations
+                var openSquare = MapModel.ReturnClosestEmptyLocation(locationDefender);
 
-                var MoveX = locationAttacker.Column + (locationDefender.Column - locationAttacker.Column);
+                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, openSquare.Column, openSquare.Row));
 
-                // see if location MoveX, Attacker.Y is empty, if so go there
-                if (MapModel.IsEmptySquare(MoveX, locationAttacker.Row))
-                {
-                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, MoveX, locationAttacker.Row));
-                    return MapModel.MovePlayerOnMap(locationAttacker, MoveX, locationAttacker.Row);
-                }
+                BattleMessageModel.TurnMessage = Attacker.Name + " moves closer to " + CurrentDefender.Name;
 
-                var MoveY = locationAttacker.Row + (locationDefender.Row - locationAttacker.Row);
-
-                // see if location MoveX, Attacker.Y is empty, if so go there
-                if (MapModel.IsEmptySquare(locationAttacker.Column, MoveY))
-                {
-                    Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, locationAttacker.Column, MoveY));
-                    return MapModel.MovePlayerOnMap(locationAttacker, locationAttacker.Column, MoveY);
-                }
-                return false;
+                return MapModel.MovePlayerOnMap(locationAttacker, openSquare);
             }
-            BattleMessageModel.ClearMessages();
-            BattleMessageModel.TurnMessageSpecial = " Moved";
-            BattleMessageModel.TurnMessage = Attacker.Name + BattleMessageModel.TurnMessageSpecial;
-            Debug.WriteLine(BattleMessageModel.TurnMessage);
-            
+            else if (Attacker.PlayerType == PlayerTypeEnum.Character)
+            {
+                var locationAttacker = MapModel.GetLocationForPlayer(Attacker);
+                if (locationAttacker == null)
+                {
+                    return false;
+                }
+
+                var openSquare = TargetLocation;
+
+                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, openSquare.Column, openSquare.Row));
+
+                BattleMessageModel.TurnMessage = Attacker.Name + " moves to row: " + openSquare.Row + 1 + " column: " + openSquare.Column;
+
+                return MapModel.MovePlayerOnMap(locationAttacker, openSquare);
+            }
+
             return true;
         }
 
@@ -252,12 +267,12 @@ namespace Game.Engine
         /// <returns></returns>
         public bool Attack(EntityInfoModel Attacker)
         {
-            if(BattleScore.AutoBattle)
+            if (BattleScore.AutoBattle)
             {
                 // For attack, choose who
                 CurrentDefender = AttackChoice(Attacker);
 
-                if(CurrentDefender == null)
+                if (CurrentDefender == null)
                 {
                     return false;
                 }
@@ -275,7 +290,7 @@ namespace Game.Engine
         /// <returns></returns>
         public EntityInfoModel AttackChoice(EntityInfoModel data)
         {
-            switch(data.PlayerType)
+            switch (data.PlayerType)
             {
                 case PlayerTypeEnum.Monster:
                     return SelectCharacterToAttack();
@@ -306,7 +321,7 @@ namespace Game.Engine
                 .Where(m => m.Alive)
                 .OrderBy(m => m.CurrentHealth)
                 .FirstOrDefault();
-            
+
             return Defender;
         }
 
@@ -343,12 +358,12 @@ namespace Game.Engine
         /// <returns></returns>
         public bool TurnAsAttack(EntityInfoModel Attacker, EntityInfoModel Target)
         {
-            if(Attacker == null)
+            if (Attacker == null)
             {
                 return false;
             }
 
-            if(Target == null)
+            if (Target == null)
             {
                 return false;
             }
@@ -367,7 +382,7 @@ namespace Game.Engine
                 return true;
             }
 
-            if(PrimeNumber)
+            if (PrimeNumber)
             {
                 if (Attacker.PlayerType == PlayerTypeEnum.Character && IsPrime(Attacker))
                 {
@@ -385,7 +400,7 @@ namespace Game.Engine
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
-                    
+
                     break;
 
                 case HitStatusEnum.Hit:
@@ -460,13 +475,13 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool CalculateExperience(EntityInfoModel Attacker, EntityInfoModel Target)
         {
-            if(Attacker.PlayerType == PlayerTypeEnum.Character)
+            if (Attacker.PlayerType == PlayerTypeEnum.Character)
             {
                 var experienceEarned = Target.CalculateExperienceEarned(BattleMessageModel.DamageAmount);
                 BattleMessageModel.ExperienceEarned = " Earned " + experienceEarned + " points";
 
                 var levelup = Attacker.AddExperience(experienceEarned);
-                if(levelup)
+                if (levelup)
                 {
                     BattleMessageModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetMaxHealthTotal;
                     Debug.WriteLine(BattleMessageModel.LevelUpMessage);
@@ -485,7 +500,7 @@ namespace Game.Engine
         public bool RemoveIfDead(EntityInfoModel Target)
         {
             //Check if dead
-            if(Target.Alive == false)
+            if (Target.Alive == false)
             {
                 TargetDied(Target);
                 return true;
@@ -503,10 +518,13 @@ namespace Game.Engine
         /// <param name="Target"></param>
         public bool TargetDied(EntityInfoModel Target)
         {
+            bool found;
+
             // Mark Status in output
             BattleMessageModel.TurnMessageSpecial = " and causes death. ";
 
-            // Remove target from list...
+            // Removing the 
+            MapModel.RemovePlayerFromMap(Target);
 
             // INFO: Teams, Hookup your Boss if you have one...
 
@@ -514,15 +532,15 @@ namespace Game.Engine
             switch (Target.PlayerType)
             {
                 case PlayerTypeEnum.Character:
-                    // Add the MonsterModel to the killed list
+                    // Add the Character to the killed list
                     BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
                     BattleScore.CharacterModelDeathList.Add(Target);
 
                     DropItems(Target);
 
-                    CharacterList.Remove(Target);
-                    PlayerList.Remove(Target);
+                    found = CharacterList.Remove(CharacterList.Find(m => m.Guid.Equals(Target.Guid)));
+                    found = PlayerList.Remove(PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
 
                     return true;
 
@@ -538,8 +556,8 @@ namespace Game.Engine
 
                     DropItems(Target);
 
-                    MonsterList.Remove(Target);
-                    PlayerList.Remove(Target);
+                    found = MonsterList.Remove(MonsterList.Find(m => m.Guid.Equals(Target.Guid)));
+                    found = PlayerList.Remove(PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
 
                     return true;
             }
@@ -555,17 +573,17 @@ namespace Game.Engine
             // Depends on Target Player Type,
             // It will generate different Drop Methods
             var result = 0;
-            if(Target.PlayerType == PlayerTypeEnum.Character)
+            if (Target.PlayerType == PlayerTypeEnum.Character)
             {
                 result = CharacterDropItem(Target);
             }
 
-            if(Target.PlayerType == PlayerTypeEnum.Monster)
+            if (Target.PlayerType == PlayerTypeEnum.Monster)
             {
                 result = MonsterDropItem(Target);
             }
             return result;
-            
+
         }
 
         /// <summary>
@@ -621,13 +639,13 @@ namespace Game.Engine
         /// <returns></returns>
         public bool IsUniqueDrop(EntityInfoModel Target)
         {
-            if(Target.PlayerType == PlayerTypeEnum.Character)
+            if (Target.PlayerType == PlayerTypeEnum.Character)
             {
                 return false;
             }
             int rate = (int)(10 * Target.DropRate);
             int dice = DiceHelper.RollDice(1, 10);
-            if(dice > rate)
+            if (dice > rate)
             {
                 return false;
             }
@@ -644,8 +662,8 @@ namespace Game.Engine
             // Monster will only drop unique Item
             // The unique item will drop based on droprate
             var DroppedMessage = "\nItems Dropped : \n";
-            
-            
+
+
             if (string.IsNullOrEmpty(Target.UniqueItemId))
             {
                 var data = GetRandomMonsterItemDrops();
@@ -720,8 +738,8 @@ namespace Game.Engine
         /// <returns></returns>
         public ItemModel GetRandomMonsterItemDrops()
         {
-            
-            
+
+
             var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterItem());
             return data;
         }

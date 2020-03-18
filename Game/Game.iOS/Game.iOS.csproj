@@ -276,4 +276,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\battle_tile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\attackerDefenderBoxImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\question_mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\battle_tile_green.png" />
+  </ItemGroup>
 </Project>
