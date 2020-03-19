@@ -288,4 +288,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\battle_tile_green.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconResource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SplashResource2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SplashResource.png" />
+  </ItemGroup>
 </Project>
