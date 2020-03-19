@@ -104,6 +104,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="attackerDefenderBoxImage.png" />
     <Content Include="battleboard.jpg" />
     <Content Include="battle_tile.png" />
@@ -143,6 +145,10 @@
     <Content Include="monster5.png" />
     <Content Include="monster6.png" />
     <Content Include="monster7.png" />
+    <Content Include="mysplash.jpg" />
+    <Content Include="mysplash2.png" />
+    <Content Include="mysplash3.png" />
+    <Content Include="mysplash34.png" />
     <Content Include="phase_boots.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -175,6 +181,8 @@
     <Content Include="question_mark.png" />
     <Content Include="red_horn.png" />
     <Content Include="score.png" />
+    <Content Include="SplashResource.png" />
+    <Content Include="SplashResource2.png" />
     <Content Include="splashscreen.jpg" />
     <Content Include="troll.png" />
     <Content Include="village.jpg" />
