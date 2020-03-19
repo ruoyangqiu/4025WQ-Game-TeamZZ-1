@@ -65,22 +65,28 @@ namespace Game.Models
             Attack = data.Attack;
             Defense = data.Defense;
             //ExperienceRemaining = data.ExperienceRemaining;
-            Level = data.Level;
+            //Level = data.Level;
             Name = data.Name;
             Description = data.Description;
             CharacterClass = data.CharacterClass;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
             
-            MaxHealth = data.GetMaxHealthTotal;
-            CurrentHealth = MaxHealth;
+            MaxHealth = data.MaxHealth;
+            CurrentHealth = data.CurrentHealth;
             // Set the strings for the items
-            Head = data.Head;
+            HeadId = data.HeadId;
+            PrimaryHandId = data.PrimaryHandId;
+            OffHandId = data.OffHandId;
+            NecklaceId = data.NecklaceId;
+            RightFingerId = data.RightFingerId;
+            LeftFingerId = data.LeftFingerId;
             Feet = data.Feet;
-            Necklace = data.Necklace;
-            RightFinger = data.RightFinger;
-            LeftFinger = data.LeftFinger;
-            Feet = data.Feet;
+            if(data.Level > 1)
+            {
+                this.LevelUpToValue(data.Level);
+                //this.LevelUp();
+            }
         }
 
         /// <summary>
