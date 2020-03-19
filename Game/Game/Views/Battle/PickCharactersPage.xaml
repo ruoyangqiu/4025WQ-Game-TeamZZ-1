@@ -43,13 +43,13 @@
                                     <Label 
                                         Text="{Binding Level, StringFormat='LEVEL: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Attack, StringFormat='ATTACK: {0:F0}'}" />
+                                        Text="{Binding GetAttackTotal, StringFormat='ATTACK: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Defense, StringFormat='DEFENSE: {0:F0}'}" />
+                                        Text="{Binding GetDefenseTotal, StringFormat='DEFENSE: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding MaxHealth, StringFormat='MAX HEALTH: {0:F0}'}" />
+                                        Text="{Binding GetMaxHealthTotal, StringFormat='MAX HEALTH: {0:F0}'}" />
                                     <Label 
-                                        Text="{Binding Speed, StringFormat='SPEED: {0:F0}'}" />
+                                        Text="{Binding GetSpeedTotal, StringFormat='SPEED: {0:F0}'}" />
                                 </StackLayout>
 
                                 <StackLayout Style="{StaticResource CardImageTextBox}"
