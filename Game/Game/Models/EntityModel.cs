@@ -162,7 +162,7 @@ namespace Game.Models
                 var myreturn = 0;
                 if(CharacterClass == CharacterClassEnum.Fighter)
                 {
-                    myreturn = 2;
+                    myreturn = 2 * Level;
                 }
                 return myreturn; 
             } }
@@ -190,7 +190,7 @@ namespace Game.Models
 
         [Ignore]
         /// <summary>
-        /// Get the bonus Attack from Class
+        /// Get the bonus Defense from Class
         /// </summary>
         /// <returns></returns>
         public int GetClassBonusDefense
@@ -200,7 +200,7 @@ namespace Game.Models
                 var myreturn = 0;
                 if (CharacterClass == CharacterClassEnum.Cleric)
                 {
-                    myreturn = 2;
+                    myreturn = 2 * Level;
                 }
                 return myreturn;
             }
@@ -234,6 +234,24 @@ namespace Game.Models
         }
 
         [Ignore]
+        /// <summary>
+        /// Get the bonus Attack from Class
+        /// </summary>
+        /// <returns></returns>
+        public int GetClassBonusMaxHealth
+        {
+            get
+            {
+                var myreturn = 0;
+                if (CharacterClass == CharacterClassEnum.Tank)
+                {
+                    myreturn = 2 * Level;
+                }
+                return myreturn;
+            }
+        }
+
+        [Ignore]
         // Return the Total of All MaxHealth
         public int GetMaxHealthTotal { get { return GetMaxHealth(); } }
         #endregion MaxHealth
@@ -259,6 +277,24 @@ namespace Game.Models
         /// Calculate Attack bonus based on level
         /// </summary>
         public int GetLevelBonusSpeed { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Speed; } }
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus Speed from Class
+        /// </summary>
+        /// <returns></returns>
+        public int GetClassBonusSpeed
+        {
+            get
+            {
+                var myreturn = 0;
+                if (CharacterClass == CharacterClassEnum.Assasin)
+                {
+                    myreturn = 2 * Level;
+                }
+                return myreturn;
+            }
+        }
 
         [Ignore]
         // Return the Total of All Speed
@@ -374,6 +410,8 @@ namespace Game.Models
 
             myReturn += GetLevelBonusMaxHealth;
 
+            myReturn += GetClassBonusMaxHealth;
+
             return myReturn;
         }
 
@@ -391,6 +429,8 @@ namespace Game.Models
             myReturn += GetItemSpeed;
 
             myReturn += GetLevelBonusSpeed;
+
+            myReturn += GetClassBonusSpeed;
 
             return myReturn;
         }
