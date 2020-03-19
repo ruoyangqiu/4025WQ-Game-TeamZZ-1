@@ -145,10 +145,6 @@
     <Content Include="monster5.png" />
     <Content Include="monster6.png" />
     <Content Include="monster7.png" />
-    <Content Include="mysplash.jpg" />
-    <Content Include="mysplash2.png" />
-    <Content Include="mysplash3.png" />
-    <Content Include="mysplash34.png" />
     <Content Include="phase_boots.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
