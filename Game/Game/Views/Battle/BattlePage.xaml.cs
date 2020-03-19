@@ -494,7 +494,7 @@ namespace Game.Views
             }
             var attacker = EngineViewModel.Engine.CurrentAttacker;
             AttackerImage.Source = attacker.ImageURI;
-            AttackerLabel.Text = attacker.CurrentHealth + "/" + attacker.MaxHealth;
+            AttackerLabel.Text = attacker.GetCurrentHealthTotal.ToString() + " / " + attacker.GetMaxHealthTotal.ToString();
         }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Game.Views
             }
             var defender = EngineViewModel.Engine.CurrentDefender;
             DefenderImage.Source = defender.ImageURI;
-            DefenderLabel.Text = defender.CurrentHealth + "/" + defender.MaxHealth;
+            DefenderLabel.Text = defender.GetCurrentHealthTotal.ToString() + " / " + defender.GetMaxHealthTotal.ToString();
         }
     }
 }
