@@ -7,8 +7,7 @@
 
         <AbsoluteLayout
         HorizontalOptions="FillAndExpand"
-        VerticalOptions="FillAndExpand"
-        >
+        VerticalOptions="FillAndExpand">
 
             <StackLayout Style="{StaticResource VerticalStack}"
                     AbsoluteLayout.LayoutBounds="1,1,1,1" 
@@ -20,13 +19,13 @@
 
                         <Label Text="Round Cleared" Style="{StaticResource CenterMessageStyle}"/>
 
-                        <Button Clicked="CloseButton_Clicked" Text="Close"/>
-
                         <StackLayout Style="{StaticResource HorizontalStack}">
                             <Label Text="Round : " Style="{StaticResource MessageStyle}"/>
                             <Label Text="0" x:Name="TotalRound" Style="{StaticResource MessageStyle}"/>
                         </StackLayout>
 
+
+                                           
                         <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
                         <FlexLayout x:Name="CharacterListFrame"
                                     JustifyContent="Start"
