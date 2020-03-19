@@ -154,6 +154,20 @@ namespace Game.Models
         public int GetLevelBonusAttack { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Attack; } }
 
         [Ignore]
+        /// <summary>
+        /// Get the bonus Attack from Class
+        /// </summary>
+        /// <returns></returns>
+        public int GetClassBonusAttack { get {
+                var myreturn = 0;
+                if(CharacterClass == CharacterClassEnum.Fighter)
+                {
+                    myreturn = 2;
+                }
+                return myreturn; 
+            } }
+
+        [Ignore]
         // Return the Total of All Attack
         public int GetAttackTotal { get { return GetAttack(); } }
 
@@ -173,6 +187,24 @@ namespace Game.Models
         /// Calculate Defense bonus based on level
         /// </summary>
         public int GetLevelBonusDefense { get { return LevelTableHelper.Instance.LevelDetailsList[Level].Defense; } }
+
+        [Ignore]
+        /// <summary>
+        /// Get the bonus Attack from Class
+        /// </summary>
+        /// <returns></returns>
+        public int GetClassBonusDefense
+        {
+            get
+            {
+                var myreturn = 0;
+                if (CharacterClass == CharacterClassEnum.Cleric)
+                {
+                    myreturn = 2;
+                }
+                return myreturn;
+            }
+        }
 
         [Ignore]
         // Return the Total of All Defense
@@ -314,6 +346,8 @@ namespace Game.Models
 
             myReturn += GetLevelBonusAttack;
 
+            myReturn += GetClassBonusAttack;
+
             return myReturn;
         }
 
@@ -325,6 +359,8 @@ namespace Game.Models
             myReturn += GetLevelBonusDefense;
 
             myReturn += GetItemDefense;
+
+            myReturn += GetClassBonusDefense;
 
             return myReturn;
         }
