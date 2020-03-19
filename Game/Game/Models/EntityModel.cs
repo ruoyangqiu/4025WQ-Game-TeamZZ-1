@@ -196,8 +196,8 @@ namespace Game.Models
         {
             get
             {
-                var NewHealthAddition = DiceHelper.RollDice(Level - 1, 10);
-                return NewHealthAddition;
+                //var NewHealthAddition = DiceHelper.RollDice(Level - 1, 10);
+                return 0;
             }
         }
 
@@ -813,14 +813,21 @@ namespace Game.Models
 
                     // When leveling up, the current health is adjusted up by an offset of the MaxHealth, rather than full restore
                     var OldCurrentHealth = CurrentHealth;
-                    var OldMaxHealth = GetMaxHealth();
+                    var OldMaxHealth = MaxHealth;
 
-                    // Set the new level
-                    Level = NewLevel;
+                    // Set new Health
+                    // New health, is d10 of the new level.  So leveling up 1 level is 1 d10, leveling up 2 levels is 2 d10.
+                    var NewHealthAddition = DiceHelper.RollDice(NewLevel - Level, 10);
+
+                    // Increment the Max health
+                    MaxHealth += NewHealthAddition;
 
                     // Calculate new current health
                     // old max was 10, current health 8, new max is 15 so (15-(10-8)) = current health
-                    CurrentHealth = (GetMaxHealth() - (OldMaxHealth - OldCurrentHealth));
+                    CurrentHealth = (MaxHealth - (OldMaxHealth - OldCurrentHealth));
+
+                    // Set the new level
+                    Level = NewLevel;
 
                     // Done, exit
                     return true;
