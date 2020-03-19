@@ -17,5 +17,11 @@ namespace Game.Models
 
         // Cleric has highier Defence when created
         Cleric = 12,
+
+        // Assasin has highier speed
+        Assasin = 20,
+
+        // Tank has highier MaxHealth
+        Tank = 22,
     }
 }
