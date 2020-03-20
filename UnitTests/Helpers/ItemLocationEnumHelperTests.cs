@@ -22,5 +22,20 @@ namespace UnitTests.Helpers
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [Test]
+        public void ItemLocationEnumHelper_GetLocationByPosition_1_Should_Pass()
+        {
+            // Arrange
+
+            var value = 1;
+
+            // Act
+            var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
+            var Expected = ItemLocationEnum.Head;
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
