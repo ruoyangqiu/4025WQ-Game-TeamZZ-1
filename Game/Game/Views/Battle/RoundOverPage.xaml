@@ -45,7 +45,7 @@
                                 </StackLayout>
                                 <StackLayout x:Name="ItemListFoundFrame"
                                             Style="{StaticResource VerticalStack}"
-                                            />
+                                            Padding="60,0,0,0"/>
                             </StackLayout>
 
 
@@ -62,7 +62,7 @@
                                 </StackLayout>
                                 <StackLayout x:Name="ItemListSelectedFrame"
                                              Style="{StaticResource VerticalStack}"
-                                             />
+                                             Padding="60,0,0,0"/>
                             </StackLayout>
 
                         </StackLayout>
