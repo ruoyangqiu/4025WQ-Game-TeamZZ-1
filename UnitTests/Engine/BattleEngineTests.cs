@@ -52,6 +52,19 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, Engine.BattleScore.AutoBattle);
         }
 
+        [Test]
+        public void BattleEngine_EndBattle_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.EndBattle();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
 
     }
 }
