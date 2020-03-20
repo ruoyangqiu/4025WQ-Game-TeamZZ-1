@@ -66,5 +66,20 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, result);
         }
 
+        [Test]
+        public void BattleEngine_PopulateCharacterList_Should_Pass()
+        {
+            // Arrange
+            var character = new CharacterModel();
+
+            // Act
+            var result = Engine.PopulateCharacterList(character);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
     }
 }
