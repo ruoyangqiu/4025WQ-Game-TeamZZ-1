@@ -65,5 +65,50 @@ namespace UnitTests.Models
             Assert.IsNotNull(result.Defense);
             Assert.IsNotNull(result.Speed);
         }
+
+        [Test]
+        public void CharacterModel_Set_Default_Should_Pass()
+        {
+            // ArDefense
+
+            // Act
+            var result = new CharacterModel();
+            result.Attack = 6;
+            result.Defense = 7;
+            result.Speed = 8;
+
+            // Reset
+
+            // Assert 
+            Assert.AreEqual(6, result.Attack);
+            Assert.AreEqual(7, result.Defense);
+            Assert.AreEqual(8, result.Speed);
+
+            Assert.IsNotNull(result.Id);
+            Assert.AreEqual(result.Id, result.Guid);
+
+            Assert.AreEqual(PlayerTypeEnum.Character, result.PlayerType);
+
+            Assert.AreEqual(true, result.Alive);
+            Assert.AreEqual(0, result.Order);
+            Assert.AreEqual(0, result.ListOrder);
+            Assert.AreEqual(1, result.Level);
+            Assert.AreEqual(0, result.ExperienceRemaining);
+            Assert.AreEqual(5, result.CurrentHealth);
+            Assert.AreEqual(5, result.MaxHealth);
+            Assert.AreEqual(0, result.Experience);
+
+            Assert.AreEqual(null, result.Head);
+            Assert.AreEqual(null, result.Feet);
+            Assert.AreEqual(null, result.Necklace);
+            Assert.AreEqual(null, result.PrimaryHand);
+            Assert.AreEqual(null, result.OffHand);
+            Assert.AreEqual(null, result.RightFinger);
+            Assert.AreEqual(null, result.LeftFinger);
+
+            Assert.AreEqual(DifficultyLevelEnum.Unknown, result.DifficultyLevel);
+
+            Assert.AreEqual(CharacterClassEnum.Unknown, result.CharacterClass);
+        }
     }
 }
