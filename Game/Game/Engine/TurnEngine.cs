@@ -83,12 +83,6 @@ namespace Game.Engine
                 {
                     CurrentAction = ActionEnum.Attack;
                 }
-
-                // Simple Logic is Roll to Try Ability. 50% says try
-                else if (DiceHelper.RollDice(1, 10) > 5)
-                {
-                    CurrentAction = ActionEnum.Ability;
-                }
             }
             else
             {
