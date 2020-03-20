@@ -37,5 +37,20 @@ namespace UnitTests.Helpers
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+        [Test]
+        public void ItemLocationEnumHelper_GetLocationByPosition_2_Should_Pass()
+        {
+            // Arrange
+
+            var value = 2;
+
+            // Act
+            var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
+            var Expected = ItemLocationEnum.Necklass;
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
