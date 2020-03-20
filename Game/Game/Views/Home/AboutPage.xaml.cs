@@ -81,5 +81,16 @@ namespace Game.Views
                 MessagingCenter.Send(this, "WipeDataList", true);
             }
         }
+
+        public async void GetItemsGet_Command(object sender, EventArgs e)
+        {
+
+        }
+
+
+        public async void GetItemsPost_Command(object sender, EventArgs e)
+        {
+
+        }
     }
 }
