@@ -78,74 +78,74 @@ namespace Scenario
 
         #endregion TestConstructor
 
-        #region TestScenario1
+        //#region TestScenario1
 
-        [Test]
-        public async Task HackathonScenario_Scenario_1_Default_Should_Pass()
-        {
-            /* 
-            * Scenario Number:  
-            *      1
-            *      
-            * Description: 
-            *      Make a Character called Mike, who dies in the first round
-            * 
-            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-            *      No Code changes requied 
-            * 
-            * Test Algrorithm:
-            *      Create Character named Mike
-            *      Set speed to -1 so he is really slow
-            *      Set Max health to 1 so he is weak
-            *      Set Current Health to 1 so he is weak
-            *  
-            *      Startup Battle
-            *      Run Auto Battle
-            * 
-            * Test Conditions:
-            *      Default condition is sufficient
-            * 
-            * Validation:
-            *      Verify Battle Returned True
-            *      Verify Mike is not in the Player List
-            *      Verify Round Count is 1
-            *  
-            */
+        //[Test]
+        //public async Task HackathonScenario_Scenario_1_Default_Should_Pass()
+        //{
+        //    /* 
+        //    * Scenario Number:  
+        //    *      1
+        //    *      
+        //    * Description: 
+        //    *      Make a Character called Mike, who dies in the first round
+        //    * 
+        //    * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+        //    *      No Code changes requied 
+        //    * 
+        //    * Test Algrorithm:
+        //    *      Create Character named Mike
+        //    *      Set speed to -1 so he is really slow
+        //    *      Set Max health to 1 so he is weak
+        //    *      Set Current Health to 1 so he is weak
+        //    *  
+        //    *      Startup Battle
+        //    *      Run Auto Battle
+        //    * 
+        //    * Test Conditions:
+        //    *      Default condition is sufficient
+        //    * 
+        //    * Validation:
+        //    *      Verify Battle Returned True
+        //    *      Verify Mike is not in the Player List
+        //    *      Verify Round Count is 1
+        //    *  
+        //    */
 
-            //Arrange
+        //    //Arrange
 
-            // Set Character Conditions
+        //    // Set Character Conditions
 
-            EngineViewModel.Engine.MaxNumberPartyCharacters = 1;
+        //    EngineViewModel.Engine.MaxNumberPartyCharacters = 1;
 
-            var CharacterPlayerMike = new EntityInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = -1, // Will go last...
-                                Level = 1,
-                                CurrentHealth = 1,
-                                Experience = 1,
-                                Name = "Mike",
-                            });
+        //    var CharacterPlayerMike = new EntityInfoModel(
+        //                    new CharacterModel
+        //                    {
+        //                        Speed = -1, // Will go last...
+        //                        Level = 1,
+        //                        CurrentHealth = 1,
+        //                        Experience = 1,
+        //                        Name = "Mike",
+        //                    });
 
-            EngineViewModel.Engine.CharacterList.Add(CharacterPlayerMike);
+        //    EngineViewModel.Engine.CharacterList.Add(CharacterPlayerMike);
 
-            // Set Monster Conditions
+        //    // Set Monster Conditions
 
-            // Auto Battle will add the monsters
+        //    // Auto Battle will add the monsters
 
 
-            //Act
-            var result = await AutoBattleEngine.RunAutoBattle();
+        //    //Act
+        //    var result = await AutoBattleEngine.RunAutoBattle();
 
-            //Reset
+        //    //Reset
 
-            //Assert
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(null, AutoBattleEngine.PlayerList.Find(m => m.Name.Equals("Mike")));
-            Assert.AreEqual(1, AutoBattleEngine.BattleScore.RoundCount);
-        }
-        #endregion TestScenario1
+        //    //Assert
+        //    Assert.AreEqual(true, result);
+        //    Assert.AreEqual(null, AutoBattleEngine.PlayerList.Find(m => m.Name.Equals("Mike")));
+        //    Assert.AreEqual(1, AutoBattleEngine.BattleScore.RoundCount);
+        //}
+        //#endregion TestScenario1
 
         #region TestScenario2
         [Test]
@@ -229,276 +229,276 @@ namespace Scenario
             Assert.AreEqual(HitStatusEnum.Miss, BattleEngine.BattleMessageModel.HitStatus);
         }
 
-        [Test]
-        public void HackathonScenario_Scenario_2_Character_Not_Bob_Should_Hit()
-        {
-            /* 
-             * Scenario Number:  
-             *      2
-             *      
-             * Description: 
-             *      See Default Test
-             * 
-             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      See Defualt Test
-             *                 
-             * Test Algrorithm:
-             *      Create Character named Mike
-             *      Create Monster
-             *      Call TurnAsAttack so Mike can attack Monster
-             * 
-             * Test Conditions:
-             *      Control Dice roll so natural hit
-             *      Test with Character of not named Bob
-             *  
-             *  Validation
-             *      Verify Enum is Hit
-             *      
-             */
+        //[Test]
+        //public void HackathonScenario_Scenario_2_Character_Not_Bob_Should_Hit()
+        //{
+        //    /* 
+        //     * Scenario Number:  
+        //     *      2
+        //     *      
+        //     * Description: 
+        //     *      See Default Test
+        //     * 
+        //     * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+        //     *      See Defualt Test
+        //     *                 
+        //     * Test Algrorithm:
+        //     *      Create Character named Mike
+        //     *      Create Monster
+        //     *      Call TurnAsAttack so Mike can attack Monster
+        //     * 
+        //     * Test Conditions:
+        //     *      Control Dice roll so natural hit
+        //     *      Test with Character of not named Bob
+        //     *  
+        //     *  Validation
+        //     *      Verify Enum is Hit
+        //     *      
+        //     */
 
-            //Arrange
+        //    //Arrange
 
-            // Set Character Conditions
+        //    // Set Character Conditions
 
-            BattleEngine.MaxNumberPartyCharacters = 1;
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-            var CharacterPlayer = new EntityInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = 200,
-                                Level = 10,
-                                CurrentHealth = 100,
-                                Experience = 100,
-                                Name = "Mike",
-                            });
+        //    var CharacterPlayer = new EntityInfoModel(
+        //                    new CharacterModel
+        //                    {
+        //                        Speed = 200,
+        //                        Level = 10,
+        //                        CurrentHealth = 100,
+        //                        Experience = 100,
+        //                        Name = "Mike",
+        //                    });
 
-            BattleEngine.CharacterList.Add(CharacterPlayer);
+        //    BattleEngine.CharacterList.Add(CharacterPlayer);
 
-            // Set Monster Conditions
+        //    // Set Monster Conditions
 
-            // Add a monster to attack
-            BattleEngine.MaxNumberPartyCharacters = 1;
+        //    // Add a monster to attack
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-            var MonsterPlayer = new EntityInfoModel(
-                new MonsterModel
-                {
-                    Speed = 1,
-                    Level = 1,
-                    CurrentHealth = 1,
-                    Experience = 1,
-                    Name = "Monster",
-                });
+        //    var MonsterPlayer = new EntityInfoModel(
+        //        new MonsterModel
+        //        {
+        //            Speed = 1,
+        //            Level = 1,
+        //            CurrentHealth = 1,
+        //            Experience = 1,
+        //            Name = "Monster",
+        //        });
 
-            BattleEngine.CharacterList.Add(MonsterPlayer);
+        //    BattleEngine.CharacterList.Add(MonsterPlayer);
 
-            // Have dice roll 20
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(20);
+        //    // Have dice roll 20
+        //    DiceHelper.EnableForcedRolls();
+        //    DiceHelper.SetForcedRollValue(20);
 
-            //Act
-            var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+        //    //Act
+        //    var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
-            //Reset
-            DiceHelper.DisableForcedRolls();
+        //    //Reset
+        //    DiceHelper.DisableForcedRolls();
 
-            //Assert
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
-        }
+        //    //Assert
+        //    Assert.AreEqual(true, result);
+        //    Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
+        //}
 
         #endregion TestScenario2
 
-        #region TestScenario47
-        [Test]
-        public void HackathonScenario_Scenario_47_Prime_Number_Bob_Should_Hit()
-        {
-            /* 
-             * Scenario Number:  
-             *  47
-             *  
-             * Description: 
-             *      Make a Character called Prime 
-             *      Prime's sum of Attack, Defence, Speed and MaxHealth is a PrimeNumber
-             *      Prime Always Hit
-             *      Prime Always deal max damage
-             *      Other Characters cannot deal max damage
-             * 
-             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      Change to Turn Engine
-             *      Changed TurnAsAttack method
-             *      
-             *      Check if the attack's attributes' total value is prime
-             *      Set BattleMessage.DamageAmount = TotalDamage and return hit
-             *                 
-             * Test Algrorithm:
-             *  Create Character named Prime
-             *  Set the relative attributes: Attack, MaxHealth, Defence and Speed
-             *  So that the sum of them is a prime number.
-             *  Give a primaryHand item to Characterr to test if
-             *  Prime can do the max damage
-             *  Create Monster
-             *  Call TurnAsAttack
-             * 
-             * Test Conditions:
-             *  Test with Character of Prime
-             *  Test with Character of NotPrime
-             * 
-             * Validation:
-             *      Verify Enum is Hit for Prime
-             *      
-             *      Verify Prime's BattleDamageAmount is Prime's TotalDamage
-             *      
-             *      
-             *  
-             */
+        //#region TestScenario47
+        //[Test]
+        //public void HackathonScenario_Scenario_47_Prime_Number_Bob_Should_Hit()
+        //{
+        //    /* 
+        //     * Scenario Number:  
+        //     *  47
+        //     *  
+        //     * Description: 
+        //     *      Make a Character called Prime 
+        //     *      Prime's sum of Attack, Defence, Speed and MaxHealth is a PrimeNumber
+        //     *      Prime Always Hit
+        //     *      Prime Always deal max damage
+        //     *      Other Characters cannot deal max damage
+        //     * 
+        //     * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+        //     *      Change to Turn Engine
+        //     *      Changed TurnAsAttack method
+        //     *      
+        //     *      Check if the attack's attributes' total value is prime
+        //     *      Set BattleMessage.DamageAmount = TotalDamage and return hit
+        //     *                 
+        //     * Test Algrorithm:
+        //     *  Create Character named Prime
+        //     *  Set the relative attributes: Attack, MaxHealth, Defence and Speed
+        //     *  So that the sum of them is a prime number.
+        //     *  Give a primaryHand item to Characterr to test if
+        //     *  Prime can do the max damage
+        //     *  Create Monster
+        //     *  Call TurnAsAttack
+        //     * 
+        //     * Test Conditions:
+        //     *  Test with Character of Prime
+        //     *  Test with Character of NotPrime
+        //     * 
+        //     * Validation:
+        //     *      Verify Enum is Hit for Prime
+        //     *      
+        //     *      Verify Prime's BattleDamageAmount is Prime's TotalDamage
+        //     *      
+        //     *      
+        //     *  
+        //     */
 
-            //Arrange
+        //    //Arrange
 
-            // Set Character Conditions
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(0);
-            BattleEngine.MaxNumberPartyCharacters = 1;
+        //    // Set Character Conditions
+        //    DiceHelper.EnableForcedRolls();
+        //    DiceHelper.SetForcedRollValue(0);
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-            var TestSword = ItemViewModel.Dataset.Where(a => a.Name.Equals("Golden Hair pin")).FirstOrDefault();
-            var CharacterPlayer = new EntityInfoModel(
-                            new CharacterModel
-                            {
-                                Level = 10,
-                                CurrentHealth = 200,
-                                MaxHealth = 200,
-                                Experience = 100,
-                                Name = "Prime",
-                            }) ;
-            CharacterPlayer.Attack = 25;
-            CharacterPlayer.Speed = 20;
-            CharacterPlayer.Defense = 26;
-            CharacterPlayer.AddItem(ItemLocationEnum.PrimaryHand, TestSword.Id);
-            BattleEngine.CharacterList.Add(CharacterPlayer);
+        //    var TestSword = ItemViewModel.Dataset.Where(a => a.Name.Equals("Golden Hair pin")).FirstOrDefault();
+        //    var CharacterPlayer = new EntityInfoModel(
+        //                    new CharacterModel
+        //                    {
+        //                        Level = 10,
+        //                        CurrentHealth = 200,
+        //                        MaxHealth = 200,
+        //                        Experience = 100,
+        //                        Name = "Prime",
+        //                    }) ;
+        //    CharacterPlayer.Attack = 25;
+        //    CharacterPlayer.Speed = 20;
+        //    CharacterPlayer.Defense = 26;
+        //    CharacterPlayer.AddItem(ItemLocationEnum.PrimaryHand, TestSword.Id);
+        //    BattleEngine.CharacterList.Add(CharacterPlayer);
 
-            // Set Monster Conditions
+        //    // Set Monster Conditions
 
-            // Add a monster to attack
-            BattleEngine.MaxNumberPartyCharacters = 1;
+        //    // Add a monster to attack
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-            var MonsterPlayer = new EntityInfoModel(
-                new MonsterModel
-                {
-                    Speed = 1,
-                    Level = 1,
-                    CurrentHealth = 1,
-                    Experience = 1,
-                    Name = "Monster",
-                });
+        //    var MonsterPlayer = new EntityInfoModel(
+        //        new MonsterModel
+        //        {
+        //            Speed = 1,
+        //            Level = 1,
+        //            CurrentHealth = 1,
+        //            Experience = 1,
+        //            Name = "Monster",
+        //        });
 
-            BattleEngine.CharacterList.Add(MonsterPlayer);
+        //    BattleEngine.CharacterList.Add(MonsterPlayer);
 
-            // Have dice rull 19
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(10);
+        //    // Have dice rull 19
+        //    DiceHelper.EnableForcedRolls();
+        //    DiceHelper.SetForcedRollValue(10);
 
-            //Act
-            var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+        //    //Act
+        //    var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
-            //Reset
-            DiceHelper.DisableForcedRolls();
+        //    //Reset
+        //    DiceHelper.DisableForcedRolls();
 
-            //Assert
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
-           // Console.WriteLine(CharacterPlayer.TestDamage);
-            Assert.AreEqual(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
-        }
+        //    //Assert
+        //    Assert.AreEqual(true, result);
+        //    Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
+        //   // Console.WriteLine(CharacterPlayer.TestDamage);
+        //    Assert.AreEqual(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
+        //}
 
-        [Test]
-        public void HackathonScenario_Scenario_47_NotPrime_Should_Not_do_Full_Damage()
-        {
-            /* 
-             * Scenario Number:  
-             *  47
-             *  
-             * Description: 
-             *      See Default Test
-             * 
-             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-             *      See Default Test
-             *                 
-             * Test Algrorithm:
-             *  Create Character named NotPrime
-             *  Set the Attributes of NotPrime to be a non Prime number
-             *  Give Not Prime a weapon
-             *  Create Monster
-             *  Call TurnAsAttack
-             * 
-             * Test Conditions:
-             *  Test with Character of Prime
-             *  Test with Character of NotPrime
-             * 
-             * Validation:
-             *      Verify Enum is Hit for Prime
-             *      
-             *      Verify Prime's BattleDamageAmount is Prime's TotalDamage
-             *      
-             *      
-             *  
-             */
+        //[Test]
+        //public void HackathonScenario_Scenario_47_NotPrime_Should_Not_do_Full_Damage()
+        //{
+        //    /* 
+        //     * Scenario Number:  
+        //     *  47
+        //     *  
+        //     * Description: 
+        //     *      See Default Test
+        //     * 
+        //     * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+        //     *      See Default Test
+        //     *                 
+        //     * Test Algrorithm:
+        //     *  Create Character named NotPrime
+        //     *  Set the Attributes of NotPrime to be a non Prime number
+        //     *  Give Not Prime a weapon
+        //     *  Create Monster
+        //     *  Call TurnAsAttack
+        //     * 
+        //     * Test Conditions:
+        //     *  Test with Character of Prime
+        //     *  Test with Character of NotPrime
+        //     * 
+        //     * Validation:
+        //     *      Verify Enum is Hit for Prime
+        //     *      
+        //     *      Verify Prime's BattleDamageAmount is Prime's TotalDamage
+        //     *      
+        //     *      
+        //     *  
+        //     */
 
-            //Arrange
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(0);
-            // Set Character Conditions
+        //    //Arrange
+        //    DiceHelper.EnableForcedRolls();
+        //    DiceHelper.SetForcedRollValue(0);
+        //    // Set Character Conditions
 
-            BattleEngine.MaxNumberPartyCharacters = 1;
-            var TestSword = ItemViewModel.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault();
-            var CharacterPlayer = new EntityInfoModel(
-                            new CharacterModel
-                            {
-                                Level = 10,
-                                CurrentHealth = 200,
-                                MaxHealth = 200,
-                                //TestDamage = 123,
-                                Experience = 100,
-                                Name = "NotPrime",
-                            });
-            CharacterPlayer.Attack = 25;
-            CharacterPlayer.Speed = 20;
-            CharacterPlayer.Defense = 25;
-            CharacterPlayer.AddItem(ItemLocationEnum.PrimaryHand, TestSword.Id);
-            BattleEngine.CharacterList.Add(CharacterPlayer);
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
+        //    var TestSword = ItemViewModel.Dataset.Where(a => a.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault();
+        //    var CharacterPlayer = new EntityInfoModel(
+        //                    new CharacterModel
+        //                    {
+        //                        Level = 10,
+        //                        CurrentHealth = 200,
+        //                        MaxHealth = 200,
+        //                        //TestDamage = 123,
+        //                        Experience = 100,
+        //                        Name = "NotPrime",
+        //                    });
+        //    CharacterPlayer.Attack = 25;
+        //    CharacterPlayer.Speed = 20;
+        //    CharacterPlayer.Defense = 25;
+        //    CharacterPlayer.AddItem(ItemLocationEnum.PrimaryHand, TestSword.Id);
+        //    BattleEngine.CharacterList.Add(CharacterPlayer);
 
-            // Set Monster Conditions
+        //    // Set Monster Conditions
 
-            // Add a monster to attack
-            BattleEngine.MaxNumberPartyCharacters = 1;
+        //    // Add a monster to attack
+        //    BattleEngine.MaxNumberPartyCharacters = 1;
 
-            var MonsterPlayer = new EntityInfoModel(
-                new MonsterModel
-                {
-                    Speed = 1,
-                    Level = 1,
-                    CurrentHealth = 1,
-                    Experience = 1,
-                    Name = "Monster",
-                });
+        //    var MonsterPlayer = new EntityInfoModel(
+        //        new MonsterModel
+        //        {
+        //            Speed = 1,
+        //            Level = 1,
+        //            CurrentHealth = 1,
+        //            Experience = 1,
+        //            Name = "Monster",
+        //        });
 
-            BattleEngine.CharacterList.Add(MonsterPlayer);
+        //    BattleEngine.CharacterList.Add(MonsterPlayer);
 
-            // Have dice rull 19
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(10);
+        //    // Have dice rull 19
+        //    DiceHelper.EnableForcedRolls();
+        //    DiceHelper.SetForcedRollValue(10);
 
-            //Act
-            var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+        //    //Act
+        //    var result = BattleEngine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
-            //Reset
-            DiceHelper.DisableForcedRolls();
+        //    //Reset
+        //    DiceHelper.DisableForcedRolls();
 
-            //Assert
-            Assert.AreEqual(true, result);
-            //Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
-            // Console.WriteLine(CharacterPlayer.TestDamage);
-            Assert.Greater(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
-        }
-        #endregion TestScenario47
+        //    //Assert
+        //    Assert.AreEqual(true, result);
+        //    //Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessageModel.HitStatus);
+        //    // Console.WriteLine(CharacterPlayer.TestDamage);
+        //    Assert.Greater(CharacterPlayer.GetDamageTotal, BattleEngine.BattleMessageModel.DamageAmount);
+        //}
+        //#endregion TestScenario47
 
         [Test]
         public void HackathonScenario_Scenario_30_First_Battle_Character_Is_Buffed()
