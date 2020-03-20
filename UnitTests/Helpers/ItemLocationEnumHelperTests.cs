@@ -111,5 +111,20 @@ namespace UnitTests.Helpers
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+        [Test]
+        public void ItemLocationEnumHelper_GetLocationByPosition_7_Should_Pass()
+        {
+            // Arrange
+
+            var value = 7;
+
+            // Act
+            var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
+            var Expected = ItemLocationEnum.Feet;
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
