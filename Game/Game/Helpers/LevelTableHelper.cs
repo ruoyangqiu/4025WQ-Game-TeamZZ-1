@@ -5,7 +5,7 @@ namespace Game.Models
     /// <summary>
     /// Helper to manage the Level Table Data
     /// </summary>
-    class LevelTableHelper
+    public class LevelTableHelper
     {
         #region Singleton
         // Make this a singleton so it only exist one time because holds all the data records in memory

@@ -360,6 +360,11 @@ namespace Game.Models
 
         #endregion Attributes Display
 
+        public EntityModel()
+        {
+            Guid = Id;
+        }
+
         #region Basic Methods
         public virtual string FormatOutput() { return ""; }
 
@@ -781,7 +786,7 @@ namespace Game.Models
         // The damage monster receive
         public bool TakeDamage(int damage)
         {
-            if (damage < 0)
+            if (damage <= 0)
             {
                 return false;
             }
