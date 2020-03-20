@@ -43,7 +43,7 @@
                     Text="MaxHealth : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.MaxHealth}" 
+                    Text="{Binding Data.GetMaxHealthTotal}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -52,7 +52,7 @@
                     Text="Attack : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Attack}" 
+                    Text="{Binding Data.GetAttackTotal}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -61,7 +61,7 @@
                     Text="Defence : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Defense}" 
+                    Text="{Binding Data.GetDefenseTotal}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
@@ -70,7 +70,7 @@
                     Text="Speed : " 
                     Style="{StaticResource LabelStyle}"/>
                 <Label 
-                    Text="{Binding Data.Speed}" 
+                    Text="{Binding Data.GetSpeedTotal}" 
                     Style="{StaticResource ValueStyle}"/>
             </StackLayout>
 
