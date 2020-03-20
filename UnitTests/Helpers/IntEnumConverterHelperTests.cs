@@ -68,5 +68,18 @@ namespace UnitTests.Helpers
 
             Assert.AreEqual(Expected, Result, TestContext.CurrentContext.Test.Name);
         }
+
+        // Convert Back
+        [Test]
+        public void IntEnumConvertBack_Should_Skip()
+        {
+            var myConverter = new IntEnumConverter();
+
+            var myObject = "Bogus";
+            var Result = myConverter.ConvertBack(myObject, null, null, null);
+            var Expected = 0;
+
+            Assert.AreEqual(Expected, Result, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
