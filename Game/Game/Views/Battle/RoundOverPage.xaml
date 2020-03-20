@@ -19,40 +19,53 @@
 
                         <Label Text="Round Cleared" Style="{StaticResource CenterMessageStyle}"/>
 
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Round : " Style="{StaticResource MessageStyle}"/>
-                            <Label Text="0" x:Name="TotalRound" Style="{StaticResource MessageStyle}"/>
+                        <StackLayout Style="{StaticResource HorizontalStack}"  HorizontalOptions="Center" Padding="0,20,0,10">
+                            <Label Text="Round : " Style="{StaticResource CenterMessageStyle}"/>
+                            <Label Text="0" x:Name="TotalRound" Style="{StaticResource CenterMessageStyle}"/>
                         </StackLayout>
 
 
-                                           
-                        <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-                        <FlexLayout x:Name="CharacterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
-                        <Label Text="Items Found" Style="{StaticResource MessageStyle}"/>
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
-                            <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="Characters" Style="{StaticResource CenterMessageStyle}"/>
+                            <StackLayout x:Name="CharacterListFrame"
+                                     Margin="5,0,5,0"
+                         
+                             Style="{StaticResource HorizontalStack}"
+                                        />
                         </StackLayout>
-                        <FlexLayout x:Name="ItemListFoundFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
-                        <Button Clicked="AutoAssignButton_Clicked" Text="Assign Items"/>
+                        <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand" Padding="0,10,0,30">
 
-                        <Label Text="Items Selected" Style="{StaticResource MessageStyle}"/>
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Selected : " Style="{StaticResource LabelStyle}"/>
-                            <Label Text="0" x:Name="TotalSelected" Style="{StaticResource ValueStyle}"/>
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="Items Found" Style="{StaticResource CenterMessageStyle}"/>
+                                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
+                                    <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="ItemListFoundFrame"
+                                            Style="{StaticResource VerticalStack}"
+                                            Padding="60,0,0,0"/>
+                            </StackLayout>
+
+
+                            <StackLayout HorizontalOptions="CenterAndExpand" Padding="100, 50, 100, 5">
+
+                                <Button Clicked="AutoAssignButton_Clicked" Text="Assign Items"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="End">
+                                <Label Text="Items Selected" Style="{StaticResource CenterMessageStyle}"/>
+                                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="Selected : " Style="{StaticResource LabelStyle}"/>
+                                    <Label Text="0" x:Name="TotalSelected" Style="{StaticResource ValueStyle}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="ItemListSelectedFrame"
+                                             Style="{StaticResource VerticalStack}"
+                                             Padding="60,0,0,0"/>
+                            </StackLayout>
+
                         </StackLayout>
-                        <FlexLayout x:Name="ItemListSelectedFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
                         <Button Clicked="CloseButton_Clicked" Text="Close"/>
 
