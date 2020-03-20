@@ -39,9 +39,6 @@
     <Compile Update="Views\Battle\PickCharactersPage.xaml.cs">
       <DependentUpon>PickCharactersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Battle\BattlePage2.xaml.cs">
-      <DependentUpon>BattlePage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Characters\CharacterIndexPage.xaml.cs">
       <DependentUpon>CharacterIndexPage.xaml</DependentUpon>
     </Compile>

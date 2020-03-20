@@ -76,6 +76,9 @@ namespace Game.Views
             }
         }
 
+        /// <summary>
+        /// Initialize the game board, create a grid layout with rows and colums
+        /// </summary>
         void IntializeBattleBoard()
         {
             var map = EngineViewModel.Engine.MapModel;
@@ -298,10 +301,42 @@ namespace Game.Views
             // Save the Score to the Score View Model, by sending a message to it.
             var Score = EngineViewModel.Engine.BattleScore;
             MessagingCenter.Send(this, "AddData", Score);
+
+            // Hide the Game Board
+            GameUIDisplay.IsVisible = false;
+
+            // Show the Game Over Display
+            GameOverDisplay.IsVisible = true;
         }
 
 
         #endregion BattleFlow
+
+        #region GameOver
+
+        /// <summary>
+        /// Show the Game Over Screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public async void ShowScoreButton_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new ScorePage());
+        }
+
+        /// <summary>
+        /// Battle Over, so Exit Button
+        /// Need to show this for the user to click on.
+        /// The Quit does a prompt, exit just exits
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void ExitButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        #endregion GameOver
 
         #region ActionBox
 

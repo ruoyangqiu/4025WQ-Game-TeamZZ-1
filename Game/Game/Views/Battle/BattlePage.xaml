@@ -74,22 +74,22 @@
                         <StackLayout WidthRequest="350">
                             <StackLayout x:Name="PlayerTurnBox" IsVisible="False">
                                 <StackLayout x:Name="ActionSelectionBox" IsVisible="True">
-                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack"/>
-                                    <Button  Clicked="OnMoveButtonClicked" Text="Move"/>
+                                    <Button  Clicked="OnAttackButtonClicked" Text="Attack" WidthRequest="100"/>
+                                    <Button  Clicked="OnMoveButtonClicked" Text="Move" WidthRequest="100"/>
                                 </StackLayout>
                                 
                                 <StackLayout x:Name="AttackActionBox" IsVisible="False">
-                                    <Button  Clicked="OnAttackConfirmClicked" Text="Attack Target"/>
-                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
+                                    <Button  Clicked="OnAttackConfirmClicked" Text="Attack Target" WidthRequest="100"/>
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel" WidthRequest="100"/>
                                 </StackLayout>
 
                                 <StackLayout x:Name="MoveActionBox" IsVisible="False">
-                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel"/>
+                                    <Button  Clicked="OnActionCancelClicked" Text="Cancel" WidthRequest="100"/>
                                 </StackLayout>
                             </StackLayout>
 
                             <StackLayout x:Name="MonsterTurnBox" IsVisible="False">
-                                <Button  Clicked="OnConfirmDefenseClicked" Text="Defend"/>
+                                <Button  Clicked="OnConfirmDefenseClicked" Text="Defend" WidthRequest="100"/>
                             </StackLayout>
                         </StackLayout>
                         
@@ -117,6 +117,24 @@
                             BackgroundColor="Transparent"
                             IsVisible="false"
                             />
+                    </StackLayout>
+                </StackLayout>
+                <!--The Game Over Screen -->
+                <StackLayout 
+                    Style="{StaticResource VerticalStack}"
+                    AbsoluteLayout.LayoutBounds="1,1,1,1" 
+                    AbsoluteLayout.LayoutFlags="All"
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="GameOverDisplay" 
+                    IsVisible="false">
+
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="10">
+                        <Label Text="Game Over" Style="{StaticResource CenterMessageStyle}"/>
+
+                        <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Score" WidthRequest="70"/>
+
+                        <Button x:Name="ExitButton" Clicked="ExitButton_Clicked" Text="Exit" WidthRequest="70"></Button>
+
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
