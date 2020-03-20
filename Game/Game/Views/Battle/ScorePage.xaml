@@ -9,26 +9,35 @@
 
                 <Label Text="Score Page..." Style="{StaticResource CenterMessageStyle}"></Label>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Score : " Style="{StaticResource MessageStyle}"/>
-                    <Label Text="0" x:Name="TotalScore" Style="{StaticResource MessageStyle}"/>
+                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand" Padding="0,10,0,30">
+
+                    <StackLayout HorizontalOptions="Start">
+                        <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
+                        <StackLayout x:Name="CharacterListFrame"
+                                     Margin="5,0,5,0"
+                         
+                             Style="{StaticResource VerticalStack}"
+                                        />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="100, 5, 100, 5">
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label Text="Score : " Style="{StaticResource MessageStyle}"/>
+                            <Label Text="0" x:Name="TotalScore" Style="{StaticResource MessageStyle}"/>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label Text="Killed : " Style="{StaticResource LabelStyle}"/>
+                            <Label Text="0" x:Name="TotalKilled" Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="End">
+                        <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
+                        <StackLayout x:Name="MonsterListFrame"
+                             Style="{StaticResource VerticalStack}"
+                                        />
+                    </StackLayout>
                 </StackLayout>
 
-                <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-                <FlexLayout x:Name="CharacterListFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap"/>
-
-                <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Killed : " Style="{StaticResource LabelStyle}"/>
-                    <Label Text="0" x:Name="TotalKilled" Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-                <FlexLayout x:Name="MonsterListFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap"/>
 
                 <Label Text="Items" Style="{StaticResource MessageStyle}"/>
                 <StackLayout Style="{StaticResource HorizontalStack}">
