@@ -76,6 +76,9 @@ namespace Game.Views
             }
         }
 
+        /// <summary>
+        /// Initialize the game board, create a grid layout with rows and colums
+        /// </summary>
         void IntializeBattleBoard()
         {
             var map = EngineViewModel.Engine.MapModel;
