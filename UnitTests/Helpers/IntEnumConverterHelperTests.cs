@@ -81,5 +81,18 @@ namespace UnitTests.Helpers
 
             Assert.AreEqual(Expected, Result, TestContext.CurrentContext.Test.Name);
         }
+
+        // Convert Back
+        [Test]
+        public void IntEnumConvertBack_Int_Should_Pass()
+        {
+            var myConverter = new IntEnumConverter();
+
+            int myObject = 40;
+            var Result = myConverter.ConvertBack(myObject, typeof(ItemLocationEnum), null, null);
+            var Expected = "Feet";
+
+            Assert.AreEqual(Expected, Result, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
