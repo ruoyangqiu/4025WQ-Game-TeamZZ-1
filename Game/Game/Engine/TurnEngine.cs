@@ -418,8 +418,35 @@ namespace Game.Engine
             }
             BattleMessageModel.TurnMessage = Attacker.Name + BattleMessageModel.AttackStatus + Target.Name + BattleMessageModel.TurnMessageSpecial + BattleMessageModel.ExperienceEarned;
             Debug.WriteLine(BattleMessageModel.TurnMessage);
+            if(Target.PlayerType == PlayerTypeEnum.Character)
+            {
+                UpdatePlayerList(Target);
+            }
             return true;
         }
+
+        /// <summary>
+        /// Update PlayerList after Character was attacked. Because it didn't update the Character stored in PlayerList
+        /// </summary>
+        /// <param name="Target"></param>
+        private void UpdatePlayerList(EntityInfoModel Target)
+        {
+            for(int i = 0; i < PlayerList.Count; i++)
+            {
+                if(PlayerList[i].PlayerType == PlayerTypeEnum.Character)
+                {
+                    if(PlayerList[i].Guid == Target.Guid)
+                    {
+                        PlayerList[i].CurrentHealth = Target.CurrentHealth;
+                        if(PlayerList[i].Level != Target.Level)
+                        {
+                            PlayerList[i].LevelUpToValue(Target.Level);
+                        }
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         /// Apply the Damage to the Target
